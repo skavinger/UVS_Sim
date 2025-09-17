@@ -1,0 +1,25 @@
+
+const CARDS = {
+	"CHA03-GMM_01" : {},
+	"CHA03-GMM_02" : {},
+	"CHA03-GMM_03" : {},
+	"CHA03-GMM_04" : {},
+	"CHA03-GMM_05" : {},
+	"CHA03-GMM_06" : {},
+	"CHA03-GMM_07" : {},
+	"CHA03-GMM_08" : {},
+	"CHA03-GMM_09" : {},
+	"CHA03-GMM_10" : {},
+	"CHA03-GMM_11" : {},
+	"CHA03-GMM_12" : {},
+	"CHA03-GMM_13" : {},
+	"CHA03-GMM_14" : {},
+	"CHA03-GMM_15" : {},
+	"CHA03-GMM_16" : {},
+	"CHA03-GMM_17" : {},
+	"CHA03-GMM_18" : {},
+	"CHA03-GMM_19" : {},
+	"CHA03-GMM_20" : {},
+	"CHA03-GMM_21" : {},
+	"CHA03-GMM_22" : {}
+}

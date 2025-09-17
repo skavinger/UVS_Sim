@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm7g830g0hx0o"]
+
+[ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
+[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://GameObj/input_manager.gd" id="1_loro6"]
+[ext_resource type="Script" uid="uid://cuapwcbv4xmo2" path="res://Scripts/hand.gd" id="2_yhcre"]
+[ext_resource type="PackedScene" uid="uid://bmrdtiycdj23c" path="res://GameObj/Deck.tscn" id="3_foqap"]
+[ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="5_4gn13"]
+
+[node name="Main" type="Node2D"]
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("1_loro6")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_foqap")
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("2_yhcre")
+
+[node name="Deck" parent="." instance=ExtResource("3_foqap")]
+position = Vector2(150, 890)
+script = ExtResource("5_4gn13")

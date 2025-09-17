@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dipxa2jh1fjld"]
+
+[ext_resource type="Script" uid="uid://cxeinm2tp1res" path="res://Scripts/button.gd" id="1_n4tde"]
+[ext_resource type="Texture2D" uid="uid://bpii1ocsx18ju" path="res://Assets/Button_Ready.png" id="1_r04n3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptho"]
+size = Vector2(742.857, 114.286)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_n4tde")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(1, -0.999996)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_r04n3")
+
+[node name="Text" type="RichTextLabel" parent="Image"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -350.0
+offset_top = -86.0
+offset_right = 350.0
+offset_bottom = 50.0
+theme_override_font_sizes/normal_font_size = 48
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.999996, -1)
+scale = Vector2(0.14, 0.14)
+shape = SubResource("RectangleShape2D_hptho")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bm7g830g0hx0o"]
+
+[ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
+[ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://GameObj/zone_manager.gd" id="1_ii5oo"]
+[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://GameObj/input_manager.gd" id="1_loro6"]
+[ext_resource type="Script" uid="uid://cuapwcbv4xmo2" path="res://Scripts/hand.gd" id="2_yhcre"]
+[ext_resource type="PackedScene" uid="uid://bmrdtiycdj23c" path="res://GameObj/Deck.tscn" id="3_foqap"]
+[ext_resource type="Script" uid="uid://dnjac7ycv8wq" path="res://GameObj/stage.gd" id="4_vreb5"]
+[ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="5_4gn13"]
+[ext_resource type="Texture2D" uid="uid://dyn7d6nlphep7" path="res://Assets/Field_V1.png" id="6_4gn13"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ZoneManager" type="Node2D" parent="."]
+script = ExtResource("1_ii5oo")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("1_loro6")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_foqap")
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("2_yhcre")
+
+[node name="Cardpool" type="Node2D" parent="."]
+
+[node name="Stage" type="Node2D" parent="."]
+script = ExtResource("4_vreb5")
+
+[node name="Deck" parent="." instance=ExtResource("3_foqap")]
+z_index = 100
+position = Vector2(1790, 955)
+script = ExtResource("5_4gn13")
+
+[node name="Discard" type="Node2D" parent="."]
+
+[node name="Removed" type="Node2D" parent="."]
+
+[node name="Momentum" type="Node2D" parent="."]
+
+[node name="Field" type="Node2D" parent="."]
+
+[node name="PlayArea" type="Sprite2D" parent="Field"]
+position = Vector2(960.25, 538.563)
+scale = Vector2(1, 0.998)
+texture = ExtResource("6_4gn13")
