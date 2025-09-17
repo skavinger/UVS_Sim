@@ -16,7 +16,6 @@ var deck = {
 	"side": []
 }
 
-const CARD_SCENE_PATH = "res://GameObj/Card.tscn"
 const BUTTON_PATH = "res://GameObj/button.tscn"
 const BUTTON_POS_X = 0
 const BUTTON_OFFSET = -80
@@ -28,7 +27,7 @@ var zoneMan
 var cardMan
 var card_database
 
-var buttons = ["Draw 1"]
+var buttons = ["Draw 1", "Build Top"]
 
 func _ready() -> void:
 	card_database = preload("res://Scripts/card_database.gd")
@@ -37,12 +36,9 @@ func _ready() -> void:
 	cardMan = $"../CardManager"
 	
 	#init character
-	var new_card = preload(CARD_SCENE_PATH).instantiate()
-	cardMan.add_child(new_card)
-	new_card.get_node("CardFront").texture = load("res://Assets/Sets/Precons/Godzilla, King of the Monsters/" + deck.character + ".jpg")
-	new_card.name = deck.character
-	zoneMan.stageZone.add_character_to_stage(new_card)
-	new_card.get_node("AnimationPlayer").play("Card_Flip")
+	var character = cardMan.spawn_card(deck.character)
+	zoneMan.stageZone.add_character_to_stage(character)
+	character.get_node("AnimationPlayer").play("Card_Flip")
 	
 	#init deck buttons
 	for i in range(buttons.size()):
@@ -66,14 +62,18 @@ func draw_card():
 		$Area2D/CollisionShape2D.disabled = true
 		$Sprite2D.visible = false
 	
-	var new_card = preload(CARD_SCENE_PATH).instantiate()
-	cardMan.add_child(new_card)
-	new_card.get_node("CardFront").texture = load("res://Assets/Sets/Precons/Godzilla, King of the Monsters/" + card_drawn+ ".jpg")
-	new_card.cardName = card_drawn
+	var new_card = cardMan.spawn_card(card_drawn)
 	zoneMan.handZone.add_card_to_hand(new_card)
 	new_card.get_node("AnimationPlayer").play("Card_Flip")
+	
+func buildTop():
+	var topCard = deck.main[0]
+	deck.main.erase(topCard)
+	zoneMan.stageZone.build_card(cardMan.spawn_card(topCard))
 	
 func call_fun(buttonName):
 	match buttonName:
 		"Draw 1":
 			draw_card()
+		"Build Top":
+			buildTop()

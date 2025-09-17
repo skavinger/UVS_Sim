@@ -1,5 +1,7 @@
 extends Node2D
 
+const CARD_SCENE_PATH = "res://GameObj/Card.tscn"
+
 var selected_card
 var screen_size
 var is_hovering
@@ -14,6 +16,13 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	inputMan = $"../InputManager"
 	zoneMan = $"../ZoneManager"
+	
+func spawn_card(cardID):
+	var new_card = preload(CARD_SCENE_PATH).instantiate()
+	self.add_child(new_card)
+	new_card.get_node("CardFront").texture = load("res://Assets/Sets/Precons/Godzilla, King of the Monsters/" + cardID + ".jpg")
+	#new_card.cardName = cardID
+	return new_card
 
 func card_selected(card):
 	if !card or card == selected_card:
