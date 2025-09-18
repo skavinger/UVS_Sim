@@ -1,20 +1,7 @@
 extends Node2D
 
-var deck = {
-	"character": "CHA03-GMM_01", 
-	"main": ["CHA03-GMM_13", "CHA03-GMM_13", "CHA03-GMM_13", "CHA03-GMM_13", "CHA03-GMM_14",
-"CHA03-GMM_14", "CHA03-GMM_15", "CHA03-GMM_15", "CHA03-GMM_15", "CHA03-GMM_15", "CHA03-GMM_16",
- "CHA03-GMM_16", "CHA03-GMM_16", "CHA03-GMM_16", "CHA03-GMM_17", "CHA03-GMM_17", "CHA03-GMM_17",
- "CHA03-GMM_17", "CHA03-GMM_18", "CHA03-GMM_18", "CHA03-GMM_19", "CHA03-GMM_19", "CHA03-GMM_19",
- "CHA03-GMM_20","CHA03-GMM_20","CHA03-GMM_20","CHA03-GMM_20","CHA03-GMM_21","CHA03-GMM_21",
-"CHA03-GMM_21","CHA03-GMM_21","CHA03-GMM_22","CHA03-GMM_22","CHA03-GMM_22","CHA03-GMM_22",
-"CHA03-GMM_06","CHA03-GMM_06","CHA03-GMM_06","CHA03-GMM_07","CHA03-GMM_07","CHA03-GMM_08",
-"CHA03-GMM_08","CHA03-GMM_08","CHA03-GMM_08","CHA03-GMM_09","CHA03-GMM_09","CHA03-GMM_10",
-"CHA03-GMM_10","CHA03-GMM_10","CHA03-GMM_10","CHA03-GMM_11","CHA03-GMM_11","CHA03-GMM_11",
-"CHA03-GMM_12","CHA03-GMM_12","CHA03-GMM_12","CHA03-GMM_04","CHA03-GMM_04","CHA03-GMM_05",
-"CHA03-GMM_05",],
-	"side": []
-}
+var decklist
+var deck = []
 
 const BUTTON_PATH = "res://GameObj/button.tscn"
 const BUTTON_POS_X = 0
@@ -30,13 +17,22 @@ var card_database
 var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool"]
 
 func _ready() -> void:
+	#load decklist from deck
 	card_database = preload("res://Scripts/card_database.gd")
-	deck.main.shuffle()
+	decklist = preload("res://Scripts/decklist.gd")
+	for i in range(decklist.decklist.main.size()):
+		for j in decklist.decklist.main[i].count:
+			deck.append({
+				"cardID": decklist.decklist.main[i].cardID,
+				"cardProperties": card_database.CARDS[decklist.decklist.main[i].cardID.set][decklist.decklist.main[i].cardID.number]
+			})
+	
+	deck.shuffle()
 	zoneMan = $"../ZoneManager"
 	cardMan = $"../CardManager"
 	
 	#init character
-	var character = cardMan.spawn_card(deck.character)
+	var character = cardMan.spawn_card(decklist.decklist.character)
 	zoneMan.stageZone.add_character_to_stage(character)
 	character.get_node("AnimationPlayer").play("Card_Flip")
 	
@@ -55,10 +51,10 @@ func deck_unselected():
 	$Buttons.visible = false
 
 func draw_card():
-	var card_drawn = deck.main[0]
-	deck.main.erase(card_drawn)
+	var card_drawn = deck[0]
+	deck.erase(card_drawn)
 	
-	if deck.main.size() == 0:
+	if deck.size() == 0:
 		$Area2D/CollisionShape2D.disabled = true
 		$Sprite2D.visible = false
 	
@@ -67,13 +63,13 @@ func draw_card():
 	new_card.get_node("AnimationPlayer").play("Card_Flip")
 	
 func buildTop():
-	var topCard = deck.main[0]
-	deck.main.erase(topCard)
+	var topCard = deck[0]
+	deck.erase(topCard)
 	zoneMan.stageZone.build_card(cardMan.spawn_card(topCard))
 	
 func toCardPool():
-	var topCard = deck.main[0]
-	deck.main.erase(topCard)
+	var topCard = deck[0]
+	deck.erase(topCard)
 	zoneMan.cardpoolZone.add_to_card_pool(cardMan.spawn_card(topCard))
 	
 func call_fun(buttonName):

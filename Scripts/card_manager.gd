@@ -17,10 +17,10 @@ func _ready() -> void:
 	inputMan = $"../InputManager"
 	zoneMan = $"../ZoneManager"
 	
-func spawn_card(cardID):
+func spawn_card(card):
 	var new_card = preload(CARD_SCENE_PATH).instantiate()
 	self.add_child(new_card)
-	new_card.get_node("CardFront").texture = load("res://Assets/Sets/Precons/Godzilla, King of the Monsters/" + cardID + ".jpg")
+	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
 	#new_card.cardName = cardID
 	return new_card
 
