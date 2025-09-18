@@ -1,7 +1,6 @@
 extends Node2D
 
 const CARD_WIDTH = 70
-const HAND_Y_POS = 1100
 
 const CH_POS_X = 120
 const CH_POS_Y = 670

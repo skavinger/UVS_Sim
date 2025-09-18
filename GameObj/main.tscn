@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=11 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
 [ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://GameObj/zone_manager.gd" id="1_ii5oo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://y4w8jn8omovb" path="res://GameObj/animation_manager.gd" id="4_xmt4q"]
 [ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="5_4gn13"]
 [ext_resource type="Texture2D" uid="uid://dyn7d6nlphep7" path="res://Assets/Field_V1.png" id="6_4gn13"]
+[ext_resource type="Script" uid="uid://cllltv6mdbxhx" path="res://GameObj/cardpool.gd" id="6_p20hj"]
 
 [node name="Main" type="Node2D"]
 
@@ -28,6 +29,7 @@ script = ExtResource("4_xmt4q")
 script = ExtResource("2_yhcre")
 
 [node name="Cardpool" type="Node2D" parent="."]
+script = ExtResource("6_p20hj")
 
 [node name="Stage" type="Node2D" parent="."]
 script = ExtResource("4_vreb5")

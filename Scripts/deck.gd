@@ -27,7 +27,7 @@ var zoneMan
 var cardMan
 var card_database
 
-var buttons = ["Draw 1", "Build Top"]
+var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool"]
 
 func _ready() -> void:
 	card_database = preload("res://Scripts/card_database.gd")
@@ -71,9 +71,16 @@ func buildTop():
 	deck.main.erase(topCard)
 	zoneMan.stageZone.build_card(cardMan.spawn_card(topCard))
 	
+func toCardPool():
+	var topCard = deck.main[0]
+	deck.main.erase(topCard)
+	zoneMan.cardpoolZone.add_to_card_pool(cardMan.spawn_card(topCard))
+	
 func call_fun(buttonName):
 	match buttonName:
 		"Draw 1":
 			draw_card()
 		"Build Top":
 			buildTop()
+		"Add Top to Card Pool":
+			toCardPool()
