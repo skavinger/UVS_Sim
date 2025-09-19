@@ -19,16 +19,16 @@ func _ready() -> void:
 
 func add_character_to_stage(character):
 	starting_character = character
-	animationMan.animate_card_to_pos(starting_character, Vector2(CH_POS_X, CH_POS_Y))
-	starting_character.scale = Vector2(0.6,0.6)
+	animationMan.animate_card_to_pos(starting_character.cardObj, Vector2(CH_POS_X, CH_POS_Y))
+	starting_character.cardObj.scale = Vector2(0.6,0.6)
 
 func build_card(card):
 	stage.append(card)
 	update_pos()
-	card.get_node("AnimationPlayer").play("Card_Flip")
-	card.scale = Vector2(0.6,0.6)
+	card.cardObj.get_node("AnimationPlayer").play("Card_Flip")
+	card.cardObj.scale = Vector2(0.6,0.6)
 	
 func update_pos():
 	for i in range(stage.size()):
-		animationMan.animate_card_to_pos(stage[i], Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
-		stage[i].z_index = 200 + i
+		animationMan.animate_card_to_pos(stage[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
+		stage[i].cardObj.z_index = 200 + i

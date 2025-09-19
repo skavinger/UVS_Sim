@@ -1,20 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
-[ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://GameObj/zone_manager.gd" id="1_ii5oo"]
-[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://GameObj/input_manager.gd" id="1_loro6"]
+[ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="1_ii5oo"]
+[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="1_loro6"]
 [ext_resource type="Script" uid="uid://cuapwcbv4xmo2" path="res://Scripts/hand.gd" id="2_yhcre"]
 [ext_resource type="PackedScene" uid="uid://bmrdtiycdj23c" path="res://GameObj/Deck.tscn" id="3_foqap"]
-[ext_resource type="Script" uid="uid://dnjac7ycv8wq" path="res://GameObj/stage.gd" id="4_vreb5"]
-[ext_resource type="Script" uid="uid://y4w8jn8omovb" path="res://GameObj/animation_manager.gd" id="4_xmt4q"]
+[ext_resource type="Script" uid="uid://dnjac7ycv8wq" path="res://Scripts/stage.gd" id="4_vreb5"]
+[ext_resource type="Script" uid="uid://y4w8jn8omovb" path="res://Scripts/animation_manager.gd" id="4_xmt4q"]
 [ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="5_4gn13"]
 [ext_resource type="Texture2D" uid="uid://dyn7d6nlphep7" path="res://Assets/Field_V1.png" id="6_4gn13"]
-[ext_resource type="Script" uid="uid://cllltv6mdbxhx" path="res://GameObj/cardpool.gd" id="6_p20hj"]
+[ext_resource type="Script" uid="uid://cllltv6mdbxhx" path="res://Scripts/cardpool.gd" id="6_p20hj"]
+[ext_resource type="PackedScene" uid="uid://i5d6wbkgvnqe" path="res://GameObj/Discard.tscn" id="10_hp5rj"]
+[ext_resource type="Script" uid="uid://r5qpra2fvral" path="res://Scripts/discard.gd" id="11_h3px5"]
 
 [node name="Main" type="Node2D"]
-
-[node name="ZoneManager" type="Node2D" parent="."]
-script = ExtResource("1_ii5oo")
 
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource("1_loro6")
@@ -24,6 +23,9 @@ script = ExtResource("1_foqap")
 
 [node name="AnimationManager" type="Node2D" parent="."]
 script = ExtResource("4_xmt4q")
+
+[node name="Transit" type="Node2D" parent="."]
+script = ExtResource("1_ii5oo")
 
 [node name="Hand" type="Node2D" parent="."]
 script = ExtResource("2_yhcre")
@@ -39,7 +41,10 @@ z_index = 100
 position = Vector2(1790, 955)
 script = ExtResource("5_4gn13")
 
-[node name="Discard" type="Node2D" parent="."]
+[node name="Discard" parent="." instance=ExtResource("10_hp5rj")]
+z_index = 50
+position = Vector2(1790, 786)
+script = ExtResource("11_h3px5")
 
 [node name="Removed" type="Node2D" parent="."]
 

@@ -7,22 +7,23 @@ var screen_size
 var is_hovering
 
 var inputMan
-var zoneMan
+var transitZone
+var cardDatabase
 
-func _process(_delta: float) -> void:
-	pass
-	
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	inputMan = $"../InputManager"
-	zoneMan = $"../ZoneManager"
+	transitZone = $"../Transit"
+	cardDatabase = preload("res://Scripts/card_database.gd")
 	
 func spawn_card(card):
 	var new_card = preload(CARD_SCENE_PATH).instantiate()
 	self.add_child(new_card)
 	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
-	#new_card.cardName = cardID
 	return new_card
+	
+func despwan_card(card):
+	self.remove_child(card)
 
 func card_selected(card):
 	if !card or card == selected_card:
@@ -60,8 +61,8 @@ func on_hovered_off_card(card):
 	
 func highlight_card(card, hovered):
 	var found = false
-	for i in range(zoneMan.handZone.hand.size()):
-		if zoneMan.handZone.hand[i] == card:
+	for i in range(transitZone.handZone.hand.size()):
+		if transitZone.handZone.hand[i] == card:
 			found = true
 	if found:
 		if hovered:

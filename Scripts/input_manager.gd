@@ -1,13 +1,13 @@
 extends Node2D
 
 var cardMan
-var zoneMan
+var transitZone
 
 var obj_selected
 
 func _ready() -> void:
 	cardMan = $"../CardManager"
-	zoneMan = $"../ZoneManager"
+	transitZone = $"../Transit"
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -21,14 +21,14 @@ func _input(event):
 						"card":
 							cardMan.card_unselected()
 						"deck":
-							zoneMan.deckZone.deck_unselected()
+							transitZone.deckZone.deck_unselected()
 				obj_selected = new_obj
 				if obj_selected:
 					match obj_selected.objType:
 						"card":
 							cardMan.card_selected(obj_selected)
 						"deck":
-							zoneMan.deckZone.deck_selected()
+							transitZone.deckZone.deck_selected()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state
