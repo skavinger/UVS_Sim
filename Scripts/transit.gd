@@ -45,4 +45,4 @@ func move_to(zone, card):
 		"momentum":
 			pass
 		"removed":
-			pass
+			removedZone.add_to_removed(card)

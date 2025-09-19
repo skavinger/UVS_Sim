@@ -62,7 +62,7 @@ func on_hovered_off_card(card):
 func highlight_card(card, hovered):
 	var found = false
 	for i in range(transitZone.handZone.hand.size()):
-		if transitZone.handZone.hand[i] == card:
+		if transitZone.handZone.hand[i].cardObj == card:
 			found = true
 	if found:
 		if hovered:

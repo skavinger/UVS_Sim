@@ -15,7 +15,7 @@ var cardMan
 var animationMan
 var card_database
 
-var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool", "Mill 1"]
+var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool", "Mill 1", "Remove Top"]
 
 func _ready() -> void:
 	transitZone = $"../Transit"
@@ -223,7 +223,12 @@ func mill(count):
 		deck.erase(topCard)
 		transitZone.move_to("discard", topCard)
 		
-	
+func removeCount(count):
+	for i in count:
+		var topCard = deck[0]
+		deck.erase(topCard)
+		transitZone.move_to("removed", topCard)
+		
 func call_fun(buttonName):
 	match buttonName:
 		"Draw 1":
@@ -234,3 +239,5 @@ func call_fun(buttonName):
 			toCardPool()
 		"Mill 1":
 			mill(1)
+		"Remove Top":
+			removeCount(1)
