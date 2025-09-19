@@ -43,6 +43,6 @@ func move_to(zone, card):
 		"stage":
 			stageZone.build_card(card)
 		"momentum":
-			pass
+			momentumZone.add_to_momentum(card)
 		"removed":
 			removedZone.add_to_removed(card)

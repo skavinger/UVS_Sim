@@ -2,7 +2,7 @@ extends Node2D
 
 const CARD_WIDTH = 70
 
-const CH_POS_X = 120
+const CH_POS_X = 130
 const CH_POS_Y = 670
 
 const STAGE_POS_START_X = 270
