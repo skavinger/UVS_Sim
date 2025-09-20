@@ -12,15 +12,17 @@ const BUTTON_HEIGHT = -16
 
 var transitZone
 var cardMan
-var animationMan
 var card_database
+
+var cardState = {
+	"faceup": false
+}
 
 var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool", "Mill 1", "Remove Top", "Add Top to Momentum"]
 
 func _ready() -> void:
 	transitZone = $"../Transit"
 	cardMan = $"../CardManager"
-	animationMan = $"../AnimationManager"
 	#load decklist from deck
 	card_database = preload("res://Scripts/card_database.gd")
 	decklist = {
@@ -172,6 +174,7 @@ func _ready() -> void:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
 				"cardProperties": card_database.CARDS[decklist.main[i].cardID.set][decklist.main[i].cardID.number],
+				"cardState": cardState.duplicate(),
 				"cardObj": null
 			})
 	deck.shuffle()
@@ -179,8 +182,9 @@ func _ready() -> void:
 	transitZone.move_to("character", {
 				"cardID": decklist.character.cardID,
 				"cardProperties": card_database.CARDS[decklist.character.cardID.set][decklist.character.cardID.number],
+				"cardState": cardState.duplicate(),
 				"cardObj": null
-			})
+			}, false)
 	
 	#init deck buttons
 	for i in range(buttons.size()):
@@ -205,34 +209,34 @@ func draw_card(count):
 		if deck.size() == 0:
 			$Area2D/CollisionShape2D.disabled = true
 			$Sprite2D.visible = false
-		transitZone.move_to("hand", card_drawn)
+		transitZone.move_to("hand", card_drawn, true)
 	
 func buildTop():
 	var topCard = deck[0]
 	deck.erase(topCard)
-	transitZone.move_to("stage", topCard)
+	transitZone.move_to("stage", topCard, false)
 	
 func toCardPool():
 	var topCard = deck[0]
 	deck.erase(topCard)
-	transitZone.move_to("cardpool", topCard)
+	transitZone.move_to("cardpool", topCard, false)
 	
 func mill(count):
 	for i in count:
 		var topCard = deck[0]
 		deck.erase(topCard)
-		transitZone.move_to("discard", topCard)
+		transitZone.move_to("discard", topCard, false)
 		
 func removeCount(count):
 	for i in count:
 		var topCard = deck[0]
 		deck.erase(topCard)
-		transitZone.move_to("removed", topCard)
+		transitZone.move_to("removed", topCard, false)
 		
 func toMomentum():
 	var topCard = deck[0]
 	deck.erase(topCard)
-	transitZone.move_to("momentum", topCard)
+	transitZone.move_to("momentum", topCard, false)
 		
 func call_fun(buttonName):
 	match buttonName:

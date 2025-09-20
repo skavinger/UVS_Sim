@@ -60,17 +60,7 @@ func on_hovered_off_card(card):
 		is_hovering = false
 	
 func highlight_card(card, hovered):
-	var found = false
-	for i in range(transitZone.handZone.hand.size()):
-		if transitZone.handZone.hand[i].cardObj == card:
-			found = true
-	if found:
-		if hovered:
-			card.scale = Vector2(1.05,1.05)
-		else:
-			card.scale = Vector2(1,1)
+	if hovered:
+		card.scale = Vector2(1.05,1.05)
 	else:
-		if hovered:
-			card.scale = Vector2(0.65,0.65)
-		else:
-			card.scale = Vector2(0.6,0.6)
+		card.scale = Vector2(1,1)

@@ -17,8 +17,6 @@ func _ready() -> void:
 func add_to_card_pool(card):
 	cardpool.append(card)
 	update_pos()
-	card.cardObj.get_node("AnimationPlayer").play("Card_Flip")
-	card.cardObj.scale = Vector2(0.6,0.6)
 	
 func update_pos():
 	for i in range(cardpool.size()):
