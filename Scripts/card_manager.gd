@@ -20,12 +20,14 @@ func spawn_card(card):
 	var new_card = preload(CARD_SCENE_PATH).instantiate()
 	self.add_child(new_card)
 	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
+	new_card.setMeta(card)
 	return new_card
 	
 func despwan_card(card):
 	self.remove_child(card)
 
 func card_selected(card):
+	card.get_node("Buttons").visible = true
 	if !card or card == selected_card:
 		card_unselected()
 	elif selected_card:
@@ -37,6 +39,7 @@ func card_selected(card):
 		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
 	
 func card_unselected():
+	selected_card.get_node("Buttons").visible = false
 	selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
 	selected_card = null
 

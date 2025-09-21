@@ -15,7 +15,8 @@ var cardMan
 var card_database
 
 var cardState = {
-	"faceup": false
+	"faceup": false,
+	"currentZone": "deck"
 }
 
 var buttons = ["Draw 1", "Build Top", "Add Top to Card Pool", "Mill 1", "Remove Top", "Add Top to Momentum"]
@@ -204,38 +205,35 @@ func deck_unselected():
 func draw_card(count):
 	for i in count:
 		var card_drawn = deck[0]
-		deck.erase(card_drawn)
 		
 		if deck.size() == 0:
 			$Area2D/CollisionShape2D.disabled = true
 			$Sprite2D.visible = false
 		transitZone.move_to("hand", card_drawn, true)
-	
+
+func eraseCard(card):
+	deck.erase(card)
+
 func buildTop():
 	var topCard = deck[0]
-	deck.erase(topCard)
 	transitZone.move_to("stage", topCard, false)
 	
 func toCardPool():
 	var topCard = deck[0]
-	deck.erase(topCard)
 	transitZone.move_to("cardpool", topCard, false)
 	
 func mill(count):
 	for i in count:
 		var topCard = deck[0]
-		deck.erase(topCard)
 		transitZone.move_to("discard", topCard, false)
 		
 func removeCount(count):
 	for i in count:
 		var topCard = deck[0]
-		deck.erase(topCard)
 		transitZone.move_to("removed", topCard, false)
 		
 func toMomentum():
 	var topCard = deck[0]
-	deck.erase(topCard)
 	transitZone.move_to("momentum", topCard, false)
 		
 func call_fun(buttonName):

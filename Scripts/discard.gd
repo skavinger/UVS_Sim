@@ -21,3 +21,7 @@ func add_to_discard(card):
 	cardMan.despwan_card(discard[0].cardObj)
 	discard[0].cardObj = null
 	change_top()
+
+func eraseCard(card):
+	discard.erase(card)
+	change_top()

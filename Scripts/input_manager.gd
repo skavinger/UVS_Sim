@@ -19,7 +19,8 @@ func _input(event):
 				if obj_selected:
 					match obj_selected.objType:
 						"card":
-							cardMan.card_unselected()
+							if(cardMan.selected_card != null):
+								cardMan.card_unselected()
 						"deck":
 							transitZone.deckZone.deck_unselected()
 				obj_selected = new_obj

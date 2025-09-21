@@ -24,7 +24,11 @@ func add_character_to_stage(character):
 func build_card(card):
 	stage.append(card)
 	update_pos()
-	
+
+func eraseCard(card):
+	stage.erase(card)
+	update_pos()
+
 func update_pos():
 	for i in range(stage.size()):
 		animationMan.animate_card_to_pos(stage[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))

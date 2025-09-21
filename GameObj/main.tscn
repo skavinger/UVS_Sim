@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://i5d6wbkgvnqe" path="res://GameObj/Discard.tscn" id="10_hp5rj"]
 [ext_resource type="Script" uid="uid://r5qpra2fvral" path="res://Scripts/discard.gd" id="11_h3px5"]
 [ext_resource type="PackedScene" uid="uid://du4dmrm3k4f4f" path="res://GameObj/removed.tscn" id="12_f5kxx"]
-[ext_resource type="Script" uid="uid://bfxcwlpqbaqb6" path="res://GameObj/removed.gd" id="13_70s2v"]
-[ext_resource type="Script" uid="uid://b5fbxnfeeg3n8" path="res://GameObj/momentum.gd" id="14_70s2v"]
+[ext_resource type="Script" uid="uid://bfxcwlpqbaqb6" path="res://Scripts/removed.gd" id="13_70s2v"]
+[ext_resource type="Script" uid="uid://b5fbxnfeeg3n8" path="res://Scripts/momentum.gd" id="14_70s2v"]
 
 [node name="Main" type="Node2D"]
 

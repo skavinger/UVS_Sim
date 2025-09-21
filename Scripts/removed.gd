@@ -21,3 +21,7 @@ func add_to_removed(card):
 	cardMan.despwan_card(removed[0].cardObj)
 	removed[0].cardObj = null
 	change_top()
+
+func eraseCard(card):
+	removed.erase(card)
+	change_top()

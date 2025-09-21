@@ -23,18 +23,42 @@ func _ready() -> void:
 	removedZone = $"../Removed"
 	momentumZone = $"../Momentum"
 
-func move_to(zone, card, faceup):
+func move_to(destinationZone, card, faceup):
 	#if card obj hasn't been spawned yet spawn it
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
-		
-	match zone:
+	
+	match card.cardState.currentZone:
+		"character":
+			pass
+		"deck":
+			if(destinationZone != "character"):
+				deckZone.eraseCard(card)
+		"hand":
+			handZone.eraseCard(card)
+		"cardpool":
+			cardpoolZone.eraseCard(card)
+		"discard":
+			discardZone.eraseCard(card)
+		"stage":
+			stageZone.eraseCard(card)
+		"momentum":
+			momentumZone.eraseCard(card)
+		"removed":
+			removedZone.eraseCard(card)
+	
+	if(card.cardState.currentZone == "cardpool" or 
+	card.cardState.currentZone == "stage" or 
+	card.cardState.currentZone == "momentum" ):
+		cardMan.card_unselected()
+	
+	card.cardState.currentZone = destinationZone
+	
+	match destinationZone:
 		"character":
 			stageZone.add_character_to_stage(card)
 			card.cardObj.get_node("AnimationPlayer").play("Unflip")
-		"top deck":
-			pass
-		"bottom deck":
+		"deck":
 			pass
 		"hand":
 			handZone.add_card_to_hand(card)

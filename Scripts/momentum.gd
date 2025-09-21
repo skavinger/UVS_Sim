@@ -17,7 +17,11 @@ func _ready() -> void:
 func add_to_momentum(card):
 	momentum.append(card)
 	update_pos()
-	
+
+func eraseCard(card):
+	momentum.erase(card)
+	update_pos()
+
 func update_pos():
 	for i in range(momentum.size()):
 		momentum[i].cardObj.rotation = PI/2

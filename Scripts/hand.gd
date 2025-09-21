@@ -16,6 +16,10 @@ func add_card_to_hand(card):
 	hand.shuffle()
 	update_pos()
 	
+func eraseCard(card):
+	hand.erase(card)
+	update_pos()
+	
 func update_pos():
 	#Move cards to center
 	for i in range(hand.size()):
