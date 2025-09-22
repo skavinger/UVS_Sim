@@ -28,6 +28,10 @@ func despwan_card(card):
 
 func card_selected(card):
 	card.get_node("Buttons").visible = true
+	var buttonList = card.get_node("Buttons").get_children()
+	for i in range(buttonList.size()):
+		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = false
+		
 	if !card or card == selected_card:
 		card_unselected()
 	elif selected_card:
@@ -40,6 +44,10 @@ func card_selected(card):
 	
 func card_unselected():
 	selected_card.get_node("Buttons").visible = false
+	var buttonList = selected_card.get_node("Buttons").get_children()
+	for i in range(buttonList.size()):
+		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
+
 	selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
 	selected_card = null
 

@@ -61,9 +61,8 @@ func move_to(destinationZone, card, faceup):
 		"deck":
 			pass
 		"hand":
+			check_flip(card, faceup)
 			handZone.add_card_to_hand(card)
-			card.cardState.faceup = true
-			card.cardObj.get_node("AnimationPlayer").play("To_Hand")
 		"cardpool":
 			check_flip(card, faceup)
 			cardpoolZone.add_to_card_pool(card)

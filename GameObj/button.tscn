@@ -32,6 +32,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(0.999996, -1)
 scale = Vector2(0.14, 0.14)
 shape = SubResource("RectangleShape2D_hptho")
+disabled = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

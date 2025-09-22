@@ -198,9 +198,15 @@ func _ready() -> void:
 	
 func deck_selected():
 	$Buttons.visible = true
+	var buttonList = $Buttons.get_children()
+	for i in range(buttonList.size()):
+		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = false
 	
 func deck_unselected():
 	$Buttons.visible = false
+	var buttonList = $Buttons.get_children()
+	for i in range(buttonList.size()):
+		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
 func draw_card(count):
 	for i in count:
