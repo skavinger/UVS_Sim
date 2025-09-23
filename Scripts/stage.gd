@@ -15,7 +15,14 @@ var stage = []
 var animationMan
 
 const characterActions = []
-const stageActions = []
+const stageActions = [
+{"Action": "To Hand", "Label": "Add to Hand"}, 
+{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
+{"Action": "To Discard", "Label": "Sacrifice"}, 
+{"Action": "To Removed", "Label": "Remove"}, 
+{"Action": "To Momentum", "Label": "Add to Momentum"}, 
+{"Action": "To Top Deck", "Label": "To Top Deck"},
+{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 func _ready() -> void:
 	animationMan = $"../AnimationManager"

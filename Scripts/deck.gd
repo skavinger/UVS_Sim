@@ -20,6 +20,7 @@ var cardState = {
 }
 
 const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 
+{"Action": "Shuffle", "Label": "Shuffle"}, 
 {"Action": "Build Top", "Label": "Build Top"}, 
 {"Action": "Add Top to Card Pool", "Label": "Add Top to Card Pool"}, 
 {"Action": "Mill 1", "Label": "Mill 1"}, 
@@ -213,6 +214,16 @@ func deck_unselected():
 	for i in range(buttonList.size()):
 		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
+func add_card_to_top(card):
+	deck.insert(0, card)
+	cardMan.despwan_card(deck[0].cardObj)
+	deck[0].cardObj = null
+	
+func add_card_to_bottom(card):
+	deck.append(card)
+	cardMan.despwan_card(deck[0].cardObj)
+	deck[0].cardObj = null
+	
 func draw_card(count):
 	for i in count:
 		var card_drawn = deck[0]
@@ -247,8 +258,8 @@ func toMomentum():
 	var topCard = deck[0]
 	transitZone.move_to("momentum", topCard, false)
 		
-func call_fun(buttonName):
-	match buttonName:
+func call_fun(buttonType):
+	match buttonType:
 		"Draw 1":
 			draw_card(1)
 		"Build Top":
@@ -261,3 +272,5 @@ func call_fun(buttonName):
 			removeCount(1)
 		"Add Top to Momentum":
 			toMomentum()
+		"Shuffle":
+			deck.shuffle()

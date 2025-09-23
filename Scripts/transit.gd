@@ -58,8 +58,12 @@ func move_to(destinationZone, card, faceup):
 		"character":
 			stageZone.add_character_to_stage(card)
 			card.cardObj.get_node("AnimationPlayer").play("Unflip")
-		"deck":
-			pass
+		"top deck":
+			check_flip(card, false)
+			deckZone.add_card_to_top(card)
+		"bottom deck":
+			check_flip(card, false)
+			deckZone.add_card_to_bottom(card)
 		"hand":
 			check_flip(card, faceup)
 			handZone.add_card_to_hand(card)
@@ -67,7 +71,7 @@ func move_to(destinationZone, card, faceup):
 			check_flip(card, faceup)
 			cardpoolZone.add_to_card_pool(card)
 		"discard":
-			check_flip(card, faceup)
+			check_flip(card, false)
 			discardZone.add_to_discard(card)
 		"stage":
 			check_flip(card, faceup)
@@ -76,7 +80,7 @@ func move_to(destinationZone, card, faceup):
 			check_flip(card, faceup)
 			momentumZone.add_to_momentum(card)
 		"removed":
-			check_flip(card, faceup)
+			check_flip(card, false)
 			removedZone.add_to_removed(card)
 			
 func check_flip(card, faceup):

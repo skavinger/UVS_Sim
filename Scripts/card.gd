@@ -46,6 +46,9 @@ func set_buttons(card, buttons):
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 200 - i
 		
+func toHand():
+	transitZone.move_to("hand", cardMeta, true)
+
 func toStage():
 	transitZone.move_to("stage", cardMeta, false)
 
@@ -78,10 +81,15 @@ func unflip():
 			buttons[i].get_node("Image/Text").text = "Flip"
 	
 func toTopDeck():
-	pass
+	transitZone.move_to("top deck", cardMeta, false)
+	
+func toBottomDeck():
+	transitZone.move_to("bottom deck", cardMeta, false)
 
 func call_fun(buttonType):
 	match buttonType:
+		"To Hand":
+			toHand()
 		"To Stage":
 			toStage()
 		"To Discard":
@@ -98,3 +106,5 @@ func call_fun(buttonType):
 			unflip()
 		"To Top Deck":
 			toTopDeck()
+		"To Bottom Deck":
+			toBottomDeck()

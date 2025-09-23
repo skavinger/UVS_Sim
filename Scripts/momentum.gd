@@ -9,7 +9,14 @@ var starting_character
 
 var momentum = []
 
-const momentumActions = []
+const momentumActions = [
+{"Action": "To Hand", "Label": "Add to Hand"}, 
+{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
+{"Action": "To Stage", "Label": "Build"}, 
+{"Action": "To Discard", "Label": "Sacrifice"}, 
+{"Action": "To Removed", "Label": "Remove"}, 
+{"Action": "To Top Deck", "Label": "To Top Deck"},
+{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 var animationMan
 
