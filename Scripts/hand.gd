@@ -4,6 +4,9 @@ const CARD_WIDTH = 70
 const HAND_Y_POS = 1000
 
 var hand = []
+
+var handActions = []
+
 var center_screen_x
 var animationMan
 
@@ -15,6 +18,7 @@ func add_card_to_hand(card):
 	hand.insert(0, card)
 	hand.shuffle()
 	update_pos()
+	card.cardObj.set_buttons(card, handActions)
 	
 func eraseCard(card):
 	hand.erase(card)

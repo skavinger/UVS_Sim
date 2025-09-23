@@ -30,6 +30,10 @@ func setMeta(card):
 	cardMeta = card
 
 func set_buttons(card, buttons):
+	var old_buttons = $Buttons.get_children()
+	for i in range(old_buttons.size()):
+		$Buttons.remove_child(old_buttons[i])
+		
 	if(card.cardState.faceup):
 		buttons.append("Flip")
 	else:
@@ -58,10 +62,20 @@ func toMomentum():
 	transitZone.move_to("momentum", cardMeta, false)
 	
 func flip():
-	pass
+	$AnimationPlayer.play("Flip")
+	var buttons = $Buttons.get_children()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Flip"):
+			buttons[i].button_type = "Unflip"
+			buttons[i].get_node("Image/Text").text = "Unflip"
 	
 func unflip():
-	pass
+	$AnimationPlayer.play("Unflip")
+	var buttons = $Buttons.get_children()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Unflip"):
+			buttons[i].button_type = "Flip"
+			buttons[i].get_node("Image/Text").text = "Flip"
 	
 func toDeck():
 	pass

@@ -9,6 +9,8 @@ var starting_character
 
 var momentum = []
 
+var momentumActions = []
+
 var animationMan
 
 func _ready() -> void:
@@ -17,6 +19,7 @@ func _ready() -> void:
 func add_to_momentum(card):
 	momentum.append(card)
 	update_pos()
+	card.cardObj.set_buttons(card, momentumActions)
 
 func eraseCard(card):
 	momentum.erase(card)
