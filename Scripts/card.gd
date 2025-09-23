@@ -35,18 +35,18 @@ func set_buttons(card, buttons):
 		$Buttons.remove_child(old_buttons[i])
 		
 	if(card.cardState.faceup):
-		buttons.append("Flip")
+		buttons.append({"Action": "Flip", "Label": "Flip"})
 	else:
-		buttons.append("Unflip")
+		buttons.append({"Action": "Unflip", "Label": "Unflip"})
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
-		new_button.button_type = buttons[i]
+		new_button.button_type = buttons[i].Action
 		$Buttons.add_child(new_button)
-		new_button.get_node("Image/Text").text = buttons[i]
+		new_button.get_node("Image/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 200 - i
 		
-func build():
+func toStage():
 	transitZone.move_to("stage", cardMeta, false)
 
 func toDiscard():
@@ -55,7 +55,7 @@ func toDiscard():
 func toCardPool():
 	transitZone.move_to("cardpool", cardMeta, false)
 	
-func remove():
+func toRemoved():
 	transitZone.move_to("removed", cardMeta, false)
 	
 func toMomentum():
@@ -77,24 +77,24 @@ func unflip():
 			buttons[i].button_type = "Flip"
 			buttons[i].get_node("Image/Text").text = "Flip"
 	
-func toDeck():
+func toTopDeck():
 	pass
 
-func call_fun(buttonName):
-	match buttonName:
-		"Build":
-			build()
+func call_fun(buttonType):
+	match buttonType:
+		"To Stage":
+			toStage()
 		"To Discard":
 			toDiscard()
-		"Add to Card Pool":
+		"To Card Pool":
 			toCardPool()
-		"Remove":
-			remove()
-		"Add to Momentum":
+		"To Removed":
+			toRemoved()
+		"To Momentum":
 			toMomentum()
 		"Flip":
 			flip()
 		"Unflip":
 			unflip()
-		"To Deck":
-			toDeck()
+		"To Top Deck":
+			toTopDeck()

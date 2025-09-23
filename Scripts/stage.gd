@@ -14,8 +14,8 @@ var stage = []
 
 var animationMan
 
-var characterActions = []
-var stageActions = []
+const characterActions = []
+const stageActions = []
 
 func _ready() -> void:
 	animationMan = $"../AnimationManager"
@@ -23,12 +23,12 @@ func _ready() -> void:
 func add_character_to_stage(character):
 	starting_character = character
 	animationMan.animate_card_to_pos(starting_character.cardObj, Vector2(CH_POS_X, CH_POS_Y))
-	starting_character.cardObj.set_buttons(starting_character, characterActions)
+	starting_character.cardObj.set_buttons(starting_character, characterActions.duplicate(true))
 
 func build_card(card):
 	stage.append(card)
 	update_pos()
-	card.cardObj.set_buttons(card, stageActions)
+	card.cardObj.set_buttons(card, stageActions.duplicate(true))
 
 func eraseCard(card):
 	stage.erase(card)

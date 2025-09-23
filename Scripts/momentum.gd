@@ -9,7 +9,7 @@ var starting_character
 
 var momentum = []
 
-var momentumActions = []
+const momentumActions = []
 
 var animationMan
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 func add_to_momentum(card):
 	momentum.append(card)
 	update_pos()
-	card.cardObj.set_buttons(card, momentumActions)
+	card.cardObj.set_buttons(card, momentumActions.duplicate(true))
 
 func eraseCard(card):
 	momentum.erase(card)

@@ -9,7 +9,11 @@ var starting_character
 
 var cardpool = []
 
-var cardpoolActions = ["Build", "Clear", "Remove", "Add to Momentum", "To Deck"]
+const cardpoolActions = [{"Action": "To Stage", "Label": "Build"}, 
+{"Action": "To Discard", "Label": "Clear"}, 
+{"Action": "To Removed", "Label": "Remove"}, 
+{"Action": "To Momentum", "Label": "Add to Momentum"}, 
+{"Action": "To Top Deck", "Label": "To Top Deck"}]
 
 var animationMan
 
@@ -19,7 +23,7 @@ func _ready() -> void:
 func add_to_card_pool(card):
 	cardpool.append(card)
 	update_pos()
-	card.cardObj.set_buttons(card, cardpoolActions)
+	card.cardObj.set_buttons(card, cardpoolActions.duplicate(true))
 
 func eraseCard(card):
 	cardpool.erase(card)
