@@ -216,13 +216,13 @@ func deck_unselected():
 
 func add_card_to_top(card):
 	deck.insert(0, card)
-	cardMan.despwan_card(deck[0].cardObj)
-	deck[0].cardObj = null
+	cardMan.despwan_card(card.cardObj)
+	card.cardObj = null
 	
 func add_card_to_bottom(card):
 	deck.append(card)
-	cardMan.despwan_card(deck[0].cardObj)
-	deck[0].cardObj = null
+	cardMan.despwan_card(card.cardObj)
+	card.cardObj = null
 	
 func draw_card(count):
 	for i in count:

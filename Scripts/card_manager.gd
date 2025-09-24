@@ -10,10 +10,13 @@ var inputMan
 var transitZone
 var cardDatabase
 
+var cardInspector
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	inputMan = $"../InputManager"
 	transitZone = $"../Transit"
+	cardInspector = $"../CardInspector"
 	cardDatabase = preload("res://Scripts/card_database.gd")
 	
 func spawn_card(card):
@@ -24,10 +27,13 @@ func spawn_card(card):
 	return new_card
 	
 func despwan_card(card):
+	if(selected_card == card):
+		card_unselected()
 	self.remove_child(card)
 
 func card_selected(card):
 	card.get_node("Buttons").visible = true
+	cardInspector.showInspector(card.cardMeta)
 	var buttonList = card.get_node("Buttons").get_children()
 	for i in range(buttonList.size()):
 		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = false
@@ -43,13 +49,15 @@ func card_selected(card):
 		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
 	
 func card_unselected():
-	selected_card.get_node("Buttons").visible = false
-	var buttonList = selected_card.get_node("Buttons").get_children()
-	for i in range(buttonList.size()):
-		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
+	if(selected_card != null):
+		selected_card.get_node("Buttons").visible = false
+		cardInspector.hideInspector()
+		var buttonList = selected_card.get_node("Buttons").get_children()
+		for i in range(buttonList.size()):
+			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
-	selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
-	selected_card = null
+		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
+		selected_card = null
 
 func connect_card_signals(card):
 	card.connect("hovered", on_hovered_card)

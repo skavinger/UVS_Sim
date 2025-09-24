@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=18 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
 [ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="1_ii5oo"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://du4dmrm3k4f4f" path="res://GameObj/removed.tscn" id="12_f5kxx"]
 [ext_resource type="Script" uid="uid://bfxcwlpqbaqb6" path="res://Scripts/removed.gd" id="13_70s2v"]
 [ext_resource type="Script" uid="uid://b5fbxnfeeg3n8" path="res://Scripts/momentum.gd" id="14_70s2v"]
+[ext_resource type="PackedScene" uid="uid://cu8k4sphid8os" path="res://GameObj/card_inspector.tscn" id="16_xbtrx"]
+[ext_resource type="Script" uid="uid://lhrend5pv3li" path="res://GameObj/card_inspector.gd" id="17_njdl5"]
 
 [node name="Main" type="Node2D"]
 
@@ -63,3 +65,7 @@ script = ExtResource("14_70s2v")
 position = Vector2(960.25, 538.563)
 scale = Vector2(1, 0.998)
 texture = ExtResource("6_4gn13")
+
+[node name="CardInspector" parent="." instance=ExtResource("16_xbtrx")]
+z_index = -1000
+script = ExtResource("17_njdl5")

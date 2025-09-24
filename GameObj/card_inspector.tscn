@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu8k4sphid8os"]
+
+[ext_resource type="Texture2D" uid="uid://cnq7jv6uivs72" path="res://Assets/CardInspectorBackGround.png" id="1_tigxt"]
+[ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="2_mcrgw"]
+
+[node name="CardInspector" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(181, 540)
+texture = ExtResource("1_tigxt")
+
+[node name="Card" type="Sprite2D" parent="."]
+position = Vector2(181, 252)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("2_mcrgw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(362, 500)
+offset_top = 505.0
+offset_right = 361.0
+offset_bottom = 932.0
+
+[node name="Cardtext" type="RichTextLabel" parent="ScrollContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(362, 500)
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "Giant - Monster
+Your attacks with printed difficulty 5 or greater get +3 damage.
+
+[color=orange]Enhance[/color] Spend 1 momentum: Your next check to play an attack or block gets +2.
+
+[color=lightblue]First Form[/color] [Once per game] Commit, discard 4 cards: Destroy all foundations in all stages. Only playable if there are 10 or more foundations in all stages combined."
