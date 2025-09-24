@@ -2,8 +2,8 @@ extends Node2D
 
 const CARD_WIDTH = 70
 
-const STAGE_POS_CARDPOOL_X = 300
-const STAGE_POS_CARDPOOL_Y = 670
+const STAGE_POS_CARDPOOL_X = 270
+const STAGE_POS_CARDPOOL_Y = 640
 
 var starting_character
 
@@ -35,4 +35,4 @@ func eraseCard(card):
 func update_pos():
 	for i in range(cardpool.size()):
 		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(STAGE_POS_CARDPOOL_X + (CARD_WIDTH * i), STAGE_POS_CARDPOOL_Y))
-		cardpool[i].cardObj.z_index = 200 + i
+		cardpool[i].cardObj.z_index = 100 + i

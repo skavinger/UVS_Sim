@@ -44,7 +44,7 @@ func set_buttons(card, buttons):
 		$Buttons.add_child(new_button)
 		new_button.get_node("Image/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
-		new_button.z_index = 200 - i
+		new_button.z_index = self.z_index - i
 		
 func toHand():
 	transitZone.move_to("hand", cardMeta, true)

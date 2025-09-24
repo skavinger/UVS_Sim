@@ -43,6 +43,7 @@ func move_to(destinationZone, card, faceup):
 		"stage":
 			stageZone.eraseCard(card)
 		"momentum":
+			card.cardObj.rotation = 0
 			momentumZone.eraseCard(card)
 		"removed":
 			removedZone.eraseCard(card)

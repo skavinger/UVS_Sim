@@ -2,8 +2,8 @@ extends Node2D
 
 const CARD_WIDTH = 20
 
-const STAGE_POS_CARDPOOL_X = 130
-const STAGE_POS_CARDPOOL_Y = 820
+const STAGE_POS_CARDPOOL_X = 100
+const STAGE_POS_CARDPOOL_Y = 790
 
 var starting_character
 
@@ -13,7 +13,7 @@ const momentumActions = [
 {"Action": "To Hand", "Label": "Add to Hand"}, 
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Discard", "Label": "Sacrifice"}, 
+{"Action": "To Discard", "Label": "Spend"}, 
 {"Action": "To Removed", "Label": "Remove"}, 
 {"Action": "To Top Deck", "Label": "To Top Deck"},
 {"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
@@ -36,4 +36,4 @@ func update_pos():
 	for i in range(momentum.size()):
 		momentum[i].cardObj.rotation = PI/2
 		animationMan.animate_card_to_pos(momentum[i].cardObj, Vector2(STAGE_POS_CARDPOOL_X, STAGE_POS_CARDPOOL_Y + (CARD_WIDTH * i)))
-		momentum[i].cardObj.z_index = 200 + i
+		momentum[i].cardObj.z_index = 300 + i

@@ -35,8 +35,6 @@ func update_pos():
 	#Move cards to center
 	for i in range(hand.size()):
 		animationMan.animate_card_to_pos(hand[i].cardObj, Vector2(calc_card_pos(i), HAND_Y_POS))
-	#wait for animation to finish before moving the cards again
-	await get_tree().create_timer(0.2).timeout
 	#Move cards to new position
 	for i in range(hand.size()):
 		hand[i].cardObj.z_index = 400 + i
