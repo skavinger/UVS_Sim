@@ -20,6 +20,7 @@ var cardState = {
 }
 
 const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 
+{"Action": "Search", "Label": "Search"},
 {"Action": "Shuffle", "Label": "Shuffle"}, 
 {"Action": "Build Top", "Label": "Build Top"}, 
 {"Action": "Add Top to Card Pool", "Label": "Add Top to Card Pool"}, 
@@ -262,6 +263,8 @@ func call_fun(buttonType):
 	match buttonType:
 		"Draw 1":
 			draw_card(1)
+		"Search":
+			transitZone.cardSearch.displaySearchBox(deck, "Deck")
 		"Build Top":
 			buildTop()
 		"Add Top to Card Pool":
@@ -274,3 +277,4 @@ func call_fun(buttonType):
 			toMomentum()
 		"Shuffle":
 			deck.shuffle()
+			transitZone.cardSearch.dectectChange(deck, "Deck")

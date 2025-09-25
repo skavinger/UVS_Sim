@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdyi4fi66xuk0"]
+
+[ext_resource type="Texture2D" uid="uid://bbu8ld3fhgokv" path="res://Assets/SearchBoxDown.png" id="1_e4j8e"]
+
+[node name="SearchBox" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1058, 329)
+texture = ExtResource("1_e4j8e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 436.0
+offset_top = 247.0
+offset_right = 1680.0
+offset_bottom = 447.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+custom_minimum_size = Vector2(1244, 239)
+layout_mode = 0
+offset_left = -1.0
+offset_right = 1244.0
+offset_bottom = 239.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
+custom_minimum_size = Vector2(1244, 200)
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 449.0
+offset_top = 202.0
+offset_right = 1207.0
+offset_bottom = 242.0

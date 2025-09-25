@@ -10,6 +10,7 @@ var stageZone
 var discardZone
 var removedZone
 var momentumZone
+var cardSearch
 
 func _ready() -> void:
 	cardMan = $"../CardManager"
@@ -22,31 +23,39 @@ func _ready() -> void:
 	discardZone = $"../Discard"
 	removedZone = $"../Removed"
 	momentumZone = $"../Momentum"
+	cardSearch = $"../SearchBox"
 
 func move_to(destinationZone, card, faceup):
 	#if card obj hasn't been spawned yet spawn it
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
-	
+
 	match card.cardState.currentZone:
 		"character":
 			pass
 		"deck":
 			if(destinationZone != "character"):
 				deckZone.eraseCard(card)
+				cardSearch.dectectChange(deckZone.deck, "Deck")
 		"hand":
 			handZone.eraseCard(card)
+			cardSearch.dectectChange(handZone.hand, "Hand")
 		"cardpool":
 			cardpoolZone.eraseCard(card)
+			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool")
 		"discard":
 			discardZone.eraseCard(card)
+			cardSearch.dectectChange(discardZone.discard, "Discard")
 		"stage":
 			stageZone.eraseCard(card)
+			cardSearch.dectectChange(stageZone.stage, "Stage")
 		"momentum":
 			card.cardObj.rotation = 0
 			momentumZone.eraseCard(card)
+			cardSearch.dectectChange(momentumZone.momentum, "Momentum")
 		"removed":
 			removedZone.eraseCard(card)
+			cardSearch.dectectChange(removedZone.removed, "Removed")
 	
 	if(card.cardState.currentZone == "cardpool" or 
 	card.cardState.currentZone == "stage" or 

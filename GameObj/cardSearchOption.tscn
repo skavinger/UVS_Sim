@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlknn44mgtv1l"]
+
+[ext_resource type="Script" uid="uid://44bmnrdrjmi" path="res://GameObj/card_search_option.gd" id="1_a0tc7"]
+[ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="1_pwked"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwked"]
+size = Vector2(105, 166)
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a0tc7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 149.0
+offset_right = 112.0
+offset_bottom = 173.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Cardname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 757.0
+offset_bottom = 1052.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_pwked")
+
+[node name="Buttons" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(59.5, 85)
+shape = SubResource("RectangleShape2D_pwked")

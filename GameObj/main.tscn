@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=20 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
 [ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="1_ii5oo"]
@@ -16,7 +16,9 @@
 [ext_resource type="Script" uid="uid://bfxcwlpqbaqb6" path="res://Scripts/removed.gd" id="13_70s2v"]
 [ext_resource type="Script" uid="uid://b5fbxnfeeg3n8" path="res://Scripts/momentum.gd" id="14_70s2v"]
 [ext_resource type="PackedScene" uid="uid://cu8k4sphid8os" path="res://GameObj/card_inspector.tscn" id="16_xbtrx"]
-[ext_resource type="Script" uid="uid://lhrend5pv3li" path="res://GameObj/card_inspector.gd" id="17_njdl5"]
+[ext_resource type="Script" uid="uid://lhrend5pv3li" path="res://Scripts/card_inspector.gd" id="17_njdl5"]
+[ext_resource type="PackedScene" uid="uid://cdyi4fi66xuk0" path="res://GameObj/search_box.tscn" id="18_s5w3a"]
+[ext_resource type="Script" uid="uid://b0fbsvaju1rga" path="res://Scripts/search_box.gd" id="19_b5w6u"]
 
 [node name="Main" type="Node2D"]
 
@@ -69,3 +71,7 @@ texture = ExtResource("6_4gn13")
 [node name="CardInspector" parent="." instance=ExtResource("16_xbtrx")]
 z_index = -1000
 script = ExtResource("17_njdl5")
+
+[node name="SearchBox" parent="." instance=ExtResource("18_s5w3a")]
+z_index = -1000
+script = ExtResource("19_b5w6u")
