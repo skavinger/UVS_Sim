@@ -30,9 +30,3 @@ theme_override_font_sizes/mono_font_size = 24
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "Giant - Monster
-Your attacks with printed difficulty 5 or greater get +3 damage.
-
-[color=orange]Enhance[/color] Spend 1 momentum: Your next check to play an attack or block gets +2.
-
-[color=lightblue]First Form[/color] [Once per game] Commit, discard 4 cards: Destroy all foundations in all stages. Only playable if there are 10 or more foundations in all stages combined."

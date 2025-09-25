@@ -1,0 +1,29 @@
+		{
+			"Name": "",
+			"Cardtype": "",
+			"Difficulty": 0,
+			"Check": 0,
+			"Symbols": [],
+			"Keywords": [
+				{
+					"Name": "",
+					"Rating": null,
+					"effectPath": ""
+				}
+			],
+			"Abilities": [
+				{
+					"Type": "",
+					"Cost": "",
+					"Effect": "",
+					"effectPath": ""
+				}
+			],
+			"BlockZone": "",
+			"BlockMod": 0,
+			"HandSize": null,
+			"Health": null,
+			"AttackZone": null,
+			"Speed": null,
+			"Damage": null
+		}
