@@ -16,7 +16,8 @@ var card_database
 
 var cardState = {
 	"faceup": false,
-	"currentZone": "deck"
+	"currentZone": "deck",
+	"committed": false
 }
 
 const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 

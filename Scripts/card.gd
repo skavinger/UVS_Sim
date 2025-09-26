@@ -12,12 +12,14 @@ const objType = "card"
 const BUTTON_PATH = "res://GameObj/button.tscn"
 
 var transitZone
+var cardMan
 
 var cardMeta
 
 func _ready() -> void:
 	get_parent().connect_card_signals(self)
 	transitZone = $"../../Transit"
+	cardMan = $"../../CardManager"
 
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("hovered", self)
@@ -70,7 +72,7 @@ func flip():
 	for i in range(buttons.size()):
 		if(buttons[i].button_type == "Flip"):
 			buttons[i].button_type = "Unflip"
-			buttons[i].get_node("Image/Text").text = "Unflip"
+			buttons[i].get_node("Control/Text").text = "Unflip"
 	
 func unflip():
 	$AnimationPlayer.play("Unflip")
@@ -78,13 +80,35 @@ func unflip():
 	for i in range(buttons.size()):
 		if(buttons[i].button_type == "Unflip"):
 			buttons[i].button_type = "Flip"
-			buttons[i].get_node("Image/Text").text = "Flip"
+			buttons[i].get_node("Control/Text").text = "Flip"
 	
 func toTopDeck():
 	transitZone.move_to("top deck", cardMeta, false)
 	
 func toBottomDeck():
 	transitZone.move_to("bottom deck", cardMeta, false)
+	
+func commit():
+	cardMeta.cardState.committed = true
+	self.rotation = PI/2
+	var buttons = $Buttons.get_children()
+	cardMan.card_unselected()
+	transitZone.stageZone.update_pos()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Commit"):
+			buttons[i].button_type = "Ready"
+			buttons[i].get_node("Control/Text").text = "Ready"
+	
+func ready():
+	cardMeta.cardState.committed = false
+	self.rotation = 0
+	cardMan.card_unselected()
+	var buttons = $Buttons.get_children()
+	transitZone.stageZone.update_pos()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Ready"):
+			buttons[i].button_type = "Commit"
+			buttons[i].get_node("Control/Text").text = "Commit"
 
 func call_fun(buttonType):
 	match buttonType:
@@ -108,3 +132,7 @@ func call_fun(buttonType):
 			toTopDeck()
 		"To Bottom Deck":
 			toBottomDeck()
+		"Commit":
+			commit()
+		"Ready":
+			ready()

@@ -16,6 +16,7 @@ var animationMan
 
 const characterActions = []
 const stageActions = [
+{"Action": "Commit", "Label": "Commit"}, 
 {"Action": "To Hand", "Label": "Add to Hand"}, 
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Discard", "Label": "Sacrifice"}, 
@@ -42,6 +43,18 @@ func eraseCard(card):
 	update_pos()
 
 func update_pos():
+	var ready = []
+	var committed = []
 	for i in range(stage.size()):
-		animationMan.animate_card_to_pos(stage[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
-		stage[i].cardObj.z_index = 200 + i
+		if(stage[i].cardState.committed):
+			committed.append(stage[i])
+		else:
+			ready.append(stage[i])
+			
+	for i in range(ready.size()):
+		animationMan.animate_card_to_pos(ready[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
+		ready[i].cardObj.z_index = 200 + i
+	
+	for i in range(committed.size()):
+		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + ready.size())), STAGE_POS_START_Y))
+		committed[i].cardObj.z_index = 200 + (i + ready.size())
