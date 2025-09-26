@@ -20,27 +20,28 @@ shape = SubResource("RectangleShape2D_hptho")
 disabled = true
 
 [node name="Image" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(1, -0.999996)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("1_r04n3")
 
-[node name="Text" type="RichTextLabel" parent="Image"]
-modulate = Color(0, 0, 0, 1)
-anchors_preset = -1
-anchor_left = -0.028
-anchor_top = 0.241667
-anchor_right = 0.028
-anchor_bottom = 0.0583333
-offset_left = -350.0
-offset_top = -86.0
-offset_right = 350.0
-offset_bottom = 50.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -51.0
+offset_top = -9.0
+offset_right = 53.0
+offset_bottom = 7.0
+
+[node name="Text" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 16.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 48
-text = "Text"
+theme_override_font_sizes/normal_font_size = 10
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

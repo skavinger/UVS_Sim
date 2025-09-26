@@ -79,11 +79,11 @@ func move_to(destinationZone, card, faceup):
 		"hand":
 			check_flip(card, faceup)
 			handZone.add_card_to_hand(card)
-			cardSearch.dectectChange(handZone.hand, "Hand", handZone.searchBoxButtons)
+			cardSearch.dectectChange(handZone.hand, "Hand", handZone.handActions)
 		"cardpool":
 			check_flip(card, faceup)
 			cardpoolZone.add_to_card_pool(card)
-			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.searchBoxButtons)
+			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.cardpoolActions)
 		"discard":
 			check_flip(card, false)
 			discardZone.add_to_discard(card)
@@ -91,11 +91,11 @@ func move_to(destinationZone, card, faceup):
 		"stage":
 			check_flip(card, faceup)
 			stageZone.build_card(card)
-			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.searchBoxButtons)
+			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.stageActions)
 		"momentum":
 			check_flip(card, faceup)
 			momentumZone.add_to_momentum(card)
-			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.searchBoxButtons)
+			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.momentumActions)
 		"removed":
 			check_flip(card, false)
 			removedZone.add_to_removed(card)

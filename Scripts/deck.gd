@@ -23,10 +23,10 @@ const buttons = [{"Action": "Draw 1", "Label": "Draw 1"},
 {"Action": "Search", "Label": "Search"},
 {"Action": "Shuffle", "Label": "Shuffle"}, 
 {"Action": "Build Top", "Label": "Build Top"}, 
-{"Action": "Add Top to Card Pool", "Label": "Add Top to Card Pool"}, 
+{"Action": "Add Top to Card Pool", "Label": "Top to Card Pool"}, 
 {"Action": "Mill 1", "Label": "Mill 1"}, 
 {"Action": "Remove Top", "Label": "Remove Top"}, 
-{"Action": "Add Top to Momentum", "Label": "Add Top to Momentum"}]
+{"Action": "Add Top to Momentum", "Label": "Top to Momentum"}]
 
 const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"}, 
 {"Action": "To Stage", "Label": "Build"}, 
@@ -206,7 +206,7 @@ func _ready() -> void:
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
 		$Buttons.add_child(new_button)
-		new_button.get_node("Image/Text").text = buttons[i].Label
+		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
 	
