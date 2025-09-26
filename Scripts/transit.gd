@@ -39,23 +39,23 @@ func move_to(destinationZone, card, faceup):
 				cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"hand":
 			handZone.eraseCard(card)
-			cardSearch.dectectChange(handZone.hand, "Hand")
+			cardSearch.dectectChange(handZone.hand, "Hand", handZone.searchBoxButtons)
 		"cardpool":
 			cardpoolZone.eraseCard(card)
-			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool")
+			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.searchBoxButtons)
 		"discard":
 			discardZone.eraseCard(card)
-			cardSearch.dectectChange(discardZone.discard, "Discard")
+			cardSearch.dectectChange(discardZone.discard, "Discard", discardZone.searchBoxButtons)
 		"stage":
 			stageZone.eraseCard(card)
-			cardSearch.dectectChange(stageZone.stage, "Stage")
+			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.searchBoxButtons)
 		"momentum":
 			card.cardObj.rotation = 0
 			momentumZone.eraseCard(card)
-			cardSearch.dectectChange(momentumZone.momentum, "Momentum")
+			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.searchBoxButtons)
 		"removed":
 			removedZone.eraseCard(card)
-			cardSearch.dectectChange(removedZone.removed, "Removed")
+			cardSearch.dectectChange(removedZone.removed, "Removed", removedZone.searchBoxButtons)
 	
 	if(card.cardState.currentZone == "cardpool" or 
 	card.cardState.currentZone == "stage" or 
@@ -71,27 +71,35 @@ func move_to(destinationZone, card, faceup):
 		"top deck":
 			check_flip(card, false)
 			deckZone.add_card_to_top(card)
+			cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"bottom deck":
 			check_flip(card, false)
 			deckZone.add_card_to_bottom(card)
+			cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"hand":
 			check_flip(card, faceup)
 			handZone.add_card_to_hand(card)
+			cardSearch.dectectChange(handZone.hand, "Hand", handZone.searchBoxButtons)
 		"cardpool":
 			check_flip(card, faceup)
 			cardpoolZone.add_to_card_pool(card)
+			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.searchBoxButtons)
 		"discard":
 			check_flip(card, false)
 			discardZone.add_to_discard(card)
+			cardSearch.dectectChange(discardZone.discard, "Discard", discardZone.searchBoxButtons)
 		"stage":
 			check_flip(card, faceup)
 			stageZone.build_card(card)
+			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.searchBoxButtons)
 		"momentum":
 			check_flip(card, faceup)
 			momentumZone.add_to_momentum(card)
+			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.searchBoxButtons)
 		"removed":
 			check_flip(card, false)
 			removedZone.add_to_removed(card)
+			cardSearch.dectectChange(removedZone.removed, "Removed", removedZone.searchBoxButtons)
 			
 func check_flip(card, faceup):
 	if(!faceup and card.cardState.faceup):

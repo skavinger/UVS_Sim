@@ -17,3 +17,6 @@ texture = ExtResource("1_xxxs8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_towvg")
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false

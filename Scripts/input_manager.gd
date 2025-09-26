@@ -25,6 +25,10 @@ func _input(event):
 								cardMan.card_unselected()
 						"deck":
 							transitZone.deckZone.deck_unselected()
+						"discard":
+							transitZone.discardZone.discard_unselected()
+						"removed":
+							transitZone.removedZone.removed_unselected()
 						"searchBoxCard":
 							if(cardMan.selected_card != null):
 								cardMan.search_card_unselected()
@@ -35,6 +39,10 @@ func _input(event):
 							cardMan.card_selected(obj_selected)
 						"deck":
 							transitZone.deckZone.deck_selected()
+						"discard":
+							transitZone.discardZone.discard_selected()
+						"removed":
+							transitZone.removedZone.removed_selected()
 						"searchBoxCard":
 							cardMan.search_card_selected(obj_selected)
 						"searchBox":

@@ -16,3 +16,6 @@ texture = ExtResource("1_xeub6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_xeub6")
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false
