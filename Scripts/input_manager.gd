@@ -15,6 +15,8 @@ func _input(event):
 			var new_obj = raycast_at_curser()
 			if new_obj != null and new_obj.objType == "button":
 				new_obj.get_parent().get_parent().call_fun(new_obj.button_type)
+			elif new_obj != null and new_obj.objType == "searchBoxButton":
+				new_obj.get_parent().get_parent().call_fun(new_obj.button_type)
 			else:
 				if obj_selected:
 					match obj_selected.objType:
@@ -23,6 +25,9 @@ func _input(event):
 								cardMan.card_unselected()
 						"deck":
 							transitZone.deckZone.deck_unselected()
+						"searchBoxCard":
+							if(cardMan.selected_card != null):
+								cardMan.search_card_unselected()
 				obj_selected = new_obj
 				if obj_selected:
 					match obj_selected.objType:
@@ -30,6 +35,10 @@ func _input(event):
 							cardMan.card_selected(obj_selected)
 						"deck":
 							transitZone.deckZone.deck_selected()
+						"searchBoxCard":
+							cardMan.search_card_selected(obj_selected)
+						"searchBox":
+							transitZone.cardSearch.hideSearchBox()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state

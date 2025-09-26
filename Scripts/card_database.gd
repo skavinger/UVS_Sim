@@ -561,7 +561,7 @@ const CARDS = {
 		},
 		"17" : 	{
 			"Name": "Moth Monster",
-			"Cardtype": "",
+			"Cardtype": "Foundation",
 			"Difficulty": 2,
 			"Check": 6,
 			"Symbols": ["Air", "Earth", "Good"],

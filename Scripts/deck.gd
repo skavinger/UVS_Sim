@@ -28,6 +28,13 @@ const buttons = [{"Action": "Draw 1", "Label": "Draw 1"},
 {"Action": "Remove Top", "Label": "Remove Top"}, 
 {"Action": "Add Top to Momentum", "Label": "Add Top to Momentum"}]
 
+const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"}, 
+{"Action": "To Stage", "Label": "Build"}, 
+{"Action": "To Card Pool", "Label": "To Card Pool"}, 
+{"Action": "To Discard", "Label": "Send to Discard"}, 
+{"Action": "To Removed", "Label": "Remove"}, 
+{"Action": "To Momentum", "Label": "To Momentum"}]
+
 func _ready() -> void:
 	transitZone = $"../Transit"
 	cardMan = $"../CardManager"
@@ -264,7 +271,7 @@ func call_fun(buttonType):
 		"Draw 1":
 			draw_card(1)
 		"Search":
-			transitZone.cardSearch.displaySearchBox(deck, "Deck")
+			transitZone.cardSearch.displaySearchBox(deck, "Deck", searchBoxButtons)
 		"Build Top":
 			buildTop()
 		"Add Top to Card Pool":
@@ -277,4 +284,4 @@ func call_fun(buttonType):
 			toMomentum()
 		"Shuffle":
 			deck.shuffle()
-			transitZone.cardSearch.dectectChange(deck, "Deck")
+			transitZone.cardSearch.dectectChange(deck, "Deck", searchBoxButtons)

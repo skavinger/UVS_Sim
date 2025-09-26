@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdyi4fi66xuk0"]
+[gd_scene load_steps=3 format=3 uid="uid://cdyi4fi66xuk0"]
 
 [ext_resource type="Texture2D" uid="uid://bbu8ld3fhgokv" path="res://Assets/SearchBoxDown.png" id="1_e4j8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4j8e"]
+size = Vector2(30, 30)
 
 [node name="SearchBox" type="Node2D"]
 
@@ -9,19 +12,23 @@ position = Vector2(1058, 329)
 texture = ExtResource("1_e4j8e")
 
 [node name="Control" type="Control" parent="."]
+z_index = 100
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 436.0
-offset_top = 247.0
+offset_left = 434.0
+offset_top = 49.0
 offset_right = 1680.0
 offset_bottom = 447.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
-custom_minimum_size = Vector2(1244, 239)
+clip_contents = false
+custom_minimum_size = Vector2(1244, 200)
 layout_mode = 0
 offset_left = -1.0
+offset_top = 202.0
 offset_right = 1244.0
-offset_bottom = 239.0
+offset_bottom = 402.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
 custom_minimum_size = Vector2(1244, 200)
@@ -32,3 +39,10 @@ offset_left = 449.0
 offset_top = 202.0
 offset_right = 1207.0
 offset_bottom = 242.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1703, 215)
+shape = SubResource("RectangleShape2D_e4j8e")
+disabled = true

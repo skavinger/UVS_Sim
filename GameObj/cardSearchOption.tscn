@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlknn44mgtv1l"]
 
-[ext_resource type="Script" uid="uid://44bmnrdrjmi" path="res://GameObj/card_search_option.gd" id="1_a0tc7"]
+[ext_resource type="Script" uid="uid://44bmnrdrjmi" path="res://Scripts/card_search_option.gd" id="1_a0tc7"]
 [ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="1_pwked"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwked"]
@@ -18,11 +18,10 @@ layout_mode = 0
 offset_left = 7.0
 offset_top = 149.0
 offset_right = 112.0
-offset_bottom = 173.0
+offset_bottom = 180.0
 theme_override_font_sizes/normal_font_size = 10
 text = "Cardname"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2

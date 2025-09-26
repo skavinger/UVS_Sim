@@ -9,6 +9,16 @@ size = Vector2(742.857, 114.286)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_n4tde")
 
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 2
+position = Vector2(0.999996, -1)
+scale = Vector2(0.14, 0.14)
+shape = SubResource("RectangleShape2D_hptho")
+disabled = true
+
 [node name="Image" type="Sprite2D" parent="."]
 position = Vector2(1, -0.999996)
 scale = Vector2(0.14, 0.14)
@@ -16,23 +26,21 @@ texture = ExtResource("1_r04n3")
 
 [node name="Text" type="RichTextLabel" parent="Image"]
 modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = -0.028
+anchor_top = 0.241667
+anchor_right = 0.028
+anchor_bottom = 0.0583333
 offset_left = -350.0
 offset_top = -86.0
 offset_right = 350.0
 offset_bottom = 50.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 48
 text = "Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.999996, -1)
-scale = Vector2(0.14, 0.14)
-shape = SubResource("RectangleShape2D_hptho")
-disabled = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

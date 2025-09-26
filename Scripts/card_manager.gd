@@ -47,7 +47,22 @@ func card_selected(card):
 	else:
 		selected_card = card
 		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
-	
+
+func search_card_selected(card):
+	card.get_node("Buttons").visible = true
+	cardInspector.showInspector(card.cardMeta)
+	var buttonList = card.get_node("Buttons").get_children()
+	for i in range(buttonList.size()):
+		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = false
+		
+	if !card or card == selected_card:
+		card_unselected()
+	elif selected_card:
+		card_unselected()
+		selected_card = card
+	else:
+		selected_card = card
+
 func card_unselected():
 	if(selected_card != null):
 		selected_card.get_node("Buttons").visible = false
@@ -57,6 +72,16 @@ func card_unselected():
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
 		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
+		selected_card = null
+		
+func search_card_unselected():
+	if(selected_card != null):
+		selected_card.get_node("Buttons").visible = false
+		cardInspector.hideInspector()
+		var buttonList = selected_card.get_node("Buttons").get_children()
+		for i in range(buttonList.size()):
+			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
+
 		selected_card = null
 
 func connect_card_signals(card):

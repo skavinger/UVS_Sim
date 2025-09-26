@@ -36,7 +36,7 @@ func move_to(destinationZone, card, faceup):
 		"deck":
 			if(destinationZone != "character"):
 				deckZone.eraseCard(card)
-				cardSearch.dectectChange(deckZone.deck, "Deck")
+				cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"hand":
 			handZone.eraseCard(card)
 			cardSearch.dectectChange(handZone.hand, "Hand")

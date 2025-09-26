@@ -6,7 +6,7 @@ const SEARCHABLE_CARD_SCENE_PATH = "res://GameObj/cardSearchOption.tscn"
 
 var zoneBeingSearched
 
-func displaySearchBox(cardsToSearch, zone):
+func displaySearchBox(cardsToSearch, zone, buttons):
 	zoneBeingSearched = zone
 	$Label.text = "Searching " + zone + "..."
 	var searchTargets = $Control/ScrollContainer/HBoxContainer.get_children()
@@ -18,13 +18,16 @@ func displaySearchBox(cardsToSearch, zone):
 		$Control/ScrollContainer/HBoxContainer.add_child(searchable)
 		searchable.get_node("TextureRect").texture = load("res://Assets/Sets/" + cardsToSearch[i].cardID.set + "/" + cardsToSearch[i].cardID.number + ".jpg")
 		searchable.get_node("RichTextLabel").text = cardsToSearch[i].cardProperties.Name
+		searchable.set_buttons(cardsToSearch[i], buttons)
 		searchable.setMeta(cardsToSearch[i])
 	self.z_index = 1000
+	$Area2D/CollisionShape2D.disabled = false
 	
 func hideSearchBox():
 	zoneBeingSearched = null
 	self.z_index = -1000
+	$Area2D/CollisionShape2D.disabled = true
 	
-func dectectChange(contentsOfZone, zone):
+func dectectChange(contentsOfZone, zone, buttons):
 	if(zoneBeingSearched == zone):
-		displaySearchBox(contentsOfZone, zone)
+		displaySearchBox(contentsOfZone, zone, buttons)
