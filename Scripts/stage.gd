@@ -43,18 +43,18 @@ func eraseCard(card):
 	update_pos()
 
 func update_pos():
-	var ready = []
+	var readyCards = []
 	var committed = []
 	for i in range(stage.size()):
 		if(stage[i].cardState.committed):
 			committed.append(stage[i])
 		else:
-			ready.append(stage[i])
+			readyCards.append(stage[i])
 			
-	for i in range(ready.size()):
-		animationMan.animate_card_to_pos(ready[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
-		ready[i].cardObj.z_index = 200 + i
+	for i in range(readyCards.size()):
+		animationMan.animate_card_to_pos(readyCards[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
+		readyCards[i].cardObj.z_index = 200 + i
 	
 	for i in range(committed.size()):
-		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + ready.size())), STAGE_POS_START_Y))
-		committed[i].cardObj.z_index = 200 + (i + ready.size())
+		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + committed.size())), STAGE_POS_START_Y))
+		committed[i].cardObj.z_index = 200 + (i + committed.size())

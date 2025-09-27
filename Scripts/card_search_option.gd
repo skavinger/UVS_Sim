@@ -14,7 +14,7 @@ func _ready() -> void:
 func setMeta(data):
 	cardMeta = data
 
-func set_buttons(card, buttons):
+func set_buttons(_card, buttons):
 	var old_buttons = $Buttons.get_children()
 	for i in range(old_buttons.size()):
 		$Buttons.remove_child(old_buttons[i])

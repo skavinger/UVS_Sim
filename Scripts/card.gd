@@ -103,7 +103,6 @@ func toBottomDeck():
 func commit():
 	cardMeta.cardState.committed = true
 	self.rotation = PI/2
-	var buttons = $Buttons.get_children()
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
 	
@@ -111,7 +110,6 @@ func ready():
 	cardMeta.cardState.committed = false
 	self.rotation = 0
 	cardMan.card_unselected()
-	var buttons = $Buttons.get_children()
 	transitZone.stageZone.update_pos()
 
 func call_fun(buttonType):
