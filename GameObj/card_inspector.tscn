@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu8k4sphid8os"]
+[gd_scene load_steps=5 format=3 uid="uid://cu8k4sphid8os"]
 
 [ext_resource type="Texture2D" uid="uid://cnq7jv6uivs72" path="res://Assets/CardInspectorBackGround.png" id="1_tigxt"]
 [ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="2_mcrgw"]
+[ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="3_5pss5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwvb"]
+size = Vector2(38, 45)
 
 [node name="CardInspector" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(181, 540)
+position = Vector2(198, 540)
 texture = ExtResource("1_tigxt")
 
 [node name="Card" type="Sprite2D" parent="."]
-position = Vector2(181, 252)
+position = Vector2(180, 249)
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("2_mcrgw")
 
@@ -30,3 +34,14 @@ theme_override_font_sizes/mono_font_size = 24
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
+
+[node name="Arrows" type="Sprite2D" parent="."]
+position = Vector2(377, 49)
+rotation = 3.14159
+texture = ExtResource("3_5pss5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(379, 49.5)
+shape = SubResource("RectangleShape2D_nlwvb")

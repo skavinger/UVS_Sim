@@ -17,6 +17,8 @@ func _input(event):
 				new_obj.get_parent().get_parent().call_fun(new_obj.button_type)
 			elif new_obj != null and new_obj.objType == "searchBoxButton":
 				new_obj.get_parent().get_parent().call_fun(new_obj.button_type)
+			elif new_obj != null and new_obj.objType == "cardInspector":
+				new_obj.toggleInspector()
 			else:
 				if obj_selected:
 					match obj_selected.objType:

@@ -1,5 +1,24 @@
 extends Node2D
 
+const objType = "cardInspector"
+const INSPECTORWIDTH = 365
+
+var expanded = true
+var animationMan
+
+func _ready() -> void:
+	animationMan = $"../AnimationManager"
+
+func toggleInspector():
+	if expanded:
+		expanded = false
+		$Arrows.rotation = 0
+		animationMan.animate_card_to_pos(self, Vector2(self.position.x - INSPECTORWIDTH, self.position.y))
+	else:
+		expanded = true
+		$Arrows.rotation = PI
+		animationMan.animate_card_to_pos(self, Vector2(self.position.x + INSPECTORWIDTH, self.position.y))
+
 func showInspector(card):
 	self.z_index = 1000
 	self.get_node("Card").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
