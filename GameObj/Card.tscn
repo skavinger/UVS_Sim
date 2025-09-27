@@ -400,5 +400,8 @@ libraries = {
 [node name="Buttons" type="Node2D" parent="."]
 visible = false
 
+[node name="SideButtons" type="Node2D" parent="."]
+visible = false
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

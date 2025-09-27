@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfba16xku4ijm"]
+
+[ext_resource type="Texture2D" uid="uid://b0uc41pvuvr0p" path="res://Assets/Button_Committed.png" id="1_63p1x"]
+[ext_resource type="Script" uid="uid://cxeinm2tp1res" path="res://Scripts/button.gd" id="1_ul25o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul25o"]
+size = Vector2(27, 146)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ul25o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-65, 0)
+rotation = 1.5708
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_63p1x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-65.5, 0)
+shape = SubResource("RectangleShape2D_ul25o")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="RichTextLabel" parent="Control"]
+offset_left = -79.0
+offset_top = 72.0
+offset_right = 66.0
+offset_bottom = 99.0
+rotation = 4.71239
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1

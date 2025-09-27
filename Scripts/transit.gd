@@ -39,20 +39,21 @@ func move_to(destinationZone, card, faceup):
 				cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"hand":
 			handZone.eraseCard(card)
-			cardSearch.dectectChange(handZone.hand, "Hand", handZone.searchBoxButtons)
+			cardSearch.dectectChange(handZone.hand, "Hand", handZone.handActions)
 		"cardpool":
 			cardpoolZone.eraseCard(card)
-			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.searchBoxButtons)
+			cardSearch.dectectChange(cardpoolZone.cardpool, "Card Pool", cardpoolZone.cardpoolActions)
 		"discard":
 			discardZone.eraseCard(card)
 			cardSearch.dectectChange(discardZone.discard, "Discard", discardZone.searchBoxButtons)
 		"stage":
+			card.cardObj.rotation = 0
 			stageZone.eraseCard(card)
-			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.searchBoxButtons)
+			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.stageActions)
 		"momentum":
 			card.cardObj.rotation = 0
 			momentumZone.eraseCard(card)
-			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.searchBoxButtons)
+			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.momentumActions)
 		"removed":
 			removedZone.eraseCard(card)
 			cardSearch.dectectChange(removedZone.removed, "Removed", removedZone.searchBoxButtons)

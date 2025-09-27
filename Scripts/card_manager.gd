@@ -32,9 +32,14 @@ func despwan_card(card):
 	self.remove_child(card)
 
 func card_selected(card):
-	card.get_node("Buttons").visible = true
 	cardInspector.showInspector(card.cardMeta)
-	var buttonList = card.get_node("Buttons").get_children()
+	var buttonList
+	if(card.rotation == 0):
+		card.get_node("Buttons").visible = true
+		buttonList = card.get_node("Buttons").get_children()
+	else:
+		card.get_node("SideButtons").visible = true
+		buttonList = card.get_node("SideButtons").get_children()
 	for i in range(buttonList.size()):
 		buttonList[i].get_node("Area2D/CollisionShape2D").disabled = false
 		
@@ -66,8 +71,12 @@ func search_card_selected(card):
 func card_unselected():
 	if(selected_card != null):
 		selected_card.get_node("Buttons").visible = false
+		selected_card.get_node("SideButtons").visible = false
 		cardInspector.hideInspector()
 		var buttonList = selected_card.get_node("Buttons").get_children()
+		for i in range(buttonList.size()):
+			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
+		buttonList = selected_card.get_node("SideButtons").get_children()
 		for i in range(buttonList.size()):
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 

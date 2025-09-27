@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpii1ocsx18ju" path="res://Assets/Button_Ready.png" id="1_r04n3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptho"]
-size = Vector2(742.857, 114.286)
+size = Vector2(742.857, 185.714)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_n4tde")
@@ -35,8 +35,9 @@ offset_bottom = 7.0
 
 [node name="Text" type="RichTextLabel" parent="Control"]
 layout_mode = 0
+offset_top = -4.0
 offset_right = 103.0
-offset_bottom = 16.0
+offset_bottom = 20.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 10
 text = "test"

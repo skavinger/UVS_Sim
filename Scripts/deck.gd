@@ -8,7 +8,7 @@ var deck = []
 const BUTTON_PATH = "res://GameObj/button.tscn"
 const BUTTON_POS_X = 0
 const BUTTON_OFFSET = -80
-const BUTTON_HEIGHT = -16
+const BUTTON_HEIGHT = -28
 
 var transitZone
 var cardMan

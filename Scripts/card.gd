@@ -5,11 +5,12 @@ signal hovered_off
 
 const BUTTON_POS_X = 0
 const BUTTON_OFFSET = -80
-const BUTTON_HEIGHT = -16
+const BUTTON_HEIGHT = -28
 
 const objType = "card"
 
 const BUTTON_PATH = "res://GameObj/button.tscn"
+const SIDE_BUTTON_PATH = "res://GameObj/SideButtons.tscn"
 
 var transitZone
 var cardMan
@@ -43,9 +44,20 @@ func set_buttons(card, buttons):
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
-		$Buttons.add_child(new_button)
 		new_button.get_node("Control/Text").text = buttons[i].Label
+		$Buttons.add_child(new_button)
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
+		new_button.z_index = self.z_index - i
+		
+		new_button = preload(SIDE_BUTTON_PATH).instantiate()
+		if(buttons[i].Action == "Commit"):
+			new_button.button_type = "Ready"
+			new_button.get_node("Control/Text").text = "Ready"
+		else:
+			new_button.button_type = buttons[i].Action
+			new_button.get_node("Control/Text").text = buttons[i].Label
+		$SideButtons.add_child(new_button)
+		new_button.position.x = (BUTTON_HEIGHT * i)
 		new_button.z_index = self.z_index - i
 		
 func toHand():
@@ -94,10 +106,6 @@ func commit():
 	var buttons = $Buttons.get_children()
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
-	for i in range(buttons.size()):
-		if(buttons[i].button_type == "Commit"):
-			buttons[i].button_type = "Ready"
-			buttons[i].get_node("Control/Text").text = "Ready"
 	
 func ready():
 	cardMeta.cardState.committed = false
@@ -105,10 +113,6 @@ func ready():
 	cardMan.card_unselected()
 	var buttons = $Buttons.get_children()
 	transitZone.stageZone.update_pos()
-	for i in range(buttons.size()):
-		if(buttons[i].button_type == "Ready"):
-			buttons[i].button_type = "Commit"
-			buttons[i].get_node("Control/Text").text = "Commit"
 
 func call_fun(buttonType):
 	match buttonType:
