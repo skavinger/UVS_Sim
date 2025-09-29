@@ -56,5 +56,5 @@ func update_pos():
 		readyCards[i].cardObj.z_index = 200 + i
 	
 	for i in range(committed.size()):
-		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + committed.size())), STAGE_POS_START_Y))
-		committed[i].cardObj.z_index = 200 + (i + committed.size())
+		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + readyCards.size())), STAGE_POS_START_Y))
+		committed[i].cardObj.z_index = 200 + (i + readyCards.size())

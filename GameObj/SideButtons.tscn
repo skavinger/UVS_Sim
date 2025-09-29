@@ -20,6 +20,7 @@ texture = ExtResource("1_63p1x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-65.5, 0)
 shape = SubResource("RectangleShape2D_ul25o")
+disabled = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -60,7 +60,8 @@ func move_to(destinationZone, card, faceup):
 	
 	if(card.cardState.currentZone == "cardpool" or 
 	card.cardState.currentZone == "stage" or 
-	card.cardState.currentZone == "momentum" ):
+	card.cardState.currentZone == "momentum" or 
+	card.cardState.currentZone == "hand"):
 		cardMan.card_unselected()
 	
 	card.cardState.currentZone = destinationZone
