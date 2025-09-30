@@ -1,18 +1,11 @@
 extends Node2D
 
 const CARD_WIDTH = 70
-const HAND_Y_POS = 1000
+const HAND_Y_POS = -160
 
 var hand = []
 
-const handActions = [
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
-{"Action": "To Discard", "Label": "Discard"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "Add to Momentum"}, 
-{"Action": "To Top Deck", "Label": "To Top Deck"},
-{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+const handActions = []
 
 var center_screen_x
 var animationMan

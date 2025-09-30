@@ -13,16 +13,16 @@ var momentumZone
 var cardSearch
 
 func _ready() -> void:
-	cardMan = $"../CardManager"
+	cardMan = $"../RivalCardManager"
 	animationMan = $"../../AnimationManager"
 	
-	deckZone = $"../Deck"
-	handZone = $"../Hand"
-	cardpoolZone = $"../Cardpool"
-	stageZone = $"../Stage"
-	discardZone = $"../Discard"
-	removedZone = $"../Removed"
-	momentumZone = $"../Momentum"
+	deckZone =$"../RivalDeck"
+	handZone = $"../RivalHand"
+	cardpoolZone = $"../RivalCardpool"
+	stageZone = $"../RivalStage"
+	discardZone = $"../RivalDiscard"
+	removedZone = $"../RivalRemoved"
+	momentumZone = $"../RivalMomentum"
 	cardSearch = $"../../SearchBox"
 
 func move_to(destinationZone, card, faceup):
@@ -47,11 +47,11 @@ func move_to(destinationZone, card, faceup):
 			discardZone.eraseCard(card)
 			cardSearch.dectectChange(discardZone.discard, "Discard", discardZone.searchBoxButtons)
 		"stage":
-			card.cardObj.rotation = 0
+			card.cardObj.rotation = PI
 			stageZone.eraseCard(card)
 			cardSearch.dectectChange(stageZone.stage, "Stage", stageZone.stageActions)
 		"momentum":
-			card.cardObj.rotation = 0
+			card.cardObj.rotation = PI
 			momentumZone.eraseCard(card)
 			cardSearch.dectectChange(momentumZone.momentum, "Momentum", momentumZone.momentumActions)
 		"removed":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=32 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
 [ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="1_ii5oo"]
@@ -19,47 +19,20 @@
 [ext_resource type="Script" uid="uid://lhrend5pv3li" path="res://Scripts/card_inspector.gd" id="17_njdl5"]
 [ext_resource type="PackedScene" uid="uid://cdyi4fi66xuk0" path="res://GameObj/search_box.tscn" id="18_s5w3a"]
 [ext_resource type="Script" uid="uid://b0fbsvaju1rga" path="res://Scripts/search_box.gd" id="19_b5w6u"]
+[ext_resource type="Script" uid="uid://bahybmw7divq1" path="res://Scripts/rival_transit.gd" id="20_0a7qb"]
+[ext_resource type="Script" uid="uid://ole27t7ljgei" path="res://Scripts/rival_card_manager.gd" id="20_1j38r"]
+[ext_resource type="PackedScene" uid="uid://vjfi826slq6n" path="res://GameObj/RivalDeck.tscn" id="21_1j38r"]
+[ext_resource type="Script" uid="uid://dsv20h5n86m1" path="res://Scripts/rival_deck.gd" id="22_k5d5h"]
+[ext_resource type="PackedScene" uid="uid://d33wgkx2odi5e" path="res://GameObj/RivalDiscard.tscn" id="23_4h84b"]
+[ext_resource type="Script" uid="uid://btrlmfgh6s5cg" path="res://Scripts/rival_hand.gd" id="24_k5d5h"]
+[ext_resource type="PackedScene" uid="uid://dnpyxp6baakv0" path="res://GameObj/RivalRemoved.tscn" id="24_vtf3w"]
+[ext_resource type="Script" uid="uid://cpwvipf0re8os" path="res://Scripts/rival_discard.gd" id="26_vtf3w"]
+[ext_resource type="Script" uid="uid://cyay1lckk5buk" path="res://Scripts/rival_removed.gd" id="28_q7ose"]
+[ext_resource type="Script" uid="uid://fvxretu5lugt" path="res://Scripts/rival_cardpool.gd" id="29_xdxph"]
+[ext_resource type="Script" uid="uid://bp2y0jphvtorw" path="res://Scripts/rival_momentum.gd" id="30_uu7au"]
+[ext_resource type="Script" uid="uid://do1s3n6nfvej6" path="res://Scripts/rival_stage.gd" id="31_0jn15"]
 
 [node name="Main" type="Node2D"]
-
-[node name="InputManager" type="Node2D" parent="."]
-script = ExtResource("1_loro6")
-
-[node name="CardManager" type="Node2D" parent="."]
-script = ExtResource("1_foqap")
-
-[node name="AnimationManager" type="Node2D" parent="."]
-script = ExtResource("4_xmt4q")
-
-[node name="Transit" type="Node2D" parent="."]
-script = ExtResource("1_ii5oo")
-
-[node name="Hand" type="Node2D" parent="."]
-script = ExtResource("2_yhcre")
-
-[node name="Cardpool" type="Node2D" parent="."]
-script = ExtResource("6_p20hj")
-
-[node name="Stage" type="Node2D" parent="."]
-script = ExtResource("4_vreb5")
-
-[node name="Deck" parent="." instance=ExtResource("3_foqap")]
-z_index = 100
-position = Vector2(1685, 835)
-script = ExtResource("5_4gn13")
-
-[node name="Discard" parent="." instance=ExtResource("10_hp5rj")]
-z_index = 50
-position = Vector2(1685, 640)
-script = ExtResource("11_h3px5")
-
-[node name="Removed" parent="." instance=ExtResource("12_f5kxx")]
-z_index = 50
-position = Vector2(1835, 640)
-script = ExtResource("13_70s2v")
-
-[node name="Momentum" type="Node2D" parent="."]
-script = ExtResource("14_70s2v")
 
 [node name="Field" type="Node2D" parent="."]
 
@@ -68,10 +41,89 @@ position = Vector2(960.25, 538.563)
 scale = Vector2(1, 0.998)
 texture = ExtResource("6_4gn13")
 
+[node name="AnimationManager" type="Node2D" parent="."]
+script = ExtResource("4_xmt4q")
+
 [node name="CardInspector" parent="." instance=ExtResource("16_xbtrx")]
 z_index = -1000
 script = ExtResource("17_njdl5")
 
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("1_loro6")
+
 [node name="SearchBox" parent="." instance=ExtResource("18_s5w3a")]
 z_index = -1000
 script = ExtResource("19_b5w6u")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="CardManager" type="Node2D" parent="Player"]
+script = ExtResource("1_foqap")
+
+[node name="Transit" type="Node2D" parent="Player"]
+script = ExtResource("1_ii5oo")
+
+[node name="Hand" type="Node2D" parent="Player"]
+script = ExtResource("2_yhcre")
+
+[node name="Cardpool" type="Node2D" parent="Player"]
+script = ExtResource("6_p20hj")
+
+[node name="Stage" type="Node2D" parent="Player"]
+script = ExtResource("4_vreb5")
+
+[node name="Deck" parent="Player" instance=ExtResource("3_foqap")]
+z_index = 100
+position = Vector2(1685, 835)
+script = ExtResource("5_4gn13")
+
+[node name="Discard" parent="Player" instance=ExtResource("10_hp5rj")]
+z_index = 50
+position = Vector2(1685, 640)
+script = ExtResource("11_h3px5")
+
+[node name="Removed" parent="Player" instance=ExtResource("12_f5kxx")]
+z_index = 50
+position = Vector2(1835, 640)
+script = ExtResource("13_70s2v")
+
+[node name="Momentum" type="Node2D" parent="Player"]
+script = ExtResource("14_70s2v")
+
+[node name="Rival" type="Node2D" parent="."]
+
+[node name="AnimationManager2" type="Node2D" parent="Rival"]
+script = ExtResource("4_xmt4q")
+
+[node name="RivalCardManager" type="Node2D" parent="Rival"]
+script = ExtResource("20_1j38r")
+
+[node name="RivalTransit" type="Node2D" parent="Rival"]
+script = ExtResource("20_0a7qb")
+
+[node name="RivalDeck" parent="Rival" instance=ExtResource("21_1j38r")]
+position = Vector2(236, 237)
+rotation = 3.14159
+script = ExtResource("22_k5d5h")
+
+[node name="RivalHand" type="Node2D" parent="Rival"]
+script = ExtResource("24_k5d5h")
+
+[node name="RivalDiscard" parent="Rival" instance=ExtResource("23_4h84b")]
+position = Vector2(236, 435)
+rotation = 3.14159
+script = ExtResource("26_vtf3w")
+
+[node name="RivalRemoved" parent="Rival" instance=ExtResource("24_vtf3w")]
+position = Vector2(84, 433)
+rotation = 3.14159
+script = ExtResource("28_q7ose")
+
+[node name="RivalCardpool" type="Node2D" parent="Rival"]
+script = ExtResource("29_xdxph")
+
+[node name="RivalMomentum" type="Node2D" parent="Rival"]
+script = ExtResource("30_uu7au")
+
+[node name="RivalStage" type="Node2D" parent="Rival"]
+script = ExtResource("31_0jn15")

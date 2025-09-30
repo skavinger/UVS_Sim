@@ -2,11 +2,11 @@ extends Node2D
 
 const CARD_WIDTH = 70
 
-const CH_POS_X = 100
-const CH_POS_Y = 650
+const CH_POS_X = 1590
+const CH_POS_Y = 180
 
-const STAGE_POS_START_X = 260
-const STAGE_POS_START_Y = 835
+const STAGE_POS_START_X = 1400
+const STAGE_POS_START_Y = 0
 
 var starting_character
 
@@ -15,15 +15,7 @@ var stage = []
 var animationMan
 
 const characterActions = []
-const stageActions = [
-{"Action": "Commit", "Label": "Commit"}, 
-{"Action": "To Hand", "Label": "Add to Hand"}, 
-{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
-{"Action": "To Discard", "Label": "Sacrifice"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "Add to Momentum"}, 
-{"Action": "To Top Deck", "Label": "To Top Deck"},
-{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+const stageActions = []
 
 func _ready() -> void:
 	animationMan = $"../../AnimationManager"
@@ -52,9 +44,9 @@ func update_pos():
 			readyCards.append(stage[i])
 			
 	for i in range(readyCards.size()):
-		animationMan.animate_card_to_pos(readyCards[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * i), STAGE_POS_START_Y))
+		animationMan.animate_card_to_pos(readyCards[i].cardObj, Vector2(STAGE_POS_START_X - (CARD_WIDTH * i), STAGE_POS_START_Y))
 		readyCards[i].cardObj.z_index = 200 + i
 	
 	for i in range(committed.size()):
-		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (CARD_WIDTH * (i + readyCards.size())), STAGE_POS_START_Y))
+		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X - (CARD_WIDTH * (i + readyCards.size())), STAGE_POS_START_Y))
 		committed[i].cardObj.z_index = 200 + (i + readyCards.size())

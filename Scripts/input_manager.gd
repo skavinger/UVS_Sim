@@ -2,12 +2,14 @@ extends Node2D
 
 var cardMan
 var transitZone
+var rivalTransitZone
 
 var obj_selected
 
 func _ready() -> void:
-	cardMan = $"../CardManager"
-	transitZone = $"../Transit"
+	cardMan = $"../Player/CardManager"
+	transitZone = $"../Player/Transit"
+	rivalTransitZone = $"../Rival/RivalTransit"
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -34,6 +36,12 @@ func _input(event):
 						"searchBoxCard":
 							if(cardMan.selected_card != null):
 								cardMan.search_card_unselected()
+						"rival_deck":
+							rivalTransitZone.deckZone.deck_unselected()
+						"rival_discard":
+							rivalTransitZone.discardZone.discard_unselected()
+						"rival_removed":
+							rivalTransitZone.removedZone.removed_unselected()
 				obj_selected = new_obj
 				if obj_selected:
 					match obj_selected.objType:
@@ -49,6 +57,12 @@ func _input(event):
 							cardMan.search_card_selected(obj_selected)
 						"searchBox":
 							transitZone.cardSearch.hideSearchBox()
+						"rival_deck":
+							rivalTransitZone.deckZone.deck_selected()
+						"rival_discard":
+							rivalTransitZone.discardZone.discard_selected()
+						"rival_removed":
+							rivalTransitZone.removedZone.removed_selected()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state

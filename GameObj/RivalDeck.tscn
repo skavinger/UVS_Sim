@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vjfi826slq6n"]
+
+[ext_resource type="Texture2D" uid="uid://wcv0titk6kar" path="res://Assets/pic7993223.png" id="1_8bjn5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gn13"]
+size = Vector2(106, 148)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_8bjn5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4gn13")
+
+[node name="Buttons" type="Node2D" parent="."]
+visible = false
+z_index = -10

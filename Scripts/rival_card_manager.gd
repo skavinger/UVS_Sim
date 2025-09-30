@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://GameObj/Card.tscn"
+const CARD_SCENE_PATH = "res://GameObj/Rival_Card.tscn"
 
 var selected_card
 var screen_size
@@ -15,7 +15,7 @@ var cardInspector
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	inputMan = $"../../InputManager"
-	transitZone = $"../Transit"
+	transitZone = $"../RivalTransit"
 	cardInspector = $"../../CardInspector"
 	cardDatabase = preload("res://Scripts/card_database.gd")
 	
@@ -24,6 +24,7 @@ func spawn_card(card):
 	self.add_child(new_card)
 	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
 	new_card.setMeta(card)
+	new_card.rotation = PI
 	return new_card
 	
 func despwan_card(card):

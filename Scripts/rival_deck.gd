@@ -1,6 +1,6 @@
 extends Node2D
 
-const objType = "deck"
+const objType = "rival_deck"
 
 var decklist
 var deck = []
@@ -29,16 +29,11 @@ const buttons = [{"Action": "Draw 1", "Label": "Draw 1"},
 {"Action": "Remove Top", "Label": "Remove Top"}, 
 {"Action": "Add Top to Momentum", "Label": "Top to Momentum"}]
 
-const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"}, 
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Card Pool", "Label": "To Card Pool"}, 
-{"Action": "To Discard", "Label": "Send to Discard"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "To Momentum"}]
+const searchBoxButtons = []
 
 func _ready() -> void:
-	transitZone = $"../Transit"
-	cardMan = $"../CardManager"
+	transitZone = $"../RivalTransit"
+	cardMan = $"../RivalCardManager"
 	#load decklist from deck
 	card_database = preload("res://Scripts/card_database.gd")
 	decklist = {
@@ -194,8 +189,7 @@ func _ready() -> void:
 				"cardObj": null
 			})
 	deck.shuffle()
-	#init character
-
+	
 	call_deferred("init_Character")
 	
 	#init deck buttons
