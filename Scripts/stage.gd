@@ -14,7 +14,7 @@ var stage = []
 
 var animationMan
 
-const characterActions = []
+const characterActions = [{"Action": "Commit", "Label": "Commit"}]
 const stageActions = [
 {"Action": "Commit", "Label": "Commit"}, 
 {"Action": "To Hand", "Label": "Add to Hand"}, 

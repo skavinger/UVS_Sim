@@ -1,10 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=35 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_foqap"]
 [ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="1_ii5oo"]
 [ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="1_loro6"]
+[ext_resource type="Texture2D" uid="uid://tcrjtvqyi85b" path="res://Assets/Health.png" id="2_uu7au"]
 [ext_resource type="Script" uid="uid://cuapwcbv4xmo2" path="res://Scripts/hand.gd" id="2_yhcre"]
 [ext_resource type="PackedScene" uid="uid://bmrdtiycdj23c" path="res://GameObj/Deck.tscn" id="3_foqap"]
+[ext_resource type="Texture2D" uid="uid://0000eykrjlhu" path="res://Assets/mid.png" id="3_hp4mm"]
+[ext_resource type="Texture2D" uid="uid://dfbdgxpf5844v" path="res://Assets/Damage.png" id="4_a72vk"]
 [ext_resource type="Script" uid="uid://dnjac7ycv8wq" path="res://Scripts/stage.gd" id="4_vreb5"]
 [ext_resource type="Script" uid="uid://y4w8jn8omovb" path="res://Scripts/animation_manager.gd" id="4_xmt4q"]
 [ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="5_4gn13"]
@@ -40,6 +43,36 @@
 position = Vector2(960.25, 538.563)
 scale = Vector2(1, 0.998)
 texture = ExtResource("6_4gn13")
+
+[node name="PlayerHealth" type="Sprite2D" parent="Field"]
+position = Vector2(30, 564)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_uu7au")
+
+[node name="RivalHealth" type="Sprite2D" parent="Field"]
+position = Vector2(1891, 514)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_uu7au")
+
+[node name="PlayerSpeed" type="Sprite2D" parent="Field"]
+position = Vector2(1536, 595)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_hp4mm")
+
+[node name="PlayerDamage" type="Sprite2D" parent="Field"]
+position = Vector2(1536, 685)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_a72vk")
+
+[node name="RivalSpeed" type="Sprite2D" parent="Field"]
+position = Vector2(387, 387)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_hp4mm")
+
+[node name="RivalDamage" type="Sprite2D" parent="Field"]
+position = Vector2(387, 480)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_a72vk")
 
 [node name="AnimationManager" type="Node2D" parent="."]
 script = ExtResource("4_xmt4q")
