@@ -7,7 +7,7 @@ const BUTTON_POS_X = 0
 const BUTTON_OFFSET = -80
 const BUTTON_HEIGHT = -28
 
-const objType = "card"
+const objType = "rival_card"
 
 const BUTTON_PATH = "res://GameObj/button.tscn"
 const SIDE_BUTTON_PATH = "res://GameObj/SideButtons.tscn"

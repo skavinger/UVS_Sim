@@ -35,7 +35,7 @@ func despwan_card(card):
 func card_selected(card):
 	cardInspector.showInspector(card.cardMeta)
 	var buttonList
-	if(card.rotation == 0):
+	if(!card.cardMeta.cardState.committed):
 		card.get_node("Buttons").visible = true
 		buttonList = card.get_node("Buttons").get_children()
 	else:
@@ -49,10 +49,10 @@ func card_selected(card):
 	elif selected_card:
 		card_unselected()
 		selected_card = card
-		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
+		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
 	else:
 		selected_card = card
-		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
+		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
 
 func search_card_selected(card):
 	card.get_node("Buttons").visible = true
@@ -81,7 +81,7 @@ func card_unselected():
 		for i in range(buttonList.size()):
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
-		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y + 20)
+		selected_card.position = Vector2(selected_card.position.x, selected_card.position.y - 20)
 		selected_card = null
 		
 func search_card_unselected():

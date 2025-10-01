@@ -65,12 +65,13 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_a72vk")
 
 [node name="RivalSpeed" type="Sprite2D" parent="Field"]
-position = Vector2(387, 387)
+position = Vector2(387, 480)
+rotation = 3.14159
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_hp4mm")
 
 [node name="RivalDamage" type="Sprite2D" parent="Field"]
-position = Vector2(387, 480)
+position = Vector2(387, 387)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_a72vk")
 

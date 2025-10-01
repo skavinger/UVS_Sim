@@ -1,6 +1,7 @@
 extends Node2D
 
 var cardMan
+var rivalCardMan
 var transitZone
 var rivalTransitZone
 
@@ -8,6 +9,7 @@ var obj_selected
 
 func _ready() -> void:
 	cardMan = $"../Player/CardManager"
+	rivalCardMan = $"../Rival/RivalCardManager"
 	transitZone = $"../Player/Transit"
 	rivalTransitZone = $"../Rival/RivalTransit"
 
@@ -27,6 +29,9 @@ func _input(event):
 						"card":
 							if(cardMan.selected_card != null):
 								cardMan.card_unselected()
+						"rival_card":
+							if(rivalCardMan.selected_card != null):
+								rivalCardMan.card_unselected()
 						"deck":
 							transitZone.deckZone.deck_unselected()
 						"discard":
@@ -47,6 +52,8 @@ func _input(event):
 					match obj_selected.objType:
 						"card":
 							cardMan.card_selected(obj_selected)
+						"rival_card":
+							rivalCardMan.card_selected(obj_selected)
 						"deck":
 							transitZone.deckZone.deck_selected()
 						"discard":
