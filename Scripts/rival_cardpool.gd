@@ -20,7 +20,7 @@ const cardpoolActions = [{"Action": "To Hand", "Label": "Add to Hand"},
 var animationMan
 
 func _ready() -> void:
-	animationMan = $"../../AnimationManager"
+	animationMan = $"../../Field/AnimationManager"
 
 func add_to_card_pool(card):
 	cardpool.append(card)

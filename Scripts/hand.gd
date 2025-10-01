@@ -19,7 +19,7 @@ var animationMan
 
 func _ready() -> void:
 	center_screen_x = get_viewport().size.x / 2
-	animationMan = $"../../AnimationManager"
+	animationMan = $"../../Field/AnimationManager"
 
 func add_card_to_hand(card):
 	hand.insert(0, card)

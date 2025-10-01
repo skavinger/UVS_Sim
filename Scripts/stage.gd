@@ -26,7 +26,7 @@ const stageActions = [
 {"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 func _ready() -> void:
-	animationMan = $"../../AnimationManager"
+	animationMan = $"../../Field/AnimationManager"
 
 func add_character_to_stage(character):
 	starting_character = character

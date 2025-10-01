@@ -14,7 +14,7 @@ const momentumActions = []
 var animationMan
 
 func _ready() -> void:
-	animationMan = $"../../AnimationManager"
+	animationMan = $"../../Field/AnimationManager"
 
 func add_to_momentum(card):
 	momentum.append(card)

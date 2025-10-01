@@ -1,0 +1,49 @@
+[gd_scene load_steps=13 format=3 uid="uid://ce8st7wb6l6ju"]
+
+[ext_resource type="Script" uid="uid://bnb8yl2p68adi" path="res://Scripts/card_manager.gd" id="1_tih0w"]
+[ext_resource type="Script" uid="uid://b6iolscc7hxi3" path="res://Scripts/transit.gd" id="2_g6s5m"]
+[ext_resource type="Script" uid="uid://cuapwcbv4xmo2" path="res://Scripts/hand.gd" id="3_d7xbj"]
+[ext_resource type="Script" uid="uid://cllltv6mdbxhx" path="res://Scripts/cardpool.gd" id="4_7ifh5"]
+[ext_resource type="Script" uid="uid://dnjac7ycv8wq" path="res://Scripts/stage.gd" id="5_jmq8v"]
+[ext_resource type="PackedScene" uid="uid://bmrdtiycdj23c" path="res://GameObj/Deck.tscn" id="6_j6dd2"]
+[ext_resource type="Script" uid="uid://kabc6l8y24tx" path="res://Scripts/deck.gd" id="7_m3rs4"]
+[ext_resource type="PackedScene" uid="uid://i5d6wbkgvnqe" path="res://GameObj/Discard.tscn" id="8_ghu1u"]
+[ext_resource type="Script" uid="uid://r5qpra2fvral" path="res://Scripts/discard.gd" id="9_mge31"]
+[ext_resource type="PackedScene" uid="uid://du4dmrm3k4f4f" path="res://GameObj/removed.tscn" id="10_0qm24"]
+[ext_resource type="Script" uid="uid://bfxcwlpqbaqb6" path="res://Scripts/removed.gd" id="11_w717i"]
+[ext_resource type="Script" uid="uid://b5fbxnfeeg3n8" path="res://Scripts/momentum.gd" id="12_tc6mb"]
+
+[node name="Player" type="Node2D"]
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_tih0w")
+
+[node name="Transit" type="Node2D" parent="."]
+script = ExtResource("2_g6s5m")
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource("3_d7xbj")
+
+[node name="Cardpool" type="Node2D" parent="."]
+script = ExtResource("4_7ifh5")
+
+[node name="Stage" type="Node2D" parent="."]
+script = ExtResource("5_jmq8v")
+
+[node name="Deck" parent="." instance=ExtResource("6_j6dd2")]
+z_index = 100
+position = Vector2(1685, 835)
+script = ExtResource("7_m3rs4")
+
+[node name="Discard" parent="." instance=ExtResource("8_ghu1u")]
+z_index = 50
+position = Vector2(1685, 640)
+script = ExtResource("9_mge31")
+
+[node name="Removed" parent="." instance=ExtResource("10_0qm24")]
+z_index = 50
+position = Vector2(1835, 640)
+script = ExtResource("11_w717i")
+
+[node name="Momentum" type="Node2D" parent="."]
+script = ExtResource("12_tc6mb")

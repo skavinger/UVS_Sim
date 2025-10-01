@@ -7,11 +7,13 @@ var rivalTransitZone
 
 var obj_selected
 
-func _ready() -> void:
-	cardMan = $"../Player/CardManager"
-	rivalCardMan = $"../Rival/RivalCardManager"
-	transitZone = $"../Player/Transit"
-	rivalTransitZone = $"../Rival/RivalTransit"
+func playerLoaded():
+	cardMan = $"../Game/Player/CardManager"
+	transitZone = $"../Game/Player/Transit"
+
+func rivalLoaded():
+	rivalCardMan = $"../Game/Rival/RivalCardManager"
+	rivalTransitZone = $"../Game/Rival/RivalTransit"
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

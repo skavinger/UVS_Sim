@@ -14,7 +14,7 @@ var cardSearch
 
 func _ready() -> void:
 	cardMan = $"../CardManager"
-	animationMan = $"../../AnimationManager"
+	animationMan = $"../../Field/AnimationManager"
 	
 	deckZone = $"../Deck"
 	handZone = $"../Hand"
@@ -23,7 +23,7 @@ func _ready() -> void:
 	discardZone = $"../Discard"
 	removedZone = $"../Removed"
 	momentumZone = $"../Momentum"
-	cardSearch = $"../../SearchBox"
+	cardSearch = $"../../Field/SearchBox"
 
 func move_to(destinationZone, card, faceup):
 	#if card obj hasn't been spawned yet spawn it
