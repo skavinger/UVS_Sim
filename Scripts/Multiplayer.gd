@@ -36,10 +36,13 @@ func _on_join_pressed() -> void:
 	$Game.add_child(rival)
 	$InputManager.rivalLoaded()
 	
+	$Game.client_setup()
+	
 func _on_peer_connected(peer_id):
 	var rival = rivalZones.instantiate()
 	$Game.add_child(rival)
 	$InputManager.rivalLoaded()
+	get_node("Game").host_setup()
 
 func disable_buttons():
 	$Host.disabled = true

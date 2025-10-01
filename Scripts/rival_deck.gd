@@ -20,14 +20,7 @@ var cardState = {
 	"committed": false
 }
 
-const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 
-{"Action": "Search", "Label": "Search"},
-{"Action": "Shuffle", "Label": "Shuffle"}, 
-{"Action": "Build Top", "Label": "Build Top"}, 
-{"Action": "Add Top to Card Pool", "Label": "Top to Card Pool"}, 
-{"Action": "Mill 1", "Label": "Mill 1"}, 
-{"Action": "Remove Top", "Label": "Remove Top"}, 
-{"Action": "Add Top to Momentum", "Label": "Top to Momentum"}]
+const buttons = []
 
 const searchBoxButtons = []
 
@@ -190,8 +183,6 @@ func _ready() -> void:
 			})
 	deck.shuffle()
 	
-	call_deferred("init_Character")
-	
 	#init deck buttons
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
@@ -200,14 +191,6 @@ func _ready() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
-	
-func init_Character():
-	transitZone.move_to("character", {
-			"cardID": decklist.character.cardID,
-			"cardProperties": card_database.CARDS[decklist.character.cardID.set][decklist.character.cardID.number],
-			"cardState": cardState.duplicate(),
-			"cardObj": null
-		}, false)	
 
 func deck_selected():
 	$Buttons.visible = true
@@ -264,6 +247,13 @@ func removeCount(count):
 func toMomentum():
 	var topCard = deck[0]
 	transitZone.move_to("momentum", topCard, false)
+	
+func drawToHandSize():
+	var handSize = $"../RivalStage".starting_character.cardProperties.HandSize
+	var cardsInHand = $"../RivalHand".hand.size()
+	
+	if(cardsInHand < handSize):
+		draw_card(handSize - cardsInHand)
 		
 func call_fun(buttonType):
 	match buttonType:

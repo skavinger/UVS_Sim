@@ -195,8 +195,6 @@ func _ready() -> void:
 			})
 	deck.shuffle()
 	#init character
-
-	call_deferred("init_Character")
 	
 	#init deck buttons
 	for i in range(buttons.size()):
@@ -206,14 +204,6 @@ func _ready() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
-	
-func init_Character():
-	transitZone.move_to("character", {
-			"cardID": decklist.character.cardID,
-			"cardProperties": card_database.CARDS[decklist.character.cardID.set][decklist.character.cardID.number],
-			"cardState": cardState.duplicate(),
-			"cardObj": null
-		}, false)	
 
 func deck_selected():
 	$Buttons.visible = true
@@ -270,7 +260,15 @@ func removeCount(count):
 func toMomentum():
 	var topCard = deck[0]
 	transitZone.move_to("momentum", topCard, false)
-		
+	
+
+func drawToHandSize():
+	var handSize = $"../Stage".starting_character.cardProperties.HandSize
+	var cardsInHand = $"../Hand".hand.size()
+	
+	if(cardsInHand < handSize):
+		draw_card(handSize - cardsInHand)
+
 func call_fun(buttonType):
 	match buttonType:
 		"Draw 1":
