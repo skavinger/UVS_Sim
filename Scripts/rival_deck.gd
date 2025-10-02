@@ -173,14 +173,17 @@ func _ready() -> void:
 		],
 		"side": []
 	}
+	var cardCount = 0
 	for i in range(decklist.main.size()):
 		for j in decklist.main[i].count:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
+				"indexID": cardCount,
 				"cardProperties": card_database.CARDS[decklist.main[i].cardID.set][decklist.main[i].cardID.number],
 				"cardState": cardState.duplicate(),
 				"cardObj": null
 			})
+			cardCount = cardCount + 1
 	deck.shuffle()
 	
 	#init deck buttons
@@ -191,6 +194,11 @@ func _ready() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
+
+func get_card_by_indexID(ID):
+	for i in range(deck.size()):
+		if deck[i].indexID == ID:
+			return deck[i]
 
 func deck_selected():
 	$Buttons.visible = true
@@ -213,64 +221,22 @@ func add_card_to_bottom(card):
 	deck.append(card)
 	cardMan.despwan_card(card.cardObj)
 	card.cardObj = null
-	
-func draw_card(count):
-	for i in count:
-		var card_drawn = deck[0]
-		
-		if deck.size() == 0:
-			$Area2D/CollisionShape2D.disabled = true
-			$Sprite2D.visible = false
-		transitZone.move_to("hand", card_drawn, true)
+
+@rpc("any_peer")
+func to_hand(ID):
+	for i in range(deck.size()):
+		if deck[i].indexID == ID:
+			transitZone.move_to("deck", "hand", deck[i].indexID, true)
+			return
 
 func eraseCard(card):
 	deck.erase(card)
-
-func buildTop():
-	var topCard = deck[0]
-	transitZone.move_to("stage", topCard, false)
+	if deck.size() == 0:
+		$Area2D/CollisionShape2D.disabled = true
+		$Sprite2D.visible = false
 	
-func toCardPool():
-	var topCard = deck[0]
-	transitZone.move_to("cardpool", topCard, false)
-	
-func mill(count):
-	for i in count:
-		var topCard = deck[0]
-		transitZone.move_to("discard", topCard, false)
-		
-func removeCount(count):
-	for i in count:
-		var topCard = deck[0]
-		transitZone.move_to("removed", topCard, false)
-		
-func toMomentum():
-	var topCard = deck[0]
-	transitZone.move_to("momentum", topCard, false)
-	
-func drawToHandSize():
-	var handSize = $"../RivalStage".starting_character.cardProperties.HandSize
-	var cardsInHand = $"../RivalHand".hand.size()
-	
-	if(cardsInHand < handSize):
-		draw_card(handSize - cardsInHand)
 		
 func call_fun(buttonType):
 	match buttonType:
-		"Draw 1":
-			draw_card(1)
 		"Search":
 			transitZone.cardSearch.displaySearchBox(deck, "Deck", searchBoxButtons)
-		"Build Top":
-			buildTop()
-		"Add Top to Card Pool":
-			toCardPool()
-		"Mill 1":
-			mill(1)
-		"Remove Top":
-			removeCount(1)
-		"Add Top to Momentum":
-			toMomentum()
-		"Shuffle":
-			deck.shuffle()
-			transitZone.cardSearch.dectectChange(deck, "Deck", searchBoxButtons)

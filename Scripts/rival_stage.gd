@@ -20,6 +20,11 @@ const stageActions = []
 func _ready() -> void:
 	animationMan = $"../../Field/AnimationManager"
 
+func get_card_by_indexID(ID):
+	for i in range(stage.size()):
+		if stage[i].indexID == ID:
+			return stage[i]
+
 func add_character_to_stage(character):
 	starting_character = character
 	animationMan.animate_card_to_pos(starting_character.cardObj, Vector2(CH_POS_X, CH_POS_Y))

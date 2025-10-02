@@ -20,7 +20,6 @@ func _ready() -> void:
 	cardMan = $"../RivalCardManager"
 	transitZone = $"../RivalTransit"
 	
-	#init deck buttons
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
@@ -28,6 +27,11 @@ func _ready() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
+
+func get_card_by_indexID(ID):
+	for i in range(discard.size()):
+		if discard[i].indexID == ID:
+			return discard[i]
 
 func change_top():
 	if(discard.size() > 0):

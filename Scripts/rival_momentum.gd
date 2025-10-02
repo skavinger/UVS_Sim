@@ -16,6 +16,11 @@ var animationMan
 func _ready() -> void:
 	animationMan = $"../../Field/AnimationManager"
 
+func get_card_by_indexID(ID):
+	for i in range(momentum.size()):
+		if momentum[i].indexID == ID:
+			return momentum[i]
+
 func add_to_momentum(card):
 	momentum.append(card)
 	update_pos()

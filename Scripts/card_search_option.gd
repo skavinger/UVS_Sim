@@ -9,7 +9,7 @@ var cardMeta
 var transitZone
 
 func _ready() -> void:
-	transitZone = $"../../../../../Player/Transit"
+	transitZone = $"../../../../../../Player/Transit"
 
 func setMeta(data):
 	cardMeta = data

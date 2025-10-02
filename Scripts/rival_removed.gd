@@ -28,6 +28,11 @@ func _ready() -> void:
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
 
+func get_card_by_indexID(ID):
+	for i in range(removed.size()):
+		if removed[i].indexID == ID:
+			return removed[i]
+
 func change_top():
 	if(removed.size() > 0):
 		self.get_node("Sprite2D").visible = true

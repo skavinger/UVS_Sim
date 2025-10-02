@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=8 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://bvql6pavq0yj" path="res://Scripts/Multiplayer.gd" id="1_a72vk"]
 [ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="1_loro6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ce8st7wb6l6ju" path="res://GameObj/playerZones.tscn" id="3_loro6"]
 [ext_resource type="PackedScene" uid="uid://c6gl57k40v4qq" path="res://GameObj/rivalZones.tscn" id="4_4gn13"]
 [ext_resource type="Script" uid="uid://bms41whcjlhpa" path="res://Scripts/Game_Setup.gd" id="6_4gn13"]
+[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://GameObj/sync_functions.gd" id="7_vreb5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a72vk")
@@ -32,6 +33,9 @@ text = "Join"
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("6_4gn13")
+
+[node name="SyncFunctions" type="Node2D" parent="."]
+script = ExtResource("7_vreb5")
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

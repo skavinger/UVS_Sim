@@ -14,6 +14,11 @@ func _ready() -> void:
 	center_screen_x = get_viewport().size.x / 2
 	animationMan = $"../../Field/AnimationManager"
 
+func get_card_by_indexID(ID):
+	for i in range(hand.size()):
+		if hand[i].indexID == ID:
+			return hand[i]
+
 func add_card_to_hand(card):
 	hand.insert(0, card)
 	hand.shuffle()

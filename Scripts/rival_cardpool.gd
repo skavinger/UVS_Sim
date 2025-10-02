@@ -16,6 +16,11 @@ var animationMan
 func _ready() -> void:
 	animationMan = $"../../Field/AnimationManager"
 
+func get_card_by_indexID(ID):
+	for i in range(cardpool.size()):
+		if cardpool[i].indexID == ID:
+			return cardpool[i]
+
 func add_to_card_pool(card):
 	cardpool.append(card)
 	update_pos()

@@ -2,10 +2,12 @@ extends Node2D
 
 
 func host_setup():
-	initCharacters()
+	call_deferred("initCharacters")
+	call_deferred("startingHands")
 	
 func client_setup():
-	initCharacters()
+	call_deferred("initCharacters")
+	call_deferred("startingHands")
 	
 
 func initCharacters():
@@ -17,14 +19,15 @@ func initCharacters():
 			"cardObj": null
 		}, false)
 	
-	$"Player/Deck".drawToHandSize()
 	
-	var rivalStartingCharacter = $"Rival/RivalDeck".decklist.character.cardID
-	$"Rival/RivalTransit".move_to("character", {
+	var rivalStartingCharacter = $Rival.get_node("RivalDeck").decklist.character.cardID
+	$"Rival/RivalTransit".move_to("character", "character", {
 			"cardID": rivalStartingCharacter,
 			"cardProperties": $"Rival/RivalDeck".card_database.CARDS[rivalStartingCharacter.set][rivalStartingCharacter.number],
 			"cardState": $"Rival/RivalDeck".cardState.duplicate(),
 			"cardObj": null
 		}, false)
-		
-	$"Rival/RivalDeck".drawToHandSize()
+	
+
+func startingHands():
+	$"Player/Deck".drawToHandSize()

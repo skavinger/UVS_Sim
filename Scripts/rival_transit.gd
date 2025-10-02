@@ -25,8 +25,27 @@ func _ready() -> void:
 	momentumZone = $"../RivalMomentum"
 	cardSearch = $"../../Field/SearchBox"
 
-func move_to(destinationZone, card, faceup):
+func move_to(sourceZone, destinationZone, indexID, faceup):
 	#if card obj hasn't been spawned yet spawn it
+	var card
+	match sourceZone:
+		"character":
+			card = indexID
+		"deck":
+			card = deckZone.get_card_by_indexID(indexID)
+		"hand":
+			card = deckZone.get_card_by_indexID(indexID)
+		"cardpool":
+			card = deckZone.get_card_by_indexID(indexID)
+		"discard":
+			card = deckZone.get_card_by_indexID(indexID)
+		"stage":
+			card = deckZone.get_card_by_indexID(indexID)
+		"momentum":
+			card = deckZone.get_card_by_indexID(indexID)
+		"removed":
+			card = deckZone.get_card_by_indexID(indexID)
+
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
 

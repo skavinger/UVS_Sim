@@ -185,16 +185,18 @@ func _ready() -> void:
 		],
 		"side": []
 	}
+	var cardCount = 0
 	for i in range(decklist.main.size()):
 		for j in decklist.main[i].count:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
+				"indexID": cardCount,
 				"cardProperties": card_database.CARDS[decklist.main[i].cardID.set][decklist.main[i].cardID.number],
 				"cardState": cardState.duplicate(),
 				"cardObj": null
 			})
+			cardCount = cardCount + 1
 	deck.shuffle()
-	#init character
 	
 	#init deck buttons
 	for i in range(buttons.size()):
@@ -230,14 +232,14 @@ func add_card_to_bottom(card):
 func draw_card(count):
 	for i in count:
 		var card_drawn = deck[0]
-		
-		if deck.size() == 0:
-			$Area2D/CollisionShape2D.disabled = true
-			$Sprite2D.visible = false
 		transitZone.move_to("hand", card_drawn, true)
+		$"../../Rival/RivalDeck".rpc("to_hand", card_drawn.indexID)
 
 func eraseCard(card):
 	deck.erase(card)
+	if deck.size() == 0:
+		$Area2D/CollisionShape2D.disabled = true
+		$Sprite2D.visible = false
 
 func buildTop():
 	var topCard = deck[0]
