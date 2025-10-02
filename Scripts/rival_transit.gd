@@ -25,26 +25,30 @@ func _ready() -> void:
 	momentumZone = $"../RivalMomentum"
 	cardSearch = $"../../Field/SearchBox"
 
-func move_to(sourceZone, destinationZone, indexID, faceup):
+@rpc("any_peer")
+func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 	#if card obj hasn't been spawned yet spawn it
 	var card
 	match sourceZone:
 		"character":
-			card = indexID
+			card = card_oldRef
 		"deck":
-			card = deckZone.get_card_by_indexID(indexID)
+			if(destinationZone != "character"):
+				card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			else:
+				card = card_oldRef
 		"hand":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 		"cardpool":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 		"discard":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 		"stage":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 		"momentum":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 		"removed":
-			card = deckZone.get_card_by_indexID(indexID)
+			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
 
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)

@@ -26,6 +26,7 @@ func _ready() -> void:
 	cardSearch = $"../../Field/SearchBox"
 
 func move_to(destinationZone, card, faceup):
+	$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
 	#if card obj hasn't been spawned yet spawn it
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)

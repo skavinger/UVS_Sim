@@ -222,13 +222,6 @@ func add_card_to_bottom(card):
 	cardMan.despwan_card(card.cardObj)
 	card.cardObj = null
 
-@rpc("any_peer")
-func to_hand(ID):
-	for i in range(deck.size()):
-		if deck[i].indexID == ID:
-			transitZone.move_to("deck", "hand", deck[i].indexID, true)
-			return
-
 func eraseCard(card):
 	deck.erase(card)
 	if deck.size() == 0:

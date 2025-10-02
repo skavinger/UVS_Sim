@@ -233,7 +233,6 @@ func draw_card(count):
 	for i in count:
 		var card_drawn = deck[0]
 		transitZone.move_to("hand", card_drawn, true)
-		$"../../Rival/RivalDeck".rpc("to_hand", card_drawn.indexID)
 
 func eraseCard(card):
 	deck.erase(card)
