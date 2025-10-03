@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ce8st7wb6l6ju" path="res://GameObj/playerZones.tscn" id="3_loro6"]
 [ext_resource type="PackedScene" uid="uid://c6gl57k40v4qq" path="res://GameObj/rivalZones.tscn" id="4_4gn13"]
 [ext_resource type="Script" uid="uid://bms41whcjlhpa" path="res://Scripts/Game_Setup.gd" id="6_4gn13"]
-[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://GameObj/sync_functions.gd" id="7_vreb5"]
+[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://Scripts/sync_functions.gd" id="7_vreb5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a72vk")
