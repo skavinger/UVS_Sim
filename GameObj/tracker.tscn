@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmsu0lhtknsva"]
+
+[ext_resource type="Texture2D" uid="uid://mukojxyp1cbv" path="res://Assets/speedanddamage.png" id="1_4jxsi"]
+[ext_resource type="Texture2D" uid="uid://0000eykrjlhu" path="res://Assets/mid.png" id="2_ca3ep"]
+[ext_resource type="Texture2D" uid="uid://dfbdgxpf5844v" path="res://Assets/Damage.png" id="3_e5m24"]
+[ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="4_cnx4l"]
+[ext_resource type="Script" uid="uid://sxxb8k7h7y0q" path="res://GameObj/TrackerArrows.gd" id="5_e5m24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnx4l"]
+size = Vector2(40, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti6qq"]
+size = Vector2(307, 777)
+
+[node name="Tracker" type="Node2D"]
+z_index = 1000
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(2058, 540)
+texture = ExtResource("1_4jxsi")
+
+[node name="Speed" type="Sprite2D" parent="."]
+position = Vector2(2088, 430)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_ca3ep")
+
+[node name="Damage" type="Sprite2D" parent="."]
+position = Vector2(2088, 700)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_e5m24")
+
+[node name="ArrowsNode" type="Node2D" parent="."]
+script = ExtResource("5_e5m24")
+
+[node name="Arrows" type="Sprite2D" parent="ArrowsNode"]
+position = Vector2(1910, 217)
+rotation = 3.14159
+texture = ExtResource("4_cnx4l")
+
+[node name="ArrowArea" type="Area2D" parent="ArrowsNode"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowsNode/ArrowArea"]
+position = Vector2(1905, 216.5)
+shape = SubResource("RectangleShape2D_cnx4l")
+
+[node name="Back" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back"]
+position = Vector2(2075.5, 541.5)
+shape = SubResource("RectangleShape2D_ti6qq")
