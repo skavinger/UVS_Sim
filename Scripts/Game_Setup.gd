@@ -19,15 +19,6 @@ func initCharacters():
 			"cardObj": null
 		}, false)
 	
-	
-	var rivalStartingCharacter = $Rival.get_node("RivalDeck").decklist.character.cardID
-	$"Rival/RivalTransit".move_to("character", "character", {
-			"cardID": rivalStartingCharacter,
-			"cardProperties": $"Rival/RivalDeck".card_database.CARDS[rivalStartingCharacter.set][rivalStartingCharacter.number],
-			"cardState": $"Rival/RivalDeck".cardState.duplicate(),
-			"cardObj": null
-		}, false)
-	
 
 func startingHands():
 	$"Player/Deck".drawToHandSize()

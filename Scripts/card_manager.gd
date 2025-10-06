@@ -92,28 +92,3 @@ func search_card_unselected():
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
 		selected_card = null
-
-func connect_card_signals(card):
-	card.connect("hovered", on_hovered_card)
-	card.connect("hovered_off", on_hovered_off_card)
-	
-func on_hovered_card(card):
-	if inputMan.raycast_at_curser() == card:
-		is_hovering = true
-		highlight_card(card, true)
-	else:
-		highlight_card(card, false)
-	
-func on_hovered_off_card(card):
-	highlight_card(card, false)
-	var new_card_hovered = inputMan.raycast_at_curser()
-	if new_card_hovered:
-		highlight_card(new_card_hovered, true)
-	else:
-		is_hovering = false
-	
-func highlight_card(card, hovered):
-	if hovered:
-		card.scale = Vector2(1.05,1.05)
-	else:
-		card.scale = Vector2(1,1)

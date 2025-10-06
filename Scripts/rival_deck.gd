@@ -184,7 +184,6 @@ func _ready() -> void:
 				"cardObj": null
 			})
 			cardCount = cardCount + 1
-	deck.shuffle()
 	
 	#init deck buttons
 	for i in range(buttons.size()):

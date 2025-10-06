@@ -18,7 +18,6 @@ var cardMan
 var cardMeta
 
 func _ready() -> void:
-	get_parent().connect_card_signals(self)
 	transitZone = $"../../RivalTransit"
 	cardMan = $"../../RivalCardManager"
 
