@@ -27,8 +27,12 @@ func _input(event):
 				new_obj.toggleInspector()
 			elif new_obj != null and new_obj.objType == "trackerArrows":
 				new_obj.toggleTracker()
-			elif new_obj != null and (new_obj.objType == "high" or new_obj.objType == "mid" or new_obj.objType == "low"):
+			elif new_obj != null and (new_obj.objType == "high" or 
+			new_obj.objType == "mid" or 
+			new_obj.objType == "low"):
 				new_obj.changeZone()
+			elif new_obj != null and new_obj.objType == "trackerValueAdjuster":
+				new_obj.adjstValue()
 			else:
 				if obj_selected:
 					match obj_selected.objType:
