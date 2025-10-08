@@ -14,10 +14,11 @@ var transitZone
 var cardMan
 var card_database
 
-var cardState = {
+var defaultCardState = {
 	"faceup": false,
 	"currentZone": "deck",
-	"committed": false
+	"committed": false,
+	"maxHealth": null
 }
 
 const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 
@@ -192,7 +193,7 @@ func _ready() -> void:
 				"cardID": decklist.main[i].cardID,
 				"indexID": cardCount,
 				"cardProperties": card_database.CARDS[decklist.main[i].cardID.set][decklist.main[i].cardID.number],
-				"cardState": cardState.duplicate(),
+				"cardState": defaultCardState.duplicate(),
 				"cardObj": null
 			})
 			cardCount = cardCount + 1

@@ -15,10 +15,11 @@ func initCharacters():
 	$"Player/Transit".move_to("character", {
 			"cardID": startingCharacter,
 			"cardProperties": $"Player/Deck".card_database.CARDS[startingCharacter.set][startingCharacter.number],
-			"cardState": $"Player/Deck".cardState.duplicate(),
+			"cardState": $"Player/Deck".defaultCardState.duplicate(),
 			"cardObj": null
 		}, false)
 	$"../SyncFunctions".setPlayerHealth($"Player/Stage".starting_character.cardProperties.Health)
+	$"Player/Stage".starting_character.cardState.maxHealth = $"Player/Stage".starting_character.cardProperties.Health
 
 func startingHands():
 	$"Player/Deck".drawToHandSize()

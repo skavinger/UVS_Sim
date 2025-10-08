@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bmsu0lhtknsva"]
+[gd_scene load_steps=35 format=3 uid="uid://bmsu0lhtknsva"]
 
 [ext_resource type="Texture2D" uid="uid://mukojxyp1cbv" path="res://Assets/speedanddamage.png" id="1_4jxsi"]
 [ext_resource type="Script" uid="uid://ctjbjb8kngycc" path="res://GameObj/tracker.gd" id="1_gahfr"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://sxxb8k7h7y0q" path="res://GameObj/TrackerArrows.gd" id="5_e5m24"]
 [ext_resource type="Script" uid="uid://nypywlfn8plt" path="res://GameObj/speedplus.gd" id="6_1uj1f"]
 [ext_resource type="Script" uid="uid://8l2305qdxkeo" path="res://GameObj/speedminus.gd" id="7_v82pi"]
+[ext_resource type="Script" uid="uid://3ldecx03nu63" path="res://GameObj/healthMinus.gd" id="16_1uj1f"]
+[ext_resource type="Script" uid="uid://cpin8wns2s0mx" path="res://GameObj/healthPlus.gd" id="16_v82pi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gahfr"]
 size = Vector2(70, 75)
@@ -40,23 +42,32 @@ size = Vector2(94, 59)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnx4l"]
 size = Vector2(40, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee1ig"]
+size = Vector2(97, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6luso"]
+size = Vector2(106, 73)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjqgl"]
-size = Vector2(303, 194)
+size = Vector2(304, 194)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q2m2"]
 size = Vector2(95, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cauk8"]
-size = Vector2(232, 412)
+size = Vector2(235, 338)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2277f"]
-size = Vector2(42, 179)
+size = Vector2(45, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmlfb"]
 size = Vector2(70, 115)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpuio"]
-size = Vector2(70, 155)
+size = Vector2(70, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr4ul"]
+size = Vector2(102, 73)
 
 [node name="Tracker" type="Node2D"]
 z_index = 1000
@@ -211,10 +222,58 @@ texture = ExtResource("4_cnx4l")
 position = Vector2(1905, 216.5)
 shape = SubResource("RectangleShape2D_cnx4l")
 
+[node name="HealthAdjuster" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HealthAdjuster"]
+offset_left = 2007.0
+offset_top = 836.0
+offset_right = 2153.0
+offset_bottom = 864.0
+text = "Your Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="HealthAdjuster"]
+offset_left = 2031.0
+offset_top = 864.0
+offset_right = 2135.0
+offset_bottom = 923.0
+theme_override_font_sizes/font_size = 25
+alignment = 1
+virtual_keyboard_type = 2
+
+[node name="Plus" type="Node2D" parent="HealthAdjuster"]
+z_index = 1020
+script = ExtResource("16_v82pi")
+
+[node name="Plus" type="Sprite2D" parent="HealthAdjuster/Plus"]
+position = Vector2(2170, 895)
+texture = ExtResource("2_dfams")
+
+[node name="Area2D" type="Area2D" parent="HealthAdjuster/Plus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthAdjuster/Plus/Area2D"]
+position = Vector2(2181.5, 893.5)
+shape = SubResource("RectangleShape2D_ee1ig")
+
+[node name="Minus" type="Node2D" parent="HealthAdjuster"]
+z_index = 1020
+script = ExtResource("16_1uj1f")
+
+[node name="Minus" type="Sprite2D" parent="HealthAdjuster/Minus"]
+position = Vector2(1995, 895)
+texture = ExtResource("3_tjqgl")
+
+[node name="Area2D" type="Area2D" parent="HealthAdjuster/Minus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthAdjuster/Minus/Area2D"]
+position = Vector2(1978, 893.5)
+shape = SubResource("RectangleShape2D_6luso")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2077.5, 252)
+position = Vector2(2078, 252)
 shape = SubResource("RectangleShape2D_tjqgl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
@@ -222,11 +281,11 @@ position = Vector2(2043.5, 434)
 shape = SubResource("RectangleShape2D_0q2m2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2111, 725)
+position = Vector2(2112.5, 688)
 shape = SubResource("RectangleShape2D_cauk8")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2206, 435.5)
+position = Vector2(2207.5, 434)
 shape = SubResource("RectangleShape2D_2277f")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
@@ -234,5 +293,9 @@ position = Vector2(1960, 576.5)
 shape = SubResource("RectangleShape2D_fmlfb")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1960, 853.5)
+position = Vector2(1960, 816.5)
 shape = SubResource("RectangleShape2D_lpuio")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2082, 893.5)
+shape = SubResource("RectangleShape2D_dr4ul")
