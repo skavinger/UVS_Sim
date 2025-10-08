@@ -299,3 +299,31 @@ shape = SubResource("RectangleShape2D_lpuio")
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2082, 893.5)
 shape = SubResource("RectangleShape2D_dr4ul")
+
+[node name="BlockStates" type="Node2D" parent="."]
+z_index = 1020
+
+[node name="FullBlock" type="Button" parent="BlockStates"]
+offset_left = 1930.0
+offset_top = 200.0
+offset_right = 2025.0
+offset_bottom = 250.0
+text = "Full"
+
+[node name="PartialBlock" type="Button" parent="BlockStates"]
+offset_left = 2030.0
+offset_top = 200.0
+offset_right = 2125.0
+offset_bottom = 250.0
+text = "Partial"
+
+[node name="Unblocked" type="Button" parent="BlockStates"]
+offset_left = 2130.0
+offset_top = 200.0
+offset_right = 2225.0
+offset_bottom = 250.0
+text = "Unblocked"
+
+[connection signal="pressed" from="BlockStates/FullBlock" to="." method="_on_full_block_pressed"]
+[connection signal="pressed" from="BlockStates/PartialBlock" to="." method="_on_partial_block_pressed"]
+[connection signal="pressed" from="BlockStates/Unblocked" to="." method="_on_unblocked_pressed"]
