@@ -18,7 +18,7 @@ func initCharacters():
 			"cardState": $"Player/Deck".cardState.duplicate(),
 			"cardObj": null
 		}, false)
-	
+	$"../SyncFunctions".setPlayerHealth($"Player/Stage".starting_character.cardProperties.Health)
 
 func startingHands():
 	$"Player/Deck".drawToHandSize()
