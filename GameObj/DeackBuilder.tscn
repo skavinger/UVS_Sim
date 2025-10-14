@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8bvy6da0211j"]
-
-[ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="1_lietw"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("1_lietw")

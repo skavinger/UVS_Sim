@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8bvy6da0211j"]
+
+[ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
+[ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bjh7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_km7lk")
+
+[node name="Back" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 992.0
+offset_right = 180.0
+offset_bottom = 1069.0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

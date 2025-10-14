@@ -1,15 +1,23 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxeob10d43js3"]
 
-[ext_resource type="Script" uid="uid://b3gqpx2cha7rq" path="res://GameObj/start_window.gd" id="1_i73ei"]
+[ext_resource type="Script" uid="uid://b3gqpx2cha7rq" path="res://Scripts/start_window.gd" id="1_i73ei"]
 
 [node name="StartWindow" type="Node2D"]
 script = ExtResource("1_i73ei")
 
 [node name="Connect" type="Button" parent="."]
-offset_left = 37.0
-offset_top = 153.0
-offset_right = 250.0
-offset_bottom = 277.0
+offset_left = 40.0
+offset_top = 160.0
+offset_right = 340.0
+offset_bottom = 310.0
 text = "Connect"
 
+[node name="DeckBuilder" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 350.0
+offset_right = 340.0
+offset_bottom = 500.0
+text = "Deck Builder"
+
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="DeckBuilder" to="." method="_on_deck_builder_pressed"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=8 format=3 uid="uid://bm7g830g0hx0o"]
 
-[ext_resource type="Script" uid="uid://4acndei3x1q7" path="res://GameObj/StartScreen.gd" id="1_yhcre"]
-[ext_resource type="Script" uid="uid://kog2f0522r3f" path="res://GameObj/connect.gd" id="3_4gn13"]
-[ext_resource type="Script" uid="uid://cij1je8w5vjjx" path="res://GameObj/start_window_holder.gd" id="4_loro6"]
+[ext_resource type="Script" uid="uid://4acndei3x1q7" path="res://Scripts/StartScreen.gd" id="1_yhcre"]
+[ext_resource type="Script" uid="uid://kog2f0522r3f" path="res://Scripts/connect.gd" id="3_4gn13"]
+[ext_resource type="Script" uid="uid://cij1je8w5vjjx" path="res://Scripts/start_window_holder.gd" id="4_loro6"]
 [ext_resource type="PackedScene" uid="uid://dj37b2kuixv20" path="res://GameObj/connection_window.tscn" id="4_vreb5"]
 [ext_resource type="PackedScene" uid="uid://bxeob10d43js3" path="res://GameObj/start_window.tscn" id="5_4gn13"]
+[ext_resource type="Script" uid="uid://bycrnplcoascl" path="res://Scripts/deckbuilder_holder.gd" id="6_vreb5"]
+[ext_resource type="PackedScene" uid="uid://c8bvy6da0211j" path="res://GameObj/DeckBuilder.tscn" id="7_ii5oo"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yhcre")
@@ -16,3 +18,7 @@ ConnectWindow = ExtResource("4_vreb5")
 [node name="StartWindowHolder" type="Node2D" parent="."]
 script = ExtResource("4_loro6")
 StartWindow = ExtResource("5_4gn13")
+
+[node name="DeckbuilderHolder" type="Node2D" parent="."]
+script = ExtResource("6_vreb5")
+DeckbuilderWindow = ExtResource("7_ii5oo")
