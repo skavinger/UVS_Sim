@@ -37,8 +37,12 @@ func _on_join_pressed() -> void:
 	$InputManager.rivalLoaded()
 	
 	multiplayer.connected_to_server.connect(_on_server_connected)
-	
-	
+
+
+func _on_back_pressed() -> void:
+	$"../../StartWindowHolder".spawnWindow()
+	$"..".closeWindow()
+
 func _on_peer_connected(_peer_id):
 	var rival = rivalZones.instantiate()
 	$Game.add_child(rival)
@@ -59,3 +63,5 @@ func disable_buttons():
 	$Host.visible = false
 	$Join.disabled =true
 	$Join.visible = false
+	$Back.disabled = true
+	$Back.visible = false

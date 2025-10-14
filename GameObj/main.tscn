@@ -1,41 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=6 format=3 uid="uid://bm7g830g0hx0o"]
 
-[ext_resource type="Script" uid="uid://bvql6pavq0yj" path="res://Scripts/Multiplayer.gd" id="1_a72vk"]
-[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="1_loro6"]
-[ext_resource type="PackedScene" uid="uid://ciimi8mjv1004" path="res://GameObj/field.tscn" id="2_yhcre"]
-[ext_resource type="PackedScene" uid="uid://ce8st7wb6l6ju" path="res://GameObj/playerZones.tscn" id="3_loro6"]
-[ext_resource type="PackedScene" uid="uid://c6gl57k40v4qq" path="res://GameObj/rivalZones.tscn" id="4_4gn13"]
-[ext_resource type="Script" uid="uid://bms41whcjlhpa" path="res://Scripts/Game_Setup.gd" id="6_4gn13"]
-[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://Scripts/sync_functions.gd" id="7_vreb5"]
+[ext_resource type="Script" uid="uid://4acndei3x1q7" path="res://GameObj/StartScreen.gd" id="1_yhcre"]
+[ext_resource type="Script" uid="uid://kog2f0522r3f" path="res://GameObj/connect.gd" id="3_4gn13"]
+[ext_resource type="Script" uid="uid://cij1je8w5vjjx" path="res://GameObj/start_window_holder.gd" id="4_loro6"]
+[ext_resource type="PackedScene" uid="uid://dj37b2kuixv20" path="res://GameObj/connection_window.tscn" id="4_vreb5"]
+[ext_resource type="PackedScene" uid="uid://bxeob10d43js3" path="res://GameObj/start_window.tscn" id="5_4gn13"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_a72vk")
-gameField = ExtResource("2_yhcre")
-playerZones = ExtResource("3_loro6")
-rivalZones = ExtResource("4_4gn13")
+script = ExtResource("1_yhcre")
 
-[node name="InputManager" type="Node2D" parent="."]
-script = ExtResource("1_loro6")
+[node name="ConnectWindowHolder" type="Node2D" parent="."]
+script = ExtResource("3_4gn13")
+ConnectWindow = ExtResource("4_vreb5")
 
-[node name="Host" type="Button" parent="."]
-offset_left = 366.0
-offset_top = 363.0
-offset_right = 650.0
-offset_bottom = 613.0
-text = "Host"
-
-[node name="Join" type="Button" parent="."]
-offset_left = 1275.0
-offset_top = 411.0
-offset_right = 1544.0
-offset_bottom = 624.0
-text = "Join"
-
-[node name="Game" type="Node2D" parent="."]
-script = ExtResource("6_4gn13")
-
-[node name="SyncFunctions" type="Node2D" parent="."]
-script = ExtResource("7_vreb5")
-
-[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[node name="StartWindowHolder" type="Node2D" parent="."]
+script = ExtResource("4_loro6")
+StartWindow = ExtResource("5_4gn13")

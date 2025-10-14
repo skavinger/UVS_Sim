@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj37b2kuixv20"]
+
+[ext_resource type="Script" uid="uid://bvql6pavq0yj" path="res://Scripts/Multiplayer.gd" id="1_gjsd6"]
+[ext_resource type="PackedScene" uid="uid://ciimi8mjv1004" path="res://GameObj/field.tscn" id="2_276eh"]
+[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://Scripts/sync_functions.gd" id="2_yikwi"]
+[ext_resource type="Script" uid="uid://bms41whcjlhpa" path="res://Scripts/Game_Setup.gd" id="3_0d5q0"]
+[ext_resource type="PackedScene" uid="uid://ce8st7wb6l6ju" path="res://GameObj/playerZones.tscn" id="3_wmk42"]
+[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="4_276eh"]
+[ext_resource type="PackedScene" uid="uid://c6gl57k40v4qq" path="res://GameObj/rivalZones.tscn" id="4_jbur0"]
+
+[node name="ConnectionWindow" type="Node2D"]
+script = ExtResource("1_gjsd6")
+gameField = ExtResource("2_276eh")
+playerZones = ExtResource("3_wmk42")
+rivalZones = ExtResource("4_jbur0")
+
+[node name="SyncFunctions" type="Node2D" parent="."]
+script = ExtResource("2_yikwi")
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("3_0d5q0")
+
+[node name="Join" type="Button" parent="."]
+offset_left = 1275.0
+offset_top = 411.0
+offset_right = 1544.0
+offset_bottom = 624.0
+text = "Join"
+
+[node name="Host" type="Button" parent="."]
+offset_left = 366.0
+offset_top = 363.0
+offset_right = 650.0
+offset_bottom = 613.0
+text = "Host"
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("4_276eh")
+
+[node name="Back" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 55.0
+offset_right = 276.0
+offset_bottom = 169.0
+text = "Back"
+
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
