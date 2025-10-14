@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ogjgvd3et1c"]
+
+[ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="1_uo8ty"]
+
+[node name="ListCard" type="Control"]
+custom_minimum_size = Vector2(77, 130)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 77.0
+offset_bottom = 130.0
+
+[node name="CardImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 751.0
+offset_bottom = 1050.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_uo8ty")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 107.0
+offset_right = 76.0
+offset_bottom = 130.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Card Name"
+horizontal_alignment = 1
+vertical_alignment = 1

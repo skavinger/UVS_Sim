@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8bvy6da0211j"]
+[gd_scene load_steps=4 format=3 uid="uid://c8bvy6da0211j"]
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
+[ext_resource type="PackedScene" uid="uid://d0ogjgvd3et1c" path="res://GameObj/list_card.tscn" id="3_km7lk"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bjh7i")
@@ -16,5 +17,28 @@ offset_top = 992.0
 offset_right = 180.0
 offset_bottom = 1069.0
 text = "Back"
+
+[node name="DecklistBox" type="Control" parent="."]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 445.0
+offset_top = 245.0
+offset_right = 1110.0
+offset_bottom = 1035.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DecklistBox"]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 0
+offset_right = 665.0
+offset_bottom = 790.0
+
+[node name="GridContainer" type="GridContainer" parent="DecklistBox/ScrollContainer"]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 2
+columns = 8
+
+[node name="ListCard" parent="DecklistBox/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
+layout_mode = 2
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
