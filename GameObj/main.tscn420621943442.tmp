@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=10 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://4acndei3x1q7" path="res://Scripts/StartScreen.gd" id="1_yhcre"]
 [ext_resource type="Script" uid="uid://kog2f0522r3f" path="res://Scripts/connect.gd" id="3_4gn13"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bycrnplcoascl" path="res://Scripts/deckbuilder_holder.gd" id="6_vreb5"]
 [ext_resource type="PackedScene" uid="uid://c8bvy6da0211j" path="res://GameObj/DeckBuilder.tscn" id="7_ii5oo"]
 [ext_resource type="Script" uid="uid://bk1dku85mwat7" path="res://Scripts/card_data_base_handler.gd" id="8_xmt4q"]
+[ext_resource type="PackedScene" uid="uid://cxdmoqpw06ugg" path="res://GameObj/card_database_entry.tscn" id="9_p20hj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yhcre")
@@ -26,3 +27,5 @@ DeckbuilderWindow = ExtResource("7_ii5oo")
 
 [node name="CardDataBaseHandler" type="Node2D" parent="."]
 script = ExtResource("8_xmt4q")
+
+[node name="CardDatabaseEntry" parent="CardDataBaseHandler" instance=ExtResource("9_p20hj")]

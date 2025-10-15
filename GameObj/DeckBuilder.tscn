@@ -41,4 +41,27 @@ columns = 8
 [node name="ListCard" parent="DecklistBox/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
 layout_mode = 2
 
+[node name="CardDatabaseList" type="Control" parent="."]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1193.0
+offset_top = 243.0
+offset_right = 1858.0
+offset_bottom = 1033.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CardDatabaseList"]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="CardDatabaseList/ScrollContainer"]
+custom_minimum_size = Vector2(665, 790)
+layout_mode = 2
+columns = 8
+
+[node name="ListCard" parent="CardDatabaseList/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
+layout_mode = 2
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,12 +1,12 @@
 extends Node2D
 
 func setPlayerHealth(health):
-	$"../Game/Field/PlayerHealth/Label".text = str(health)
+	$"../Game/Field/PlayerHealth/Label".text = str(int(health))
 	rpc("syncHealth", health)
 	
 @rpc("any_peer")
 func syncHealth(health):
-	$"../Game/Field/RivalHealth/Label".text = str(health)
+	$"../Game/Field/RivalHealth/Label".text = str(int(health))
 
 func gainHealth(amount):
 	var maxHP = $"../Game/Player/Stage".starting_character.cardState.maxHealth

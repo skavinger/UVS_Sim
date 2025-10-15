@@ -8,7 +8,6 @@ var is_hovering
 
 var inputMan
 var transitZone
-var cardDatabase
 
 var cardInspector
 
@@ -17,12 +16,11 @@ func _ready() -> void:
 	inputMan = $"../../../InputManager"
 	transitZone = $"../RivalTransit"
 	cardInspector = $"../../Field/CardInspector"
-	cardDatabase = preload("res://Scripts/card_database.gd")
 	
 func spawn_card(card):
 	var new_card = preload(CARD_SCENE_PATH).instantiate()
 	self.add_child(new_card)
-	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/" + card.cardID.number + ".jpg")
+	new_card.get_node("CardFront").texture = load("res://Assets/Sets/" + card.cardID.set + "/Images/" + card.cardID.number + ".jpg")
 	new_card.setMeta(card)
 	new_card.rotation = PI
 	return new_card

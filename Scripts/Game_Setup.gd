@@ -11,10 +11,11 @@ func client_setup():
 	
 
 func initCharacters():
+	var card_database = get_node("/root/Main/CardDataBaseHandler")
 	var startingCharacter = $"Player/Deck".decklist.character.cardID
 	$"Player/Transit".move_to("character", {
 			"cardID": startingCharacter,
-			"cardProperties": $"Player/Deck".card_database.CARDS[startingCharacter.set][startingCharacter.number],
+			"cardProperties": card_database.getCard(startingCharacter),
 			"cardState": $"Player/Deck".defaultCardState.duplicate(),
 			"cardObj": null
 		}, false)

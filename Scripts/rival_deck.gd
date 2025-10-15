@@ -28,7 +28,7 @@ func _ready() -> void:
 	transitZone = $"../RivalTransit"
 	cardMan = $"../RivalCardManager"
 	#load decklist from deck
-	card_database = preload("res://Scripts/card_database.gd")
+	card_database = get_node("/root/Main/CardDataBaseHandler")
 	decklist = {
 		"character": {
 			"cardID" : {
@@ -179,7 +179,7 @@ func _ready() -> void:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
 				"indexID": cardCount,
-				"cardProperties": card_database.CARDS[decklist.main[i].cardID.set][decklist.main[i].cardID.number],
+				"cardProperties": card_database.getCard(decklist.main[i].cardID),
 				"cardState": cardState.duplicate(),
 				"cardObj": null
 			})
