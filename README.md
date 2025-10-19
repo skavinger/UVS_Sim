@@ -1,15 +1,17 @@
+Dataset repo: https://github.com/skavinger/UVS_Dataset
+
 TO DO for Manual Sim
-1) Add start screen/lobby
+1) Add ~~start screen~~ /lobby
 2) Add Deck builder
 3) Implement multiplayer/networking code/User manager(maybe use something like Google login to save having to make and track our own user profiles)
 4) ~~Add zone search for searching deck/discard/removed~~
 5) ~~Finish adding zone movement code(missing Stage and Momentum)~~
-6) Add commiting cards
-7) Add health tracker
-8) Add Speed/Zone/Damage tracker with reset button (4M4 seems a decent reset value)
+6) ~~Add commiting cards~~
+7) ~~Add health tracker~~
+8) ~~Add Speed/Zone/Damage tracker with reset button (4M4 seems a decent reset value)~~
 9) Fix update_pos code to compress space between cards if it starts exceeding the length of the zone, maybe add a zone search button for the zone when that happens
 10) Add cycle button probally to discard
-11) Populate card database (I have an old script to scrape UVS Ultra I can repurpose for this)
+11) ~~Populate card database (I have an old script to scrape UVS Ultra I can repurpose for this)~~
 12) ~~Add card inspector that lists the cards info when the card is selected~~
 
 
