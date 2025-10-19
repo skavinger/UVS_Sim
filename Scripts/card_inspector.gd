@@ -21,7 +21,7 @@ func toggleInspector():
 
 func showInspector(card):
 	self.z_index = 1000
-	self.get_node("Card").texture = load("res://Assets/Sets/" + card.cardID.set + "/Images/" + card.cardID.number + ".jpg")
+	self.get_node("Card").texture = CardDatabase.get_card_art(card.cardID)
 	genCardText(self.get_node("ScrollContainer/Cardtext"), card)
 	
 func hideInspector():

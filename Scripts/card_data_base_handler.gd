@@ -4,8 +4,8 @@ const DATABASE_ENTRY_PATH = "res://GameObj/card_database_entry.tscn"
 
 func _ready() -> void:
 	#populateCardDatabase
-	for setName in DirAccess.open("res://Assets/Sets/").get_directories():
-		var setData = FileAccess.get_file_as_string("res://Assets/Sets/" + setName + "/setData.json")
+	for setName in DirAccess.open("user://SetData/").get_directories():
+		var setData = FileAccess.get_file_as_string("user://SetData/" + setName + "/setData.json")
 		setData = JSON.parse_string(setData)
 		var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
 		self.add_child(newEntry)
@@ -17,3 +17,7 @@ func getCard(cardID):
 	for i in range(dataBaseEntries.size()):
 		if(dataBaseEntries[i].setName == cardID.set):
 			return dataBaseEntries[i].cards[cardID.number]
+
+func get_card_art(cardID):
+	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images/" + cardID.number + ".jpg")
+	return ImageTexture.create_from_image(image)

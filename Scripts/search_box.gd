@@ -16,7 +16,7 @@ func displaySearchBox(cardsToSearch, zone, buttons):
 	for i in range(cardsToSearch.size()):
 		var searchable = preload(SEARCHABLE_CARD_SCENE_PATH).instantiate()
 		$Control/ScrollContainer/HBoxContainer.add_child(searchable)
-		searchable.get_node("TextureRect").texture = load("res://Assets/Sets/" + cardsToSearch[i].cardID.set + "/Images/" + cardsToSearch[i].cardID.number + ".jpg")
+		searchable.get_node("TextureRect").texture = CardDatabase.get_card_art(cardsToSearch[i].cardID)
 		searchable.get_node("RichTextLabel").text = cardsToSearch[i].cardProperties.Name
 		searchable.set_buttons(cardsToSearch[i], buttons)
 		searchable.setMeta(cardsToSearch[i])

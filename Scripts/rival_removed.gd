@@ -36,7 +36,7 @@ func get_card_by_indexID(ID):
 func change_top():
 	if(removed.size() > 0):
 		self.get_node("Sprite2D").visible = true
-		self.get_node("Sprite2D").texture = load("res://Assets/Sets/" + removed[0].cardID.set + "/" + removed[0].cardID.number + ".jpg")
+		self.get_node("Sprite2D").texture = CardDatabase.get_card_art(removed[0].cardID)
 	else:
 		self.get_node("Sprite2D").visible = false
 

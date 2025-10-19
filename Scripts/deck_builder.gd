@@ -24,10 +24,10 @@ func populateDeckList():
 	var Foundations = []
 	
 	for i in range(decklist.main.size()):
-		var cardData = $"../../CardDataBaseHandler".getCard(decklist.main[i].cardID)
+		var cardData = CardDatabase.getCard(decklist.main[i].cardID)
 		for j in range(decklist.main[i].count):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = load("res://Assets/Sets/" + decklist.main[i].cardID.set + "/Images/" + decklist.main[i].cardID.number + ".jpg")
+			card.get_node("CardImage").texture = CardDatabase.get_card_art(decklist.main[i].cardID)
 			card.get_node("CardName").text = cardData.Name
 			card.cardMeta = cardData
 			match cardData.Cardtype:
