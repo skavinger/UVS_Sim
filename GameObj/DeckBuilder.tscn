@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8bvy6da0211j"]
+[gd_scene load_steps=5 format=3 uid="uid://c8bvy6da0211j"]
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
+[ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="3_iy3ux"]
 [ext_resource type="PackedScene" uid="uid://d0ogjgvd3et1c" path="res://GameObj/list_card.tscn" id="3_km7lk"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bjh7i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("2_km7lk")
 
@@ -18,27 +19,124 @@ offset_right = 180.0
 offset_bottom = 1069.0
 text = "Back"
 
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(493, 107)
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("3_iy3ux")
+
+[node name="Cardcounts" type="Node2D" parent="."]
+
+[node name="CharacterCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 680.0
+offset_top = 169.0
+offset_right = 746.0
+offset_bottom = 216.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 754.0
+offset_top = 169.0
+offset_right = 820.0
+offset_bottom = 216.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AssetCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 828.0
+offset_top = 169.0
+offset_right = 894.0
+offset_bottom = 216.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 902.0
+offset_top = 169.0
+offset_right = 968.0
+offset_bottom = 216.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackupCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 976.0
+offset_top = 169.0
+offset_right = 1042.0
+offset_bottom = 216.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoundationCount" type="RichTextLabel" parent="Cardcounts"]
+offset_left = 1050.0
+offset_top = 169.0
+offset_right = 1116.0
+offset_bottom = 216.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DecklistBox" type="Control" parent="."]
-custom_minimum_size = Vector2(665, 790)
+custom_minimum_size = Vector2(665, 620)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 445.0
 offset_top = 245.0
 offset_right = 1110.0
-offset_bottom = 1035.0
+offset_bottom = 865.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DecklistBox"]
-custom_minimum_size = Vector2(665, 790)
+custom_minimum_size = Vector2(665, 620)
 layout_mode = 0
 offset_right = 665.0
-offset_bottom = 790.0
+offset_bottom = 600.0
 
 [node name="GridContainer" type="GridContainer" parent="DecklistBox/ScrollContainer"]
 custom_minimum_size = Vector2(665, 790)
 layout_mode = 2
-columns = 8
+columns = 10
 
 [node name="ListCard" parent="DecklistBox/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
+layout_mode = 2
+
+[node name="SideBoardList" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 445.0
+offset_top = 915.0
+offset_right = 1110.0
+offset_bottom = 1035.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SideBoardList"]
+custom_minimum_size = Vector2(665, 120)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="SideBoardList/ScrollContainer"]
+custom_minimum_size = Vector2(665, 120)
+layout_mode = 2
+columns = 10
+
+[node name="ListCard" parent="SideBoardList/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
 layout_mode = 2
 
 [node name="CardDatabaseList" type="Control" parent="."]
@@ -59,7 +157,7 @@ offset_bottom = 40.0
 [node name="GridContainer" type="GridContainer" parent="CardDatabaseList/ScrollContainer"]
 custom_minimum_size = Vector2(665, 790)
 layout_mode = 2
-columns = 8
+columns = 10
 
 [node name="ListCard" parent="CardDatabaseList/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
 layout_mode = 2
