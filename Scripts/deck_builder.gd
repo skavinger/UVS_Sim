@@ -2,30 +2,45 @@ extends Node2D
 
 const LIST_CARD_SCENE_PATH = "res://GameObj/list_card.tscn"
 
+const PAGESIZE = 300
+
+var page = 0
+var cardDatabaseScreen = []
+
 func _ready() -> void:
 	populateDeckList()
-	populateDatabaseWindow({
-		"sets": []
-	})
+	var filter = {
+		"sets" : ["aot01", "aot02", "aot03"]
+	}
+	fillFilterResults(CardDatabase.getCardsFromFilter(filter))
 
 func _on_back_pressed() -> void:
 	$"../../StartWindowHolder".spawnWindow()
 	$"..".closeWindow()
 
-func populateDatabaseWindow(filters):
+func fillFilterResults(cards):
+	page = 0
+	for i in range(cards.size()):
+		var cardNumbers = cards[i].keys()
+		for j in range(cardNumbers.size()):
+			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
+			card.get_node("CardImage").texture = CardDatabase.get_card_art_small({ "set": cards[i][cardNumbers[j]].setName, "number": cardNumbers[j]})
+			card.get_node("CardName").text =cards[i][cardNumbers[j]].Name
+			card.cardMeta = cards[i][cardNumbers[j]]
+			cardDatabaseScreen.append(card)
+			
+	populateDataBaseWindow()
+
+func populateDataBaseWindow():
 	var dataBaseWindow = $CardDatabaseList/ScrollContainer/GridContainer.get_children()
 	for i in range(dataBaseWindow.size()):
 		$CardDatabaseList/ScrollContainer/GridContainer.remove_child(dataBaseWindow[i])
-	
-	for i in range(filters.sets.size()):
-		var setData = CardDatabase.getSet(filters.sets[i])
-		var setKeys = setData.cards.keys()
-		for j in range(setKeys.size()):
-			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art_small({ "set": filters.sets[i], "number": setKeys[j]})
-			card.get_node("CardName").text = setData.cards[setKeys[j]].Name
-			card.cardMeta = setData.cards[setKeys[j]]
-			$CardDatabaseList/ScrollContainer/GridContainer.add_child(card)
+		
+	$PageCount.text = str(page + 1)
+	for i in PAGESIZE:
+		if (i + (page * PAGESIZE) + 1) > cardDatabaseScreen.size():
+			break
+		$CardDatabaseList/ScrollContainer/GridContainer.add_child(cardDatabaseScreen[i + (page * PAGESIZE)])
 
 func populateDeckList():
 	var decklist = $"../..".currentDeckList
@@ -35,7 +50,8 @@ func populateDeckList():
 	for i in range(deckBuilderList.size()):
 		$DecklistBox/ScrollContainer/GridContainer.remove_child(deckBuilderList[i])
 	
-	$Character.texture = CardDatabase.get_card_art(decklist.character.cardID)
+	$DeckDetails/Character.texture = CardDatabase.get_card_art(decklist.character.cardID)
+	$DeckDetails/CharacterName.text = CardDatabase.getCard(decklist.character.cardID).Name
 	
 	var Characters = []
 	var Actions = []
@@ -130,4 +146,13 @@ func populateDeckList():
 		$SideBoardList/ScrollContainer/GridContainer.add_child(BackupsSide[i])
 	for i in range(FoundationsSide.size()):
 		$SideBoardList/ScrollContainer/GridContainer.add_child(FoundationsSide[i])
-	
+
+func _on_page_back_pressed() -> void:
+	if page > 0:
+		page = page - 1
+		populateDataBaseWindow()
+
+func _on_page_forward_pressed() -> void:
+	if int(cardDatabaseScreen.size() / PAGESIZE) > page :
+		page = page + 1
+		populateDataBaseWindow()

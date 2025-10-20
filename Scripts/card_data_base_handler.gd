@@ -11,6 +11,7 @@ func _ready() -> void:
 		self.add_child(newEntry)
 		newEntry.cards = setData
 		newEntry.setName = setName
+		newEntry.name = setName
 
 func getCard(cardID):
 	var dataBaseEntries = self.get_children()
@@ -23,6 +24,13 @@ func getSet(setData):
 	for i in range(dataBaseEntries.size()):
 		if(dataBaseEntries[i].setName == setData):
 			return dataBaseEntries[i]
+
+func getCardsFromFilter(filter):
+	var returnCards = []
+	for i in range(filter.sets.size()):
+		returnCards.append(getSet(filter.sets[i]).cards)
+	
+	return returnCards
 
 func get_card_art(cardID):
 	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images/" + cardID.number + ".jpg")
