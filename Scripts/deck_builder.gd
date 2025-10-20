@@ -4,10 +4,28 @@ const LIST_CARD_SCENE_PATH = "res://GameObj/list_card.tscn"
 
 func _ready() -> void:
 	populateDeckList()
+	populateDatabaseWindow({
+		"sets": []
+	})
 
 func _on_back_pressed() -> void:
 	$"../../StartWindowHolder".spawnWindow()
 	$"..".closeWindow()
+
+func populateDatabaseWindow(filters):
+	var dataBaseWindow = $CardDatabaseList/ScrollContainer/GridContainer.get_children()
+	for i in range(dataBaseWindow.size()):
+		$CardDatabaseList/ScrollContainer/GridContainer.remove_child(dataBaseWindow[i])
+	
+	for i in range(filters.sets.size()):
+		var setData = CardDatabase.getSet(filters.sets[i])
+		var setKeys = setData.cards.keys()
+		for j in range(setKeys.size()):
+			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
+			card.get_node("CardImage").texture = CardDatabase.get_card_art_small({ "set": filters.sets[i], "number": setKeys[j]})
+			card.get_node("CardName").text = setData.cards[setKeys[j]].Name
+			card.cardMeta = setData.cards[setKeys[j]]
+			$CardDatabaseList/ScrollContainer/GridContainer.add_child(card)
 
 func populateDeckList():
 	var decklist = $"../..".currentDeckList
@@ -30,7 +48,7 @@ func populateDeckList():
 		var cardData = CardDatabase.getCard(decklist.main[i].cardID)
 		for j in range(decklist.main[i].count):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art(decklist.main[i].cardID)
+			card.get_node("CardImage").texture = CardDatabase.get_card_art_small(decklist.main[i].cardID)
 			card.get_node("CardName").text = cardData.Name
 			card.cardMeta = cardData
 			match cardData.Cardtype:
@@ -83,7 +101,7 @@ func populateDeckList():
 		var cardData = CardDatabase.getCard(decklist.side[i].cardID)
 		for j in range(decklist.side[i].count):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art(decklist.side[i].cardID)
+			card.get_node("CardImage").texture = CardDatabase.get_card_art_small(decklist.side[i].cardID)
 			card.get_node("CardName").text = cardData.Name
 			card.cardMeta = cardData
 			match cardData.Cardtype:

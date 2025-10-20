@@ -18,6 +18,16 @@ func getCard(cardID):
 		if(dataBaseEntries[i].setName == cardID.set):
 			return dataBaseEntries[i].cards[cardID.number]
 
+func getSet(setData):
+	var dataBaseEntries = self.get_children()
+	for i in range(dataBaseEntries.size()):
+		if(dataBaseEntries[i].setName == setData):
+			return dataBaseEntries[i]
+
 func get_card_art(cardID):
 	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images/" + cardID.number + ".jpg")
+	return ImageTexture.create_from_image(image)
+
+func get_card_art_small(cardID):
+	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images_small/" + cardID.number + ".jpg")
 	return ImageTexture.create_from_image(image)
