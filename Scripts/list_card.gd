@@ -15,4 +15,4 @@ func _on_card_image_mouse_exited() -> void:
 	$Timer.stop()
 
 func _on_timer_timeout() -> void:
-	emit_signal("hovered", cardMeta)
+	emit_signal("hovered", {"set": cardMeta.setName, "number": cardMeta.cardNumber})

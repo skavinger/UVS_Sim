@@ -55,10 +55,10 @@ func populateDeckList():
 	var sideBuilderList = $SideBoardList/ScrollContainer/GridContainer.get_children()
 	for i in range(deckBuilderList.size()):
 		$SideBoardList/ScrollContainer/GridContainer.remove_child(sideBuilderList[i])
-	$DeckDetails/Character.texture = null
+	$DeckDetails/Character.texture_normal = null
 	
 	if decklist != null:
-		$DeckDetails/Character.texture = CardDatabase.get_card_art(decklist.character.cardID)
+		$DeckDetails/Character.texture_normal = CardDatabase.get_card_art(decklist.character.cardID)
 		$DeckDetails/CharacterName.text = CardDatabase.getCard(decklist.character.cardID).Name
 		$DeckDetails/DeckName.text = decklist.DeckName
 		
@@ -166,10 +166,10 @@ func _on_page_forward_pressed() -> void:
 func connect_signals(cardObj):
 	cardObj.connect("hovered", populateInspector)
 
-func populateInspector(cardMeta):
-	if cardMeta != null:
-		$CardInspector/CardArt.texture = CardDatabase.get_card_art({"set": cardMeta.setName, "number": cardMeta.cardNumber})
-		genCardText(get_node("CardInspector/ScrollContainer/CardText"),cardMeta)
+func populateInspector(cardID):
+	if cardID != null:
+		$CardInspector/CardArt.texture = CardDatabase.get_card_art({"set": cardID.set, "number": cardID.number})
+		genCardText(get_node("CardInspector/ScrollContainer/CardText"),CardDatabase.getCard(cardID))
 
 func genCardText(textbox, card):
 	textbox.text = ""
@@ -207,7 +207,7 @@ func genCardText(textbox, card):
 			textbox.append_text("[color=" + color + "]")
 		textbox.append_text(card.Keywords[i].Name)
 		if(card.Keywords[i].Rating != null):
-			textbox.append_text(" " + str(card.Keywords[i].Rating))
+			textbox.append_text(" " + str(int(card.Keywords[i].Rating)))
 		if(color != ""):
 			textbox.append_text("[/color]")
 		if(i + 1 != card.Keywords.size()):
@@ -288,3 +288,17 @@ func _on_save_pressed() -> void:
 		var saveFile = FileAccess.open("user://Saves/" + fileName,FileAccess.WRITE)
 		saveFile.store_string(JSON.stringify($"../..".currentDeckList))
 		$Save_Load/Saves.get_popup().add_item(fileName)
+
+func _on_deck_name_text_changed(new_text: String) -> void:
+	$"../..".currentDeckList.DeckName = new_text
+
+
+func _on_character_mouse_entered() -> void:
+	$DeckDetails/Timer.start()
+
+func _on_character_mouse_exited() -> void:
+	$DeckDetails/Timer.stop()
+
+func _on_timer_timeout() -> void:
+	if $"../..".currentDeckList != null:
+		populateInspector($"../..".currentDeckList.character.cardID)

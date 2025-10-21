@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8bvy6da0211j"]
+[gd_scene load_steps=4 format=3 uid="uid://c8bvy6da0211j"]
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
-[ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="3_iy3ux"]
-[ext_resource type="PackedScene" uid="uid://d0ogjgvd3et1c" path="res://GameObj/list_card.tscn" id="3_km7lk"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="5_k5e61"]
 
 [node name="Node2D" type="Node2D"]
@@ -22,10 +20,12 @@ text = "Back"
 
 [node name="DeckDetails" type="Node2D" parent="."]
 
-[node name="Character" type="Sprite2D" parent="DeckDetails"]
-position = Vector2(493, 107)
+[node name="Character" type="TextureButton" parent="DeckDetails"]
+offset_left = 435.0
+offset_top = 25.0
+offset_right = 1185.0
+offset_bottom = 1075.0
 scale = Vector2(0.155, 0.155)
-texture = ExtResource("3_iy3ux")
 
 [node name="DeckName" type="LineEdit" parent="DeckDetails"]
 offset_left = 566.0
@@ -40,6 +40,9 @@ offset_right = 1138.0
 offset_bottom = 66.0
 theme_override_constants/outline_size = 8
 text = "Godzilla"
+
+[node name="Timer" type="Timer" parent="DeckDetails"]
+wait_time = 0.5
 
 [node name="Cardcounts" type="Node2D" parent="."]
 
@@ -132,9 +135,6 @@ custom_minimum_size = Vector2(665, 790)
 layout_mode = 2
 columns = 10
 
-[node name="ListCard" parent="DecklistBox/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
-layout_mode = 2
-
 [node name="SideBoardList" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -154,9 +154,6 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2(665, 120)
 layout_mode = 2
 columns = 10
-
-[node name="ListCard" parent="SideBoardList/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
-layout_mode = 2
 
 [node name="CardDatabaseList" type="Control" parent="."]
 custom_minimum_size = Vector2(665, 790)
@@ -178,9 +175,6 @@ offset_bottom = 40.0
 custom_minimum_size = Vector2(665, 790)
 layout_mode = 2
 columns = 10
-
-[node name="ListCard" parent="CardDatabaseList/ScrollContainer/GridContainer" instance=ExtResource("3_km7lk")]
-layout_mode = 2
 
 [node name="Filter" type="Button" parent="."]
 offset_left = 1775.0
@@ -260,6 +254,10 @@ offset_bottom = 945.0
 text = "Load"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="DeckDetails/Character" to="." method="_on_character_mouse_entered"]
+[connection signal="mouse_exited" from="DeckDetails/Character" to="." method="_on_character_mouse_exited"]
+[connection signal="text_changed" from="DeckDetails/DeckName" to="." method="_on_deck_name_text_changed"]
+[connection signal="timeout" from="DeckDetails/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="PageBack" to="." method="_on_page_back_pressed"]
 [connection signal="pressed" from="PageForward" to="." method="_on_page_forward_pressed"]
 [connection signal="pressed" from="Save_Load/Save" to="." method="_on_save_pressed"]
