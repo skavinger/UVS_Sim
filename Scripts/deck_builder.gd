@@ -24,7 +24,7 @@ func fillFilterResults(cards):
 		var cardNumbers = cards[i].keys()
 		for j in range(cardNumbers.size()):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art_small({ "set": cards[i][cardNumbers[j]].setName, "number": cardNumbers[j]})
+			card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small({ "set": cards[i][cardNumbers[j]].setName, "number": cardNumbers[j]})
 			card.get_node("CardName").text =cards[i][cardNumbers[j]].Name
 			card.cardMeta = cards[i][cardNumbers[j]]
 			cardDatabaseScreen.append(card)
@@ -64,7 +64,7 @@ func populateDeckList():
 		var cardData = CardDatabase.getCard(decklist.main[i].cardID)
 		for j in range(decklist.main[i].count):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art_small(decklist.main[i].cardID)
+			card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small(decklist.main[i].cardID)
 			card.get_node("CardName").text = cardData.Name
 			card.cardMeta = cardData
 			match cardData.Cardtype:
@@ -117,7 +117,7 @@ func populateDeckList():
 		var cardData = CardDatabase.getCard(decklist.side[i].cardID)
 		for j in range(decklist.side[i].count):
 			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture = CardDatabase.get_card_art_small(decklist.side[i].cardID)
+			card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small(decklist.side[i].cardID)
 			card.get_node("CardName").text = cardData.Name
 			card.cardMeta = cardData
 			match cardData.Cardtype:
@@ -153,6 +153,104 @@ func _on_page_back_pressed() -> void:
 		populateDataBaseWindow()
 
 func _on_page_forward_pressed() -> void:
+	@warning_ignore("integer_division")
 	if int(cardDatabaseScreen.size() / PAGESIZE) > page :
 		page = page + 1
 		populateDataBaseWindow()
+
+func connect_signals(cardObj):
+	cardObj.connect("hovered", populateInspector)
+
+func populateInspector(cardMeta):
+	$CardInspector/CardArt.texture = CardDatabase.get_card_art({"set": cardMeta.setName, "number": cardMeta.cardNumber})
+	genCardText(get_node("CardInspector/ScrollContainer/CardText"),cardMeta)
+
+func genCardText(textbox, card):
+	textbox.text = ""
+	textbox.append_text(card.Name + "\n")
+	
+	if(card.Cardtype == "Character"):
+		textbox.append_text("[color=purple]")
+	elif(card.Cardtype == "Action"):
+		textbox.append_text("[color=blue]")
+	elif(card.Cardtype == "Asset"):
+		textbox.append_text("[color=green]")
+	elif(card.Cardtype == "Attack"):
+		textbox.append_text("[color=orange]")
+	elif(card.Cardtype == "Backup"):
+		textbox.append_text("[color=pink]")
+	elif(card.Cardtype == "Foundation"):
+		textbox.append_text("[color=grey]")
+	textbox.append_text(card.Cardtype + "[/color]\n")
+	
+	if(card.Difficulty != null):
+		textbox.append_text("Difficulty: " + str(card.Difficulty) + " | " + "Check: " + str(card.Check) + "\n")
+	
+	if(card.HandSize != null):
+		textbox.append_text("Hand Size: " + str(card.HandSize) + " | " + "Health: " + str(card.Health) + "\n")
+	
+	if(card.BlockZone != null):
+		textbox.append_text("Block Zone: " + card.BlockZone + " | " + "Block Modifier: " + str(card.BlockMod) + "\n")
+	
+	if(card.AttackZone != null):
+		textbox.append_text("Speed: " + str(card.Speed) + " | " + "Zone: " + card.AttackZone + " | " + "Damage: " + str(card.Damage) + "\n")
+	
+	for i in range(card.Keywords.size()):
+		var color = checkKeywordColor(card.Keywords[i].Name)
+		if(color != ""):
+			textbox.append_text("[color=" + color + "]")
+		textbox.append_text(card.Keywords[i].Name)
+		if(card.Keywords[i].Rating != null):
+			textbox.append_text(" " + str(card.Keywords[i].Rating))
+		if(color != ""):
+			textbox.append_text("[/color]")
+		if(i + 1 != card.Keywords.size()):
+			textbox.append_text(" | ")
+	
+	textbox.append_text("\n\n")
+	for i in range(card.Abilities.size()):
+		if(card.Abilities[i].Type.contains("Static")):
+			textbox.append_text(card.Abilities[i].Effect + "\n\n")
+		else:
+			if(card.Abilities[i].Type.contains("Enhance")):
+				textbox.append_text("[color=orange]" + card.Abilities[i].Type + "[/color] ")
+			elif(card.Abilities[i].Type.contains("Response")):
+				textbox.append_text("[color=green]" + card.Abilities[i].Type + "[/color] ")
+			elif(card.Abilities[i].Type.contains("Form")):
+				textbox.append_text("[color=lightblue]" + card.Abilities[i].Type + "[/color] ")
+			elif(card.Abilities[i].Type.contains("Blitz")):
+				textbox.append_text("[color=pink]" + card.Abilities[i].Type + "[/color] ")
+			
+			if(card.Abilities[i].Cost != null):
+				textbox.append_text(card.Abilities[i].Cost + ": ")
+			else:
+				textbox.append_text(": ")
+			textbox.append_text(card.Abilities[i].Effect + "\n\n")
+		
+func checkKeywordColor(keyword):
+	if(keyword.contains("Stun") or 
+	keyword.contains("Powerful") or
+	keyword.contains("Ex") or 
+	keyword.contains("Multiple") or 
+	keyword.contains("Gauge")):
+		return "orange"
+	elif(keyword.contains("Echo") or
+	keyword.contains("Breaker") or
+	keyword.contains("Deflect") or
+	keyword.contains("Reversal")):
+		return "green"
+	elif(keyword.contains("Combo") or
+	keyword.contains("Desperation") or
+	keyword.contains("Elusive") or
+	keyword.contains("Flash") or
+	keyword.contains("Only") or 
+	keyword.contains("Safe")or 
+	keyword.contains("Shift") or 
+	keyword.contains("Terrain") or 
+	keyword.contains("Throw") or 
+	keyword.contains("Unique")):
+		return "lightblue"
+	elif(keyword.contains("Frenzy") or
+	keyword.contains("Tension")):
+		return "pink"
+	return ""

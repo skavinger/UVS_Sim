@@ -120,6 +120,7 @@ offset_left = 445.0
 offset_top = 245.0
 offset_right = 1110.0
 offset_bottom = 865.0
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DecklistBox"]
 custom_minimum_size = Vector2(665, 620)
@@ -142,6 +143,7 @@ offset_left = 445.0
 offset_top = 915.0
 offset_right = 1110.0
 offset_bottom = 1035.0
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SideBoardList"]
 custom_minimum_size = Vector2(665, 120)
@@ -165,6 +167,7 @@ offset_left = 1193.0
 offset_top = 100.0
 offset_right = 1858.0
 offset_bottom = 1033.0
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CardDatabaseList"]
 custom_minimum_size = Vector2(665, 933)
@@ -211,6 +214,29 @@ theme_override_font_sizes/normal_font_size = 30
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CardInspector" type="Node2D" parent="."]
+
+[node name="CardArt" type="Sprite2D" parent="CardInspector"]
+position = Vector2(192.00002, 269)
+scale = Vector2(0.51, 0.51)
+texture = ExtResource("3_iy3ux")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CardInspector"]
+custom_minimum_size = Vector2(384, 372)
+offset_top = 538.0
+offset_right = 384.0
+offset_bottom = 910.0
+
+[node name="CardText" type="RichTextLabel" parent="CardInspector/ScrollContainer"]
+custom_minimum_size = Vector2(384, 372)
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PageBack" to="." method="_on_page_back_pressed"]
