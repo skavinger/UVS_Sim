@@ -32,7 +32,6 @@ offset_left = 566.0
 offset_top = 10.0
 offset_right = 1138.0
 offset_bottom = 41.0
-text = "Godzilla Challenger Deck"
 
 [node name="CharacterName" type="RichTextLabel" parent="DeckDetails"]
 offset_left = 570.0
@@ -220,7 +219,6 @@ vertical_alignment = 1
 [node name="CardArt" type="Sprite2D" parent="CardInspector"]
 position = Vector2(192.00002, 269)
 scale = Vector2(0.51, 0.51)
-texture = ExtResource("3_iy3ux")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CardInspector"]
 custom_minimum_size = Vector2(384, 372)
@@ -238,6 +236,31 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 
+[node name="Save_Load" type="Node2D" parent="."]
+
+[node name="Saves" type="MenuButton" parent="Save_Load"]
+offset_left = 4.0
+offset_top = 913.0
+offset_right = 289.0
+offset_bottom = 949.0
+text = "Saves"
+
+[node name="Save" type="Button" parent="Save_Load"]
+offset_left = 294.0
+offset_top = 915.0
+offset_right = 338.0
+offset_bottom = 946.0
+text = "Save"
+
+[node name="Load" type="Button" parent="Save_Load"]
+offset_left = 341.0
+offset_top = 914.0
+offset_right = 387.0
+offset_bottom = 945.0
+text = "Load"
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="PageBack" to="." method="_on_page_back_pressed"]
 [connection signal="pressed" from="PageForward" to="." method="_on_page_forward_pressed"]
+[connection signal="pressed" from="Save_Load/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Save_Load/Load" to="." method="_on_load_pressed"]
