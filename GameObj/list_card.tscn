@@ -34,6 +34,7 @@ texture_normal = ExtResource("1_uo8ty")
 wait_time = 0.5
 one_shot = true
 
+[connection signal="gui_input" from="CardImage" to="." method="_on_card_image_gui_input"]
 [connection signal="mouse_entered" from="CardImage" to="." method="_on_card_image_mouse_entered"]
 [connection signal="mouse_exited" from="CardImage" to="." method="_on_card_image_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

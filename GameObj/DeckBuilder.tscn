@@ -254,6 +254,7 @@ offset_bottom = 945.0
 text = "Load"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="gui_input" from="DeckDetails/Character" to="." method="_on_character_gui_input"]
 [connection signal="mouse_entered" from="DeckDetails/Character" to="." method="_on_character_mouse_entered"]
 [connection signal="mouse_exited" from="DeckDetails/Character" to="." method="_on_character_mouse_exited"]
 [connection signal="text_changed" from="DeckDetails/DeckName" to="." method="_on_deck_name_text_changed"]

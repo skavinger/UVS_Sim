@@ -30,6 +30,7 @@ func fillFilterResults(cards):
 			card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small({ "set": cards[i][cardNumbers[j]].setName, "number": cardNumbers[j]})
 			card.get_node("CardName").text =cards[i][cardNumbers[j]].Name
 			card.cardMeta = cards[i][cardNumbers[j]]
+			card.source = "database"
 			cardDatabaseScreen.append(card)
 			
 	populateDataBaseWindow()
@@ -53,15 +54,16 @@ func populateDeckList():
 		$DecklistBox/ScrollContainer/GridContainer.remove_child(deckBuilderList[i])
 	
 	var sideBuilderList = $SideBoardList/ScrollContainer/GridContainer.get_children()
-	for i in range(deckBuilderList.size()):
+	for i in range(sideBuilderList.size()):
 		$SideBoardList/ScrollContainer/GridContainer.remove_child(sideBuilderList[i])
 	$DeckDetails/Character.texture_normal = null
 	
-	if decklist != null:
-		$DeckDetails/Character.texture_normal = CardDatabase.get_card_art(decklist.character.cardID)
-		$DeckDetails/CharacterName.text = CardDatabase.getCard(decklist.character.cardID).Name
-		$DeckDetails/DeckName.text = decklist.DeckName
-		
+	$DeckDetails/DeckName.text = decklist.DeckName
+	
+	if decklist.character != null:
+		setCharacter(decklist.character.cardID)
+	
+	if decklist.main.size() != 0:
 		var Characters = []
 		var Actions = []
 		var Assets = []
@@ -76,6 +78,7 @@ func populateDeckList():
 				card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small(decklist.main[i].cardID)
 				card.get_node("CardName").text = cardData.Name
 				card.cardMeta = cardData
+				card.source = "deck"
 				match cardData.Cardtype:
 					"Character":
 						Characters.push_back(card)
@@ -97,6 +100,7 @@ func populateDeckList():
 		$Cardcounts/BackupCount.text = str(Backups.size())
 		$Cardcounts/FoundationCount.text = str(Foundations.size())
 		
+	
 		for i in range(Characters.size()):
 			$DecklistBox/ScrollContainer/GridContainer.add_child(Characters[i])
 		for i in range(Actions.size()):
@@ -109,8 +113,15 @@ func populateDeckList():
 			$DecklistBox/ScrollContainer/GridContainer.add_child(Backups[i])
 		for i in range(Foundations.size()):
 			$DecklistBox/ScrollContainer/GridContainer.add_child(Foundations[i])
-			
-		#Populate Side
+	else:
+		$Cardcounts/CharacterCount.text = "0"
+		$Cardcounts/ActionCount.text = "0"
+		$Cardcounts/AssetCount.text = "0"
+		$Cardcounts/AttackCount.text = "0"
+		$Cardcounts/BackupCount.text = "0"
+		$Cardcounts/FoundationCount.text = "0"
+		
+	if decklist.side.size() != 0:
 		var CharactersSide = []
 		var ActionsSide = []
 		var AssetsSide = []
@@ -125,6 +136,7 @@ func populateDeckList():
 				card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small(decklist.side[i].cardID)
 				card.get_node("CardName").text = cardData.Name
 				card.cardMeta = cardData
+				card.source = "side"
 				match cardData.Cardtype:
 					"Character":
 						CharactersSide.push_back(card)
@@ -165,11 +177,87 @@ func _on_page_forward_pressed() -> void:
 
 func connect_signals(cardObj):
 	cardObj.connect("hovered", populateInspector)
+	cardObj.connect("clicked_right", card_right_clicked)
+	cardObj.connect("clicked_left", card_left_clicked)
 
 func populateInspector(cardID):
 	if cardID != null:
 		$CardInspector/CardArt.texture = CardDatabase.get_card_art({"set": cardID.set, "number": cardID.number})
 		genCardText(get_node("CardInspector/ScrollContainer/CardText"),CardDatabase.getCard(cardID))
+
+func card_left_clicked(source, cardMeta):
+	match source:
+		"database":
+			addToDeck(cardMeta)
+		"deck":
+			pass
+		"side":
+			pass
+
+func card_right_clicked(source, cardMeta):
+	match source:
+		"database":
+			addToSide(cardMeta)
+		"deck":
+			removeFromDeck(cardMeta)
+		"side":
+			removeFromSide(cardMeta)
+
+func addToDeck(cardMeta):
+	var cardID = {"set": cardMeta.setName, "number": cardMeta.cardNumber}
+	var added = false
+	if cardMeta.Cardtype == "Character" and $"../..".currentDeckList.character == null:
+		setCharacter(cardID)
+	else:
+		if cardMeta.Difficulty != null:
+			for i in range($"../..".currentDeckList.main.size()):
+				if $"../..".currentDeckList.main[i].cardID.set == cardMeta.setName and $"../..".currentDeckList.main[i].cardID.number == cardMeta.cardNumber:
+					$"../..".currentDeckList.main[i].count = $"../..".currentDeckList.main[i].count + 1
+					added = true
+					break
+			if !added:
+				$"../..".currentDeckList.main.append({"count": 1, "cardID": cardID})
+	populateDeckList()
+
+func setCharacter(cardID):
+	$"../..".currentDeckList.character = {"cardID": cardID}
+	$DeckDetails/Character.texture_normal = CardDatabase.get_card_art(cardID)
+	$DeckDetails/CharacterName.text = CardDatabase.getCard(cardID).Name
+
+func unSetCharacter():
+	$"../..".currentDeckList.character = null
+	$DeckDetails/Character.texture_normal = null
+	$DeckDetails/CharacterName.text = ""
+
+func addToSide(cardMeta):
+	var cardID = {"set": cardMeta.setName, "number": cardMeta.cardNumber}
+	var added = false
+	for i in range($"../..".currentDeckList.side.size()):
+		if $"../..".currentDeckList.side[i].cardID.set == cardMeta.setName and $"../..".currentDeckList.side[i].cardID.number == cardMeta.cardNumber:
+			$"../..".currentDeckList.side[i].count = $"../..".currentDeckList.side[i].count + 1
+			added = true
+			break
+	if !added:
+		$"../..".currentDeckList.side.append({"count": 1, "cardID": cardID})
+	populateDeckList()
+
+func removeFromDeck(cardMeta):
+	for i in range($"../..".currentDeckList.main.size()):
+		if $"../..".currentDeckList.main[i].cardID.set == cardMeta.setName and $"../..".currentDeckList.main[i].cardID.number == cardMeta.cardNumber:
+			$"../..".currentDeckList.main[i].count = $"../..".currentDeckList.main[i].count - 1
+			if  $"../..".currentDeckList.main[i].count == 0:
+				$"../..".currentDeckList.main.remove_at(i)
+			break
+	populateDeckList()
+	
+func removeFromSide(cardMeta):
+	for i in range($"../..".currentDeckList.side.size()):
+		if $"../..".currentDeckList.side[i].cardID.set == cardMeta.setName and $"../..".currentDeckList.side[i].cardID.number == cardMeta.cardNumber:
+			$"../..".currentDeckList.side[i].count = $"../..".currentDeckList.side[i].count - 1
+			if  $"../..".currentDeckList.side[i].count == 0:
+				$"../..".currentDeckList.side.remove_at(i)
+			break
+	populateDeckList()
 
 func genCardText(textbox, card):
 	textbox.text = ""
@@ -300,5 +388,11 @@ func _on_character_mouse_exited() -> void:
 	$DeckDetails/Timer.stop()
 
 func _on_timer_timeout() -> void:
-	if $"../..".currentDeckList != null:
+	if $"../..".currentDeckList.character != null:
 		populateInspector($"../..".currentDeckList.character.cardID)
+
+func _on_character_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			MOUSE_BUTTON_RIGHT:
+				unSetCharacter()
