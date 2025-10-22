@@ -6,7 +6,13 @@ var filter = {
 	"symbols": [],
 	"symbolsAttned": [],
 	"keywordTraits": [],
-	"keywordAbilities": []
+	"keywordAbilities": [],
+	"difficulty": false,
+	"difficultyMode": "=",
+	"difficultyValue": 0,
+	"check": false,
+	"checkMode": "=",
+	"checkValue": 0
 }
 
 func _ready() -> void:
@@ -66,6 +72,9 @@ func _ready() -> void:
 		
 	$Menus/KeywordAbilities.get_popup().hide_on_checkable_item_selection = false
 	$Menus/KeywordAbilities.get_popup().id_pressed.connect(_kAbilities_selected)
+	
+	$"Menus/Diff><=".get_popup().id_pressed.connect(_diffMode_selected)
+	$"Menus/Check><=".get_popup().id_pressed.connect(_checkMode_selected)
 	
 func _format_selected(id):
 	var formatName = $Menus/Formats.get_popup().get_item_text(id)
@@ -135,3 +144,33 @@ func _kAbilities_selected(id):
 	else:
 		$Menus/KeywordAbilities.get_popup().set_item_checked(id, true)
 		filter.keywordAbilities.append(kAbility)
+
+
+func _on_check_label_pressed() -> void:
+	if $Menus/CheckLabel.toggle_mode:
+		filter.check = false
+	else:
+		filter.check = true
+
+func _checkMode_selected(id):
+	var mode = $"Menus/Check><=".get_popup().get_item_text(id)
+	filter.checkMode = mode
+	$"Menus/Check><=".text = mode
+
+func _on_check_value_text_changed(new_text: String) -> void:
+	filter.checkValue = int(new_text)
+
+func _on_diff_label_pressed() -> void:
+	if $Menus/DiffLabel.toggle_mode:
+		filter.difficulty = false
+	else:
+		filter.difficulty = true
+
+func _diffMode_selected(id):
+	var mode = $"Menus/Diff><=".get_popup().get_item_text(id)
+	filter.difficultyMode = mode
+	$"Menus/Diff><=".text = mode
+
+func _on_diff_value_text_changed(new_text: String) -> void:
+	filter.difficultyValue = int(new_text)
+	
