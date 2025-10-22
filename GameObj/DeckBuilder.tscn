@@ -11,7 +11,7 @@
 script = ExtResource("1_bjh7i")
 
 [node name="FilterWindow" type="Control" parent="."]
-z_index = -1000
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -40,12 +40,21 @@ texture_normal = ExtResource("4_k5e61")
 z_index = 100
 layout_mode = 0
 offset_left = 95.0
-offset_top = 148.0
-offset_right = 377.0
-offset_bottom = 198.0
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+offset_top = 150.0
+offset_right = 375.0
+offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 text = "Formats"
+
+[node name="Sets" type="MenuButton" parent="FilterWindow"]
+z_index = 100
+layout_mode = 0
+offset_left = 95.0
+offset_top = 200.0
+offset_right = 375.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 30
+text = "Sets"
 
 [node name="Background" type="TextureButton" parent="."]
 offset_right = 40.0

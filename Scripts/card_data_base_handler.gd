@@ -18,6 +18,9 @@ func _ready() -> void:
 	formatList = FileAccess.get_file_as_string("user://SetData/formats.json")
 	formatList = JSON.parse_string(formatList).formats
 
+func getFormat(format):
+	return formatList[format]
+
 func getFormats():
 	return formatList.keys()
 
@@ -32,6 +35,13 @@ func getSet(setData):
 	for i in range(dataBaseEntries.size()):
 		if(dataBaseEntries[i].setName == setData):
 			return dataBaseEntries[i]
+
+func getSets():
+	var sets = []
+	var setDatabases = self.get_children()
+	for i in range(setDatabases.size()):
+		sets.append(setDatabases[i].setName)
+	return sets
 
 func getCardsFromFilter(filter):
 	var returnCards = []
