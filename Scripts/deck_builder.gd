@@ -401,3 +401,8 @@ func _on_character_gui_input(event: InputEvent) -> void:
 
 func _on_filter_pressed() -> void:
 	$FilterWindow.z_index = 1000
+	move_child($FilterWindow, -1)
+
+func _on_close_filter_pressed() -> void:
+	$FilterWindow.z_index = -1000
+	move_child($FilterWindow, 0)

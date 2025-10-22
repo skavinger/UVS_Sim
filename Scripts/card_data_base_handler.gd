@@ -2,6 +2,8 @@ extends Node2D
 
 const DATABASE_ENTRY_PATH = "res://GameObj/card_database_entry.tscn"
 
+var formatList
+
 func _ready() -> void:
 	#populateCardDatabase
 	for setName in DirAccess.open("user://SetData/").get_directories():
@@ -12,6 +14,12 @@ func _ready() -> void:
 		newEntry.cards = setData
 		newEntry.setName = setName
 		newEntry.name = setName
+	
+	formatList = FileAccess.get_file_as_string("user://SetData/formats.json")
+	formatList = JSON.parse_string(formatList).formats
+
+func getFormats():
+	return formatList.keys()
 
 func getCard(cardID):
 	var dataBaseEntries = self.get_children()
