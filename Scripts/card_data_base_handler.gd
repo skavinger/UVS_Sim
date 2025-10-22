@@ -3,9 +3,12 @@ extends Node2D
 const DATABASE_ENTRY_PATH = "res://GameObj/card_database_entry.tscn"
 
 var formatList
+var keywordTraitList
+var keywordAbilityList
 
 func _ready() -> void:
 	#populateCardDatabase
+	
 	for setName in DirAccess.open("user://SetData/").get_directories():
 		var setData = FileAccess.get_file_as_string("user://SetData/" + setName + "/setData.json")
 		setData = JSON.parse_string(setData)
@@ -17,6 +20,9 @@ func _ready() -> void:
 	
 	formatList = FileAccess.get_file_as_string("user://SetData/formats.json")
 	formatList = JSON.parse_string(formatList).formats
+	var keywordList = FileAccess.get_file_as_string("user://SetData/keywords.json")
+	keywordTraitList = JSON.parse_string(keywordList).traits
+	keywordAbilityList = JSON.parse_string(keywordList).abilities
 
 func getFormat(format):
 	return formatList[format]
@@ -57,3 +63,9 @@ func get_card_art(cardID):
 func get_card_art_small(cardID):
 	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images_small/" + cardID.number + ".jpg")
 	return ImageTexture.create_from_image(image)
+	
+func getKeywordTraits():
+	return keywordTraitList
+	
+func getKeywordAbilities():
+	return keywordAbilityList

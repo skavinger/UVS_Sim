@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
-[ext_resource type="Script" uid="uid://dfpp26g02qtli" path="res://GameObj/filter_window.gd" id="3_xixpy"]
+[ext_resource type="Script" uid="uid://dfpp26g02qtli" path="res://Scripts/filter_window.gd" id="3_xixpy"]
 [ext_resource type="Texture2D" uid="uid://dfkxlr66nkyqw" path="res://Assets/FilterWindow.png" id="4_iy3ux"]
 [ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="4_k5e61"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="5_k5e61"]
@@ -36,7 +36,13 @@ offset_right = 1843.0
 offset_bottom = 81.0
 texture_normal = ExtResource("4_k5e61")
 
-[node name="Formats" type="MenuButton" parent="FilterWindow"]
+[node name="Menus" type="Control" parent="FilterWindow"]
+z_index = 100
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Formats" type="MenuButton" parent="FilterWindow/Menus"]
 z_index = 100
 layout_mode = 0
 offset_left = 95.0
@@ -46,7 +52,7 @@ offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 text = "Formats"
 
-[node name="Sets" type="MenuButton" parent="FilterWindow"]
+[node name="Sets" type="MenuButton" parent="FilterWindow/Menus"]
 z_index = 100
 layout_mode = 0
 offset_left = 95.0
@@ -55,6 +61,43 @@ offset_right = 375.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 30
 text = "Sets"
+
+[node name="Symbols" type="MenuButton" parent="FilterWindow/Menus"]
+z_index = 100
+layout_mode = 0
+offset_left = 380.0
+offset_top = 150.0
+offset_right = 660.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 30
+text = "Symbols"
+
+[node name="SymbolsAttuned" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 200.0
+offset_right = 660.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 30
+text = "Attuned"
+
+[node name="KeywordTraits" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 150.0
+offset_right = 940.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 30
+text = "Keyword Traits"
+
+[node name="KeywordAbilities" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 200.0
+offset_right = 940.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 30
+text = "Keyword Abilities"
 
 [node name="Background" type="TextureButton" parent="."]
 offset_right = 40.0

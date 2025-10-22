@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://51wees8w8ik"]
+
+[ext_resource type="Texture2D" uid="uid://cuwx7a17ldypx" path="res://Assets/Symbols/Air.png" id="1_spcks"]
+[ext_resource type="Texture2D" uid="uid://bst55latisoph" path="res://Assets/Symbols/All.png" id="2_1nmuv"]
+[ext_resource type="Texture2D" uid="uid://k38m4scfp32u" path="res://Assets/Symbols/Chaos.png" id="3_p5p32"]
+[ext_resource type="Texture2D" uid="uid://2mupqemgqtev" path="res://Assets/Symbols/Death.png" id="4_rnvml"]
+[ext_resource type="Texture2D" uid="uid://by4lu6vkv24oh" path="res://Assets/Symbols/Earth.png" id="5_uni2i"]
+[ext_resource type="Texture2D" uid="uid://cstmexwsy6476" path="res://Assets/Symbols/Evil.png" id="6_jr32o"]
+[ext_resource type="Texture2D" uid="uid://kse7hs4nsble" path="res://Assets/Symbols/Fire.png" id="7_klujr"]
+[ext_resource type="Texture2D" uid="uid://djgh5o2s4bj4r" path="res://Assets/Symbols/Good.png" id="8_dwmch"]
+[ext_resource type="Texture2D" uid="uid://dbuq50ipyxxdb" path="res://Assets/Symbols/Life.png" id="9_ltw1a"]
+[ext_resource type="Texture2D" uid="uid://bxjl3hb2l2qv3" path="res://Assets/Symbols/Order.png" id="10_d6qug"]
+[ext_resource type="Texture2D" uid="uid://cpt8mggke3a2n" path="res://Assets/Symbols/Void.png" id="11_fvaql"]
+[ext_resource type="Texture2D" uid="uid://bk5rn44ab80lg" path="res://Assets/Symbols/Water.png" id="12_qu4qu"]
+
+[node name="Symbols" type="Control"]
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Air" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 150.0
+offset_right = 575.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 30
+text = "Air"
+icon = ExtResource("1_spcks")
+
+[node name="All" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 150.0
+offset_right = 750.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 30
+text = "All"
+icon = ExtResource("2_1nmuv")
+
+[node name="Chaos" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 150.0
+offset_right = 950.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 30
+text = "Chaos"
+icon = ExtResource("3_p5p32")
+
+[node name="Death" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 150.0
+offset_right = 1100.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 30
+text = "Death"
+icon = ExtResource("4_rnvml")
+
+[node name="Earth" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 210.0
+offset_right = 575.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 30
+text = "Earth"
+icon = ExtResource("5_uni2i")
+
+[node name="Evil" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 210.0
+offset_right = 750.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 30
+text = "Evil"
+icon = ExtResource("6_jr32o")
+
+[node name="Fire" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 210.0
+offset_right = 925.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 30
+text = "Fire"
+icon = ExtResource("7_klujr")
+
+[node name="Good" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 210.0
+offset_right = 1100.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 30
+text = "Good"
+icon = ExtResource("8_dwmch")
+
+[node name="Life" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 270.0
+offset_right = 575.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 30
+text = "Life"
+icon = ExtResource("9_ltw1a")
+
+[node name="Order" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 270.0
+offset_right = 750.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 30
+text = "Order"
+icon = ExtResource("10_d6qug")
+
+[node name="Void" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 270.0
+offset_right = 925.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 30
+text = "Void"
+icon = ExtResource("11_fvaql")
+
+[node name="Water" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 925.0
+offset_top = 270.0
+offset_right = 1100.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 30
+text = "Water"
+icon = ExtResource("12_qu4qu")
