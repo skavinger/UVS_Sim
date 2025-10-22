@@ -18,6 +18,8 @@ func _ready() -> void:
 	populateSaves()
 
 func _on_back_pressed() -> void:
+	var saveFile = FileAccess.open("user://Saves/current_list.auto_sav",FileAccess.WRITE)
+	saveFile.store_string(JSON.stringify($"../..".currentDeckList))
 	$"../../StartWindowHolder".spawnWindow()
 	$"..".closeWindow()
 
@@ -40,7 +42,7 @@ func populateDataBaseWindow():
 	for i in range(dataBaseWindow.size()):
 		$CardDatabaseList/ScrollContainer/GridContainer.remove_child(dataBaseWindow[i])
 		
-	$PageCount.text = str(page + 1)
+	$CardDatabaseList/PageCount.text = str(page + 1)
 	for i in PAGESIZE:
 		if (i + (page * PAGESIZE) + 1) > cardDatabaseScreen.size():
 			break
@@ -396,3 +398,6 @@ func _on_character_gui_input(event: InputEvent) -> void:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
 				unSetCharacter()
+
+func _on_filter_pressed() -> void:
+	$FilterWindow.z_index = 1000
