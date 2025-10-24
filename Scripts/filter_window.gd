@@ -27,34 +27,8 @@ func _ready() -> void:
 	$Menus/Sets.get_popup().hide_on_checkable_item_selection = false
 	$Menus/Sets.get_popup().id_pressed.connect(_sets_selected)
 	
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Air.png"), "Air")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/All.png"), "All")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Chaos.png"), "Chaos")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Death.png"), "Death")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Earth.png"), "Earth")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Evil.png"), "Evil")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Fire.png"), "Fire")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Good.png"), "Good")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Life.png"), "Life")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Order.png"), "Order")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Void.png"), "Void")
-	$Menus/Symbols.get_popup().add_icon_check_item(load("res://Assets/Symbols/Water.png"), "Water")
-	
 	$Menus/Symbols.get_popup().hide_on_checkable_item_selection = false
 	$Menus/Symbols.get_popup().id_pressed.connect(_symbols_selected)
-	
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Air-Attune.png"), "Air")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/All-Attune.png"), "All")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Chaos-Attune.png"), "Chaos")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Death-Attune.png"), "Death")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Earth-Attune.png"), "Earth")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Evil-Attune.png"), "Evil")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Fire-Attune.png"), "Fire")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Good-Attune.png"), "Good")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Life-Attune.png"), "Life")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Order-Attune.png"), "Order")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Void-Attune.png"), "Void")
-	$Menus/SymbolsAttuned.get_popup().add_icon_check_item(load("res://Assets/Attuned/Water-Attune.png"), "Water")
 	
 	$Menus/SymbolsAttuned.get_popup().hide_on_checkable_item_selection = false
 	$Menus/SymbolsAttuned.get_popup().id_pressed.connect(_attuned_selected)
@@ -147,29 +121,29 @@ func _kAbilities_selected(id):
 
 
 func _on_check_label_pressed() -> void:
-	if $Menus/CheckLabel.toggle_mode:
+	if $Menus/Check/CheckLabel.toggle_mode:
 		filter.check = false
 	else:
 		filter.check = true
 
 func _checkMode_selected(id):
-	var mode = $"Menus/Check><=".get_popup().get_item_text(id)
+	var mode = $"Menus/Check/Check><=".get_popup().get_item_text(id)
 	filter.checkMode = mode
-	$"Menus/Check><=".text = mode
+	$"Menus/Check/Check><=".text = mode
 
 func _on_check_value_text_changed(new_text: String) -> void:
 	filter.checkValue = int(new_text)
 
 func _on_diff_label_pressed() -> void:
-	if $Menus/DiffLabel.toggle_mode:
+	if $Menus/Difficulty/DiffLabel.toggle_mode:
 		filter.difficulty = false
 	else:
 		filter.difficulty = true
 
 func _diffMode_selected(id):
-	var mode = $"Menus/Diff><=".get_popup().get_item_text(id)
+	var mode = $"Menus/Difficulty/Diff><=".get_popup().get_item_text(id)
 	filter.difficultyMode = mode
-	$"Menus/Diff><=".text = mode
+	$"Menus/Difficulty/Diff><=".text = mode
 
 func _on_diff_value_text_changed(new_text: String) -> void:
 	filter.difficultyValue = int(new_text)

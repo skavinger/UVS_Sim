@@ -1,11 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8bvy6da0211j"]
+[gd_scene load_steps=34 format=3 uid="uid://c8bvy6da0211j"]
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
 [ext_resource type="Script" uid="uid://dfpp26g02qtli" path="res://Scripts/filter_window.gd" id="3_xixpy"]
 [ext_resource type="Texture2D" uid="uid://dfkxlr66nkyqw" path="res://Assets/FilterWindow.png" id="4_iy3ux"]
 [ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="4_k5e61"]
+[ext_resource type="Texture2D" uid="uid://cuwx7a17ldypx" path="res://Assets/Symbols/Air.png" id="5_djmsr"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="5_k5e61"]
+[ext_resource type="Texture2D" uid="uid://bst55latisoph" path="res://Assets/Symbols/All.png" id="6_yx3kt"]
+[ext_resource type="Texture2D" uid="uid://k38m4scfp32u" path="res://Assets/Symbols/Chaos.png" id="7_wkvv0"]
+[ext_resource type="Texture2D" uid="uid://2mupqemgqtev" path="res://Assets/Symbols/Death.png" id="8_b0w5k"]
+[ext_resource type="Texture2D" uid="uid://by4lu6vkv24oh" path="res://Assets/Symbols/Earth.png" id="9_rplql"]
+[ext_resource type="Texture2D" uid="uid://cstmexwsy6476" path="res://Assets/Symbols/Evil.png" id="10_o2pnm"]
+[ext_resource type="Texture2D" uid="uid://kse7hs4nsble" path="res://Assets/Symbols/Fire.png" id="11_6e1qw"]
+[ext_resource type="Texture2D" uid="uid://djgh5o2s4bj4r" path="res://Assets/Symbols/Good.png" id="12_c5rxk"]
+[ext_resource type="Texture2D" uid="uid://dbuq50ipyxxdb" path="res://Assets/Symbols/Life.png" id="13_8l2i6"]
+[ext_resource type="Texture2D" uid="uid://bxjl3hb2l2qv3" path="res://Assets/Symbols/Order.png" id="14_cgs0x"]
+[ext_resource type="Texture2D" uid="uid://cpt8mggke3a2n" path="res://Assets/Symbols/Void.png" id="15_mqu4s"]
+[ext_resource type="Texture2D" uid="uid://bk5rn44ab80lg" path="res://Assets/Symbols/Water.png" id="16_3uwsd"]
+[ext_resource type="Texture2D" uid="uid://6th50wvnbopb" path="res://Assets/Attuned/Air-Attune.png" id="17_8u8j1"]
+[ext_resource type="Texture2D" uid="uid://bhjkiddtu768u" path="res://Assets/Attuned/All-Attune.png" id="18_xatwb"]
+[ext_resource type="Texture2D" uid="uid://d23fy3vlj653y" path="res://Assets/Attuned/Chaos-Attune.png" id="19_a8xy4"]
+[ext_resource type="Texture2D" uid="uid://dntqd1vj672df" path="res://Assets/Attuned/Death-Attune.png" id="20_mmmww"]
+[ext_resource type="Texture2D" uid="uid://dp56mmv4trpiu" path="res://Assets/Attuned/Earth-Attune.png" id="21_ppxge"]
+[ext_resource type="Texture2D" uid="uid://b8o84aq7h2eci" path="res://Assets/Attuned/Evil-Attune.png" id="22_yftvd"]
+[ext_resource type="Texture2D" uid="uid://b0cxk5jao7vqe" path="res://Assets/Attuned/Fire-Attune.png" id="23_axokm"]
+[ext_resource type="Texture2D" uid="uid://bj2imkgpu7o0i" path="res://Assets/Attuned/Good-Attune.png" id="24_gyjsh"]
+[ext_resource type="Texture2D" uid="uid://b0u7o8466cd38" path="res://Assets/Attuned/Life-Attune.png" id="25_ug53w"]
+[ext_resource type="Texture2D" uid="uid://dly6drk6o4h76" path="res://Assets/Attuned/Order-Attune.png" id="26_wtjne"]
+[ext_resource type="Texture2D" uid="uid://cgbchkhugku5g" path="res://Assets/Attuned/Void-Attune.png" id="27_rgvha"]
+[ext_resource type="Texture2D" uid="uid://demhnde8augaj" path="res://Assets/Attuned/Water-Attune.png" id="28_25ik7"]
+[ext_resource type="Texture2D" uid="uid://bqwlde14ey434" path="res://Assets/Block_Zone/highb.png" id="29_tjvij"]
+[ext_resource type="Texture2D" uid="uid://bigfhuetlayak" path="res://Assets/Block_Zone/midb.png" id="30_y8e0k"]
+[ext_resource type="Texture2D" uid="uid://dcsibi2mjfi50" path="res://Assets/Block_Zone/lowb.png" id="31_uvvmd"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_bjh7i")
@@ -71,6 +98,55 @@ offset_right = 660.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 text = "Symbols"
+item_count = 12
+popup/item_0/text = "Air"
+popup/item_0/icon = ExtResource("5_djmsr")
+popup/item_0/checkable = 1
+popup/item_0/id = 0
+popup/item_1/text = "All"
+popup/item_1/icon = ExtResource("6_yx3kt")
+popup/item_1/checkable = 1
+popup/item_1/id = 1
+popup/item_2/text = "Chaos"
+popup/item_2/icon = ExtResource("7_wkvv0")
+popup/item_2/checkable = 1
+popup/item_2/id = 2
+popup/item_3/text = "Death"
+popup/item_3/icon = ExtResource("8_b0w5k")
+popup/item_3/checkable = 1
+popup/item_3/id = 3
+popup/item_4/text = "Earth"
+popup/item_4/icon = ExtResource("9_rplql")
+popup/item_4/checkable = 1
+popup/item_4/id = 4
+popup/item_5/text = "Evil"
+popup/item_5/icon = ExtResource("10_o2pnm")
+popup/item_5/checkable = 1
+popup/item_5/id = 5
+popup/item_6/text = "Fire"
+popup/item_6/icon = ExtResource("11_6e1qw")
+popup/item_6/checkable = 1
+popup/item_6/id = 6
+popup/item_7/text = "Good"
+popup/item_7/icon = ExtResource("12_c5rxk")
+popup/item_7/checkable = 1
+popup/item_7/id = 7
+popup/item_8/text = "Life"
+popup/item_8/icon = ExtResource("13_8l2i6")
+popup/item_8/checkable = 1
+popup/item_8/id = 8
+popup/item_9/text = "Order"
+popup/item_9/icon = ExtResource("14_cgs0x")
+popup/item_9/checkable = 1
+popup/item_9/id = 9
+popup/item_10/text = "Void"
+popup/item_10/icon = ExtResource("15_mqu4s")
+popup/item_10/checkable = 1
+popup/item_10/id = 10
+popup/item_11/text = "Water"
+popup/item_11/icon = ExtResource("16_3uwsd")
+popup/item_11/checkable = 1
+popup/item_11/id = 11
 
 [node name="SymbolsAttuned" type="MenuButton" parent="FilterWindow/Menus"]
 layout_mode = 0
@@ -80,6 +156,55 @@ offset_right = 660.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 30
 text = "Attuned"
+item_count = 12
+popup/item_0/text = "Air"
+popup/item_0/icon = ExtResource("17_8u8j1")
+popup/item_0/checkable = 1
+popup/item_0/id = 0
+popup/item_1/text = "All"
+popup/item_1/icon = ExtResource("18_xatwb")
+popup/item_1/checkable = 1
+popup/item_1/id = 1
+popup/item_2/text = "Chaos"
+popup/item_2/icon = ExtResource("19_a8xy4")
+popup/item_2/checkable = 1
+popup/item_2/id = 2
+popup/item_3/text = "Death"
+popup/item_3/icon = ExtResource("20_mmmww")
+popup/item_3/checkable = 1
+popup/item_3/id = 3
+popup/item_4/text = "Earth"
+popup/item_4/icon = ExtResource("21_ppxge")
+popup/item_4/checkable = 1
+popup/item_4/id = 4
+popup/item_5/text = "Evil"
+popup/item_5/icon = ExtResource("22_yftvd")
+popup/item_5/checkable = 1
+popup/item_5/id = 5
+popup/item_6/text = "Fire"
+popup/item_6/icon = ExtResource("23_axokm")
+popup/item_6/checkable = 1
+popup/item_6/id = 6
+popup/item_7/text = "Good"
+popup/item_7/icon = ExtResource("24_gyjsh")
+popup/item_7/checkable = 1
+popup/item_7/id = 7
+popup/item_8/text = "Life"
+popup/item_8/icon = ExtResource("25_ug53w")
+popup/item_8/checkable = 1
+popup/item_8/id = 8
+popup/item_9/text = "Order"
+popup/item_9/icon = ExtResource("26_wtjne")
+popup/item_9/checkable = 1
+popup/item_9/id = 9
+popup/item_10/text = "Void"
+popup/item_10/icon = ExtResource("27_rgvha")
+popup/item_10/checkable = 1
+popup/item_10/id = 10
+popup/item_11/text = "Water"
+popup/item_11/icon = ExtResource("28_25ik7")
+popup/item_11/checkable = 1
+popup/item_11/id = 11
 
 [node name="KeywordTraits" type="MenuButton" parent="FilterWindow/Menus"]
 layout_mode = 0
@@ -99,7 +224,12 @@ offset_bottom = 250.0
 theme_override_font_sizes/font_size = 30
 text = "Keyword Abilities"
 
-[node name="DiffLabel" type="CheckBox" parent="FilterWindow/Menus"]
+[node name="Difficulty" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DiffLabel" type="CheckBox" parent="FilterWindow/Menus/Difficulty"]
 layout_mode = 0
 offset_left = 940.0
 offset_top = 150.0
@@ -108,11 +238,11 @@ offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 text = "Difficulty"
 
-[node name="Diff><=" type="MenuButton" parent="FilterWindow/Menus"]
+[node name="Diff><=" type="MenuButton" parent="FilterWindow/Menus/Difficulty"]
 layout_mode = 0
-offset_left = 1110.0
+offset_left = 1100.0
 offset_top = 150.0
-offset_right = 1140.0
+offset_right = 1130.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 text = "="
@@ -124,16 +254,21 @@ popup/item_1/id = 1
 popup/item_2/text = "<"
 popup/item_2/id = 2
 
-[node name="DiffValue" type="LineEdit" parent="FilterWindow/Menus"]
+[node name="DiffValue" type="LineEdit" parent="FilterWindow/Menus/Difficulty"]
 layout_mode = 0
-offset_left = 1150.0
+offset_left = 1130.0
 offset_top = 150.0
-offset_right = 1270.0
+offset_right = 1250.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 30
 virtual_keyboard_type = 2
 
-[node name="CheckLabel" type="CheckBox" parent="FilterWindow/Menus"]
+[node name="Check" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckLabel" type="CheckBox" parent="FilterWindow/Menus/Check"]
 layout_mode = 0
 offset_left = 940.0
 offset_top = 200.0
@@ -143,11 +278,11 @@ theme_override_font_sizes/font_size = 30
 text = "Check"
 alignment = 1
 
-[node name="Check><=" type="MenuButton" parent="FilterWindow/Menus"]
+[node name="Check><=" type="MenuButton" parent="FilterWindow/Menus/Check"]
 layout_mode = 0
-offset_left = 1110.0
+offset_left = 1100.0
 offset_top = 200.0
-offset_right = 1140.0
+offset_right = 1130.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 30
 text = "="
@@ -159,13 +294,173 @@ popup/item_1/id = 1
 popup/item_2/text = "<"
 popup/item_2/id = 2
 
-[node name="CheckValue" type="LineEdit" parent="FilterWindow/Menus"]
+[node name="CheckValue" type="LineEdit" parent="FilterWindow/Menus/Check"]
 layout_mode = 0
-offset_left = 1150.0
+offset_left = 1130.0
 offset_top = 200.0
-offset_right = 1270.0
+offset_right = 1250.0
 offset_bottom = 250.0
 theme_override_font_sizes/font_size = 30
+max_length = 1
+
+[node name="BlockZone" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 250.0
+offset_right = 1220.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 30
+text = "Block Zone"
+item_count = 3
+popup/item_0/text = "High"
+popup/item_0/icon = ExtResource("29_tjvij")
+popup/item_0/id = 0
+popup/item_1/text = "Mid"
+popup/item_1/icon = ExtResource("30_y8e0k")
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/icon = ExtResource("31_uvvmd")
+popup/item_2/id = 2
+
+[node name="BlockMod" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BlockModLabel" type="CheckBox" parent="FilterWindow/Menus/BlockMod"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="BlockMod><=" type="MenuButton" parent="FilterWindow/Menus/BlockMod"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="BlockModValue" type="LineEdit" parent="FilterWindow/Menus/BlockMod"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="Speed" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpeedLabel" type="CheckBox" parent="FilterWindow/Menus/Speed"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Speed><=" type="MenuButton" parent="FilterWindow/Menus/Speed"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SpeedValue" type="LineEdit" parent="FilterWindow/Menus/Speed"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="Damage" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DamageLabel" type="CheckBox" parent="FilterWindow/Menus/Damage"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Damage><=" type="MenuButton" parent="FilterWindow/Menus/Damage"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DamageValue" type="LineEdit" parent="FilterWindow/Menus/Damage"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="AttackZone" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="CardName" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="RichTextLabel" parent="FilterWindow/Menus/CardName"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardName" type="LineEdit" parent="FilterWindow/Menus/CardName"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="CardText" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="RichTextLabel" parent="FilterWindow/Menus/CardText"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardText" type="LineEdit" parent="FilterWindow/Menus/CardText"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="CardType" type="MenuButton" parent="FilterWindow/Menus"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="HandSize" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HandSizeLabel" type="CheckBox" parent="FilterWindow/Menus/HandSize"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="HandSize><=" type="MenuButton" parent="FilterWindow/Menus/HandSize"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="HandSizeValue" type="LineEdit" parent="FilterWindow/Menus/HandSize"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
+
+[node name="Health" type="Control" parent="FilterWindow/Menus"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="CheckBox" parent="FilterWindow/Menus/Health"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Health><=" type="MenuButton" parent="FilterWindow/Menus/Health"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="HealthValue" type="LineEdit" parent="FilterWindow/Menus/Health"]
+layout_mode = 0
+offset_right = 68.5625
+offset_bottom = 31.0
 
 [node name="Background" type="TextureButton" parent="."]
 offset_right = 40.0
@@ -421,10 +716,10 @@ text = "Load"
 [connection signal="mouse_exited" from="FilterWindow/Background" to="." method="_on_background_mouse_exited"]
 [connection signal="pressed" from="FilterWindow/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="FilterWindow/CloseFilter" to="." method="_on_close_filter_pressed"]
-[connection signal="pressed" from="FilterWindow/Menus/DiffLabel" to="FilterWindow" method="_on_diff_label_pressed"]
-[connection signal="text_changed" from="FilterWindow/Menus/DiffValue" to="FilterWindow" method="_on_diff_value_text_changed"]
-[connection signal="pressed" from="FilterWindow/Menus/CheckLabel" to="FilterWindow" method="_on_check_label_pressed"]
-[connection signal="text_changed" from="FilterWindow/Menus/CheckValue" to="FilterWindow" method="_on_check_value_text_changed"]
+[connection signal="pressed" from="FilterWindow/Menus/Difficulty/DiffLabel" to="FilterWindow" method="_on_diff_label_pressed"]
+[connection signal="text_changed" from="FilterWindow/Menus/Difficulty/DiffValue" to="FilterWindow" method="_on_diff_value_text_changed"]
+[connection signal="pressed" from="FilterWindow/Menus/Check/CheckLabel" to="FilterWindow" method="_on_check_label_pressed"]
+[connection signal="text_changed" from="FilterWindow/Menus/Check/CheckValue" to="FilterWindow" method="_on_check_value_text_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Filter" to="." method="_on_filter_pressed"]
 [connection signal="gui_input" from="DeckDetails/Character" to="." method="_on_character_gui_input"]
