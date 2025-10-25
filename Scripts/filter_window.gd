@@ -1,12 +1,38 @@
 extends Control
 
 var filter = {
+	"cardName": null,
+	"cardText": null,
 	"format": "",
 	"sets": [],
+	"cardType": [],
 	"symbols": [],
 	"symbolsAttned": [],
 	"keywordTraits": [],
 	"keywordAbilities": [],
+	"keywordCount": false,
+	"keywordCountMode": "=",
+	"keywordCountValue": null,
+	"abilityCount": false,
+	"abilityCountMode": "=",
+	"abilityCountValue": null,
+	"blockZone": null,
+	"blockMod": false,
+	"blockModMode": "=",
+	"blockModValue": "",
+	"speed": false,
+	"speedMode": "=",
+	"speedValue": 0,
+	"attackZone": null,
+	"damage": false,
+	"damageMode": "=",
+	"damageValue": 0,
+	"handSize": false,
+	"handSizeMode": "=",
+	"handSizeValue": 0,
+	"health": false,
+	"healthMode": "=",
+	"healthValue": 0,
 	"difficulty": false,
 	"difficultyMode": "=",
 	"difficultyValue": 0,
@@ -47,17 +73,40 @@ func _ready() -> void:
 	$Menus/KeywordAbilities.get_popup().hide_on_checkable_item_selection = false
 	$Menus/KeywordAbilities.get_popup().id_pressed.connect(_kAbilities_selected)
 	
-	$"Menus/Diff><=".get_popup().id_pressed.connect(_diffMode_selected)
-	$"Menus/Check><=".get_popup().id_pressed.connect(_checkMode_selected)
+	$"Menus/Difficulty/Diff><=".get_popup().id_pressed.connect(_diffMode_selected)
+	$"Menus/Check/Check><=".get_popup().id_pressed.connect(_checkMode_selected)
 	
+	$Menus/BlockZone.get_popup().id_pressed.connect(_blockZone_selected)
+	$Menus/CardType.get_popup().id_pressed.connect(_cardType_selected)
+	
+	$"Menus/KeywordCount/KeywordCount><=".get_popup().id_pressed.connect(_keywordCountMode_selected)
+	$"Menus/AbilityCount/AbilityCount><=".get_popup().id_pressed.connect(_abilityCountMode_selected)
+	
+	$"Menus/BlockMod/BlockMod><=".get_popup().id_pressed.connect(_blockModMode_selected)
+	
+	$"Menus/Speed/Speed><=".get_popup().id_pressed.connect(_speedMode_selected)
+	$Menus/AttackZone.get_popup().id_pressed.connect(_attackZone_selected)
+	$"Menus/Damage/Damage><=".get_popup().id_pressed.connect(_damageMode_selected)
+	
+	$"Menus/HandSize/HandSize><=".get_popup().id_pressed.connect(_handSizeMode_selected)
+	$"Menus/Health/Health><=".get_popup().id_pressed.connect(_healthMode_selected)
+
 func _format_selected(id):
 	var formatName = $Menus/Formats.get_popup().get_item_text(id)
-	filter.format = formatName
-	$Menus/Formats.text = formatName
-	var formatList = CardDatabase.getFormat(formatName)
-	$Menus/Sets.get_popup().clear()
-	for i in range(formatList.size()):
-		$Menus/Sets.get_popup().add_check_item(formatList[i])
+	if formatName != "None":
+		filter.format = formatName
+		$Menus/Formats.text = formatName
+		var formatList = CardDatabase.getFormat(formatName)
+		$Menus/Sets.get_popup().clear()
+		for i in range(formatList.size()):
+			$Menus/Sets.get_popup().add_check_item(formatList[i])
+	else:
+		filter.format = ""
+		$Menus/Formats.text = "Format"
+		var formatList = CardDatabase.getFormat("Legacy")
+		$Menus/Sets.get_popup().clear()
+		for i in range(formatList.size()):
+			$Menus/Sets.get_popup().add_check_item(formatList[i])
 	
 func _sets_selected(id):
 	var setName = $Menus/Sets.get_popup().get_item_text(id)
@@ -148,3 +197,164 @@ func _diffMode_selected(id):
 func _on_diff_value_text_changed(new_text: String) -> void:
 	filter.difficultyValue = int(new_text)
 	
+
+func _blockZone_selected(id):
+	var zone = $Menus/BlockZone.get_popup().get_item_text(id)
+	if zone != "Disabled":
+		filter.blockZone = zone
+		$Menus/BlockZone.text = "Block Zone: " + zone
+	else:
+		filter.blockZone = null
+		$Menus/BlockZone.text = "Block Zone"
+
+func _on_card_name_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.cardName = null
+	else:
+		filter.cardName = new_text
+
+func _on_card_text_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.cardText = null
+	else:
+		filter.cardText = new_text
+
+func _cardType_selected(id):
+	var cardType = $Menus/CardType.get_popup().get_item_text(id)
+	if $Menus/CardType.get_popup().is_item_checked(id):
+		$Menus/CardType.get_popup().set_item_checked(id, false)
+		for i in range(filter.cardType.size()):
+			if filter.cardType[i] == cardType:
+				filter.cardType.remove_at(i)
+				break
+	else:
+		$Menus/CardType.get_popup().set_item_checked(id, true)
+		filter.cardType.append(cardType)
+
+func _on_keyword_count_label_pressed() -> void:
+	if $Menus/KeywordCount/KeywordCountLabel.toggle_mode:
+		filter.keywordCount = false
+	else:
+		filter.keywordCount = true
+
+func _keywordCountMode_selected(id):
+	var mode = $"Menus/KeywordCount/KeywordCount><=".get_popup().get_item_text(id)
+	filter.keywordCountMode = mode
+	$"Menus/KeywordCount/KeywordCount><=".text = mode
+
+func _on_keyword_count_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.keywordCountValue = null
+	else:
+		filter.keywordCountValue = new_text
+
+func _on_ability_count_label_pressed() -> void:
+	if $Menus/AbilityCount/AbilityCountLabel.toggle_mode:
+		filter.abilityCount = false
+	else:
+		filter.abilityCount = true
+
+func _abilityCountMode_selected(id):
+	var mode = $"Menus/AbilityCount/AbilityCount><=".get_popup().get_item_text(id)
+	filter.abilityCountMode = mode
+	$"Menus/AbilityCount/AbilityCount><=".text = mode
+
+func _on_ability_count_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.abilityCountValue = null
+	else:
+		filter.abilityCountValue = new_text
+
+func _on_block_mod_label_pressed() -> void:
+	if $Menus/BlockMod/BlockModLabel.toggle_mode:
+		filter.blockMod = false
+	else:
+		filter.blockMod = true
+
+func _blockModMode_selected(id):
+	var mode = $"Menus/BlockMod/BlockMod><=".get_popup().get_item_text(id)
+	filter.blockModMode = mode
+	$"Menus/BlockMod/BlockMod><=".text = mode
+
+func _on_block_mod_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.blockModValue = null
+	else:
+		filter.blockModValue = new_text
+
+func _on_speed_label_pressed() -> void:
+	if $Menus/Speed/SpeedLabel.toggle_mode:
+		filter.speed = false
+	else:
+		filter.speed = true
+
+func _speedMode_selected(id):
+	var mode = $"Menus/Speed/Speed><=".get_popup().get_item_text(id)
+	filter.speedMode = mode
+	$"Menus/Speed/Speed><=".text = mode
+
+func _on_speed_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.speedValue = null
+	else:
+		filter.speedValue = new_text
+
+func _attackZone_selected(id):
+	var zone = $Menus/AttackZone.get_popup().get_item_text(id)
+	if zone != "Disabled":
+		filter.attackZone = zone
+		$Menus/AttackZone.text = "Attack Zone: " + zone
+	else:
+		filter.blockZone = null
+		$Menus/AttackZone.text = "Attack Zone"
+
+func _on_damage_label_pressed() -> void:
+	if $Menus/Damage/DamageLabel.toggle_mode:
+		filter.damage = false
+	else:
+		filter.damage = true
+
+func _damageMode_selected(id):
+	var mode = $"Menus/Damage/Damage><=".get_popup().get_item_text(id)
+	filter.damageMode = mode
+	$"Menus/Damage/Damage><=".text = mode
+
+func _on_damage_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.damageValue = null
+	else:
+		filter.damageValue = new_text
+
+func _on_hand_size_label_pressed() -> void:
+	if $Menus/HandSize/HandSizeLabel.toggle_mode:
+		filter.handSize = false
+	else:
+		filter.handSize = true
+
+func _handSizeMode_selected(id):
+	var mode = $"Menus/HandSize/HandSize><=".get_popup().get_item_text(id)
+	filter.handSizeMode = mode
+	$"Menus/HandSize/HandSize><=".text = mode
+
+func _on_hand_size_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.handSizeValue = null
+	else:
+		filter.handSizeValue = new_text
+		
+func _on_health_label_pressed() -> void:
+	if $Menus/Health/HealthLabel.toggle_mode:
+		filter.health = false
+	else:
+		filter.health = true
+
+func _healthMode_selected(id):
+	var mode = $"Menus/Health/Health><=".get_popup().get_item_text(id)
+	filter.healthMode = mode
+	$"Menus/Health/Health><=".text = mode
+
+func _on_health_value_text_changed(new_text: String) -> void:
+	if new_text == "":
+		filter.healthValue = null
+	else:
+		filter.healthValue = new_text

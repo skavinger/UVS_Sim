@@ -10,10 +10,7 @@ var selectedSave = ""
 
 func _ready() -> void:
 	populateDeckList()
-	var filter = {
-		"sets" : ["aot01", "aot02", "aot03"]
-	}
-	fillFilterResults(CardDatabase.getCardsFromFilter(filter))
+	#fillFilterResults(CardDatabase.getCardsFromFilter(filter))
 	
 	populateSaves()
 
