@@ -93,6 +93,7 @@ func _ready() -> void:
 
 func _format_selected(id):
 	var formatName = $Menus/Formats.get_popup().get_item_text(id)
+	filter.sets = []
 	if formatName != "None":
 		filter.format = formatName
 		$Menus/Formats.text = formatName

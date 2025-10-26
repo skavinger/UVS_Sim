@@ -10,7 +10,6 @@ var selectedSave = ""
 
 func _ready() -> void:
 	populateDeckList()
-	#fillFilterResults(CardDatabase.getCardsFromFilter(filter))
 	
 	populateSaves()
 
@@ -22,6 +21,7 @@ func _on_back_pressed() -> void:
 
 func fillFilterResults(cards):
 	page = 0
+	cardDatabaseScreen = []
 	for i in range(cards.size()):
 		var cardNumbers = cards[i].keys()
 		for j in range(cardNumbers.size()):
@@ -277,16 +277,16 @@ func genCardText(textbox, card):
 	textbox.append_text(card.Cardtype + "[/color]\n")
 	
 	if(card.Difficulty != null):
-		textbox.append_text("Difficulty: " + str(card.Difficulty) + " | " + "Check: " + str(card.Check) + "\n")
+		textbox.append_text("Difficulty: " + str(int(card.Difficulty)) + " | " + "Check: " + str(int(card.Check)) + "\n")
 	
 	if(card.HandSize != null):
-		textbox.append_text("Hand Size: " + str(card.HandSize) + " | " + "Health: " + str(card.Health) + "\n")
+		textbox.append_text("Hand Size: " + str(int(card.HandSize)) + " | " + "Health: " + str(int(card.Health)) + "\n")
 	
 	if(card.BlockZone != null):
-		textbox.append_text("Block Zone: " + card.BlockZone + " | " + "Block Modifier: " + str(card.BlockMod) + "\n")
+		textbox.append_text("Block Zone: " + card.BlockZone + " | " + "Block Modifier: " + str(int(card.BlockMod)) + "\n")
 	
 	if(card.AttackZone != null):
-		textbox.append_text("Speed: " + str(card.Speed) + " | " + "Zone: " + card.AttackZone + " | " + "Damage: " + str(card.Damage) + "\n")
+		textbox.append_text("Speed: " + str(int(card.Speed)) + " | " + "Zone: " + card.AttackZone + " | " + "Damage: " + str(int(card.Damage)) + "\n")
 	
 	for i in range(card.Keywords.size()):
 		var color = checkKeywordColor(card.Keywords[i].Name)
@@ -323,7 +323,7 @@ func genCardText(textbox, card):
 func checkKeywordColor(keyword):
 	if(keyword.contains("Stun") or 
 	keyword.contains("Powerful") or
-	keyword.contains("Ex") or 
+	keyword.contains("EX") or 
 	keyword.contains("Multiple") or 
 	keyword.contains("Gauge")):
 		return "orange"
@@ -403,3 +403,4 @@ func _on_filter_pressed() -> void:
 func _on_close_filter_pressed() -> void:
 	$FilterWindow.z_index = -1000
 	move_child($FilterWindow, 0)
+	fillFilterResults(CardDatabase.getCardsFromFilter($FilterWindow.filter))

@@ -41,7 +41,7 @@
 script = ExtResource("1_bjh7i")
 
 [node name="FilterWindow" type="Control" parent="."]
-z_index = 100
+z_index = -1000
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
