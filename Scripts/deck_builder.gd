@@ -23,14 +23,12 @@ func fillFilterResults(cards):
 	page = 0
 	cardDatabaseScreen = []
 	for i in range(cards.size()):
-		var cardNumbers = cards[i].keys()
-		for j in range(cardNumbers.size()):
-			var card = preload(LIST_CARD_SCENE_PATH).instantiate()
-			card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small({ "set": cards[i][cardNumbers[j]].setName, "number": cardNumbers[j]})
-			card.get_node("CardName").text =cards[i][cardNumbers[j]].Name
-			card.cardMeta = cards[i][cardNumbers[j]]
-			card.source = "database"
-			cardDatabaseScreen.append(card)
+		var card = preload(LIST_CARD_SCENE_PATH).instantiate()
+		card.get_node("CardImage").texture_normal = CardDatabase.get_card_art_small({ "set": cards[i].setName, "number": cards[i].cardNumber})
+		card.get_node("CardName").text =cards[i].Name
+		card.cardMeta = cards[i]
+		card.source = "database"
+		cardDatabaseScreen.append(card)
 			
 	populateDataBaseWindow()
 
