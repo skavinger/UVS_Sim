@@ -78,6 +78,7 @@ func _ready() -> void:
 	
 	$Menus/BlockZone.get_popup().id_pressed.connect(_blockZone_selected)
 	$Menus/CardType.get_popup().id_pressed.connect(_cardType_selected)
+	$Menus/CardType.get_popup().hide_on_checkable_item_selection = false
 	
 	$"Menus/KeywordCount/KeywordCount><=".get_popup().id_pressed.connect(_keywordCountMode_selected)
 	$"Menus/AbilityCount/AbilityCount><=".get_popup().id_pressed.connect(_abilityCountMode_selected)
@@ -171,10 +172,10 @@ func _kAbilities_selected(id):
 
 
 func _on_check_label_pressed() -> void:
-	if $Menus/Check/CheckLabel.toggle_mode:
-		filter.check = false
-	else:
+	if $Menus/Check/CheckLabel.button_pressed:
 		filter.check = true
+	else:
+		filter.check = false
 
 func _checkMode_selected(id):
 	var mode = $"Menus/Check/Check><=".get_popup().get_item_text(id)
@@ -185,10 +186,10 @@ func _on_check_value_text_changed(new_text: String) -> void:
 	filter.checkValue = int(new_text)
 
 func _on_diff_label_pressed() -> void:
-	if $Menus/Difficulty/DiffLabel.toggle_mode:
-		filter.difficulty = false
-	else:
+	if $Menus/Difficulty/DiffLabel.button_pressed:
 		filter.difficulty = true
+	else:
+		filter.difficulty = false
 
 func _diffMode_selected(id):
 	var mode = $"Menus/Difficulty/Diff><=".get_popup().get_item_text(id)
@@ -233,10 +234,10 @@ func _cardType_selected(id):
 		filter.cardType.append(cardType)
 
 func _on_keyword_count_label_pressed() -> void:
-	if $Menus/KeywordCount/KeywordCountLabel.toggle_mode:
-		filter.keywordCount = false
-	else:
+	if $Menus/KeywordCount/KeywordCountLabel.button_pressed:
 		filter.keywordCount = true
+	else:
+		filter.keywordCount = false
 
 func _keywordCountMode_selected(id):
 	var mode = $"Menus/KeywordCount/KeywordCount><=".get_popup().get_item_text(id)
@@ -247,13 +248,13 @@ func _on_keyword_count_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.keywordCountValue = null
 	else:
-		filter.keywordCountValue = new_text
+		filter.keywordCountValue = int(new_text)
 
 func _on_ability_count_label_pressed() -> void:
-	if $Menus/AbilityCount/AbilityCountLabel.toggle_mode:
-		filter.abilityCount = false
-	else:
+	if $Menus/AbilityCount/AbilityCountLabel.button_pressed:
 		filter.abilityCount = true
+	else:
+		filter.abilityCount = false
 
 func _abilityCountMode_selected(id):
 	var mode = $"Menus/AbilityCount/AbilityCount><=".get_popup().get_item_text(id)
@@ -264,13 +265,13 @@ func _on_ability_count_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.abilityCountValue = null
 	else:
-		filter.abilityCountValue = new_text
+		filter.abilityCountValue = int(new_text)
 
 func _on_block_mod_label_pressed() -> void:
-	if $Menus/BlockMod/BlockModLabel.toggle_mode:
-		filter.blockMod = false
-	else:
+	if $Menus/BlockMod/BlockModLabel.button_pressed:
 		filter.blockMod = true
+	else:
+		filter.blockMod = false
 
 func _blockModMode_selected(id):
 	var mode = $"Menus/BlockMod/BlockMod><=".get_popup().get_item_text(id)
@@ -281,13 +282,13 @@ func _on_block_mod_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.blockModValue = null
 	else:
-		filter.blockModValue = new_text
+		filter.blockModValue = int(new_text)
 
 func _on_speed_label_pressed() -> void:
-	if $Menus/Speed/SpeedLabel.toggle_mode:
-		filter.speed = false
-	else:
+	if $Menus/Speed/SpeedLabel.button_pressed:
 		filter.speed = true
+	else:
+		filter.speed = false
 
 func _speedMode_selected(id):
 	var mode = $"Menus/Speed/Speed><=".get_popup().get_item_text(id)
@@ -298,7 +299,7 @@ func _on_speed_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.speedValue = null
 	else:
-		filter.speedValue = new_text
+		filter.speedValue = int(new_text)
 
 func _attackZone_selected(id):
 	var zone = $Menus/AttackZone.get_popup().get_item_text(id)
@@ -306,14 +307,14 @@ func _attackZone_selected(id):
 		filter.attackZone = zone
 		$Menus/AttackZone.text = "Attack Zone: " + zone
 	else:
-		filter.blockZone = null
+		filter.attackZone = null
 		$Menus/AttackZone.text = "Attack Zone"
 
 func _on_damage_label_pressed() -> void:
-	if $Menus/Damage/DamageLabel.toggle_mode:
-		filter.damage = false
-	else:
+	if $Menus/Damage/DamageLabel.button_pressed:
 		filter.damage = true
+	else:
+		filter.damage = false
 
 func _damageMode_selected(id):
 	var mode = $"Menus/Damage/Damage><=".get_popup().get_item_text(id)
@@ -324,13 +325,13 @@ func _on_damage_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.damageValue = null
 	else:
-		filter.damageValue = new_text
+		filter.damageValue = int(new_text)
 
 func _on_hand_size_label_pressed() -> void:
-	if $Menus/HandSize/HandSizeLabel.toggle_mode:
-		filter.handSize = false
-	else:
+	if $Menus/HandSize/HandSizeLabel.button_pressed:
 		filter.handSize = true
+	else:
+		filter.handSize = false
 
 func _handSizeMode_selected(id):
 	var mode = $"Menus/HandSize/HandSize><=".get_popup().get_item_text(id)
@@ -341,13 +342,13 @@ func _on_hand_size_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.handSizeValue = null
 	else:
-		filter.handSizeValue = new_text
+		filter.handSizeValue = int(new_text)
 		
 func _on_health_label_pressed() -> void:
-	if $Menus/Health/HealthLabel.toggle_mode:
-		filter.health = false
-	else:
+	if $Menus/Health/HealthLabel.button_pressed:
 		filter.health = true
+	else:
+		filter.health = false
 
 func _healthMode_selected(id):
 	var mode = $"Menus/Health/Health><=".get_popup().get_item_text(id)
@@ -358,4 +359,4 @@ func _on_health_value_text_changed(new_text: String) -> void:
 	if new_text == "":
 		filter.healthValue = null
 	else:
-		filter.healthValue = new_text
+		filter.healthValue = int(new_text)

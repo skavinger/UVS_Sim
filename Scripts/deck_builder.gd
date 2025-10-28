@@ -280,7 +280,7 @@ func genCardText(textbox, card):
 	if(card.HandSize != null):
 		textbox.append_text("Hand Size: " + str(int(card.HandSize)) + " | " + "Health: " + str(int(card.Health)) + "\n")
 	
-	if(card.BlockZone != null):
+	if(card.BlockZone != null and card.BlockMod != null):
 		textbox.append_text("Block Zone: " + card.BlockZone + " | " + "Block Modifier: " + str(int(card.BlockMod)) + "\n")
 	
 	if(card.AttackZone != null):
