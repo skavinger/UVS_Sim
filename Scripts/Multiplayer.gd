@@ -55,6 +55,7 @@ func _on_server_connected():
 func hostSetup():
 	get_node("Game").host_setup()
 	
+	
 func client_setup():
 	get_node("Game").client_setup()
 

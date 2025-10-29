@@ -12,7 +12,6 @@ const BUTTON_HEIGHT = -28
 
 var transitZone
 var cardMan
-var card_database
 
 var cardState = {
 	"faceup": false,
@@ -20,166 +19,25 @@ var cardState = {
 	"committed": false
 }
 
+var rivalDeckList
+
 const buttons = []
 
 const searchBoxButtons = []
 
-func _ready() -> void:
+@rpc("any_peer")
+func setUpRivalDeck(rivalDecklist):
 	transitZone = $"../RivalTransit"
 	cardMan = $"../RivalCardManager"
 	#load decklist from deck
-	card_database = get_node("/root/Main/CardDataBaseHandler")
-	decklist = {
-		"character": {
-			"cardID" : {
-				"set" : "CHA03-GMM",
-				"number" : "01"
-			}
-		}, 
-		"main": [
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "13"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "14"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "15"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "16"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "17"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "18"
-				}
-			},
-			{
-				"count" : 3,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "19"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "20"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "21"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "22"
-				}
-			},
-			{
-				"count" : 3,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "06"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "07"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "08"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "09"
-				}
-			},
-			{
-				"count" : 4,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "10"
-				}
-			},
-			{
-				"count" : 3,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "11"
-				}
-			},
-			{
-				"count" : 3,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "12"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "04"
-				}
-			},
-			{
-				"count" : 2,
-				"cardID" : {
-					"set" : "CHA03-GMM",
-					"number" : "05"
-				}
-			}
-		],
-		"side": []
-	}
+	decklist = rivalDecklist
 	var cardCount = 0
 	for i in range(decklist.main.size()):
 		for j in decklist.main[i].count:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
 				"indexID": cardCount,
-				"cardProperties": card_database.getCard(decklist.main[i].cardID),
+				"cardProperties": CardDatabase.getCard(decklist.main[i].cardID),
 				"cardState": cardState.duplicate(),
 				"cardObj": null
 			})

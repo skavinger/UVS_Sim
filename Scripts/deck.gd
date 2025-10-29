@@ -12,7 +12,6 @@ const BUTTON_HEIGHT = -28
 
 var transitZone
 var cardMan
-var card_database
 
 var defaultCardState = {
 	"faceup": false,
@@ -37,11 +36,10 @@ const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"},
 {"Action": "To Removed", "Label": "Remove"}, 
 {"Action": "To Momentum", "Label": "To Momentum"}]
 
-func _ready() -> void:
+func setUpPlayerDeck() -> void:
 	transitZone = $"../Transit"
 	cardMan = $"../CardManager"
 	#load decklist from deck
-	card_database = get_node("/root/Main/CardDataBaseHandler")
 	decklist = $"../../../../..".currentDeckList
 	var cardCount = 0
 	for i in range(decklist.main.size()):
@@ -49,7 +47,7 @@ func _ready() -> void:
 			deck.append({
 				"cardID": decklist.main[i].cardID,
 				"indexID": cardCount,
-				"cardProperties": card_database.getCard(decklist.main[i].cardID),
+				"cardProperties": CardDatabase.getCard(decklist.main[i].cardID),
 				"cardState": defaultCardState.duplicate(),
 				"cardObj": null
 			})
@@ -64,6 +62,7 @@ func _ready() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
+	$"../../Rival/RivalDeck".rpc("setUpRivalDeck", decklist)
 
 func deck_selected():
 	$Buttons.visible = true
