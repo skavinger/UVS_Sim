@@ -22,8 +22,9 @@ func initCharacters():
 			"cardProperties": CardDatabase.getCard(startingCharacter),
 			"cardState": $"Player/Deck".defaultCardState.duplicate(),
 			"cardObj": null
-		}, false)
+		}, true)
 	$"../SyncFunctions".setPlayerHealth($"Player/Stage".starting_character.cardProperties.Health)
+	$"Player/Stage".starting_character.cardState.faceup = true
 	$"Player/Stage".starting_character.cardState.maxHealth = $"Player/Stage".starting_character.cardProperties.Health
 
 func startingHands():

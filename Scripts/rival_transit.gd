@@ -52,6 +52,7 @@ func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
+		card.cardState.faceup = faceup
 
 	match card.cardState.currentZone:
 		"character":
@@ -102,6 +103,7 @@ func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 			deckZone.add_card_to_bottom(card)
 			cardSearch.dectectChange(deckZone.deck, "Deck", deckZone.searchBoxButtons)
 		"hand":
+			faceup = false
 			check_flip(card, faceup)
 			handZone.add_card_to_hand(card)
 			cardSearch.dectectChange(handZone.hand, "Hand", handZone.handActions)

@@ -25,12 +25,117 @@ func _ready() -> void:
 	momentumZone = $"../Momentum"
 	cardSearch = $"../../Field/SearchBox"
 
-func move_to(destinationZone, card, faceup):
-	$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
+func move_to(destinationZone, card, faceUpOverride):
+	var faceup = faceUpOverride
 	#if card obj hasn't been spawned yet spawn it
+	if faceUpOverride == null:
+		match card.cardState.currentZone:
+			"character":
+				pass
+			"deck":
+				match destinationZone:
+					"hand":
+						faceup = false
+					"cardpool":
+						faceup = false
+					"discard":
+						faceup = true
+					"stage":
+						faceup = false
+					"momentum":
+						faceup = false
+					"removed":
+						faceup = true
+			"hand":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"cardpool":
+						faceup = false
+					"discard":
+						faceup = true
+					"stage":
+						faceup = false
+					"momentum":
+						faceup = false
+					"removed":
+						faceup = true
+			"cardpool":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"hand":
+						faceup = false
+					"discard":
+						faceup = true
+					"stage":
+						faceup = card.cardState.faceup
+					"momentum":
+						faceup = false
+					"removed":
+						faceup = true
+			"discard":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"hand":
+						faceup = false
+					"cardpool":
+						faceup = true
+					"stage":
+						faceup = true
+					"momentum":
+						faceup = false
+					"removed":
+						faceup = true
+			"stage":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"hand":
+						faceup = false
+					"cardpool":
+						faceup = card.cardState.faceup
+					"discard":
+						faceup = true
+					"momentum":
+						faceup = false
+					"removed":
+						faceup = true
+			"momentum":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"hand":
+						faceup = false
+					"cardpool":
+						faceup = card.cardState.faceup
+					"discard":
+						faceup = true
+					"stage":
+						faceup = card.cardState.faceup
+					"removed":
+						faceup = true
+			"removed":
+				match destinationZone:
+					"deck":
+						faceup = false
+					"hand":
+						faceup = false
+					"cardpool":
+						faceup = card.cardState.faceup
+					"discard":
+						faceup = true
+					"stage":
+						faceup = card.cardState.faceup
+					"momentum":
+						faceup = false
+		
+	$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
+	
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
-
+		
 	match card.cardState.currentZone:
 		"character":
 			pass
@@ -58,6 +163,8 @@ func move_to(destinationZone, card, faceup):
 		"removed":
 			removedZone.eraseCard(card)
 			cardSearch.dectectChange(removedZone.removed, "Removed", removedZone.searchBoxButtons)
+	
+	
 	
 	if(card.cardState.currentZone == "cardpool" or 
 	card.cardState.currentZone == "stage" or 

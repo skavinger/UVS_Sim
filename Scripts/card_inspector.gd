@@ -12,9 +12,10 @@ func _ready() -> void:
 	animationMan = $"../AnimationManager"
 
 func showInspector(card):
-	self.z_index = 1000
-	self.get_node("Card").texture = CardDatabase.get_card_art(card.cardID)
-	genCardText(self.get_node("TextArea/ScrollContainer/Cardtext"), card)
+	if card.cardObj.objType == "card" or card.cardState.faceup == true:
+		self.z_index = 1000
+		self.get_node("Card").texture = CardDatabase.get_card_art(card.cardID)
+		genCardText(self.get_node("TextArea/ScrollContainer/Cardtext"), card)
 	
 func hideInspector():
 	self.z_index = -1000

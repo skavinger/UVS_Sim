@@ -36,10 +36,6 @@ func set_buttons(card, buttons):
 	for i in range(old_buttons.size()):
 		$Buttons.remove_child(old_buttons[i])
 		
-	if(card.cardState.faceup):
-		buttons.append({"Action": "Flip", "Label": "Flip"})
-	else:
-		buttons.append({"Action": "Unflip", "Label": "Unflip"})
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
@@ -79,6 +75,7 @@ func toMomentum():
 	
 func flip():
 	$AnimationPlayer.play("Flip")
+	cardMeta.cardState.faceup = false
 	var buttons = $Buttons.get_children()
 	for i in range(buttons.size()):
 		if(buttons[i].button_type == "Flip"):
@@ -87,6 +84,7 @@ func flip():
 	
 func unflip():
 	$AnimationPlayer.play("Unflip")
+	cardMeta.cardState.faceup = true
 	var buttons = $Buttons.get_children()
 	for i in range(buttons.size()):
 		if(buttons[i].button_type == "Unflip"):

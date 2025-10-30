@@ -118,10 +118,18 @@ func unflipCard(cardMeta):
 	
 @rpc("any_peer")
 func commitCard(cardMeta):
-	var card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+	var card
+	if cardMeta.cardProperties.Cardtype == "Character":
+		card = transitZone.stageZone.starting_character
+	else:
+		card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
 	card.cardObj.commit()
 	
 @rpc("any_peer")
 func readyCard(cardMeta):
-	var card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+	var card
+	if cardMeta.cardProperties.Cardtype == "Character":
+		card = transitZone.stageZone.starting_character
+	else:
+		card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
 	card.cardObj.ready()
