@@ -1,6 +1,7 @@
 extends Node2D
 
 const CARD_WIDTH = 70
+const CARDPOOL_MAX_WIDTH = 1300
 
 const CARDPOOL_POS_CARDPOOL_X = 270
 const CARDPOOL_POS_CARDPOOL_Y = 640
@@ -33,6 +34,11 @@ func eraseCard(card):
 	update_pos()
 
 func update_pos():
+	var cardWidth
+	if CARD_WIDTH * cardpool.size() > CARDPOOL_MAX_WIDTH:
+		cardWidth = float(CARDPOOL_MAX_WIDTH) / float(cardpool.size())
+	else:
+		cardWidth = CARD_WIDTH
 	for i in range(cardpool.size()):
-		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(CARDPOOL_POS_CARDPOOL_X + (CARD_WIDTH * i), CARDPOOL_POS_CARDPOOL_Y))
+		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(CARDPOOL_POS_CARDPOOL_X + (cardWidth * i), CARDPOOL_POS_CARDPOOL_Y))
 		cardpool[i].cardObj.z_index = 100 + i

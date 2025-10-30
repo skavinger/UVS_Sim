@@ -1,6 +1,7 @@
 extends Node2D
 
 const CARD_WIDTH = 70
+const STAGE_MAX_WIDTH = 1300
 
 const CH_POS_X = 1590
 const CH_POS_Y = 180
@@ -48,10 +49,15 @@ func update_pos():
 		else:
 			readyCards.append(stage[i])
 			
+	var cardWidth
+	if CARD_WIDTH * stage.size() > STAGE_MAX_WIDTH:
+		cardWidth = float(STAGE_MAX_WIDTH) / float(stage.size())
+	else:
+		cardWidth = CARD_WIDTH
 	for i in range(readyCards.size()):
-		animationMan.animate_card_to_pos(readyCards[i].cardObj, Vector2(STAGE_POS_START_X - (CARD_WIDTH * i), STAGE_POS_START_Y))
+		animationMan.animate_card_to_pos(readyCards[i].cardObj, Vector2(STAGE_POS_START_X - (cardWidth * i), STAGE_POS_START_Y))
 		readyCards[i].cardObj.z_index = 200 + i
 	
 	for i in range(committed.size()):
-		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X - (CARD_WIDTH * (i + readyCards.size())), STAGE_POS_START_Y))
+		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X - (cardWidth * (i + readyCards.size())), STAGE_POS_START_Y))
 		committed[i].cardObj.z_index = 200 + (i + readyCards.size())

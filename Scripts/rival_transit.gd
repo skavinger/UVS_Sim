@@ -38,17 +38,17 @@ func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 			else:
 				card = card_oldRef
 		"hand":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = handZone.get_card_by_indexID(card_oldRef.indexID)
 		"cardpool":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = cardpoolZone.get_card_by_indexID(card_oldRef.indexID)
 		"discard":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = discardZone.get_card_by_indexID(card_oldRef.indexID)
 		"stage":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = stageZone.get_card_by_indexID(card_oldRef.indexID)
 		"momentum":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = momentumZone.get_card_by_indexID(card_oldRef.indexID)
 		"removed":
-			card = deckZone.get_card_by_indexID(card_oldRef.indexID)
+			card = removedZone.get_card_by_indexID(card_oldRef.indexID)
 
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
