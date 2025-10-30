@@ -372,22 +372,20 @@ _data = {
 }
 
 [node name="Card" type="Node2D"]
+position = Vector2(232, 236)
 rotation = 3.14159
 script = ExtResource("1_1m00k")
 
 [node name="CardFront" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(-232, -236)
 scale = Vector2(0.01, 0.14)
 texture = ExtResource("2_fh8h8")
 
 [node name="CardBack" type="Sprite2D" parent="."]
-position = Vector2(-232, -236)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("3_2mx6w")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-232, -236)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 3)
@@ -400,7 +398,6 @@ libraries = {
 
 [node name="Buttons" type="Node2D" parent="."]
 visible = false
-position = Vector2(-232, -236)
 
 [node name="SideButtons" type="Node2D" parent="."]
 visible = false

@@ -3,8 +3,8 @@ extends Node2D
 const CARD_WIDTH = 70
 const CARDPOOL_MAX_WIDTH = 1300
 
-const CARDPOOL_POS_CARDPOOL_X = 1400
-const CARDPOOL_POS_CARDPOOL_Y = 200
+const CARDPOOL_POS_X = 1636
+const CARDPOOL_POS_Y = 435
 
 var starting_character
 
@@ -38,5 +38,5 @@ func update_pos():
 	else:
 		cardWidth = CARD_WIDTH
 	for i in range(cardpool.size()):
-		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(CARDPOOL_POS_CARDPOOL_X - (cardWidth * i), CARDPOOL_POS_CARDPOOL_Y))
+		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(CARDPOOL_POS_X - (cardWidth * i), CARDPOOL_POS_Y))
 		cardpool[i].cardObj.z_index = 100 + i

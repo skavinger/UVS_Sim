@@ -91,3 +91,37 @@ func search_card_unselected():
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
 		selected_card = null
+
+@rpc("any_peer")
+func flipCard(cardMeta):
+	var card
+	match cardMeta.cardState.currentZone:
+		"stage":
+			card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+		"cardpool":
+			card = transitZone.cardpoolZone.get_card_by_indexID(cardMeta.indexID)
+		"momentum":
+			card = transitZone.momentumZone.get_card_by_indexID(cardMeta.indexID)
+	card.cardObj.flip()
+
+@rpc("any_peer")
+func unflipCard(cardMeta):
+	var card
+	match cardMeta.cardState.currentZone:
+		"stage":
+			card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+		"cardpool":
+			card = transitZone.cardpoolZone.get_card_by_indexID(cardMeta.indexID)
+		"momentum":
+			card = transitZone.momentumZone.get_card_by_indexID(cardMeta.indexID)
+	card.cardObj.unflip()
+	
+@rpc("any_peer")
+func commitCard(cardMeta):
+	var card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+	card.cardObj.commit()
+	
+@rpc("any_peer")
+func readyCard(cardMeta):
+	var card = transitZone.stageZone.get_card_by_indexID(cardMeta.indexID)
+	card.cardObj.ready()

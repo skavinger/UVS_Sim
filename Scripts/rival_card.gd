@@ -101,13 +101,13 @@ func toBottomDeck():
 	
 func commit():
 	cardMeta.cardState.committed = true
-	self.rotation = PI/2
+	self.rotation = PI + PI/2
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
 	
 func ready():
 	cardMeta.cardState.committed = false
-	self.rotation = 0
+	self.rotation = PI
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
 

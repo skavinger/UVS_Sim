@@ -3,11 +3,11 @@ extends Node2D
 const CARD_WIDTH = 70
 const STAGE_MAX_WIDTH = 1300
 
-const CH_POS_X = 1590
-const CH_POS_Y = 180
+const CH_POS_X = 1826
+const CH_POS_Y = 412
 
-const STAGE_POS_START_X = 1400
-const STAGE_POS_START_Y = 0
+const STAGE_POS_START_X = 1636
+const STAGE_POS_START_Y = 232
 
 var starting_character
 

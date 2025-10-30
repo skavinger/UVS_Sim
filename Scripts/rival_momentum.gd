@@ -2,8 +2,8 @@ extends Node2D
 
 const CARD_WIDTH = 20
 
-const STAGE_POS_CARDPOOL_X = 2050
-const STAGE_POS_CARDPOOL_Y = 50
+const MOMENTUM_POS_X = 1820
+const MOMENTUM_POS_Y = 270
 
 var starting_character
 
@@ -33,5 +33,5 @@ func eraseCard(card):
 func update_pos():
 	for i in range(momentum.size()):
 		momentum[i].cardObj.rotation = PI + PI/2
-		animationMan.animate_card_to_pos(momentum[i].cardObj, Vector2(STAGE_POS_CARDPOOL_X, STAGE_POS_CARDPOOL_Y - (CARD_WIDTH * i)))
+		animationMan.animate_card_to_pos(momentum[i].cardObj, Vector2(MOMENTUM_POS_X, MOMENTUM_POS_Y - (CARD_WIDTH * i)))
 		momentum[i].cardObj.z_index = 300 + i

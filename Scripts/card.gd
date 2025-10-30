@@ -84,6 +84,7 @@ func flip():
 		if(buttons[i].button_type == "Flip"):
 			buttons[i].button_type = "Unflip"
 			buttons[i].get_node("Control/Text").text = "Unflip"
+	$"../../../Rival/RivalCardManager".rpc("flipCard", cardMeta)
 	
 func unflip():
 	$AnimationPlayer.play("Unflip")
@@ -92,6 +93,7 @@ func unflip():
 		if(buttons[i].button_type == "Unflip"):
 			buttons[i].button_type = "Flip"
 			buttons[i].get_node("Control/Text").text = "Flip"
+	$"../../../Rival/RivalCardManager".rpc("unflipCard", cardMeta)
 	
 func toTopDeck():
 	transitZone.move_to("top deck", cardMeta, false)
@@ -104,12 +106,14 @@ func commit():
 	self.rotation = PI/2
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
+	$"../../../Rival/RivalCardManager".rpc("commitCard", cardMeta)
 	
 func ready():
 	cardMeta.cardState.committed = false
 	self.rotation = 0
 	cardMan.card_unselected()
 	transitZone.stageZone.update_pos()
+	$"../../../Rival/RivalCardManager".rpc("readyCard", cardMeta)
 
 func call_fun(buttonType):
 	match buttonType:
