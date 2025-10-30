@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnq7jv6uivs72"
-path="res://.godot/imported/CardInspectorBackGround.png-e6375b192b4109e017e9fb609216805f.ctex"
+uid="uid://brfjtydrt4ngs"
+path="res://.godot/imported/Tab.png-d5cbe67393110e76f02474388218a462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CardInspectorBackGround.png"
-dest_files=["res://.godot/imported/CardInspectorBackGround.png-e6375b192b4109e017e9fb609216805f.ctex"]
+source_file="res://Assets/Tab.png"
+dest_files=["res://.godot/imported/Tab.png-d5cbe67393110e76f02474388218a462.ctex"]
 
 [params]
 

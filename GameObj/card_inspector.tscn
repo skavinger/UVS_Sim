@@ -1,30 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu8k4sphid8os"]
+[gd_scene load_steps=9 format=3 uid="uid://cu8k4sphid8os"]
 
 [ext_resource type="Texture2D" uid="uid://cnq7jv6uivs72" path="res://Assets/CardInspectorBackGround.png" id="1_tigxt"]
+[ext_resource type="Script" uid="uid://dtt61s5iglo3g" path="res://GameObj/text_tab_group.gd" id="2_1k6jl"]
 [ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="2_mcrgw"]
+[ext_resource type="Texture2D" uid="uid://brfjtydrt4ngs" path="res://Assets/Tab.png" id="3_1k6jl"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="3_5pss5"]
+[ext_resource type="Script" uid="uid://6wdqbad4jxrm" path="res://GameObj/inspector_tab_group.gd" id="6_u7mrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkeg3"]
+size = Vector2(45, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwvb"]
 size = Vector2(38, 45)
 
 [node name="CardInspector" type="Node2D"]
+z_index = 1000
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="TextArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -549.0
+offset_right = 40.0
+offset_bottom = -509.0
+
+[node name="Background" type="Sprite2D" parent="TextArea"]
 position = Vector2(198, 540)
 texture = ExtResource("1_tigxt")
 
-[node name="Card" type="Sprite2D" parent="."]
-position = Vector2(180, 249)
-scale = Vector2(0.48, 0.48)
-texture = ExtResource("2_mcrgw")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="TextArea"]
 custom_minimum_size = Vector2(362, 500)
+layout_mode = 0
 offset_top = 505.0
-offset_right = 361.0
-offset_bottom = 932.0
+offset_right = 362.0
+offset_bottom = 1005.0
 
-[node name="Cardtext" type="RichTextLabel" parent="ScrollContainer"]
+[node name="Cardtext" type="RichTextLabel" parent="TextArea/ScrollContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(362, 500)
 layout_mode = 2
@@ -36,13 +46,46 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 
-[node name="Arrows" type="Sprite2D" parent="."]
+[node name="TextTabGroup" type="Node2D" parent="TextArea"]
+script = ExtResource("2_1k6jl")
+
+[node name="TextTab" type="Sprite2D" parent="TextArea/TextTabGroup"]
+position = Vector2(30, 1068)
+rotation = 1.5707964
+texture = ExtResource("3_1k6jl")
+
+[node name="Arrows" type="Sprite2D" parent="TextArea/TextTabGroup"]
+position = Vector2(30, 1065)
+rotation = 1.5707964
+texture = ExtResource("3_5pss5")
+
+[node name="Area2D" type="Area2D" parent="TextArea/TextTabGroup"]
+position = Vector2(-1, -29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea/TextTabGroup/Area2D"]
+position = Vector2(29.5, 1099)
+shape = SubResource("RectangleShape2D_dkeg3")
+
+[node name="Card" type="Sprite2D" parent="."]
+position = Vector2(180, 249)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("2_mcrgw")
+
+[node name="InspectorTabGroup" type="Node2D" parent="."]
+z_index = 500
+script = ExtResource("6_u7mrm")
+
+[node name="InspectorTab" type="Sprite2D" parent="InspectorTabGroup"]
+position = Vector2(378, 49)
+texture = ExtResource("3_1k6jl")
+
+[node name="Arrows" type="Sprite2D" parent="InspectorTabGroup"]
 position = Vector2(377, 49)
 rotation = 3.14159
 texture = ExtResource("3_5pss5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="InspectorTabGroup"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectorTabGroup/Area2D"]
 position = Vector2(379, 49.5)
 shape = SubResource("RectangleShape2D_nlwvb")

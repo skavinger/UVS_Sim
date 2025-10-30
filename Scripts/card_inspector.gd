@@ -2,31 +2,23 @@ extends Node2D
 
 const objType = "cardInspector"
 const INSPECTORWIDTH = 365
+const INSPECTORHEIGHT = 579
 
-var expanded = true
+
+var expandedV = false
 var animationMan
 
 func _ready() -> void:
 	animationMan = $"../AnimationManager"
 
-func toggleInspector():
-	if expanded:
-		expanded = false
-		$Arrows.rotation = 0
-		animationMan.animate_card_to_pos(self, Vector2(self.position.x - INSPECTORWIDTH, self.position.y))
-	else:
-		expanded = true
-		$Arrows.rotation = PI
-		animationMan.animate_card_to_pos(self, Vector2(self.position.x + INSPECTORWIDTH, self.position.y))
-
 func showInspector(card):
 	self.z_index = 1000
 	self.get_node("Card").texture = CardDatabase.get_card_art(card.cardID)
-	genCardText(self.get_node("ScrollContainer/Cardtext"), card)
+	genCardText(self.get_node("TextArea/ScrollContainer/Cardtext"), card)
 	
 func hideInspector():
 	self.z_index = -1000
-	self.get_node("ScrollContainer/Cardtext").text = ""
+	self.get_node("TextArea/ScrollContainer/Cardtext").text = ""
 
 func genCardText(textbox, card):
 	textbox.append_text(card.cardProperties.Name + "\n")
