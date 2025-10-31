@@ -2,15 +2,20 @@ extends Node2D
 
 
 func host_setup():
+	call_deferred("initPlayerData")
 	call_deferred("initDecks")
 	call_deferred("initCharacters")
 	call_deferred("startingHands")
 	
 func client_setup():
+	call_deferred("initPlayerData")
 	call_deferred("initDecks")
 	call_deferred("initCharacters")
 	call_deferred("startingHands")
 	
+
+func initPlayerData():
+	$"../../..".rpc("setRivalPlayerData", $"../../..".playerData)
 
 func initDecks():
 	$"Player/Deck".setUpPlayerDeck()

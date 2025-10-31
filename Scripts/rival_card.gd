@@ -31,7 +31,7 @@ func _on_area_2d_mouse_exited() -> void:
 func setMeta(card):
 	cardMeta = card
 
-func set_buttons(card, buttons):
+func set_buttons(_card, buttons):
 	var old_buttons = $Buttons.get_children()
 	for i in range(old_buttons.size()):
 		$Buttons.remove_child(old_buttons[i])
