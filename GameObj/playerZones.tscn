@@ -32,17 +32,17 @@ script = ExtResource("5_jmq8v")
 
 [node name="Deck" parent="." instance=ExtResource("6_j6dd2")]
 z_index = 100
-position = Vector2(1685, 835)
+position = Vector2(1685, 855)
 script = ExtResource("7_m3rs4")
 
 [node name="Discard" parent="." instance=ExtResource("8_ghu1u")]
 z_index = 50
-position = Vector2(1685, 640)
+position = Vector2(1685, 660)
 script = ExtResource("9_mge31")
 
 [node name="Removed" parent="." instance=ExtResource("10_0qm24")]
 z_index = 50
-position = Vector2(1835, 640)
+position = Vector2(1835, 660)
 script = ExtResource("11_w717i")
 
 [node name="Momentum" type="Node2D" parent="."]

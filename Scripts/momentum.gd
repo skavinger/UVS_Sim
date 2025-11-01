@@ -3,7 +3,7 @@ extends Node2D
 const CARD_WIDTH = 20
 
 const STAGE_POS_CARDPOOL_X = 100
-const STAGE_POS_CARDPOOL_Y = 790
+const STAGE_POS_CARDPOOL_Y = 810
 
 var starting_character
 

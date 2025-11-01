@@ -1,7 +1,7 @@
 extends Node2D
 
 const CARD_WIDTH = 70
-const HAND_Y_POS = 72
+const HAND_Y_POS = 52
 
 var hand = []
 

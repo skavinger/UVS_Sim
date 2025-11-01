@@ -4,10 +4,10 @@ const CARD_WIDTH = 70
 const STAGE_MAX_WIDTH = 1300
 
 const CH_POS_X = 100
-const CH_POS_Y = 650
+const CH_POS_Y = 670
 
 const STAGE_POS_START_X = 260
-const STAGE_POS_START_Y = 835
+const STAGE_POS_START_Y = 855
 
 var starting_character
 

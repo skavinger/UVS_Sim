@@ -7,7 +7,7 @@ const CH_POS_X = 1826
 const CH_POS_Y = 412
 
 const STAGE_POS_START_X = 1636
-const STAGE_POS_START_Y = 232
+const STAGE_POS_START_Y = 212
 
 var starting_character
 

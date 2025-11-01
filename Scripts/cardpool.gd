@@ -4,7 +4,7 @@ const CARD_WIDTH = 70
 const CARDPOOL_MAX_WIDTH = 1300
 
 const CARDPOOL_POS_CARDPOOL_X = 270
-const CARDPOOL_POS_CARDPOOL_Y = 640
+const CARDPOOL_POS_CARDPOOL_Y = 660
 
 var starting_character
 
