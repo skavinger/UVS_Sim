@@ -87,6 +87,8 @@ func _input(event):
 				$"../Game/Field/TurnSequence".advancePhase()
 			elif new_obj != null and new_obj.objType == "RevertPhaseTracker":
 				$"../Game/Field/TurnSequence".revertPhase()
+			elif new_obj != null and new_obj.objType == "StartAttackSeq":
+				$"../Game/Field/TurnSequence".startAttackSeq()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state
