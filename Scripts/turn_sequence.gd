@@ -34,44 +34,54 @@ func advancePhase():
 				currentPhase = "Mulligains"
 				$"../../Player/Deck".drawToHandSize()
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/Mulligans.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"Mulligains":
 				currentPhase = "CombatPhaseOpen"
 				$"../../Player/Deck".drawToHandSize()
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"StartPhaseReady":
 				currentPhase = "StartPhaseReview"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReviewGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"StartPhaseReview":
 				currentPhase = "StartPhaseDraw"
 				$"../../Player/Deck".drawToHandSize()
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/DrawGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"StartPhaseDraw":
 				currentPhase = "CombatPhaseOpen"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+				toggleAttackSeqButtons(true)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseOpen":
 				currentPhase = "EndPhase"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/EndGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseEnhance":
 				currentPhase = "CombatPhaseBlock"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/BlockGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseBlock":
 				currentPhase = "CombatPhaseDamage"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/DamageGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseDamage":
 				currentPhase = "CombatPhaseOpen"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+				toggleAttackSeqButtons(true)
 				rpc("updateRivalsPhase",currentPhase)
 			"EndPhase":
 				currentPhase = "StartPhaseReady"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyRed.png")
+				toggleAttackSeqButtons(false)
 				playersTurn = false
 				rpc("swapPlayerTurn", currentPhase)
 				updateTurnPlayer()
@@ -82,36 +92,44 @@ func revertPhase():
 			"StartPhaseReady":
 				currentPhase = "EndPhase"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/EndRed.png")
+				toggleAttackSeqButtons(false)
 				playersTurn = false
 				rpc("swapPlayerTurn", currentPhase)
 				updateTurnPlayer()
 			"StartPhaseReview":
 				currentPhase = "StartPhaseReady"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"StartPhaseDraw":
 				currentPhase = "StartPhaseReview"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReviewGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseOpen":
 				currentPhase = "StartPhaseDraw"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/DrawGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseEnhance":
 				currentPhase = "CombatPhaseOpen"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+				toggleAttackSeqButtons(true)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseBlock":
 				currentPhase = "CombatPhaseEnhance"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/EnhanceGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"CombatPhaseDamage":
 				currentPhase = "CombatPhaseBlock"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/BlockGreen.png")
+				toggleAttackSeqButtons(false)
 				rpc("updateRivalsPhase",currentPhase)
 			"EndPhase":
 				currentPhase = "CombatPhaseOpen"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+				toggleAttackSeqButtons(true)
 				rpc("updateRivalsPhase",currentPhase)
 		
 			
@@ -178,3 +196,17 @@ func swapPlayerTurn(toPhase):
 			$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyGreen.png")
 		"EndPhase":
 			$TurnSequence.texture = preload("res://Assets/TurnSequence/EndGreen.png")
+
+func toggleAttackSeqButtons(buttonsOn):
+	if buttonsOn:
+		$"../AttackSeq".visible = true
+		$"../AttackSeq/Area2D/CollisionShape2D".disabled = false
+	else:
+		$"../AttackSeq".visible = false
+		$"../AttackSeq/Area2D/CollisionShape2D".disabled = true
+
+func startAttackSeq():
+	currentPhase = "CombatPhaseEnhance"
+	$TurnSequence.texture = preload("res://Assets/TurnSequence/EnhanceGreen.png")
+	toggleAttackSeqButtons(false)
+	rpc("updateRivalsPhase",currentPhase)
