@@ -80,6 +80,13 @@ func _input(event):
 							rivalTransitZone.discardZone.discard_selected()
 						"rival_removed":
 							rivalTransitZone.removedZone.removed_selected()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			var new_obj = raycast_at_curser()
+			if new_obj != null and new_obj.objType == "AdvancePhaseTracker":
+				$"../Game/Field/TurnSequence".advancePhase()
+			elif new_obj != null and new_obj.objType == "RevertPhaseTracker":
+				$"../Game/Field/TurnSequence".revertPhase()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state

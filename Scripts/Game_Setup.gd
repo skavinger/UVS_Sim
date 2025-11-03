@@ -5,13 +5,12 @@ func host_setup():
 	call_deferred("initPlayerData")
 	call_deferred("initDecks")
 	call_deferred("initCharacters")
-	call_deferred("startingHands")
+	call_deferred("determinFirst")
 	
 func client_setup():
 	call_deferred("initPlayerData")
 	call_deferred("initDecks")
 	call_deferred("initCharacters")
-	call_deferred("startingHands")
 	
 
 func initPlayerData():
@@ -32,5 +31,9 @@ func initCharacters():
 	$"Player/Stage".starting_character.cardState.faceup = true
 	$"Player/Stage".starting_character.cardState.maxHealth = $"Player/Stage".starting_character.cardProperties.Health
 
-func startingHands():
-	$"Player/Deck".drawToHandSize()
+func determinFirst():
+	var first = randi()
+	if first % 2 == 0:
+		$"Field/TurnSequence".setFirst(true)
+	else:
+		$"Field/TurnSequence".setFirst(false)
