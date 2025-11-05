@@ -17,7 +17,8 @@ var defaultCardState = {
 	"faceup": false,
 	"currentZone": "deck",
 	"committed": false,
-	"maxHealth": null
+	"maxHealth": null,
+	"frozen": false
 }
 
 const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 

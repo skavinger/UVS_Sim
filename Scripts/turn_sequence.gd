@@ -46,6 +46,7 @@ func advancePhase():
 				currentPhase = "StartPhaseReview"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReviewGreen.png")
 				toggleAttackSeqButtons(false)
+				$"../../Player/Stage".readyStage()
 				rpc("updateRivalsPhase",currentPhase)
 			"StartPhaseReview":
 				currentPhase = "StartPhaseDraw"

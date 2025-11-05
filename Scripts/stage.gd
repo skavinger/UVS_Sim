@@ -64,3 +64,10 @@ func update_pos():
 	for i in range(committed.size()):
 		animationMan.animate_card_to_pos(committed[i].cardObj, Vector2(STAGE_POS_START_X + (cardWidth * (i + readyCards.size())), STAGE_POS_START_Y))
 		committed[i].cardObj.z_index = 200 + (i + readyCards.size())
+
+func readyStage():
+	for i in range(stage.size()):
+		if !stage[i].cardState.frozen:
+			stage[i].cardObj.ready()
+		else:
+			stage[i].cardState.frozen = false
