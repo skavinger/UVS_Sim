@@ -35,7 +35,10 @@ func setStatus(icon):
 
 func _on_update_download_pressed() -> void:
 	#Download path
+	
 	if !dataMissmatch and !imageMissmatch:
+		$Update_Download.text = "Downloading..."
+		$Update_Download.disabled = true
 		downloadSet()
 	else:
 		updateSet()
