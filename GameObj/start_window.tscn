@@ -19,5 +19,13 @@ offset_right = 340.0
 offset_bottom = 500.0
 text = "Deck Builder"
 
+[node name="DownloadData" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 540.0
+offset_right = 340.0
+offset_bottom = 690.0
+text = "Download Set Modules"
+
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="DeckBuilder" to="." method="_on_deck_builder_pressed"]
+[connection signal="pressed" from="DownloadData" to="." method="_on_download_data_pressed"]

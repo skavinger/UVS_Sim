@@ -19,10 +19,12 @@ func _ready() -> void:
 		newEntry.name = setName
 	
 	formatList = FileAccess.get_file_as_string("user://SetData/formats.json")
-	formatList = JSON.parse_string(formatList).formats
+	if formatList != "":
+		formatList = JSON.parse_string(formatList).formats
 	var keywordList = FileAccess.get_file_as_string("user://SetData/keywords.json")
-	keywordTraitList = JSON.parse_string(keywordList).traits
-	keywordAbilityList = JSON.parse_string(keywordList).abilities
+	if keywordList != "":
+		keywordTraitList = JSON.parse_string(keywordList).traits
+		keywordAbilityList = JSON.parse_string(keywordList).abilities
 
 func getFormat(format):
 	return formatList[format]
