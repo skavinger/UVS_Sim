@@ -14,10 +14,10 @@
 [ext_resource type="Script" uid="uid://bngmwgf6fxbd6" path="res://Scripts/turn_sequence.gd" id="11_pghvb"]
 [ext_resource type="Texture2D" uid="uid://s3tr7fdstxyl" path="res://Assets/TurnSequence/StartofGame.png" id="12_pghvb"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="14_2top2"]
-[ext_resource type="Script" uid="uid://b2y105x4g7nkf" path="res://GameObj/advance_phase.gd" id="15_tlaju"]
-[ext_resource type="Script" uid="uid://cv6243g7x06es" path="res://GameObj/revert_phase.gd" id="16_bxhp4"]
+[ext_resource type="Script" uid="uid://b2y105x4g7nkf" path="res://Scripts/advance_phase.gd" id="15_tlaju"]
+[ext_resource type="Script" uid="uid://cv6243g7x06es" path="res://Scripts/revert_phase.gd" id="16_bxhp4"]
 [ext_resource type="Texture2D" uid="uid://bc3nadu04xbnd" path="res://Assets/TurnSequence/AttackSeq.png" id="17_bxhp4"]
-[ext_resource type="Script" uid="uid://s1j55si6j13g" path="res://GameObj/attack_seq.gd" id="18_vimqo"]
+[ext_resource type="Script" uid="uid://s1j55si6j13g" path="res://Scripts/attack_seq.gd" id="18_vimqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2top2"]
 size = Vector2(62.5, 63)

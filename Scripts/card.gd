@@ -58,7 +58,11 @@ func set_buttons(card, buttons):
 		$SideButtons.add_child(new_button)
 		new_button.position.x = (BUTTON_HEIGHT * i)
 		new_button.z_index = self.z_index - i
-		
+
+func playCard():
+	transitZone.move_to("cardpool", cardMeta, true)
+	transitZone.deckZone.check()
+
 func toHand():
 	transitZone.move_to("hand", cardMeta, null)
 
@@ -119,6 +123,8 @@ func ready():
 
 func call_fun(buttonType):
 	match buttonType:
+		"Play Card":
+			playCard()
 		"To Hand":
 			toHand()
 		"To Stage":

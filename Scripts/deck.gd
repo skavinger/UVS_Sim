@@ -110,7 +110,11 @@ func mill(count):
 	for i in count:
 		var topCard = deck[0]
 		transitZone.move_to("discard", topCard, false)
-		
+
+func check():
+	var topCard = deck[0]
+	transitZone.move_to("discard", topCard, false)
+
 func removeCount(count):
 	for i in count:
 		var topCard = deck[0]
@@ -130,6 +134,8 @@ func drawToHandSize():
 
 func call_fun(buttonType):
 	match buttonType:
+		"Make A Check":
+			check()
 		"Draw 1":
 			draw_card(1)
 		"Search":

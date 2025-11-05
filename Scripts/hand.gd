@@ -6,6 +6,7 @@ const HAND_Y_POS = 1020
 var hand = []
 
 const handActions = [
+{"Action": "Play Card", "Label": "Play"},
 {"Action": "To Stage", "Label": "Build"}, 
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Discard", "Label": "Discard"}, 

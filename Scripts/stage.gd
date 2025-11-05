@@ -66,6 +66,10 @@ func update_pos():
 		committed[i].cardObj.z_index = 200 + (i + readyCards.size())
 
 func readyStage():
+	if !starting_character.cardState.frozen:
+		starting_character.cardObj.ready()
+	else:
+		starting_character.cardState.frozen = false
 	for i in range(stage.size()):
 		if !stage[i].cardState.frozen:
 			stage[i].cardObj.ready()
