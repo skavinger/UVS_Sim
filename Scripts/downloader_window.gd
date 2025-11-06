@@ -4,6 +4,7 @@ const pathToDownLoadEntry = "res://GameObj/download_entry.tscn"
 const cardRepoBaseURL = "https://raw.githubusercontent.com/skavinger/UVS_Dataset/refs/heads/main/"
 
 var setsToDownLoad = []
+var setsToUpdate = []
 var databaseUpdate = []
 
 func _ready() -> void:
@@ -37,7 +38,7 @@ func _http_request_completed(_result, _response_code, _headers, body):
 			else:
 				if setList[i].Image_Version != setVersion.Image_Version:
 					entry.imageMissmatch = true
-				if setList[i].Data_Version == setVersion.Data_Version:
+				if setList[i].Data_Version != setVersion.Data_Version:
 					entry.dataMissmatch = true
 				entry.setStatus("yellow")
 				entry.status = "update"
@@ -56,7 +57,7 @@ func _on_update_all_pressed() -> void:
 	$UpdateAll.disabled = true
 	var sets = $SetModuleList/ScrollContainer/VBoxContainer.get_children()
 	for i in range(sets.size()):
-		if sets[i].status == "download":
+		if sets[i].status == "download" or sets[i].status == "update":
 			setsToDownLoad.append(sets[i])
 			sets[i].queForDownload()
 	downloadNext()
@@ -64,7 +65,10 @@ func _on_update_all_pressed() -> void:
 func downloadNext():
 	if setsToDownLoad.size() != 0:
 		var setToDownload = setsToDownLoad.pop_front()
-		setToDownload.downloadSet()
+		if setToDownload.status == "download":
+			setToDownload.downloadSet()
+		elif setToDownload.status == "update":
+			setToDownload.updateSet()
 		databaseUpdate.append(setToDownload.setID)
 	else:
 		$UpdateAll.text = "Complete!"

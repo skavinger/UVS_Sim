@@ -142,4 +142,62 @@ func queForDownload():
 	massDownload = true
 
 func updateSet():
-	pass
+	$Update_Download.text = "Updating..."
+	$Update_Download.disabled = true
+	if imageMissmatch:
+		DirAccess.remove_absolute("user://SetData/" + setID + "/Images/")
+		DirAccess.remove_absolute("user://SetData/" + setID + "/Images_small/")
+		DirAccess.remove_absolute("user://SetData/" + setID + "/version.json")
+		
+		imagesRequest = HTTPRequest.new()
+		add_child(imagesRequest)
+		imagesRequest.request_completed.connect(self._download_completed.bind(["images"]))
+		imagesRequest.download_file = "user://SetData/" + setID + "/Images.zip"
+		
+		var error = imagesRequest.request(cardRepoBaseURL + setID + "/Images.zip")
+		pendingRequests.push_back("images")
+		if error != OK:
+			push_error("Unable to get set list from repo")
+			
+		imagesSmallRequest = HTTPRequest.new()
+		add_child(imagesSmallRequest)
+		imagesSmallRequest.request_completed.connect(self._download_completed.bind(["imagesS"]))
+		imagesSmallRequest.download_file = "user://SetData/" + setID + "/Images_small.zip"
+		
+		error = imagesSmallRequest.request(cardRepoBaseURL + setID + "/Images_small.zip")
+		pendingRequests.push_back("imagesS")
+		if error != OK:
+			push_error("Unable to get set list from repo")
+			
+		versionRequest = HTTPRequest.new()
+		add_child(versionRequest)
+		versionRequest.request_completed.connect(self._download_completed.bind(["version"]))
+		versionRequest.download_file = "user://SetData/" + setID + "/version.json"
+		
+		error = versionRequest.request(cardRepoBaseURL + setID + "/version.json")
+		pendingRequests.push_back("version")
+		if error != OK:
+			push_error("Unable to get set list from repo")
+	if dataMissmatch:
+		DirAccess.remove_absolute("user://SetData/" + setID + "/setData.json")
+		DirAccess.remove_absolute("user://SetData/" + setID + "/version.json")
+		
+		setDataRequest = HTTPRequest.new()
+		add_child(setDataRequest)
+		setDataRequest.request_completed.connect(self._download_completed.bind(["setData"]))
+		setDataRequest.download_file = "user://SetData/" + setID + "/setData.json"
+		
+		var error = setDataRequest.request(cardRepoBaseURL + setID + "/setData.json")
+		pendingRequests.push_back("setData")
+		if error != OK:
+			push_error("Unable to get set list from repo")
+		
+		versionRequest = HTTPRequest.new()
+		add_child(versionRequest)
+		versionRequest.request_completed.connect(self._download_completed.bind(["version"]))
+		versionRequest.download_file = "user://SetData/" + setID + "/version.json"
+		
+		error = versionRequest.request(cardRepoBaseURL + setID + "/version.json")
+		pendingRequests.push_back("version")
+		if error != OK:
+			push_error("Unable to get set list from repo")

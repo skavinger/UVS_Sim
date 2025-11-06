@@ -25,14 +25,25 @@ func _ready() -> void:
 		keywordAbilityList = JSON.parse_string(keywordList).abilities
 
 func AddSets(sets):
+	var currentDatabase = get_children()
 	for i in range(sets.size()):
 		var setData = FileAccess.get_file_as_string("user://SetData/" + sets[i] + "/setData.json")
 		setData = JSON.parse_string(setData)
-		var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
-		self.add_child(newEntry)
-		newEntry.cards = setData
-		newEntry.setName = sets[i]
-		newEntry.name = sets[i]
+		
+		#see if set already exists and if so update it's data
+		var found = false
+		for j in range(currentDatabase.size()):
+			if sets[i] == currentDatabase[j].setName:
+				found = true
+				currentDatabase[j].cards = setData
+				break
+		#if the set doesn't exist add it to the database
+		if !found:
+			var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
+			self.add_child(newEntry)
+			newEntry.cards = setData
+			newEntry.setName = sets[i]
+			newEntry.name = sets[i]
 	formatList = buildFormatList()
 
 func buildFormatList():
@@ -50,6 +61,7 @@ func buildFormatList():
 				formats[setsFormats[j]] = []
 			formats[setsFormats[j]].append(sets[i].setName)
 	return formats
+
 
 func getFormat(format):
 	return formatList[format]
