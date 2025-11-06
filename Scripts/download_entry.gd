@@ -93,12 +93,12 @@ func _download_completed(result, _response_code, _headers, _body, extra):
 		push_error("Download Failed")
 	if extra[0] == "images":
 		remove_child(imagesRequest)
-		extractZip("user://SetData/" + setID + "/Images.zip", "user://SetData/" + setID + "/")
 		pendingRequests.erase("images")
+		extractZip("user://SetData/" + setID + "/Images.zip", "user://SetData/" + setID + "/")
 	elif extra[0] == "imagesS":
 		remove_child(imagesSmallRequest)
-		extractZip("user://SetData/" + setID + "/Images_small.zip", "user://SetData/" + setID + "/")
 		pendingRequests.erase("imagesS")
+		extractZip("user://SetData/" + setID + "/Images_small.zip", "user://SetData/" + setID + "/")
 	elif extra[0] == "setData":
 		remove_child(setDataRequest)
 		pendingRequests.erase("setData")
@@ -108,6 +108,7 @@ func _download_completed(result, _response_code, _headers, _body, extra):
 	
 	if pendingRequests.size() == 0:
 		setStatus("green")
+		checkMassDownload()
 
 func extractZip(zipPath, unzipPath):
 	var zipReader = ZIPReader.new()
@@ -127,6 +128,8 @@ func extractZip(zipPath, unzipPath):
 		file.store_buffer(buffer)
 	zipReader.close()
 	DirAccess.remove_absolute(zipPath)
+
+func checkMassDownload():
 	if massDownload:
 		$"../../../..".downloadNext()
 		massDownload = false
