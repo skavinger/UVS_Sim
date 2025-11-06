@@ -1,11 +1,5 @@
 Dataset repo: https://github.com/skavinger/UVS_Dataset
 
-To setup your card data copy the files from the dataset repo to:
-- Windows: %APPDATA%\UVS_Sim\SetData
-- Mac: ~/Library/Application Support/UVS_Sim/SetData
-- Linux: ~/.local/share/UVS_Sim/SetData
-Then you will need to unzip all the card image folders(TODO make a script that automates this)
-
 TO DO for Manual Sim
 - Get game actions to populate in chat box, and anonymize unknow cards when that happens
 - Code UI for playing abilities on cards so you can tell what your opponent is doing without having to go though chat
