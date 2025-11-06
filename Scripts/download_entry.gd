@@ -8,6 +8,8 @@ const RedX = "res://Assets/Red_X.png.png"
 var setID
 var dataMissmatch = false
 var imageMissmatch = false
+var status = ""
+var massDownload = false
 
 var imagesRequest
 var imagesSmallRequest
@@ -35,15 +37,14 @@ func setStatus(icon):
 
 func _on_update_download_pressed() -> void:
 	#Download path
-	
 	if !dataMissmatch and !imageMissmatch:
-		$Update_Download.text = "Downloading..."
-		$Update_Download.disabled = true
 		downloadSet()
 	else:
 		updateSet()
 
 func downloadSet():
+	$Update_Download.text = "Downloading..."
+	$Update_Download.disabled = true
 	var fs = DirAccess.open("user://SetData/")
 	fs.make_dir_recursive("user://SetData/" + setID)
 	
@@ -126,6 +127,14 @@ func extractZip(zipPath, unzipPath):
 		file.store_buffer(buffer)
 	zipReader.close()
 	DirAccess.remove_absolute(zipPath)
+	if massDownload:
+		$"../../../..".downloadNext()
+		massDownload = false
+
+func queForDownload():
+	$Update_Download.text = "Queued..."
+	$Update_Download.disabled = true
+	massDownload = true
 
 func updateSet():
 	pass
