@@ -4,6 +4,7 @@ const pathToDownLoadEntry = "res://GameObj/download_entry.tscn"
 const cardRepoBaseURL = "https://raw.githubusercontent.com/skavinger/UVS_Dataset/refs/heads/main/"
 
 var setsToDownLoad = []
+var databaseUpdate = []
 
 func _ready() -> void:
 	var http_request = HTTPRequest.new()
@@ -64,6 +65,8 @@ func downloadNext():
 	if setsToDownLoad.size() != 0:
 		var setToDownload = setsToDownLoad.pop_front()
 		setToDownload.downloadSet()
+		databaseUpdate.append(setToDownload.setID)
 	else:
 		$UpdateAll.text = "Complete!"
 		$UpdateAll.disabled = true
+		CardDatabase.AddSets(databaseUpdate)

@@ -18,13 +18,38 @@ func _ready() -> void:
 		newEntry.setName = setName
 		newEntry.name = setName
 	
-	formatList = FileAccess.get_file_as_string("user://SetData/formats.json")
-	if formatList != "":
-		formatList = JSON.parse_string(formatList).formats
+	formatList = buildFormatList()
 	var keywordList = FileAccess.get_file_as_string("user://SetData/keywords.json")
 	if keywordList != "":
 		keywordTraitList = JSON.parse_string(keywordList).traits
 		keywordAbilityList = JSON.parse_string(keywordList).abilities
+
+func AddSets(sets):
+	for i in range(sets.size()):
+		var setData = FileAccess.get_file_as_string("user://SetData/" + sets[i] + "/setData.json")
+		setData = JSON.parse_string(setData)
+		var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
+		self.add_child(newEntry)
+		newEntry.cards = setData
+		newEntry.setName = sets[i]
+		newEntry.name = sets[i]
+	formatList = buildFormatList()
+
+func buildFormatList():
+	var formats = {}
+	var sets = get_children()
+	for i in range(sets.size()):
+		var setsFormats = []
+		var cardNumbers = sets[i].cards.keys()
+		for j in range(cardNumbers.size()):
+			for k in range(sets[i].cards[cardNumbers[j]].Legality.size()):
+				if setsFormats.find(sets[i].cards[cardNumbers[j]].Legality[k]) == -1:
+					setsFormats.append(sets[i].cards[cardNumbers[j]].Legality[k])
+		for j in range(setsFormats.size()):
+			if !formats.has(setsFormats[j]):
+				formats[setsFormats[j]] = []
+			formats[setsFormats[j]].append(sets[i].setName)
+	return formats
 
 func getFormat(format):
 	return formatList[format]

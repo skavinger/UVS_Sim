@@ -133,6 +133,8 @@ func checkMassDownload():
 	if massDownload:
 		$"../../../..".downloadNext()
 		massDownload = false
+	else:
+		CardDatabase.AddSets([setID])
 
 func queForDownload():
 	$Update_Download.text = "Queued..."
