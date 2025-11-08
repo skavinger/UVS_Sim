@@ -46,8 +46,8 @@ func addToOtherPlayerChatLog(rivalname, text):
 
 @rpc("any_peer")
 func addToOtherPlayerEventLog(rivalName, publicEvent, privateEvent):
-	var publicMessage = "[color=rightred]" + rivalName + ": " + publicEvent + "[/color]\n"
-	var privateMessage = "[color=rightred]" + rivalName + ": " + privateEvent + "[/color]\n"
+	var publicMessage = "[color=pink]" + rivalName + ": " + publicEvent + "[/color]\n"
+	var privateMessage = "[color=pink]" + rivalName + ": " + privateEvent + "[/color]\n"
 	fullLogList.append(privateMessage)
 	comboLogList.append(publicMessage)
 	eventLogList.append(publicMessage)
@@ -60,6 +60,7 @@ func addToOtherPlayerEventLog(rivalName, publicEvent, privateEvent):
 
 
 func _on_display_chat_pressed() -> void:
+	currentLog = "Chat"
 	$ScrollContainer/RichTextLabel.text = ""
 	for i in range(chatLogList.size()):
 		$ScrollContainer/RichTextLabel.append_text(chatLogList[i])
@@ -67,6 +68,7 @@ func _on_display_chat_pressed() -> void:
 
 
 func _on_display_combo_pressed() -> void:
+	currentLog = "Combo"
 	$ScrollContainer/RichTextLabel.text = ""
 	for i in range(comboLogList.size()):
 		$ScrollContainer/RichTextLabel.append_text(comboLogList[i])
@@ -74,6 +76,7 @@ func _on_display_combo_pressed() -> void:
 
 
 func _on_discplay_log_pressed() -> void:
+	currentLog = "Event"
 	$ScrollContainer/RichTextLabel.text = ""
 	for i in range(eventLogList.size()):
 		$ScrollContainer/RichTextLabel.append_text(eventLogList[i])
