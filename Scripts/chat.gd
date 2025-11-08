@@ -14,7 +14,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 func addToChatLog(text):
 	var playerName = $"../../../../..".playerData.PlayerName
-	var message = "[color=green]" + playerName + ": " + text + "[/color]\n"
+	var message = "[color=" + $"../../../../..".playerData.PlayerChatColor + "]" + playerName + ": " + text + "[/color]\n"
 	fullLogList.append(message)
 	comboLogList.append(message)
 	chatLogList.append(message)
@@ -25,7 +25,7 @@ func addToChatLog(text):
 
 func addGameEventToLog(publicEvent, privateEvent):
 	var playerName = $"../../../../..".playerData.PlayerName
-	var privateMessage = "[color=lightgreen]" + playerName + ": " + privateEvent + "[/color]\n"
+	var privateMessage = "[color=" + $"../../../../..".playerData.PlayerEventColor + "]" + playerName + ": " + privateEvent + "[/color]\n"
 	fullLogList.append(privateMessage)
 	comboLogList.append(privateMessage)
 	eventLogList.append(privateMessage)
@@ -36,7 +36,7 @@ func addGameEventToLog(publicEvent, privateEvent):
 
 @rpc("any_peer")
 func addToOtherPlayerChatLog(rivalname, text):
-	var message = "[color=red]" + rivalname + ": " + text + "[/color]\n"
+	var message = "[color=" + $"../../../../..".playerData.RivalChatColor + "]" + rivalname + ": " + text + "[/color]\n"
 	fullLogList.append(message)
 	comboLogList.append(message)
 	chatLogList.append(message)
@@ -46,8 +46,8 @@ func addToOtherPlayerChatLog(rivalname, text):
 
 @rpc("any_peer")
 func addToOtherPlayerEventLog(rivalName, publicEvent, privateEvent):
-	var publicMessage = "[color=pink]" + rivalName + ": " + publicEvent + "[/color]\n"
-	var privateMessage = "[color=pink]" + rivalName + ": " + privateEvent + "[/color]\n"
+	var publicMessage = "[color=" + $"../../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + publicEvent + "[/color]\n"
+	var privateMessage = "[color=" + $"../../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + privateEvent + "[/color]\n"
 	fullLogList.append(privateMessage)
 	comboLogList.append(publicMessage)
 	eventLogList.append(publicMessage)

@@ -13,3 +13,8 @@ func _on_deck_builder_pressed() -> void:
 func _on_download_data_pressed() -> void:
 	$"../../DownloadWindowHolder".spawnWindow()
 	$"..".closeWindow()
+
+
+func _on_start_button_pressed() -> void:
+	$"../../SettingsWindowHolder".spawnWindow()
+	$"..".closeWindow()

@@ -8,7 +8,11 @@ var currentDeckList = {
 }
 
 var playerData = {
-	"PlayerName": ""
+	"PlayerName": "",
+	"PlayerChatColor": "#008000",
+	"PlayerEventColor": "#90EE90",
+	"RivalChatColor": "#FF0000",
+	"RivalEventColor": "#FFC0CB"
 }
 var rivalPlayerData
 

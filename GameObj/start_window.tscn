@@ -26,6 +26,14 @@ offset_right = 340.0
 offset_bottom = 690.0
 text = "Download Set Modules"
 
+[node name="StartButton" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 730.0
+offset_right = 340.0
+offset_bottom = 880.0
+text = "Settings"
+
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="DeckBuilder" to="." method="_on_deck_builder_pressed"]
 [connection signal="pressed" from="DownloadData" to="." method="_on_download_data_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
