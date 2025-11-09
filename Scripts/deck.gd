@@ -90,7 +90,7 @@ func add_card_to_bottom(card):
 func draw_card(count):
 	for i in count:
 		var card_drawn = deck[0]
-		transitZone.move_to("hand", card_drawn, true)
+		transitZone.move_to("hand", card_drawn, null)
 
 func eraseCard(card):
 	deck.erase(card)
@@ -100,29 +100,29 @@ func eraseCard(card):
 
 func buildTop():
 	var topCard = deck[0]
-	transitZone.move_to("stage", topCard, false)
+	transitZone.move_to("stage", topCard, null)
 	
 func toCardPool():
 	var topCard = deck[0]
-	transitZone.move_to("cardpool", topCard, false)
+	transitZone.move_to("cardpool", topCard, null)
 	
 func mill(count):
 	for i in count:
 		var topCard = deck[0]
-		transitZone.move_to("discard", topCard, false)
+		transitZone.move_to("discard", topCard, null)
 
 func check():
 	var topCard = deck[0]
-	transitZone.move_to("discard", topCard, false)
+	transitZone.move_to("discard", topCard, null)
 
 func removeCount(count):
 	for i in count:
 		var topCard = deck[0]
-		transitZone.move_to("removed", topCard, false)
+		transitZone.move_to("removed", topCard, null)
 		
 func toMomentum():
 	var topCard = deck[0]
-	transitZone.move_to("momentum", topCard, false)
+	transitZone.move_to("momentum", topCard, null)
 	
 
 func drawToHandSize():

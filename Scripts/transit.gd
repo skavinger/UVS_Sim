@@ -31,6 +31,7 @@ func move_to(destinationZone, card, faceUpOverride):
 	var faceup = faceUpOverride
 	var publicMessage
 	var privateMessage
+	var private = false
 	#if card obj hasn't been spawned yet spawn it
 	if faceUpOverride == null:
 		match card.cardState.currentZone:
@@ -39,7 +40,8 @@ func move_to(destinationZone, card, faceUpOverride):
 			"deck":
 				match destinationZone:
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						publicMessage = "Drew 1 card"
 						privateMessage = "Drew " + card.cardProperties.Name
 					"cardpool":
@@ -99,7 +101,8 @@ func move_to(destinationZone, card, faceUpOverride):
 							publicMessage = "Added face down card from card pool to top of deck"
 							privateMessage = "Added " + card.cardProperties.Name + " from card pool to top of deck"
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						if card.cardState.faceup:
 							publicMessage = "Added " + card.cardProperties.Name + " from card pool to hand"
 							privateMessage = publicMessage
@@ -137,7 +140,8 @@ func move_to(destinationZone, card, faceUpOverride):
 						publicMessage = "Added " + card.cardProperties.Name + " from discard to top of deck"
 						privateMessage = publicMessage
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						publicMessage = "Added " + card.cardProperties.Name + " from discard to hand"
 						privateMessage = publicMessage
 					"cardpool":
@@ -167,7 +171,8 @@ func move_to(destinationZone, card, faceUpOverride):
 							publicMessage = "Added face down card from stage to top of deck"
 							privateMessage = "Added " + card.cardProperties.Name + " from stage to top of deck"
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						if card.cardState.faceup:
 							publicMessage = "Added " + card.cardProperties.Name + " from stage to hand"
 							privateMessage = publicMessage
@@ -209,7 +214,8 @@ func move_to(destinationZone, card, faceUpOverride):
 							publicMessage = "Added face down card from momentum to top of deck"
 							privateMessage = "Added " + card.cardProperties.Name + " from momentum to top of deck"
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						if card.cardState.faceup:
 							publicMessage = "Added " + card.cardProperties.Name + " from momentum to hand"
 							privateMessage = publicMessage
@@ -247,7 +253,8 @@ func move_to(destinationZone, card, faceUpOverride):
 						publicMessage = "Added " + card.cardProperties.Name + " from removed to top of deck"
 						privateMessage = publicMessage
 					"hand":
-						faceup = false
+						faceup = true
+						private = true
 						publicMessage = "Added " + card.cardProperties.Name + " from removed to hand"
 						privateMessage = publicMessage
 					"cardpool":
@@ -266,8 +273,11 @@ func move_to(destinationZone, card, faceUpOverride):
 						faceup = false
 						publicMessage = "Added " + card.cardProperties.Name + " from removed to momentum"
 						privateMessage = publicMessage
-		
-	$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
+	
+	if private:
+		$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, false)
+	else:
+		$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
 	
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)
