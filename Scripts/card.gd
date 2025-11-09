@@ -36,6 +36,10 @@ func set_buttons(card, buttons):
 	for i in range(old_buttons.size()):
 		$Buttons.remove_child(old_buttons[i])
 		
+	old_buttons = $SideButtons.get_children()
+	for i in range(old_buttons.size()):
+		$SideButtons.remove_child(old_buttons[i])
+	
 	if(card.cardState.faceup):
 		buttons.append({"Action": "Flip", "Label": "Flip"})
 	else:
