@@ -163,3 +163,7 @@ func call_fun(buttonType):
 			commit()
 		"Ready":
 			ready()
+
+func cardFlash():
+	$SelectAnimation.visible = true
+	$AnimationPlayer.play("CardSelected")

@@ -7,7 +7,7 @@ const HAND_MAX_WIDTH = 800
 
 var hand = []
 
-const handActions = []
+const handActions = [{"Action": "Select Card", "Label": "Select"}]
 
 var animationMan
 

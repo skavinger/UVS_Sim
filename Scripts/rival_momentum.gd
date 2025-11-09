@@ -10,7 +10,7 @@ var starting_character
 
 var momentum = []
 
-const momentumActions = []
+const momentumActions = [{"Action": "Select Card", "Label": "Select"}]
 
 var animationMan
 

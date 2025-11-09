@@ -11,7 +11,7 @@ var discard = []
 
 const buttons = [{"Action": "Search", "Label": "Search"}]
 
-const searchBoxButtons = []
+const searchBoxButtons = [{"Action": "Select Card", "Label": "Select"}]
 
 var transitZone
 var cardMan

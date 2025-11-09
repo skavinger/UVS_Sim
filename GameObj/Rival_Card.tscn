@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk0ayof5gpl8i"]
+[gd_scene load_steps=14 format=3 uid="uid://dk0ayof5gpl8i"]
 
 [ext_resource type="Script" uid="uid://deffu4g826kbf" path="res://Scripts/rival_card.gd" id="1_1m00k"]
 [ext_resource type="Texture2D" uid="uid://dnmhppe8t8ufx" path="res://Assets/no-name.png" id="2_fh8h8"]
 [ext_resource type="Texture2D" uid="uid://wcv0titk6kar" path="res://Assets/pic7993223.png" id="3_2mx6w"]
+[ext_resource type="Texture2D" uid="uid://kbkx7xb8r53w" path="res://Assets/Selected/Ray.png" id="4_fh8h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dte0h"]
 size = Vector2(106, 146)
@@ -56,6 +57,57 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.14, 0.14), Vector2(0.14, 0.14)]
+}
+
+[sub_resource type="Animation" id="Animation_siyra"]
+resource_name = "FU_to_FU"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardFront:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.14, 0.14), Vector2(0.14, 0.14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardFront:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardBack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.14, 0.14), Vector2(0.14, 0.14)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBack:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_5n3j4"]
@@ -310,59 +362,169 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_siyra"]
-resource_name = "FU_to_FU"
+[sub_resource type="Animation" id="Animation_2mx6w"]
+resource_name = "CardSelected"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CardFront:scale")
+tracks/0/path = NodePath("SelectAnimation/Ray1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.14, 0.14), Vector2(0.14, 0.14)]
+"values": [0.0, 3.141592653589793]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CardFront:modulate")
+tracks/1/path = NodePath("SelectAnimation/Ray2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [1.0471976, 4.1887902047863905]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CardBack:scale")
+tracks/2/path = NodePath("SelectAnimation/Ray3:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.14, 0.14), Vector2(0.14, 0.14)]
+"values": [2.0943952, 5.235987755982989]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CardBack:modulate")
+tracks/3/path = NodePath("SelectAnimation/Ray4:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+"values": [3.1415927, 6.283185307179586]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SelectAnimation/Ray5:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.1887903, 7.3303828583761845]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SelectAnimation/Ray6:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.2359877, 8.377580409572781]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SelectAnimation/Ray1:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SelectAnimation/Ray2:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SelectAnimation/Ray3:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SelectAnimation/Ray5:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SelectAnimation/Ray6:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SelectAnimation/Ray4:offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SelectAnimation:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5n3j4"]
 _data = {
+&"CardSelected": SubResource("Animation_2mx6w"),
 &"FD_to_FD": SubResource("Animation_n3xb7"),
 &"FU_to_FU": SubResource("Animation_siyra"),
 &"Flip": SubResource("Animation_5n3j4"),
@@ -401,6 +563,38 @@ visible = false
 
 [node name="SideButtons" type="Node2D" parent="."]
 visible = false
+
+[node name="SelectAnimation" type="Node2D" parent="."]
+visible = false
+
+[node name="Ray1" type="Sprite2D" parent="SelectAnimation"]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
+
+[node name="Ray2" type="Sprite2D" parent="SelectAnimation"]
+rotation = 1.0471976
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
+
+[node name="Ray3" type="Sprite2D" parent="SelectAnimation"]
+rotation = 2.0943952
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
+
+[node name="Ray4" type="Sprite2D" parent="SelectAnimation"]
+rotation = 3.1415927
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
+
+[node name="Ray5" type="Sprite2D" parent="SelectAnimation"]
+rotation = 4.1887903
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
+
+[node name="Ray6" type="Sprite2D" parent="SelectAnimation"]
+rotation = 5.2359877
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("4_fh8h8")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

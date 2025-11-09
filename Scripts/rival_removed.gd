@@ -9,7 +9,7 @@ const BUTTON_HEIGHT = -16
 
 const buttons = [{"Action": "Search", "Label": "Search"}]
 
-const searchBoxButtons = []
+const searchBoxButtons = [{"Action": "Select Card", "Label": "Select"}]
 
 var removed = []
 var cardMan

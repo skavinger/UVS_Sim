@@ -15,8 +15,8 @@ var stage = []
 
 var animationMan
 
-const characterActions = []
-const stageActions = []
+const characterActions = [{"Action": "Select Card", "Label": "Select"}]
+const stageActions = [{"Action": "Select Card", "Label": "Select"}]
 
 func _ready() -> void:
 	animationMan = $"../../Field/AnimationManager"

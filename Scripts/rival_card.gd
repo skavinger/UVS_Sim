@@ -135,3 +135,14 @@ func call_fun(buttonType):
 			commit()
 		"Ready":
 			ready()
+		"Select Card":
+			cardFlash()
+
+func cardFlash():
+	$SelectAnimation.visible = true
+	$AnimationPlayer.play("CardSelected")
+	var publicMessage = "Selected face down card in " + cardMeta.cardState.currentZone
+	var privateMessage = "Selected " + cardMeta.cardProperties.Name + " in " + cardMeta.cardState.currentZone
+	if cardMeta.cardState.faceup:
+		publicMessage = privateMessage
+	$"../../../Field/Chat".addGameEventToLog(publicMessage,privateMessage)

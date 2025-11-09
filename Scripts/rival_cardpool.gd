@@ -10,7 +10,7 @@ var starting_character
 
 var cardpool = []
 
-const cardpoolActions = []
+const cardpoolActions = [{"Action": "Select Card", "Label": "Select"}]
 
 var animationMan
 
