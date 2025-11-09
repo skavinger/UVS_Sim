@@ -8,6 +8,8 @@ func _ready() -> void:
 	$RivalEventColor.color = Color.html($"../..".playerData.RivalEventColor)
 
 func _on_back_pressed() -> void:
+	var saveFile = FileAccess.open("user:///user_settings.json",FileAccess.WRITE)
+	saveFile.store_string(JSON.stringify($"../..".playerData))
 	$"../../StartWindowHolder".spawnWindow()
 	$"..".closeWindow()
 
