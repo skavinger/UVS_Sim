@@ -18,6 +18,7 @@ var animationMan
 const characterActions = [{"Action": "Commit", "Label": "Commit"}]
 const stageActions = [
 {"Action": "Commit", "Label": "Commit"}, 
+{"Action": "Flip", "Label": "Flip"},
 {"Action": "To Hand", "Label": "Add to Hand"}, 
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Discard", "Label": "Sacrifice"}, 
@@ -32,6 +33,7 @@ func _ready() -> void:
 func add_character_to_stage(character):
 	starting_character = character
 	animationMan.animate_card_to_pos(starting_character.cardObj, Vector2(CH_POS_X, CH_POS_Y))
+	starting_character.cardObj.z_index = 200
 	starting_character.cardObj.set_buttons(starting_character, characterActions.duplicate(true))
 
 func build_card(card):

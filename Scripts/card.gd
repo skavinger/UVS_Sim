@@ -40,10 +40,10 @@ func set_buttons(card, buttons):
 	for i in range(old_buttons.size()):
 		$SideButtons.remove_child(old_buttons[i])
 	
-	if(card.cardState.faceup):
-		buttons.append({"Action": "Flip", "Label": "Flip"})
-	else:
-		buttons.append({"Action": "Unflip", "Label": "Unflip"})
+	if(!card.cardState.faceup):
+		for i in range(buttons.size()):
+			if buttons[i].Action == "Flip":
+				buttons[i] = {"Action": "Unflip", "Label": "Unflip"}
 	for i in range(buttons.size()):
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
@@ -93,12 +93,22 @@ func flip():
 		if(buttons[i].button_type == "Flip"):
 			buttons[i].button_type = "Unflip"
 			buttons[i].get_node("Control/Text").text = "Unflip"
+	buttons = $SideButtons.get_children()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Flip"):
+			buttons[i].button_type = "Unflip"
+			buttons[i].get_node("Control/Text").text = "Unflip"
 	$"../../../Rival/RivalCardManager".rpc("flipCard", cardMeta)
 	
 func unflip():
 	$AnimationPlayer.play("Unflip")
 	cardMeta.cardState.faceup = true
 	var buttons = $Buttons.get_children()
+	for i in range(buttons.size()):
+		if(buttons[i].button_type == "Unflip"):
+			buttons[i].button_type = "Flip"
+			buttons[i].get_node("Control/Text").text = "Flip"
+	buttons = $SideButtons.get_children()
 	for i in range(buttons.size()):
 		if(buttons[i].button_type == "Unflip"):
 			buttons[i].button_type = "Flip"

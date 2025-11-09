@@ -12,6 +12,7 @@ var momentum = []
 
 const momentumActions = [
 {"Action": "To Hand", "Label": "Add to Hand"}, 
+{"Action": "Flip", "Label": "Flip"},
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Stage", "Label": "Build"}, 
 {"Action": "To Discard", "Label": "Spend"}, 

@@ -11,6 +11,7 @@ var starting_character
 var cardpool = []
 
 const cardpoolActions = [
+{"Action": "Flip", "Label": "Flip"},
 {"Action": "To Hand", "Label": "Add to Hand"}, 
 {"Action": "To Stage", "Label": "Build"}, 
 {"Action": "To Discard", "Label": "Clear"}, 
