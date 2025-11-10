@@ -23,6 +23,7 @@ func initCharacters():
 	var startingCharacter = $"Player/Deck".decklist.character.cardID
 	$"Player/Transit".move_to("character", {
 			"cardID": startingCharacter,
+			"indexID": -1,
 			"cardProperties": CardDatabase.getCard(startingCharacter),
 			"cardState": $"Player/Deck".defaultCardState.duplicate(),
 			"cardObj": null

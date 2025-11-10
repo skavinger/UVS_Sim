@@ -90,3 +90,11 @@ func search_card_unselected():
 			buttonList[i].get_node("Area2D/CollisionShape2D").disabled = true
 
 		selected_card = null
+
+@rpc("any_peer")
+func flashRivalCard(indexID):
+	var children = get_children()
+	for i in range(children.size()):
+		if children[i].cardMeta.indexID == indexID:
+			children[i].cardFlash()
+			break

@@ -29,6 +29,7 @@ func get_card_by_indexID(ID):
 func add_character_to_stage(character):
 	starting_character = character
 	animationMan.animate_card_to_pos(starting_character.cardObj, Vector2(CH_POS_X, CH_POS_Y))
+	starting_character.cardObj.z_index = 200
 	starting_character.cardObj.set_buttons(starting_character, characterActions.duplicate(true))
 
 func build_card(card):

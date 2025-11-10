@@ -723,6 +723,7 @@ visible = false
 
 [node name="SelectAnimation" type="Node2D" parent="."]
 visible = false
+z_index = 1100
 
 [node name="Ray1" type="Sprite2D" parent="SelectAnimation"]
 scale = Vector2(0.14, 0.14)

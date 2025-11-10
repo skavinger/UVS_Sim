@@ -550,7 +550,6 @@ texture = ExtResource("3_2mx6w")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2, 3)
 shape = SubResource("RectangleShape2D_dte0h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -566,6 +565,7 @@ visible = false
 
 [node name="SelectAnimation" type="Node2D" parent="."]
 visible = false
+z_index = 1100
 
 [node name="Ray1" type="Sprite2D" parent="SelectAnimation"]
 scale = Vector2(0.14, 0.14)
