@@ -9,6 +9,7 @@ var hand = []
 
 const handActions = [
 {"Action": "Play Card", "Label": "Play"},
+{"Action": "Play Ability", "Label": "Play Ability"},
 {"Action": "To Stage", "Label": "Build"}, 
 {"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
 {"Action": "To Discard", "Label": "Discard"}, 

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpqcjcs1ffe1"]
+
+[node name="Tab" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+metadata/_tab_index = 0
+
+[node name="EffectText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1214.0
+offset_bottom = 186.0
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1212.0
+offset_top = 132.0
+offset_right = 1300.0
+offset_bottom = 182.0
+text = "Play"

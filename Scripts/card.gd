@@ -163,6 +163,9 @@ func call_fun(buttonType):
 			commit()
 		"Ready":
 			ready()
+		"Play Ability":
+			$"../../../Field/EffectsWindow".displayWindow()
+			$"../../../Field/EffectsWindow".populateWindow(cardMeta.cardProperties.Name, cardMeta.cardProperties.Abilities)
 
 func cardFlash():
 	$SelectAnimation.visible = true

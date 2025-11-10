@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ciimi8mjv1004"]
+[gd_scene load_steps=34 format=3 uid="uid://ciimi8mjv1004"]
 
 [ext_resource type="Texture2D" uid="uid://dgxwc0ythw636" path="res://Assets/Field_V2.png" id="1_s1owj"]
 [ext_resource type="Texture2D" uid="uid://tcrjtvqyi85b" path="res://Assets/Health.png" id="2_hle2b"]
@@ -21,6 +21,12 @@
 [ext_resource type="Script" uid="uid://cv6243g7x06es" path="res://Scripts/revert_phase.gd" id="16_bxhp4"]
 [ext_resource type="Texture2D" uid="uid://bc3nadu04xbnd" path="res://Assets/TurnSequence/AttackSeq.png" id="17_bxhp4"]
 [ext_resource type="Script" uid="uid://s1j55si6j13g" path="res://Scripts/attack_seq.gd" id="18_vimqo"]
+[ext_resource type="Script" uid="uid://c8g0rygds7trb" path="res://Scripts/effectPicker.gd" id="22_a7iln"]
+[ext_resource type="Texture2D" uid="uid://bbu8ld3fhgokv" path="res://Assets/SearchBoxDown.png" id="23_8oxrw"]
+[ext_resource type="Script" uid="uid://c7bices3rpeip" path="res://Scripts/masking.gd" id="24_1vkwx"]
+[ext_resource type="PackedScene" uid="uid://bpqcjcs1ffe1" path="res://GameObj/EffectTab.tscn" id="24_8oxrw"]
+[ext_resource type="Script" uid="uid://1uwcakrljnca" path="res://Scripts/x_button.gd" id="24_fu8iq"]
+[ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="24_g2c1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2top2"]
 size = Vector2(62.5, 63)
@@ -30,6 +36,15 @@ size = Vector2(63, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsa6c"]
 size = Vector2(183, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vkwx"]
+size = Vector2(74.473755, 69.13727)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu8iq"]
+size = Vector2(1295, 280)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2c1a"]
+size = Vector2(44, 239)
 
 [node name="Field" type="Node2D"]
 
@@ -206,6 +221,62 @@ script = ExtResource("18_vimqo")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_fsa6c")
 disabled = true
+
+[node name="EffectsWindow" type="Node2D" parent="."]
+z_index = -1000
+script = ExtResource("22_a7iln")
+
+[node name="Sprite2D" type="Sprite2D" parent="EffectsWindow"]
+position = Vector2(1038, 329)
+texture = ExtResource("23_8oxrw")
+
+[node name="X button" type="Sprite2D" parent="EffectsWindow"]
+position = Vector2(1682.875, 214.00002)
+scale = Vector2(0.5639569, 0.59302324)
+texture = ExtResource("24_g2c1a")
+script = ExtResource("24_fu8iq")
+
+[node name="Area2D" type="Area2D" parent="EffectsWindow/X button"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectsWindow/X button/Area2D"]
+position = Vector2(5.54126, -7.588257)
+shape = SubResource("RectangleShape2D_1vkwx")
+
+[node name="Masking" type="Node2D" parent="EffectsWindow"]
+script = ExtResource("24_1vkwx")
+
+[node name="Area2D" type="Area2D" parent="EffectsWindow/Masking"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectsWindow/Masking/Area2D"]
+position = Vector2(1017.5, 329)
+shape = SubResource("RectangleShape2D_fu8iq")
+
+[node name="Area2D2" type="Area2D" parent="EffectsWindow/Masking"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectsWindow/Masking/Area2D2"]
+position = Vector2(1686, 349.5)
+shape = SubResource("RectangleShape2D_g2c1a")
+
+[node name="EffectList" type="TabContainer" parent="EffectsWindow"]
+custom_minimum_size = Vector2(1309, 217)
+offset_left = 379.0
+offset_top = 240.0
+offset_right = 1688.0
+offset_bottom = 457.0
+current_tab = 0
+
+[node name="Tab" parent="EffectsWindow/EffectList" instance=ExtResource("24_8oxrw")]
+layout_mode = 2
+
+[node name="WindowTitle" type="RichTextLabel" parent="EffectsWindow"]
+offset_left = 391.0
+offset_top = 191.0
+offset_right = 1640.0
+offset_bottom = 242.0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/normal_font_size = 30
+text = "Abilities for"
+vertical_alignment = 1
 
 [connection signal="text_submitted" from="Chat/LineEdit" to="Chat" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="Chat/DisplayChat" to="Chat" method="_on_display_chat_pressed"]

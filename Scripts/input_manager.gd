@@ -33,6 +33,8 @@ func _input(event):
 				new_obj.changeZone()
 			elif new_obj != null and new_obj.objType == "trackerValueAdjuster":
 				new_obj.adjstValue()
+			elif new_obj != null and new_obj.objType == "closeEffectWindow":
+				new_obj.hideWindow()
 			else:
 				if obj_selected:
 					match obj_selected.objType:
