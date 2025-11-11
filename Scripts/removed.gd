@@ -7,15 +7,18 @@ const BUTTON_PATH = "res://GameObj/button.tscn"
 const BUTTON_OFFSET = -80
 const BUTTON_HEIGHT = -16
 
-const buttons = [{"Action": "Search", "Label": "Search"}]
+const buttons = [
+	{"Action": "Search", "Label": "Search"}]
 
-const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"}, 
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Card Pool", "Label": "To Card Pool"}, 
-{"Action": "To Discard", "Label": "To Discard"}, 
-{"Action": "To Momentum", "Label": "To Momentum"},
-{"Action": "To Top Deck", "Label": "To Top Deck"},
-{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+const searchBoxButtons = [
+	{"Action": "Play Ability", "Label": "Play Ability"},
+	{"Action": "To Hand", "Label": "Add to Hand"}, 
+	{"Action": "To Stage", "Label": "Build"}, 
+	{"Action": "To Card Pool", "Label": "To Card Pool"}, 
+	{"Action": "To Discard", "Label": "To Discard"}, 
+	{"Action": "To Momentum", "Label": "To Momentum"},
+	{"Action": "To Top Deck", "Label": "To Top Deck"},
+	{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 var removed = []
 var cardMan

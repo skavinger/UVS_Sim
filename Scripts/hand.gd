@@ -8,15 +8,15 @@ const HAND_MAX_WIDTH = 800
 var hand = []
 
 const handActions = [
-{"Action": "Play Card", "Label": "Play"},
-{"Action": "Play Ability", "Label": "Play Ability"},
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
-{"Action": "To Discard", "Label": "Discard"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "Add to Momentum"}, 
-{"Action": "To Top Deck", "Label": "To Top Deck"},
-{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+	{"Action": "Play Card", "Label": "Play"},
+	{"Action": "Play Ability", "Label": "Play Ability"},
+	{"Action": "To Stage", "Label": "Build"}, 
+	{"Action": "To Card Pool", "Label": "Add To Cardpool"}, 
+	{"Action": "To Discard", "Label": "Discard"}, 
+	{"Action": "To Removed", "Label": "Remove"}, 
+	{"Action": "To Momentum", "Label": "Add to Momentum"}, 
+	{"Action": "To Top Deck", "Label": "To Top Deck"},
+	{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 var animationMan
 

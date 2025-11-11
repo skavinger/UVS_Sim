@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://bpqcjcs1ffe1"]
+[gd_scene load_steps=2 format=3 uid="uid://bpqcjcs1ffe1"]
+
+[ext_resource type="Script" uid="uid://b6x7472xoecc5" path="res://Scripts/effect_tab.gd" id="1_7dwoi"]
 
 [node name="Tab" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_7dwoi")
 metadata/_tab_index = 0
 
 [node name="EffectText" type="RichTextLabel" parent="."]
@@ -17,3 +20,5 @@ offset_top = 132.0
 offset_right = 1300.0
 offset_bottom = 182.0
 text = "Play"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

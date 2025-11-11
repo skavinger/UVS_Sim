@@ -20,13 +20,11 @@ func _ready() -> void:
 	$StartWindowHolder.spawnWindow()
 	playerData.PlayerName = "Player " + str(randi_range(1, 99999))
 	var saveFile = FileAccess.get_file_as_string("user://Saves/current_list.auto_sav")
-	saveFile = JSON.parse_string(saveFile)
+	if saveFile != "":
+		currentDeckList = JSON.parse_string(saveFile)
 	var userSettings = FileAccess.get_file_as_string("user:///user_settings.json")
-	userSettings = JSON.parse_string(userSettings)
-	if saveFile != null:
-		currentDeckList = saveFile
-	if userSettings != null:
-		playerData = userSettings
+	if userSettings != "":
+		playerData = JSON.parse_string(userSettings)
 
 @rpc("any_peer")
 func setRivalPlayerData(rivalData):

@@ -138,6 +138,10 @@ func call_fun(buttonType):
 		"Select Card":
 			cardFlash()
 
+func cardFlashRemote():
+	$SelectAnimation.visible = true
+	$AnimationPlayer.play("CardSelected")
+
 func cardFlash():
 	$SelectAnimation.visible = true
 	$AnimationPlayer.play("CardSelected")

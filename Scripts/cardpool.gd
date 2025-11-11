@@ -11,14 +11,15 @@ var starting_character
 var cardpool = []
 
 const cardpoolActions = [
-{"Action": "Flip", "Label": "Flip"},
-{"Action": "To Hand", "Label": "Add to Hand"}, 
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Discard", "Label": "Clear"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "Add to Momentum"}, 
-{"Action": "To Top Deck", "Label": "To Top Deck"},
-{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+	{"Action": "Play Ability", "Label": "Play Ability"},
+	{"Action": "Flip", "Label": "Flip"},
+	{"Action": "To Hand", "Label": "Add to Hand"}, 
+	{"Action": "To Stage", "Label": "Build"}, 
+	{"Action": "To Discard", "Label": "Clear"}, 
+	{"Action": "To Removed", "Label": "Remove"}, 
+	{"Action": "To Momentum", "Label": "Add to Momentum"}, 
+	{"Action": "To Top Deck", "Label": "To Top Deck"},
+	{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
 
 var animationMan
 

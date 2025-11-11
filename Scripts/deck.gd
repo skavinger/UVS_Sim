@@ -21,21 +21,23 @@ var defaultCardState = {
 	"frozen": false
 }
 
-const buttons = [{"Action": "Draw 1", "Label": "Draw 1"}, 
-{"Action": "Search", "Label": "Search"},
-{"Action": "Shuffle", "Label": "Shuffle"}, 
-{"Action": "Build Top", "Label": "Build Top"}, 
-{"Action": "Add Top to Card Pool", "Label": "Top to Card Pool"}, 
-{"Action": "Mill 1", "Label": "Mill 1"}, 
-{"Action": "Remove Top", "Label": "Remove Top"}, 
-{"Action": "Add Top to Momentum", "Label": "Top to Momentum"}]
+const buttons = [
+	{"Action": "Draw 1", "Label": "Draw 1"}, 
+	{"Action": "Search", "Label": "Search"},
+	{"Action": "Shuffle", "Label": "Shuffle"}, 
+	{"Action": "Build Top", "Label": "Build Top"}, 
+	{"Action": "Add Top to Card Pool", "Label": "Top to Card Pool"}, 
+	{"Action": "Mill 1", "Label": "Mill 1"}, 
+	{"Action": "Remove Top", "Label": "Remove Top"}, 
+	{"Action": "Add Top to Momentum", "Label": "Top to Momentum"}]
 
-const searchBoxButtons = [{"Action": "To Hand", "Label": "Add to Hand"}, 
-{"Action": "To Stage", "Label": "Build"}, 
-{"Action": "To Card Pool", "Label": "To Card Pool"}, 
-{"Action": "To Discard", "Label": "Send to Discard"}, 
-{"Action": "To Removed", "Label": "Remove"}, 
-{"Action": "To Momentum", "Label": "To Momentum"}]
+const searchBoxButtons = [
+	{"Action": "To Hand", "Label": "Add to Hand"}, 
+	{"Action": "To Stage", "Label": "Build"}, 
+	{"Action": "To Card Pool", "Label": "To Card Pool"}, 
+	{"Action": "To Discard", "Label": "Send to Discard"}, 
+	{"Action": "To Removed", "Label": "Remove"}, 
+	{"Action": "To Momentum", "Label": "To Momentum"}]
 
 func setUpPlayerDeck() -> void:
 	transitZone = $"../Transit"

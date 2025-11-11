@@ -165,8 +165,9 @@ func call_fun(buttonType):
 			ready()
 		"Play Ability":
 			$"../../../Field/EffectsWindow".displayWindow()
-			$"../../../Field/EffectsWindow".populateWindow(cardMeta.cardProperties.Name, cardMeta.cardProperties.Abilities)
+			$"../../../Field/EffectsWindow".populateWindow(cardMeta)
 
 func cardFlash():
+	$"../../../Rival/RivalCardManager".rpc("flashRivalCard", cardMeta.indexID)
 	$SelectAnimation.visible = true
 	$AnimationPlayer.play("CardSelected")
