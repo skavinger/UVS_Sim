@@ -20,22 +20,57 @@ script = ExtResource("2_yikwi")
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("3_0d5q0")
 
-[node name="Join" type="Button" parent="."]
-offset_left = 1275.0
-offset_top = 411.0
-offset_right = 1544.0
-offset_bottom = 624.0
-text = "Join"
-
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource("4_276eh")
 
 [node name="Back" type="Button" parent="."]
-offset_left = 48.0
-offset_top = 55.0
-offset_right = 276.0
-offset_bottom = 169.0
+offset_left = 5.0
+offset_top = 992.0
+offset_right = 180.0
+offset_bottom = 1069.0
 text = "Back"
 
-[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[node name="OpenGames" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 140.0
+offset_right = 1760.0
+offset_bottom = 940.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OpenGames"]
+custom_minimum_size = Vector2(1600, 800)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpenGames/ScrollContainer"]
+custom_minimum_size = Vector2(1600, 800)
+layout_mode = 2
+
+[node name="CreateRoom" type="Button" parent="."]
+offset_left = 1540.0
+offset_top = 25.0
+offset_right = 1740.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 30
+text = "Create Room"
+
+[node name="PasswordLabel" type="RichTextLabel" parent="."]
+offset_left = 850.0
+offset_top = 30.0
+offset_right = 1010.0
+offset_bottom = 110.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Password:"
+vertical_alignment = 1
+
+[node name="Password" type="LineEdit" parent="."]
+offset_left = 1000.0
+offset_top = 30.0
+offset_right = 1500.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 30
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]

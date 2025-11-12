@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://noqn5kmoxkfn"]
+
+[ext_resource type="Script" uid="uid://cky7er6vwirfl" path="res://GameObj/Multiplayer/player_room.gd" id="1_6enib"]
+[ext_resource type="Texture2D" uid="uid://bc7oxiv48kna4" path="res://Assets/DownloadOption.png" id="1_r2gb7"]
+
+[node name="RoomEntry" type="Control"]
+custom_minimum_size = Vector2(1600, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6enib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1600, 100)
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 100.0
+texture = ExtResource("1_r2gb7")
+
+[node name="PlayerName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 1250.0
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Player"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1450.0
+offset_top = 20.0
+offset_right = 1570.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "Join"
