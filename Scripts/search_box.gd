@@ -2,7 +2,7 @@ extends Node2D
 
 const objType = "searchBox"
 
-const SEARCHABLE_CARD_SCENE_PATH = "res://GameObj/cardSearchOption.tscn"
+const SEARCHABLE_CARD_SCENE_PATH = "res://GameObj/CardObjs/cardSearchOption.tscn"
 
 var zoneBeingSearched
 

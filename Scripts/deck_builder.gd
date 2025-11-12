@@ -1,6 +1,6 @@
 extends Node2D
 
-const LIST_CARD_SCENE_PATH = "res://GameObj/list_card.tscn"
+const LIST_CARD_SCENE_PATH = "res://GameObj/Deckbuilder/list_card.tscn"
 
 const PAGESIZE = 300
 

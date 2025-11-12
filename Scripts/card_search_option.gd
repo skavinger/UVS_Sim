@@ -1,6 +1,6 @@
 extends Control
 
-const BUTTON_PATH = "res://GameObj/buttonsScroll.tscn"
+const BUTTON_PATH = "res://GameObj/CardObjs/buttonsScroll.tscn"
 const objType = "searchBoxCard"
 const BUTTON_HEIGHT = -28
 

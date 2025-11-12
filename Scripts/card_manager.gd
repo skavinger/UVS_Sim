@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://GameObj/Card.tscn"
+const CARD_SCENE_PATH = "res://GameObj/CardObjs/Card.tscn"
 
 var selected_card
 var screen_size

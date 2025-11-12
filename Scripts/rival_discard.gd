@@ -2,7 +2,7 @@ extends Node2D
 
 const objType = "rival_discard"
 
-const BUTTON_PATH = "res://GameObj/button.tscn"
+const BUTTON_PATH = "res://GameObj/CardObjs/button.tscn"
 
 const BUTTON_OFFSET = -80
 const BUTTON_HEIGHT = -16

@@ -5,7 +5,7 @@ const objType = "deck"
 var decklist
 var deck = []
 
-const BUTTON_PATH = "res://GameObj/button.tscn"
+const BUTTON_PATH = "res://GameObj/CardObjs/button.tscn"
 const BUTTON_POS_X = 0
 const BUTTON_OFFSET = -80
 const BUTTON_HEIGHT = -28

@@ -9,8 +9,8 @@ const BUTTON_HEIGHT = -28
 
 const objType = "card"
 
-const BUTTON_PATH = "res://GameObj/button.tscn"
-const SIDE_BUTTON_PATH = "res://GameObj/SideButtons.tscn"
+const BUTTON_PATH = "res://GameObj/CardObjs/button.tscn"
+const SIDE_BUTTON_PATH = "res://GameObj/CardObjs/SideButtons.tscn"
 
 var transitZone
 var cardMan

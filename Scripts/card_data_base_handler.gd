@@ -1,6 +1,6 @@
 extends Node2D
 
-const DATABASE_ENTRY_PATH = "res://GameObj/card_database_entry.tscn"
+const DATABASE_ENTRY_PATH = "res://GameObj/Carddatabase/card_database_entry.tscn"
 
 var formatList
 var keywordTraitList

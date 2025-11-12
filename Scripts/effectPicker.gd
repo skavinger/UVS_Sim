@@ -1,6 +1,6 @@
 extends Node2D
 
-const PATH_TO_TAB = "res://GameObj/EffectTab.tscn"
+const PATH_TO_TAB = "res://GameObj/GameWindow/EffectTab.tscn"
 
 var card
 var ability

@@ -1,6 +1,6 @@
 extends Node2D
 
-const pathToDownLoadEntry = "res://GameObj/download_entry.tscn"
+const pathToDownLoadEntry = "res://GameObj/Updater/download_entry.tscn"
 const cardRepoBaseURL = "https://raw.githubusercontent.com/skavinger/UVS_Dataset/refs/heads/main/"
 
 var setsToDownLoad = []
