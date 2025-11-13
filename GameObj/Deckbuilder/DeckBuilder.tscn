@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://b5muc5py5lju4" path="res://Assets/Attack_Zone/high.png" id="33_ppxge"]
 [ext_resource type="Texture2D" uid="uid://df5d4pwmw6mg" path="res://Assets/Attack_Zone/low.png" id="34_yftvd"]
 
-[node name="Node2D" type="Node2D"]
+[node name="DeckBuilder" type="Node2D"]
 script = ExtResource("1_bjh7i")
 
 [node name="FilterWindow" type="Control" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://noqn5kmoxkfn"]
 
-[ext_resource type="Script" uid="uid://cky7er6vwirfl" path="res://GameObj/Multiplayer/player_room.gd" id="1_6enib"]
+[ext_resource type="Script" uid="uid://cky7er6vwirfl" path="res://Scripts/player_room.gd" id="1_6enib"]
 [ext_resource type="Texture2D" uid="uid://bc7oxiv48kna4" path="res://Assets/DownloadOption.png" id="1_r2gb7"]
 
 [node name="RoomEntry" type="Control"]

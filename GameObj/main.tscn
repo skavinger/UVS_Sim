@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://co0hs14qvddts" path="res://GameObj/Updater/downloader_window.tscn" id="9_p20hj"]
 [ext_resource type="Script" uid="uid://byfuvornovhdb" path="res://Scripts/settings_window_holder.gd" id="10_p20hj"]
 [ext_resource type="PackedScene" uid="uid://csq0gw4h5oj7c" path="res://GameObj/Settings/settings_window.tscn" id="11_mlu7h"]
-[ext_resource type="Script" uid="uid://7o5ge5wxvp2p" path="res://GameObj/server.gd" id="12_hp5rj"]
+[ext_resource type="Script" uid="uid://7o5ge5wxvp2p" path="res://Scripts/server.gd" id="12_hp5rj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yhcre")

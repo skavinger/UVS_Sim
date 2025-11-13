@@ -223,7 +223,8 @@ shape = SubResource("RectangleShape2D_fsa6c")
 disabled = true
 
 [node name="EffectsWindow" type="Node2D" parent="."]
-z_index = -1000
+z_index = 1000
+position = Vector2(2000, 0)
 script = ExtResource("22_a7iln")
 
 [node name="Sprite2D" type="Sprite2D" parent="EffectsWindow"]

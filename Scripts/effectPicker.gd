@@ -6,10 +6,10 @@ var card
 var ability
 
 func displayWindow():
-	self.z_index = 1000
+	self.position = Vector2(0,0)
 
 func hideWindow():
-	self.z_index = -1000
+	self.position = Vector2(2000,0)
 
 func populateWindow(cardMeta):
 	var oldEffects = $EffectList.get_children()
