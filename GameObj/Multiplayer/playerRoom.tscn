@@ -33,3 +33,5 @@ offset_right = 1570.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 30
 text = "Join"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
