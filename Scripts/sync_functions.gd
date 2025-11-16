@@ -2,7 +2,7 @@ extends Node2D
 
 func setPlayerHealth(health):
 	$"../Game/Field/PlayerHealth/Label".text = str(int(health))
-	rpc("syncHealth", health)
+	rpc_id(1, "syncHealth", health)
 	
 @rpc("any_peer")
 func syncHealth(health):

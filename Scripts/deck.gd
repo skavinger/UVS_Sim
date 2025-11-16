@@ -65,7 +65,7 @@ func setUpPlayerDeck() -> void:
 		new_button.get_node("Control/Text").text = buttons[i].Label
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = 100 - i
-	$"../../Rival/RivalDeck".rpc("setUpRivalDeck", decklist)
+	$"../../Rival/RivalDeck".rpc_id(1, "setUpRivalDeck", decklist)
 
 func deck_selected():
 	$Buttons.visible = true

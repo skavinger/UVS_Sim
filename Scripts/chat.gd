@@ -21,7 +21,7 @@ func addToChatLog(text):
 	if currentLog == "Chat" or currentLog == "Combo" or currentLog == "Full":
 		$ScrollContainer/RichTextLabel.append_text(message)
 		$ScrollContainer/RichTextLabel.scroll_to_line($ScrollContainer/RichTextLabel.get_line_count()-1)
-	self.rpc("addToOtherPlayerChatLog", playerName, text)
+	self.rpc_id(1, "addToOtherPlayerChatLog", playerName, text)
 
 func addGameEventToLog(publicEvent, privateEvent):
 	var playerName = $"../../../../..".playerData.PlayerName
@@ -32,7 +32,7 @@ func addGameEventToLog(publicEvent, privateEvent):
 	if currentLog == "Event" or currentLog == "Combo" or currentLog == "Full":
 		$ScrollContainer/RichTextLabel.append_text(privateMessage)
 		$ScrollContainer/RichTextLabel.scroll_to_line($ScrollContainer/RichTextLabel.get_line_count()-1)
-	self.rpc("addToOtherPlayerEventLog", playerName, publicEvent, privateEvent)
+	self.rpc_id(1, "addToOtherPlayerEventLog", playerName, publicEvent, privateEvent)
 
 @rpc("any_peer")
 func addToOtherPlayerChatLog(rivalname, text):

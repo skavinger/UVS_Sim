@@ -10,12 +10,12 @@ func joinRoom(_creatingPlayerID, _password):
 
 @rpc("any_peer")
 func roomsUpdated(rooms):
-	$"../ConnectWindowHolder/ConnectionWindow".updateRooms(rooms)
+	$"../Main/ConnectWindowHolder/ConnectionWindow".updateRooms(rooms)
 
 @rpc("any_peer")
 func rivalJoined():
-	$"../ConnectWindowHolder/ConnectionWindow".rivalJoined()
+	$"../Main/ConnectWindowHolder/ConnectionWindow".rivalJoined()
 
 @rpc("any_peer")
 func joinReply(status):
-	$"../ConnectWindowHolder/ConnectionWindow".joinRoom(status)
+	$"../Main/ConnectWindowHolder/ConnectionWindow".joinRoom(status)

@@ -275,9 +275,9 @@ func move_to(destinationZone, card, faceUpOverride):
 						privateMessage = publicMessage
 	
 	if private:
-		$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, false)
+		$"../../Rival/RivalTransit".rpc_id(1, "move_to",card.cardState.currentZone, destinationZone, card, false)
 	else:
-		$"../../Rival/RivalTransit".rpc("move_to",card.cardState.currentZone, destinationZone, card, faceup)
+		$"../../Rival/RivalTransit".rpc_id(1, "move_to",card.cardState.currentZone, destinationZone, card, faceup)
 	
 	if card.cardObj == null:
 		card.cardObj = cardMan.spawn_card(card)

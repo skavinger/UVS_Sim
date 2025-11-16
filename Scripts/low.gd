@@ -4,7 +4,7 @@ const objType = "low"
 
 func changeZone():
 	$"../Speed".texture = load("res://Assets/low.png")
-	rpc("clientChangeZone")
+	rpc_id(1, "clientChangeZone")
 	
 @rpc("any_peer")
 func clientChangeZone():

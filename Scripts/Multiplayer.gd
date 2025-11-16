@@ -20,7 +20,7 @@ func _test():
 	pass
 
 func _on_create_room_pressed() -> void:
-	$"../../Server".rpc_id(1, "createRoom", $"../../".playerData.PlayerName, $"../../".currentDeckList, $Password.text)
+	Server.rpc_id(1, "createRoom", $"../../".playerData.PlayerName, $"../../".currentDeckList, $Password.text)
 	
 	disable_buttons()
 	var field = gameField.instantiate()
@@ -60,7 +60,7 @@ func disable_buttons():
 	$Password.visible = false
 
 func _on_join_pressed(creatorPlayerID) -> void:
-	$"../../Server".rpc_id(1, "joinRoom", creatorPlayerID, $Password.text)
+	Server.rpc_id(1, "joinRoom", creatorPlayerID, $Password.text)
 	
 	
 func joinRoom(status):
@@ -82,4 +82,7 @@ func joinRoom(status):
 		pass
 	
 func rivalJoined():
+	var rival = rivalZones.instantiate()
+	$Game.add_child(rival)
+	$InputManager.rivalLoaded()
 	get_node("Game").host_setup()

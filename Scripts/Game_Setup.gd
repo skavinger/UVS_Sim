@@ -14,7 +14,7 @@ func client_setup():
 	
 
 func initPlayerData():
-	$"../../..".rpc("setRivalPlayerData", $"../../..".playerData)
+	$"../../..".rpc_id(1, "setRivalPlayerData", $"../../..".playerData)
 
 func initDecks():
 	$"Player/Deck".setUpPlayerDeck()

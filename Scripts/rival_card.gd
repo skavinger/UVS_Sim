@@ -145,7 +145,7 @@ func cardFlashRemote():
 func cardFlash():
 	$SelectAnimation.visible = true
 	$AnimationPlayer.play("CardSelected")
-	$"../../../Player/CardManager".rpc("flashRivalCard", cardMeta.indexID)
+	$"../../../Player/CardManager".rpc_id(1, "flashRivalCard", cardMeta.indexID)
 	var publicMessage = "Selected face down card in " + cardMeta.cardState.currentZone
 	var privateMessage = "Selected " + cardMeta.cardProperties.Name + " in " + cardMeta.cardState.currentZone
 	if cardMeta.cardState.faceup:

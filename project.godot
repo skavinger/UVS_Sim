@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CardDatabase="*res://Scripts/card_data_base_handler.gd"
+Server="*res://Scripts/server.gd"
 
 [display]
 
