@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 var playerOne
 var playersTurn
 
@@ -80,6 +78,7 @@ func advancePhase():
 				toggleAttackSeqButtons(true)
 				rpc_id(1, "updateRivalsPhase",currentPhase)
 			"EndPhase":
+				$"../../Player/Cardpool".endPhaseCleanUpTurnPlayer()
 				currentPhase = "StartPhaseReady"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyRed.png")
 				toggleAttackSeqButtons(false)
@@ -189,6 +188,8 @@ func enterAttackSequence():
 
 @rpc("any_peer")
 func swapPlayerTurn(toPhase):
+	if currentPhase == "EndPhase":
+		$"../../Player/Cardpool".endPhaseCleanUpRivalPlayer()
 	playersTurn = true
 	updateTurnPlayer()
 	currentPhase = toPhase

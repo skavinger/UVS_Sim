@@ -64,25 +64,32 @@ func set_buttons(card, buttons):
 		new_button.z_index = self.z_index - i
 
 func playCard():
+	cardMeta.cardState.playedThisTurn = true
 	transitZone.move_to("cardpool", cardMeta, true)
 	transitZone.deckZone.check()
 
 func toHand():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("hand", cardMeta, null)
 
 func toStage():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("stage", cardMeta, null)
 
 func toDiscard():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("discard", cardMeta, null)
 	
 func toCardPool():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("cardpool", cardMeta, null)
 	
 func toRemoved():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("removed", cardMeta, null)
 	
 func toMomentum():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("momentum", cardMeta, null)
 	
 func flip():
@@ -116,9 +123,11 @@ func unflip():
 	$"../../../Rival/RivalCardManager".rpc_id(1, "unflipCard", cardMeta)
 	
 func toTopDeck():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("top deck", cardMeta, false)
 	
 func toBottomDeck():
+	cardMeta.cardState.playedThisTurn = false
 	transitZone.move_to("bottom deck", cardMeta, false)
 	
 func commit():

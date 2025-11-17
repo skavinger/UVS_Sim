@@ -44,3 +44,16 @@ func update_pos():
 	for i in range(cardpool.size()):
 		animationMan.animate_card_to_pos(cardpool[i].cardObj, Vector2(CARDPOOL_POS_CARDPOOL_X + (cardWidth * i), CARDPOOL_POS_CARDPOOL_Y))
 		cardpool[i].cardObj.z_index = 100 + i
+
+func endPhaseCleanUpTurnPlayer():
+	var tempCardpool = cardpool.duplicate()
+	for i in range(tempCardpool.size()):
+		if tempCardpool[i].cardState.playedThisTurn and (tempCardpool[i].cardProperties.Cardtype == "Foundation" or tempCardpool[i].cardProperties.Cardtype == "Asset" or tempCardpool[i].cardProperties.Cardtype == "Backup"):
+			tempCardpool[i].cardObj.toStage()
+		else:
+			tempCardpool[i].cardObj.toDiscard()
+
+func endPhaseCleanUpRivalPlayer():
+	var tempCardpool = cardpool.duplicate()
+	for i in range(tempCardpool.size()):
+		tempCardpool[i].cardObj.toDiscard()

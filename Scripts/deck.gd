@@ -18,7 +18,8 @@ var defaultCardState = {
 	"currentZone": "deck",
 	"committed": false,
 	"maxHealth": null,
-	"frozen": false
+	"frozen": false,
+	"playedThisTurn": false
 }
 
 const buttons = [
