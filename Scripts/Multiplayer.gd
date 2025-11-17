@@ -7,10 +7,6 @@ const PLAYER_ROOM_PATH = "res://GameObj/Multiplayer/playerRoom.tscn"
 
 var peer = ENetMultiplayerPeer.new()
 
-@export var gameField : PackedScene
-@export var playerZones : PackedScene
-@export var rivalZones : PackedScene
-
 func _ready() -> void:
 	peer.create_client(serverIP,PORT)
 	multiplayer.multiplayer_peer = peer
@@ -22,13 +18,8 @@ func _test():
 func _on_create_room_pressed() -> void:
 	Server.rpc_id(1, "createRoom", $"../../".playerData.PlayerName, $"../../".currentDeckList, $Password.text)
 	
-	disable_buttons()
-	var field = gameField.instantiate()
-	$Game.add_child(field)
-	var player = playerZones.instantiate()
-	$Game.add_child(player)
-	$InputManager.playerLoaded()
-
+	$"../../GameWindowHolder".spawnWindow()
+	$"..".closeWindow()
 
 func _on_back_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
@@ -46,31 +37,6 @@ func updateRooms(rooms):
 		room.creatorPlayerID = rooms[i].creatingPlayerID
 		$OpenGames/ScrollContainer/VBoxContainer.add_child(room)
 		
-func disable_buttons():
-	$CreateRoom.disabled = true
-	$CreateRoom.visible = false
-	var rooms = $OpenGames/ScrollContainer/VBoxContainer.get_children()
-	for i in range(rooms.size()):
-		rooms[i].disableUI()
-	$OpenGames.visible = false
-	$Back.disabled = true
-	$Back.visible = false
-	$PasswordLabel.visible = false
-	$Password.editable = false
-	$Password.visible = false
-
-func enable_buttons():
-	$CreateRoom.disabled = false
-	$CreateRoom.visible = true
-	var rooms = $OpenGames/ScrollContainer/VBoxContainer.get_children()
-	for i in range(rooms.size()):
-		rooms[i].enableUI()
-	$OpenGames.visible = true
-	$Back.disabled = false
-	$Back.visible = true
-	$PasswordLabel.visible = true
-	$Password.editable = true
-	$Password.visible = true
 
 func _on_join_pressed(creatorPlayerID) -> void:
 	Server.rpc_id(1, "joinRoom", creatorPlayerID, $Password.text)
@@ -78,31 +44,12 @@ func _on_join_pressed(creatorPlayerID) -> void:
 	
 func joinRoom(status):
 	if status == "joined":
-		disable_buttons()
-		var field = gameField.instantiate()
-		$Game.add_child(field)
-		var player = playerZones.instantiate()
-		$Game.add_child(player)
-		$InputManager.playerLoaded()
-		var rival = rivalZones.instantiate()
-		$Game.add_child(rival)
-		$InputManager.rivalLoaded()
-		
-		get_node("Game").client_setup()
+		$"../../GameWindowHolder".spawnWindow()
+		$"..".closeWindow()
 	elif status == "occupied":
 		pass
 	elif status == "invalidPassword":
 		pass
 	
 func rivalJoined():
-	var rival = rivalZones.instantiate()
-	$Game.add_child(rival)
-	$InputManager.rivalLoaded()
-	get_node("Game").host_setup()
-
-func leaveGame():
-	enable_buttons()
-	var gameparts = $Game.get_children()
-	for i in range(gameparts.size()):
-		$Game.remove_child(gameparts[i])
-	Server.rpc_id(1, "gameLeft")
+	pass

@@ -13,7 +13,7 @@ var cardInspector
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	inputMan = $"../../../InputManager"
+	inputMan = $"../../InputManager"
 	transitZone = $"../Transit"
 	cardInspector = $"../../Field/CardInspector"
 	

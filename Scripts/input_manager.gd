@@ -8,12 +8,12 @@ var rivalTransitZone
 var obj_selected
 
 func playerLoaded():
-	cardMan = $"../Game/Player/CardManager"
-	transitZone = $"../Game/Player/Transit"
+	cardMan = $"../Player/CardManager"
+	transitZone = $"../Player/Transit"
 
 func rivalLoaded():
-	rivalCardMan = $"../Game/Rival/RivalCardManager"
-	rivalTransitZone = $"../Game/Rival/RivalTransit"
+	rivalCardMan = $"../Rival/RivalCardManager"
+	rivalTransitZone = $"../Rival/RivalTransit"
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -86,11 +86,11 @@ func _input(event):
 		if event.pressed:
 			var new_obj = raycast_at_curser()
 			if new_obj != null and new_obj.objType == "AdvancePhaseTracker":
-				$"../Game/Field/TurnSequence".advancePhase()
+				$"../Field/TurnSequence".advancePhase()
 			elif new_obj != null and new_obj.objType == "RevertPhaseTracker":
-				$"../Game/Field/TurnSequence".revertPhase()
+				$"../Field/TurnSequence".revertPhase()
 			elif new_obj != null and new_obj.objType == "StartAttackSeq":
-				$"../Game/Field/TurnSequence".startAttackSeq()
+				$"../Field/TurnSequence".startAttackSeq()
 
 func raycast_at_curser():
 	var space_state = get_world_2d().direct_space_state

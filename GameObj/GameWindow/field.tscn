@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bpqcjcs1ffe1" path="res://GameObj/GameWindow/EffectTab.tscn" id="24_8oxrw"]
 [ext_resource type="Script" uid="uid://1uwcakrljnca" path="res://Scripts/x_button.gd" id="24_fu8iq"]
 [ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="24_g2c1a"]
-[ext_resource type="Script" uid="uid://dwe227kopmint" path="res://GameObj/GameWindow/game_controls.gd" id="28_jin74"]
+[ext_resource type="Script" uid="uid://dwe227kopmint" path="res://Scripts/game_controls.gd" id="28_jin74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2top2"]
 size = Vector2(62.5, 63)

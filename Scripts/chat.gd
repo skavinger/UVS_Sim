@@ -13,8 +13,8 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	$LineEdit.text = ""
 
 func addToChatLog(text):
-	var playerName = $"../../../../..".playerData.PlayerName
-	var message = "[color=" + $"../../../../..".playerData.PlayerChatColor + "]" + playerName + ": " + text + "[/color]\n"
+	var playerName = $"../../../..".playerData.PlayerName
+	var message = "[color=" + $"../../../..".playerData.PlayerChatColor + "]" + playerName + ": " + text + "[/color]\n"
 	fullLogList.append(message)
 	comboLogList.append(message)
 	chatLogList.append(message)
@@ -24,8 +24,8 @@ func addToChatLog(text):
 	self.rpc_id(1, "addToOtherPlayerChatLog", playerName, text)
 
 func addGameEventToLog(publicEvent, privateEvent):
-	var playerName = $"../../../../..".playerData.PlayerName
-	var privateMessage = "[color=" + $"../../../../..".playerData.PlayerEventColor + "]" + playerName + ": " + privateEvent + "[/color]\n"
+	var playerName = $"../../../..".playerData.PlayerName
+	var privateMessage = "[color=" + $"../../../..".playerData.PlayerEventColor + "]" + playerName + ": " + privateEvent + "[/color]\n"
 	fullLogList.append(privateMessage)
 	comboLogList.append(privateMessage)
 	eventLogList.append(privateMessage)
@@ -36,7 +36,7 @@ func addGameEventToLog(publicEvent, privateEvent):
 
 @rpc("any_peer")
 func addToOtherPlayerChatLog(rivalname, text):
-	var message = "[color=" + $"../../../../..".playerData.RivalChatColor + "]" + rivalname + ": " + text + "[/color]\n"
+	var message = "[color=" + $"../../../..".playerData.RivalChatColor + "]" + rivalname + ": " + text + "[/color]\n"
 	fullLogList.append(message)
 	comboLogList.append(message)
 	chatLogList.append(message)
@@ -46,8 +46,8 @@ func addToOtherPlayerChatLog(rivalname, text):
 
 @rpc("any_peer")
 func addToOtherPlayerEventLog(rivalName, publicEvent, privateEvent):
-	var publicMessage = "[color=" + $"../../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + publicEvent + "[/color]\n"
-	var privateMessage = "[color=" + $"../../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + privateEvent + "[/color]\n"
+	var publicMessage = "[color=" + $"../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + publicEvent + "[/color]\n"
+	var privateMessage = "[color=" + $"../../../..".playerData.RivalEventColor + "]" + rivalName + ": " + privateEvent + "[/color]\n"
 	fullLogList.append(privateMessage)
 	comboLogList.append(publicMessage)
 	eventLogList.append(publicMessage)

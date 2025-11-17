@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7g830g0hx0o"]
+[gd_scene load_steps=14 format=3 uid="uid://bm7g830g0hx0o"]
 
 [ext_resource type="Script" uid="uid://4acndei3x1q7" path="res://Scripts/StartScreen.gd" id="1_yhcre"]
 [ext_resource type="Script" uid="uid://kog2f0522r3f" path="res://Scripts/connect.gd" id="3_4gn13"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://co0hs14qvddts" path="res://GameObj/Updater/downloader_window.tscn" id="9_p20hj"]
 [ext_resource type="Script" uid="uid://byfuvornovhdb" path="res://Scripts/settings_window_holder.gd" id="10_p20hj"]
 [ext_resource type="PackedScene" uid="uid://csq0gw4h5oj7c" path="res://GameObj/Settings/settings_window.tscn" id="11_mlu7h"]
+[ext_resource type="Script" uid="uid://b7eh7mltei6r7" path="res://Scripts/game_window_holder.gd" id="12_hp5rj"]
+[ext_resource type="PackedScene" uid="uid://ccwb10ov4ntw7" path="res://GameObj/GameWindow/game_window.tscn" id="13_h3px5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yhcre")
@@ -34,3 +36,7 @@ DownloaderWindow = ExtResource("9_p20hj")
 [node name="SettingsWindowHolder" type="Node2D" parent="."]
 script = ExtResource("10_p20hj")
 SettingsWindow = ExtResource("11_mlu7h")
+
+[node name="GameWindowHolder" type="Node2D" parent="."]
+script = ExtResource("12_hp5rj")
+GameWindow = ExtResource("13_h3px5")

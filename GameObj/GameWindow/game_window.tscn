@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccwb10ov4ntw7"]
+
+[ext_resource type="Script" uid="uid://qk8xvjqk07j2" path="res://Scripts/game_window.gd" id="1_lkkqr"]
+[ext_resource type="PackedScene" uid="uid://c6gl57k40v4qq" path="res://GameObj/RivalObjs/rivalZones.tscn" id="2_1c00v"]
+[ext_resource type="Script" uid="uid://cyfvsw6dc8p3a" path="res://Scripts/input_manager.gd" id="2_o5ffj"]
+[ext_resource type="PackedScene" uid="uid://ce8st7wb6l6ju" path="res://GameObj/PlayerObjs/playerZones.tscn" id="3_o5ffj"]
+[ext_resource type="PackedScene" uid="uid://ciimi8mjv1004" path="res://GameObj/GameWindow/field.tscn" id="4_1nhde"]
+[ext_resource type="Script" uid="uid://c82vdy3md1a2p" path="res://Scripts/sync_functions.gd" id="6_o5ffj"]
+
+[node name="GameWindow" type="Node2D"]
+script = ExtResource("1_lkkqr")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("2_o5ffj")
+
+[node name="Rival" parent="." instance=ExtResource("2_1c00v")]
+
+[node name="Player" parent="." instance=ExtResource("3_o5ffj")]
+
+[node name="Field" parent="." instance=ExtResource("4_1nhde")]
+z_index = -1
+
+[node name="SyncFunctions" type="Node2D" parent="."]
+script = ExtResource("6_o5ffj")

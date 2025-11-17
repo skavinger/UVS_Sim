@@ -10,16 +10,30 @@ func joinRoom(_creatingPlayerID, _password):
 
 @rpc("any_peer")
 func roomsUpdated(rooms):
-	$"../Main/ConnectWindowHolder/ConnectionWindow".updateRooms(rooms)
+	if $"../Main/ConnectWindowHolder".get_child_count() != 0:
+		$"../Main/ConnectWindowHolder/ConnectionWindow".updateRooms(rooms)
 
 @rpc("any_peer")
 func rivalJoined():
-	$"../Main/ConnectWindowHolder/ConnectionWindow".rivalJoined()
+	if $"../Main/ConnectWindowHolder".get_child_count() != 0:
+		$"../Main/ConnectWindowHolder/ConnectionWindow".rivalJoined()
 
 @rpc("any_peer")
 func joinReply(status):
-	$"../Main/ConnectWindowHolder/ConnectionWindow".joinRoom(status)
+	if $"../Main/ConnectWindowHolder".get_child_count() != 0:
+		$"../Main/ConnectWindowHolder/ConnectionWindow".joinRoom(status)
 
 @rpc("any_peer")
 func gameLeft():
 	pass
+
+@rpc("any_peer")
+func checkIfGameReady():
+	pass
+
+@rpc("any_peer")
+func gameReady(isGameReady):
+	if isGameReady:
+		$"../Main/GameWindowHolder/GameWindow".setUpGame()
+	else:
+		$"../Main/GameWindowHolder/GameWindow".setAsHost()

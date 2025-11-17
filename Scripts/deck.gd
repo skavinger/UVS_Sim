@@ -43,7 +43,7 @@ func setUpPlayerDeck() -> void:
 	transitZone = $"../Transit"
 	cardMan = $"../CardManager"
 	#load decklist from deck
-	decklist = $"../../../../..".currentDeckList
+	decklist = $"../../../..".currentDeckList
 	var cardCount = 0
 	for i in range(decklist.main.size()):
 		for j in decklist.main[i].count:
