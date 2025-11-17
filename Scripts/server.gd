@@ -19,3 +19,7 @@ func rivalJoined():
 @rpc("any_peer")
 func joinReply(status):
 	$"../Main/ConnectWindowHolder/ConnectionWindow".joinRoom(status)
+
+@rpc("any_peer")
+func gameLeft():
+	pass

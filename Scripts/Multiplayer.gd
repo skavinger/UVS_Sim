@@ -59,6 +59,19 @@ func disable_buttons():
 	$Password.editable = false
 	$Password.visible = false
 
+func enable_buttons():
+	$CreateRoom.disabled = false
+	$CreateRoom.visible = true
+	var rooms = $OpenGames/ScrollContainer/VBoxContainer.get_children()
+	for i in range(rooms.size()):
+		rooms[i].enableUI()
+	$OpenGames.visible = true
+	$Back.disabled = false
+	$Back.visible = true
+	$PasswordLabel.visible = true
+	$Password.editable = true
+	$Password.visible = true
+
 func _on_join_pressed(creatorPlayerID) -> void:
 	Server.rpc_id(1, "joinRoom", creatorPlayerID, $Password.text)
 	
@@ -86,3 +99,10 @@ func rivalJoined():
 	$Game.add_child(rival)
 	$InputManager.rivalLoaded()
 	get_node("Game").host_setup()
+
+func leaveGame():
+	enable_buttons()
+	var gameparts = $Game.get_children()
+	for i in range(gameparts.size()):
+		$Game.remove_child(gameparts[i])
+	Server.rpc_id(1, "gameLeft")

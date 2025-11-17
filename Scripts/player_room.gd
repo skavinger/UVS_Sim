@@ -7,6 +7,9 @@ func setPlayerName(playerName):
 
 func disableUI():
 	$Button.disabled = true
+	
+func enableUI():
+	$Button.disabled = false
 
 func _on_button_pressed() -> void:
 	$"../../../.."._on_join_pressed(creatorPlayerID)
