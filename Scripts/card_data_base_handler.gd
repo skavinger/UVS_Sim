@@ -5,6 +5,7 @@ const DATABASE_ENTRY_PATH = "res://GameObj/Carddatabase/card_database_entry.tscn
 var formatList
 var keywordTraitList
 var keywordAbilityList
+var setList = []
 
 func _ready() -> void:
 	#populateCardDatabase
@@ -17,6 +18,7 @@ func _ready() -> void:
 		newEntry.cards = setData
 		newEntry.setName = setName
 		newEntry.name = setName
+		setList.push_back(setName)
 	
 	formatList = buildFormatList()
 	var keywordList = FileAccess.get_file_as_string("user://SetData/keywords.json")
@@ -44,6 +46,7 @@ func AddSets(sets):
 			newEntry.cards = setData
 			newEntry.setName = sets[i]
 			newEntry.name = sets[i]
+			setList.push_back(sets[i])
 	formatList = buildFormatList()
 
 func buildFormatList():
@@ -82,11 +85,7 @@ func getSet(setName):
 			return dataBaseEntries[i]
 
 func getSets():
-	var sets = []
-	var setDatabases = self.get_children()
-	for i in range(setDatabases.size()):
-		sets.append(setDatabases[i].setName)
-	return sets
+	return setList
 
 func get_card_art(cardID):
 	var image = Image.load_from_file("user://SetData/" + cardID.set + "/Images/" + cardID.number + ".jpg")

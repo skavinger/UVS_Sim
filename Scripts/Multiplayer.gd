@@ -35,8 +35,37 @@ func updateRooms(rooms):
 		var room = preload(PLAYER_ROOM_PATH).instantiate()
 		room.setPlayerName(rooms[i].creatingPlayerName)
 		room.creatorPlayerID = rooms[i].creatingPlayerID
+		if !checkRoomPlayable(rooms[i]):
+			room.disableRoom()
 		$OpenGames/ScrollContainer/VBoxContainer.add_child(room)
 		
+
+func checkRoomPlayable(room):
+	var sets = CardDatabase.getSets()
+	var found = false
+	for i in range(sets.size()):
+		if room.playerDeck.character.cardID.set == sets[i]:
+			found = true
+			break
+	if !found:
+			return false
+	for i in range(room.playerDeck.main.size()):
+		found = false
+		for j in range(sets.size()):
+			if room.playerDeck.main[i].cardID.set == sets[j]:
+				found = true
+				break
+		if !found:
+			return false
+	for i in range(room.playerDeck.side.size()):
+		found = false
+		for j in range(sets.size()):
+			if room.playerDeck.side[i].cardID.set == sets[j]:
+				found = true
+				break
+		if !found:
+			return false
+	return true
 
 func _on_join_pressed(creatorPlayerID) -> void:
 	Server.rpc_id(1, "joinRoom", creatorPlayerID, $Password.text)

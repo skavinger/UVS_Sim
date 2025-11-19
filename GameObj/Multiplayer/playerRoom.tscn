@@ -19,7 +19,7 @@ texture = ExtResource("1_r2gb7")
 [node name="PlayerName" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 50.0
-offset_right = 1250.0
+offset_right = 750.0
 offset_bottom = 100.0
 theme_override_font_sizes/normal_font_size = 30
 text = "Player"
@@ -33,5 +33,14 @@ offset_right = 1570.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 30
 text = "Join"
+
+[node name="Format" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 720.0
+offset_right = 1441.0
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 30
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
