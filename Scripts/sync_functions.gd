@@ -1,5 +1,7 @@
 extends Node2D
 
+var lastCallback
+
 func setPlayerHealth(health):
 	$"../Field/PlayerHealth/Label".text = str(int(health))
 	rpc_id(1, "syncHealth", health)
@@ -24,3 +26,19 @@ func loseHealth(amount):
 		setPlayerHealth(0)
 	else:
 		setPlayerHealth(current - amount)
+
+func promptRival(message, callback):
+	lastCallback = callback
+	$"../Field/Message".displayMessage("Waiting For Rival Reply")
+	$"../Field/Message".hideButtons()
+	rpc_id(1, "sendMessageToRival", message)
+
+@rpc("any_peer")
+func sendMessageToRival(message):
+	$"../Field/Message".displayMessage(message)
+
+@rpc("any_peer")
+func sendRivalMessageReply(answer):
+	$"../Field/Message".hideMessage()
+	$"../Field/Message".showButtons()
+	lastCallback.call(answer)

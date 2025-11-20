@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ciimi8mjv1004"]
+[gd_scene load_steps=37 format=3 uid="uid://ciimi8mjv1004"]
 
 [ext_resource type="Texture2D" uid="uid://dgxwc0ythw636" path="res://Assets/Field_V2.png" id="1_s1owj"]
 [ext_resource type="Texture2D" uid="uid://tcrjtvqyi85b" path="res://Assets/Health.png" id="2_hle2b"]
@@ -28,6 +28,8 @@
 [ext_resource type="Script" uid="uid://1uwcakrljnca" path="res://Scripts/x_button.gd" id="24_fu8iq"]
 [ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="24_g2c1a"]
 [ext_resource type="Script" uid="uid://dwe227kopmint" path="res://Scripts/game_controls.gd" id="28_jin74"]
+[ext_resource type="Texture2D" uid="uid://2u8e26tyff7y" path="res://Assets/confirmationBax.png" id="29_cm25k"]
+[ext_resource type="Script" uid="uid://cl17ifxna1du3" path="res://GameObj/GameWindow/message.gd" id="29_p1duu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2top2"]
 size = Vector2(62.5, 63)
@@ -291,8 +293,38 @@ offset_bottom = 1071.0
 theme_override_font_sizes/font_size = 20
 text = "Leave Game"
 
+[node name="Message" type="Node2D" parent="."]
+position = Vector2(960, -400)
+script = ExtResource("29_p1duu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Message"]
+texture = ExtResource("29_cm25k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Message"]
+offset_left = -237.0
+offset_top = -86.0
+offset_right = 238.0
+offset_bottom = 57.0
+text = "Prompt"
+
+[node name="Yes" type="Button" parent="Message"]
+offset_left = -235.0
+offset_top = 60.0
+offset_right = -155.0
+offset_bottom = 91.0
+text = "Yes"
+
+[node name="No" type="Button" parent="Message"]
+offset_left = 155.0
+offset_top = 60.0
+offset_right = 235.0
+offset_bottom = 91.0
+text = "No"
+
 [connection signal="text_submitted" from="Chat/LineEdit" to="Chat" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="Chat/DisplayChat" to="Chat" method="_on_display_chat_pressed"]
 [connection signal="pressed" from="Chat/DisplayCombo" to="Chat" method="_on_display_combo_pressed"]
 [connection signal="pressed" from="Chat/DiscplayLog" to="Chat" method="_on_discplay_log_pressed"]
 [connection signal="pressed" from="GameControls/LeaveGame" to="GameControls" method="_on_leave_game_pressed"]
+[connection signal="pressed" from="Message/Yes" to="Message" method="_on_yes_pressed"]
+[connection signal="pressed" from="Message/No" to="Message" method="_on_no_pressed"]
