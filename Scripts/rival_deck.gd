@@ -13,11 +13,16 @@ const BUTTON_HEIGHT = -28
 var transitZone
 var cardMan
 
-var cardState = {
+var defaultCardState = {
 	"faceup": false,
 	"currentZone": "deck",
-	"committed": false
+	"committed": false,
+	"maxHealth": null,
+	"frozen": false,
+	"playedThisTurn": false,
+	"counter": 0
 }
+
 
 var rivalDeckList
 
@@ -38,7 +43,7 @@ func setUpRivalDeck(rivalDecklist):
 				"cardID": decklist.main[i].cardID,
 				"indexID": cardCount,
 				"cardProperties": CardDatabase.getCard(decklist.main[i].cardID),
-				"cardState": cardState.duplicate(),
+				"cardState": defaultCardState.duplicate(),
 				"cardObj": null
 			})
 			cardCount = cardCount + 1

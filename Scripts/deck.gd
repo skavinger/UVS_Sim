@@ -19,7 +19,8 @@ var defaultCardState = {
 	"committed": false,
 	"maxHealth": null,
 	"frozen": false,
-	"playedThisTurn": false
+	"playedThisTurn": false,
+	"counter": 0
 }
 
 const buttons = [

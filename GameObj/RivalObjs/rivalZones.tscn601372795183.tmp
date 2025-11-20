@@ -1,0 +1,53 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6gl57k40v4qq"]
+
+[ext_resource type="Script" uid="uid://y4w8jn8omovb" path="res://Scripts/animation_manager.gd" id="1_6fnvw"]
+[ext_resource type="Script" uid="uid://ole27t7ljgei" path="res://Scripts/rival_card_manager.gd" id="2_41acy"]
+[ext_resource type="Script" uid="uid://bahybmw7divq1" path="res://Scripts/rival_transit.gd" id="3_2dkjg"]
+[ext_resource type="PackedScene" uid="uid://vjfi826slq6n" path="res://GameObj/RivalObjs/RivalDeck.tscn" id="4_7qxqt"]
+[ext_resource type="Script" uid="uid://dsv20h5n86m1" path="res://Scripts/rival_deck.gd" id="5_s2dks"]
+[ext_resource type="Script" uid="uid://btrlmfgh6s5cg" path="res://Scripts/rival_hand.gd" id="6_543w7"]
+[ext_resource type="PackedScene" uid="uid://d33wgkx2odi5e" path="res://GameObj/RivalObjs/RivalDiscard.tscn" id="7_wvf32"]
+[ext_resource type="Script" uid="uid://cpwvipf0re8os" path="res://Scripts/rival_discard.gd" id="8_3p5om"]
+[ext_resource type="PackedScene" uid="uid://dnpyxp6baakv0" path="res://GameObj/RivalObjs/RivalRemoved.tscn" id="9_en1kk"]
+[ext_resource type="Script" uid="uid://cyay1lckk5buk" path="res://Scripts/rival_removed.gd" id="10_8xxfs"]
+[ext_resource type="Script" uid="uid://fvxretu5lugt" path="res://Scripts/rival_cardpool.gd" id="11_u0arr"]
+[ext_resource type="Script" uid="uid://bp2y0jphvtorw" path="res://Scripts/rival_momentum.gd" id="12_akebh"]
+[ext_resource type="Script" uid="uid://do1s3n6nfvej6" path="res://Scripts/rival_stage.gd" id="13_cfjm1"]
+
+[node name="Rival" type="Node2D"]
+
+[node name="AnimationManager2" type="Node2D" parent="."]
+script = ExtResource("1_6fnvw")
+
+[node name="RivalCardManager" type="Node2D" parent="."]
+script = ExtResource("2_41acy")
+
+[node name="RivalTransit" type="Node2D" parent="."]
+script = ExtResource("3_2dkjg")
+
+[node name="RivalDeck" parent="." instance=ExtResource("4_7qxqt")]
+position = Vector2(236, 217)
+rotation = 3.14159
+script = ExtResource("5_s2dks")
+
+[node name="RivalHand" type="Node2D" parent="."]
+script = ExtResource("6_543w7")
+
+[node name="RivalDiscard" parent="." instance=ExtResource("7_wvf32")]
+position = Vector2(236, 415)
+rotation = 3.14159
+script = ExtResource("8_3p5om")
+
+[node name="RivalRemoved" parent="." instance=ExtResource("9_en1kk")]
+position = Vector2(84, 413)
+rotation = 3.14159
+script = ExtResource("10_8xxfs")
+
+[node name="RivalCardpool" type="Node2D" parent="."]
+script = ExtResource("11_u0arr")
+
+[node name="RivalMomentum" type="Node2D" parent="."]
+script = ExtResource("12_akebh")
+
+[node name="RivalStage" type="Node2D" parent="."]
+script = ExtResource("13_cfjm1")

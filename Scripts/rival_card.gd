@@ -137,6 +137,10 @@ func call_fun(buttonType):
 			ready()
 		"Select Card":
 			cardFlash()
+		"Add Counter":
+			counterUpOne()
+		"Remove Counter":
+			counterDownOne()
 
 func cardFlashRemote():
 	$SelectAnimation.visible = true
@@ -151,3 +155,16 @@ func cardFlash():
 	if cardMeta.cardState.faceup:
 		publicMessage = privateMessage
 	$"../../../Field/Chat".addGameEventToLog(privateMessage,publicMessage)
+
+func counterUpOne():
+	cardMeta.cardState.counter = cardMeta.cardState.counter + 1
+	$Counters/RichTextLabel.text = str(cardMeta.cardState.counter)
+	if cardMeta.cardState.counter > 0:
+		$Counters.visible = true
+
+func counterDownOne():
+	if cardMeta.cardState.counter != 0:
+		cardMeta.cardState.counter = cardMeta.cardState.counter - 1
+		$Counters/RichTextLabel.text = str(cardMeta.cardState.counter)
+		if cardMeta.cardState.counter < 1:
+			$Counters.visible = false

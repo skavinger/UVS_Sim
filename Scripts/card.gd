@@ -175,8 +175,27 @@ func call_fun(buttonType):
 		"Play Ability":
 			$"../../../Field/EffectsWindow".displayWindow()
 			$"../../../Field/EffectsWindow".populateWindow(cardMeta)
+		"Add Counter":
+			counterUpOne()
+		"Remove Counter":
+			counterDownOne()
 
 func cardFlash():
 	$"../../../Rival/RivalCardManager".rpc_id(1, "flashRivalCard", cardMeta.indexID)
 	$SelectAnimation.visible = true
 	$AnimationPlayer.play("CardSelected")
+
+func counterUpOne():
+	$"../../../Rival/RivalCardManager".rpc_id(1, "rivalConterUp", cardMeta.indexID)
+	cardMeta.cardState.counter = cardMeta.cardState.counter + 1
+	$Counters/RichTextLabel.text = str(cardMeta.cardState.counter)
+	if cardMeta.cardState.counter > 0:
+		$Counters.visible = true
+
+func counterDownOne():
+	$"../../../Rival/RivalCardManager".rpc_id(1, "rivalConterDown", cardMeta.indexID)
+	if cardMeta.cardState.counter != 0:
+		cardMeta.cardState.counter = cardMeta.cardState.counter - 1
+		$Counters/RichTextLabel.text = str(cardMeta.cardState.counter)
+		if cardMeta.cardState.counter < 1:
+			$Counters.visible = false

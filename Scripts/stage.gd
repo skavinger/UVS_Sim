@@ -17,7 +17,9 @@ var animationMan
 
 const characterActions = [
 	{"Action": "Commit", "Label": "Commit"},
-	{"Action": "Play Ability", "Label": "Play Ability"},]
+	{"Action": "Play Ability", "Label": "Play Ability"},
+	{"Action": "Add Counter", "Label": "Add Counter"},
+	{"Action": "Remove Counter", "Label": "Remove Counter"}]
 const stageActions = [
 	{"Action": "Commit", "Label": "Commit"}, 
 	{"Action": "Flip", "Label": "Flip"},
@@ -28,7 +30,9 @@ const stageActions = [
 	{"Action": "To Removed", "Label": "Remove"}, 
 	{"Action": "To Momentum", "Label": "Add to Momentum"}, 
 	{"Action": "To Top Deck", "Label": "To Top Deck"},
-	{"Action": "To Bottom Deck", "Label": "To Bottom Deck"}]
+	{"Action": "To Bottom Deck", "Label": "To Bottom Deck"},
+	{"Action": "Add Counter", "Label": "Add Counter"},
+	{"Action": "Remove Counter", "Label": "Remove Counter"}]
 
 func _ready() -> void:
 	animationMan = $"../../Field/AnimationManager"

@@ -141,3 +141,19 @@ func flashRivalCard(indexID):
 		if children[i].cardMeta.indexID == indexID:
 			children[i].cardFlashRemote()
 			break
+
+@rpc("any_peer")
+func rivalConterUp(indexID):
+	var children = get_children()
+	for i in range(children.size()):
+		if children[i].cardMeta.indexID == indexID:
+			children[i].counterUpOne()
+			break
+
+@rpc("any_peer")
+func rivalConterDown(indexID):
+	var children = get_children()
+	for i in range(children.size()):
+		if children[i].cardMeta.indexID == indexID:
+			children[i].counterDownOne()
+			break
