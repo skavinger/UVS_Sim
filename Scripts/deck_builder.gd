@@ -56,6 +56,11 @@ func populateDeckList():
 	$DeckDetails/Character.texture_normal = null
 	
 	$DeckDetails/DeckName.text = decklist.DeckName
+	$"../..".currentDeckList.Formats = getFormats()
+	$DeckDetails/Formats/ScrollContainer/RichTextLabel.text = ""
+	for i in range($"../..".currentDeckList.Formats.size()):
+		$DeckDetails/Formats/ScrollContainer/RichTextLabel.append_text($"../..".currentDeckList.Formats[i] + "\n")
+	
 	
 	if decklist.character != null:
 		setCharacter(decklist.character.cardID)
@@ -402,3 +407,18 @@ func _on_close_filter_pressed() -> void:
 	$FilterWindow.z_index = -1000
 	move_child($FilterWindow, 0)
 	fillFilterResults(CardDatabase.getCardsFromFilter($FilterWindow.filter))
+
+func getFormats():
+	var decklist = $"../..".currentDeckList
+	var formats = CardDatabase.getFormats()
+	var outFormats = formats.duplicate()
+	for i in range(decklist.main.size()):
+		var cardData = CardDatabase.getCard(decklist.main[i].cardID)
+		for j in range(formats.size()):
+			var found = false
+			for k in range(cardData.Legality.size()):
+				if formats[j] == cardData.Legality[k]:
+					found = true
+			if !found:
+				outFormats.erase(formats[j])
+	return outFormats

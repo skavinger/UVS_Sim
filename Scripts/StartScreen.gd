@@ -2,6 +2,7 @@ extends Node2D
 
 var currentDeckList = {
 	"DeckName": "",
+	"Formats": [],
 	"character": null,
 	"main": [],
 	"side": []

@@ -54,5 +54,16 @@ offset_right = 1500.0
 offset_bottom = 110.0
 theme_override_font_sizes/font_size = 30
 
+[node name="Formats" type="MenuButton" parent="."]
+offset_left = 500.0
+offset_top = 30.0
+offset_right = 700.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 30
+text = "Formats"
+item_count = 1
+popup/item_0/text = "Any"
+popup/item_0/id = 0
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]

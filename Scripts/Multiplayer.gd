@@ -6,17 +6,24 @@ const PORT  = 25555
 const PLAYER_ROOM_PATH = "res://GameObj/Multiplayer/playerRoom.tscn"
 
 var peer = ENetMultiplayerPeer.new()
+var selectedFormat = "Any"
 
 func _ready() -> void:
 	peer.create_client(serverIP,PORT)
 	multiplayer.multiplayer_peer = peer
-	multiplayer.connected_to_server.connect(_test)
+	for i in range($"../../".currentDeckList.Formats.size()):
+		if $"../../".currentDeckList.Formats[i] == "Standard":
+			selectedFormat = "Standard"
+		$Formats.get_popup().add_item($"../../".currentDeckList.Formats[i])
+	$Formats.get_popup().id_pressed.connect(_format_selected)
 
-func _test():
-	pass
+func _format_selected(id):
+	var format = $Formats.get_popup().get_item_text(id)
+	$Formats.text = format
+	selectedFormat = format
 
 func _on_create_room_pressed() -> void:
-	Server.rpc_id(1, "createRoom", $"../../".playerData.PlayerName, $"../../".currentDeckList, $Password.text)
+	Server.rpc_id(1, "createRoom", $"../../".playerData.PlayerName, $"../../".currentDeckList, $Password.text, selectedFormat)
 	
 	$"../../GameWindowHolder".spawnWindow()
 	$"..".closeWindow()
@@ -36,7 +43,17 @@ func updateRooms(rooms):
 		room.setPlayerName(rooms[i].creatingPlayerName)
 		room.creatorPlayerID = rooms[i].creatingPlayerID
 		if !checkRoomPlayable(rooms[i]):
-			room.disableRoom()
+			room.setFormat("Missing Cards")
+		else:
+			var found = false
+			for j in range($"../../".currentDeckList.Formats.size()):
+				if $"../../".currentDeckList.Formats[j] == selectedFormat:
+					found = true
+					break
+			if found:
+				room.setFormat(rooms[i].format)
+			else:
+				room.setFormat("Decklist Invalid")
 		$OpenGames/ScrollContainer/VBoxContainer.add_child(room)
 		
 

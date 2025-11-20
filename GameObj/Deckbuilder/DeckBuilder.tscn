@@ -718,6 +718,24 @@ text = "Godzilla"
 [node name="Timer" type="Timer" parent="DeckDetails"]
 wait_time = 0.5
 
+[node name="Formats" type="Control" parent="DeckDetails"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 570.0
+offset_top = 70.0
+offset_right = 1120.0
+offset_bottom = 160.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckDetails/Formats"]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 90.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DeckDetails/Formats/ScrollContainer"]
+custom_minimum_size = Vector2(550, 90)
+layout_mode = 2
+theme_override_constants/outline_size = 8
+
 [node name="Cardcounts" type="Node2D" parent="."]
 
 [node name="CharacterCount" type="RichTextLabel" parent="Cardcounts"]

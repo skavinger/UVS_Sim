@@ -11,9 +11,16 @@ func disableUI():
 func enableUI():
 	$Button.disabled = false
 
-func disableRoom():
-	$Button.disabled = true
-	$Format.append_text("[color=red]Missing data[/color]")
+func setFormat(format):
+	$Format.text = ""
+	if format == "Missing Cards":
+		$Button.disabled = true
+		$Format.append_text("[color=red]Missing data[/color]")
+	elif format == "Decklist Invalid":
+		$Button.disabled = true
+		$Format.append_text("[color=red]Decklist Format Error[/color]")
+	else:
+		$Format.append_text(format)
 
 func _on_button_pressed() -> void:
 	$"../../../.."._on_join_pressed(creatorPlayerID)
