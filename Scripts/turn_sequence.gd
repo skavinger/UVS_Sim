@@ -29,17 +29,24 @@ func advancePhase():
 	if playersTurn:
 		match currentPhase:
 			"StartOfGame":
-				currentPhase = "Mulligains"
-				$"../../Player/Deck".drawToHandSize()
-				$TurnSequence.texture = preload("res://Assets/TurnSequence/Mulligans.png")
-				toggleAttackSeqButtons(false)
-				rpc_id(1, "updateRivalsPhase",currentPhase)
+				$"../../SyncFunctions".promptRival("Player 1 would like to start the game. Allow?", func(reply):
+					if reply =="yes":
+						currentPhase = "Mulligains"
+						$"../../Player/Deck".drawToHandSize()
+						$TurnSequence.texture = preload("res://Assets/TurnSequence/Mulligans.png")
+						toggleAttackSeqButtons(false)
+						rpc_id(1, "updateRivalsPhase",currentPhase)
+				)
+				
 			"Mulligains":
-				currentPhase = "CombatPhaseOpen"
-				$"../../Player/Deck".drawToHandSize()
-				$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
-				toggleAttackSeqButtons(false)
-				rpc_id(1, "updateRivalsPhase",currentPhase)
+				$"../../SyncFunctions".promptRival("Player 1 has finished Mulligains and would like to move to Combat Phase. Allow?", func(reply):
+					if reply == "yes":
+						currentPhase = "CombatPhaseOpen"
+						$"../../Player/Deck".drawToHandSize()
+						$TurnSequence.texture = preload("res://Assets/TurnSequence/OpenGreen.png")
+						toggleAttackSeqButtons(false)
+						rpc_id(1, "updateRivalsPhase",currentPhase)
+				)
 			"StartPhaseReady":
 				currentPhase = "StartPhaseReview"
 				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReviewGreen.png")
@@ -78,13 +85,16 @@ func advancePhase():
 				toggleAttackSeqButtons(true)
 				rpc_id(1, "updateRivalsPhase",currentPhase)
 			"EndPhase":
-				$"../../Player/Cardpool".endPhaseCleanUpTurnPlayer()
-				currentPhase = "StartPhaseReady"
-				$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyRed.png")
-				toggleAttackSeqButtons(false)
-				playersTurn = false
-				rpc_id(1, "swapPlayerTurn", currentPhase)
-				updateTurnPlayer()
+				$"../../SyncFunctions".promptRival("Turn player would like to end turn. Allow?", func(reply):
+					if reply == "yes":
+						$"../../Player/Cardpool".endPhaseCleanUpTurnPlayer()
+						currentPhase = "StartPhaseReady"
+						$TurnSequence.texture = preload("res://Assets/TurnSequence/ReadyRed.png")
+						toggleAttackSeqButtons(false)
+						playersTurn = false
+						rpc_id(1, "swapPlayerTurn", currentPhase)
+						updateTurnPlayer()
+				)
 
 func revertPhase():
 	if playersTurn:

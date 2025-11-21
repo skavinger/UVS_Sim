@@ -21,6 +21,8 @@ func showButtons():
 
 func _on_yes_pressed() -> void:
 	$"../../SyncFunctions".rpc_id(1, "sendRivalMessageReply", "yes")
+	hideMessage()
 
 func _on_no_pressed() -> void:
 	$"../../SyncFunctions".rpc_id(1, "sendRivalMessageReply", "no")
+	hideMessage()
