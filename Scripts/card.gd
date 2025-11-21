@@ -48,12 +48,15 @@ func set_buttons(card, buttons):
 		var new_button = preload(BUTTON_PATH).instantiate()
 		new_button.button_type = buttons[i].Action
 		new_button.get_node("Control/Text").text = buttons[i].Label
-		$Buttons.add_child(new_button)
+		if buttons[i].Action == "Set In Tracker" and cardMeta.cardProperties.Cardtype != "Attack":
+			pass
+		else:
+			$Buttons.add_child(new_button)
 		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * i)
 		new_button.z_index = self.z_index - i
 		
 		new_button = preload(SIDE_BUTTON_PATH).instantiate()
-		if(buttons[i].Action == "Commit"):
+		if buttons[i].Action == "Commit":
 			new_button.button_type = "Ready"
 			new_button.get_node("Control/Text").text = "Ready"
 		else:
@@ -179,6 +182,9 @@ func call_fun(buttonType):
 			counterUpOne()
 		"Remove Counter":
 			counterDownOne()
+		"Set In Tracker":
+			if cardMeta.cardProperties.Speed != null:
+				$"../../../Field/Tracker".setTracker(cardMeta.cardProperties.Speed, cardMeta.cardProperties.AttackZone, cardMeta.cardProperties.Damage)
 
 func cardFlash():
 	$"../../../Rival/RivalCardManager".rpc_id(1, "flashRivalCard", cardMeta.indexID)

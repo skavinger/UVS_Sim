@@ -42,3 +42,16 @@ func sendRivalMessageReply(answer):
 	$"../Field/Message".hideMessage()
 	$"../Field/Message".showButtons()
 	lastCallback.call(answer)
+
+@rpc("any_peer")
+func rivalSetTracker(speedNew, zoneNew, damageNew):
+	$"../Field/Tracker".speed = speedNew
+	$"../Field/Tracker".damage = damageNew
+	$"../Field/Tracker/SpeedVal/SpeedLabel".text = str(int(speedNew))
+	$"../Field/Tracker/DamageVal/DamageLabel".text = str(int(damageNew))
+	if zoneNew == "high":
+		$"../Field/Tracker/AttackZone/High".changeZone()
+	elif zoneNew == "low":
+		$"../Field/Tracker/AttackZone/Low".changeZone()
+	else:
+		$"../Field/Tracker/AttackZone/Mid".changeZone()

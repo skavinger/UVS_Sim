@@ -12,6 +12,7 @@ var cardpool = []
 
 const cardpoolActions = [
 	{"Action": "Play Ability", "Label": "Play Ability"},
+	{"Action": "Set In Tracker", "Label": "Set In Tracker"},
 	{"Action": "Flip", "Label": "Flip"},
 	{"Action": "To Hand", "Label": "Add to Hand"}, 
 	{"Action": "To Stage", "Label": "Build"}, 
