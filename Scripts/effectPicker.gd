@@ -12,15 +12,27 @@ func hideWindow():
 	self.position = Vector2(2000,0)
 
 func populateWindow(cardMeta):
+	$WindowTitle.text = "Abilities of " + cardMeta.cardProperties.Name
 	var oldEffects = $EffectList.get_children()
 	for i in range(oldEffects.size()):
 		$EffectList.remove_child(oldEffects[i])
+		
+	for i in range(cardMeta.cardProperties.Keywords.size()):
+		var keywordAbilities = CardDatabase.getKeywordAbilities()
+		for j in range(keywordAbilities.size()):
+			if cardMeta.cardProperties.Keywords[i].Name.contains(keywordAbilities[j].Name):
+				var tab = preload(PATH_TO_TAB).instantiate()
+				tab.cardMeta = cardMeta
+				tab.ability = cardMeta.cardProperties.Keywords[i]
+				var textbox = tab.get_child(0)
+				textbox.append_text(keywordAbilities[j].text)
+				tab.name = cardMeta.cardProperties.Keywords[i].Name
+				$EffectList.add_child(tab)
 	
 	for i in range(cardMeta.cardProperties.Abilities.size()):
 		var tab = preload(PATH_TO_TAB).instantiate()
 		tab.cardMeta = cardMeta
 		tab.ability = cardMeta.cardProperties.Abilities[i]
-		$WindowTitle.text = "Abilities of " + cardMeta.cardProperties.Name
 		
 		var textbox = tab.get_child(0)
 		if cardMeta.cardProperties.Abilities[i].Type != "Static":

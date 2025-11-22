@@ -68,7 +68,7 @@ func _ready() -> void:
 	
 	var abilities = CardDatabase.getKeywordAbilities()
 	for i in range(abilities.size()):
-		$Menus/KeywordAbilities.get_popup().add_check_item(abilities[i])
+		$Menus/KeywordAbilities.get_popup().add_check_item(abilities[i].Name)
 		
 	$Menus/KeywordAbilities.get_popup().hide_on_checkable_item_selection = false
 	$Menus/KeywordAbilities.get_popup().id_pressed.connect(_kAbilities_selected)

@@ -39,24 +39,28 @@ func genCardText(textbox, card):
 	textbox.append_text(card.cardProperties.Cardtype + "[/color]\n")
 	
 	if(card.cardProperties.Difficulty != null):
-		textbox.append_text("Difficulty: " + str(card.cardProperties.Difficulty) + " | " + "Check: " + str(card.cardProperties.Check) + "\n")
+		textbox.append_text("Difficulty: " + str(int(card.cardProperties.Difficulty)) + " | " + "Check: " + str(int(card.cardProperties.Check)) + "\n")
 	
 	if(card.cardProperties.HandSize != null):
-		textbox.append_text("Hand Size: " + str(card.cardProperties.HandSize) + " | " + "Health: " + str(card.cardProperties.Health) + "\n")
+		textbox.append_text("Hand Size: " + str(int(card.cardProperties.HandSize)) + " | " + "Health: " + str(int(card.cardProperties.Health)) + "\n")
 	
 	if(card.cardProperties.BlockZone != null):
-		textbox.append_text("Block Zone: " + card.cardProperties.BlockZone + " | " + "Block Modifier: " + str(card.cardProperties.BlockMod) + "\n")
+		textbox.append_text("Block Zone: " + card.cardProperties.BlockZone + " | " + "Block Modifier: " + str(int(card.cardProperties.BlockMod)) + "\n")
 	
 	if(card.cardProperties.AttackZone != null):
-		textbox.append_text("Speed: " + str(card.cardProperties.Speed) + " | " + "Zone: " + card.cardProperties.AttackZone + " | " + "Damage: " + str(card.cardProperties.Damage) + "\n")
+		textbox.append_text("Speed: " + str(int(card.cardProperties.Speed)) + " | " + "Zone: " + card.cardProperties.AttackZone + " | " + "Damage: " + str(int(card.cardProperties.Damage)) + "\n")
 	
 	for i in range(card.cardProperties.Keywords.size()):
-		var color = checkKeywordColor(card.cardProperties.Keywords[i].Name)
+		var keywordAbilities = CardDatabase.getKeywordAbilities()
+		var color = ""
+		for j in range(keywordAbilities.size()):
+			if card.cardProperties.Keywords[i].Name.contains(keywordAbilities[j].Name):
+				color = keywordAbilities[j].color
 		if(color != ""):
 			textbox.append_text("[color=" + color + "]")
 		textbox.append_text(card.cardProperties.Keywords[i].Name)
 		if(card.cardProperties.Keywords[i].Rating != null):
-			textbox.append_text(" " + str(card.cardProperties.Keywords[i].Rating))
+			textbox.append_text(" " + str(int(card.cardProperties.Keywords[i].Rating)))
 		if(color != ""):
 			textbox.append_text("[/color]")
 		if(i + 1 != card.cardProperties.Keywords.size()):
