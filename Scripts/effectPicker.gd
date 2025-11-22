@@ -23,15 +23,17 @@ func populateWindow(cardMeta):
 		$WindowTitle.text = "Abilities of " + cardMeta.cardProperties.Name
 		
 		var textbox = tab.get_child(0)
-		if(cardMeta.cardProperties.Abilities[i].Type.contains("Enhance")):
-			textbox.append_text("[color=orange]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-		elif(cardMeta.cardProperties.Abilities[i].Type.contains("Response")):
-			textbox.append_text("[color=green]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-		elif(cardMeta.cardProperties.Abilities[i].Type.contains("Form")):
-			textbox.append_text("[color=lightblue]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-		elif(cardMeta.cardProperties.Abilities[i].Type.contains("Blitz")):
-			textbox.append_text("[color=pink]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-		textbox.append_text(" " + cardMeta.cardProperties.Abilities[i].Cost + ": " + cardMeta.cardProperties.Abilities[i].Effect)
-		
+		if cardMeta.cardProperties.Abilities[i].Type != "Static":
+			if(cardMeta.cardProperties.Abilities[i].Type.contains("Enhance")):
+				textbox.append_text("[color=orange]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Response")):
+				textbox.append_text("[color=green]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Form")):
+				textbox.append_text("[color=lightblue]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Blitz")):
+				textbox.append_text("[color=pink]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+			textbox.append_text(" " + cardMeta.cardProperties.Abilities[i].Cost + ": " + cardMeta.cardProperties.Abilities[i].Effect)
+		else:
+			textbox.append_text(cardMeta.cardProperties.Abilities[i].Effect)
 		tab.name =  cardMeta.cardProperties.Abilities[i].Type
 		$EffectList.add_child(tab)
