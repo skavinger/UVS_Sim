@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ciimi8mjv1004"]
+[gd_scene load_steps=38 format=3 uid="uid://ciimi8mjv1004"]
 
 [ext_resource type="Texture2D" uid="uid://dgxwc0ythw636" path="res://Assets/Field_V2.png" id="1_s1owj"]
 [ext_resource type="Texture2D" uid="uid://tcrjtvqyi85b" path="res://Assets/Health.png" id="2_hle2b"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dn7vssvtwnek6" path="res://Assets/ComboChat.png" id="12_py75x"]
 [ext_resource type="Texture2D" uid="uid://bxeiy1q4frupr" path="res://Assets/GameStateChat.png" id="13_a7iln"]
 [ext_resource type="Texture2D" uid="uid://cd5c0o285r0ar" path="res://Assets/Arrows.png" id="14_2top2"]
+[ext_resource type="Texture2D" uid="uid://cgcx7noi2i2jd" path="res://Assets/PassButton.png" id="14_tjpv2"]
 [ext_resource type="Script" uid="uid://b2y105x4g7nkf" path="res://Scripts/advance_phase.gd" id="15_tlaju"]
 [ext_resource type="Script" uid="uid://cv6243g7x06es" path="res://Scripts/revert_phase.gd" id="16_bxhp4"]
 [ext_resource type="Texture2D" uid="uid://bc3nadu04xbnd" path="res://Assets/TurnSequence/AttackSeq.png" id="17_bxhp4"]
@@ -117,7 +118,7 @@ texture = ExtResource("9_sopy5")
 centered = false
 
 [node name="LineEdit" type="LineEdit" parent="Chat"]
-offset_left = 1757.0
+offset_left = 1760.0
 offset_top = 1043.0
 offset_right = 1917.0
 offset_bottom = 1074.0
@@ -170,6 +171,13 @@ offset_top = 1010.0
 offset_right = 1757.0
 offset_bottom = 1037.0
 texture_normal = ExtResource("13_a7iln")
+
+[node name="Pass" type="TextureButton" parent="Chat"]
+offset_left = 1730.0
+offset_top = 1040.0
+offset_right = 1756.0
+offset_bottom = 1065.0
+texture_normal = ExtResource("14_tjpv2")
 
 [node name="TurnSequence" type="Node2D" parent="."]
 script = ExtResource("11_pghvb")
@@ -325,6 +333,7 @@ text = "No"
 [connection signal="pressed" from="Chat/DisplayChat" to="Chat" method="_on_display_chat_pressed"]
 [connection signal="pressed" from="Chat/DisplayCombo" to="Chat" method="_on_display_combo_pressed"]
 [connection signal="pressed" from="Chat/DiscplayLog" to="Chat" method="_on_discplay_log_pressed"]
+[connection signal="pressed" from="Chat/Pass" to="Chat" method="_on_pass_pressed"]
 [connection signal="pressed" from="GameControls/LeaveGame" to="GameControls" method="_on_leave_game_pressed"]
 [connection signal="pressed" from="Message/Yes" to="Message" method="_on_yes_pressed"]
 [connection signal="pressed" from="Message/No" to="Message" method="_on_no_pressed"]

@@ -81,3 +81,6 @@ func _on_discplay_log_pressed() -> void:
 	for i in range(eventLogList.size()):
 		$ScrollContainer/RichTextLabel.append_text(eventLogList[i])
 	$ScrollContainer/RichTextLabel.scroll_to_line($ScrollContainer/RichTextLabel.get_line_count()-1)
+
+func _on_pass_pressed() -> void:
+	addGameEventToLog("Pass", "Pass")
