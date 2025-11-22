@@ -28,22 +28,22 @@ func set_buttons(_card, buttons):
 		new_button.z_index = self.z_index - i
 
 func toHand():
-	transitZone.move_to("hand", cardMeta, true)
+	transitZone.move_to("hand", cardMeta, null)
 
 func toStage():
-	transitZone.move_to("stage", cardMeta, false)
+	transitZone.move_to("stage", cardMeta, null)
 
 func toDiscard():
-	transitZone.move_to("discard", cardMeta, false)
+	transitZone.move_to("discard", cardMeta, null)
 	
 func toCardPool():
-	transitZone.move_to("cardpool", cardMeta, false)
+	transitZone.move_to("cardpool", cardMeta, null)
 	
 func toRemoved():
-	transitZone.move_to("removed", cardMeta, false)
+	transitZone.move_to("removed", cardMeta, null)
 	
 func toMomentum():
-	transitZone.move_to("momentum", cardMeta, false)
+	transitZone.move_to("momentum", cardMeta, null)
 	
 func flip():
 	$AnimationPlayer.play("Flip")
