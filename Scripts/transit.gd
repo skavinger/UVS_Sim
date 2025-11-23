@@ -283,6 +283,8 @@ func move_to(destinationZone, card, faceUpOverride):
 		card.cardObj = cardMan.spawn_card(card)
 		
 	match card.cardState.currentZone:
+		"token":
+			pass
 		"character":
 			pass
 		"deck":

@@ -23,29 +23,35 @@ func populateWindow(cardMeta):
 			if cardMeta.cardProperties.Keywords[i].Name.contains(keywordAbilities[j].Name):
 				var tab = preload(PATH_TO_TAB).instantiate()
 				tab.cardMeta = cardMeta
-				tab.ability = cardMeta.cardProperties.Keywords[i]
+				tab.ability = keywordAbilities[j]
+				tab.isKeyword = true
 				var textbox = tab.get_child(0)
 				textbox.append_text(keywordAbilities[j].text)
 				tab.name = cardMeta.cardProperties.Keywords[i].Name
+				if keywordAbilities[j].effectPath != "":
+					tab.effectScript = load(keywordAbilities[j].effectPath).new()
+					if !tab.effectScript.checkPlayable($"../.."):
+						tab.get_node("Play").disabled = true
 				$EffectList.add_child(tab)
 	
 	for i in range(cardMeta.cardProperties.Abilities.size()):
-		var tab = preload(PATH_TO_TAB).instantiate()
-		tab.cardMeta = cardMeta
-		tab.ability = cardMeta.cardProperties.Abilities[i]
-		
-		var textbox = tab.get_child(0)
-		if cardMeta.cardProperties.Abilities[i].Type != "Static":
-			if(cardMeta.cardProperties.Abilities[i].Type.contains("Enhance")):
-				textbox.append_text("[color=orange]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Response")):
-				textbox.append_text("[color=green]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Form")):
-				textbox.append_text("[color=lightblue]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-			elif(cardMeta.cardProperties.Abilities[i].Type.contains("Blitz")):
-				textbox.append_text("[color=pink]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
-			textbox.append_text(" " + cardMeta.cardProperties.Abilities[i].Cost + ": " + cardMeta.cardProperties.Abilities[i].Effect)
-		else:
-			textbox.append_text(cardMeta.cardProperties.Abilities[i].Effect)
-		tab.name =  cardMeta.cardProperties.Abilities[i].Type
-		$EffectList.add_child(tab)
+		if cardMeta.cardProperties.Abilities[i].Type != "":
+			var tab = preload(PATH_TO_TAB).instantiate()
+			tab.cardMeta = cardMeta
+			tab.ability = cardMeta.cardProperties.Abilities[i]
+			
+			var textbox = tab.get_child(0)
+			if cardMeta.cardProperties.Abilities[i].Type != "Static":
+				if(cardMeta.cardProperties.Abilities[i].Type.contains("Enhance")):
+					textbox.append_text("[color=orange]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+				elif(cardMeta.cardProperties.Abilities[i].Type.contains("Response")):
+					textbox.append_text("[color=green]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+				elif(cardMeta.cardProperties.Abilities[i].Type.contains("Form")):
+					textbox.append_text("[color=lightblue]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+				elif(cardMeta.cardProperties.Abilities[i].Type.contains("Blitz")):
+					textbox.append_text("[color=pink]" + cardMeta.cardProperties.Abilities[i].Type + "[/color] ")
+				textbox.append_text(" " + cardMeta.cardProperties.Abilities[i].Cost + ": " + cardMeta.cardProperties.Abilities[i].Effect)
+			else:
+				textbox.append_text(cardMeta.cardProperties.Abilities[i].Effect)
+			tab.name =  cardMeta.cardProperties.Abilities[i].Type
+			$EffectList.add_child(tab)

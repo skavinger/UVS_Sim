@@ -18,3 +18,7 @@ func _on_download_data_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	$"../../SettingsWindowHolder".spawnWindow()
 	$"..".closeWindow()
+
+func disableButtonsDueToLackOfCardData():
+	$Connect.disabled = true
+	$DeckBuilder.disabled = true

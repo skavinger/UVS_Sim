@@ -2,11 +2,19 @@ extends Control
 
 var cardMeta
 var ability
+var isKeyword = false
+
+var effectScript = null
 
 func _on_play_pressed() -> void:
 	cardMeta.cardObj.cardFlash()
+	if effectScript != null:
+		effectScript.payCosts($"../../../..")
+		effectScript.resolveEffect($"../../../..")
 	var publicMessage = ""
-	if ability.Type != "Static":
+	if isKeyword:
+		publicMessage = "Played Keyword ability on " + cardMeta.cardProperties.Name + " in " + cardMeta.cardState.currentZone + ". " + ability.text 
+	elif ability.Type != "Static":
 		publicMessage = "Played ability from " + cardMeta.cardProperties.Name + " in " + cardMeta.cardState.currentZone + ". "
 		if(ability.Type.contains("Enhance")):
 			publicMessage = publicMessage + "[color=orange]" + ability.Type + "[/color] "

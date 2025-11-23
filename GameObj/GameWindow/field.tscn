@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://de72xvkv3lfa2" path="res://Assets/X_Button.png" id="24_g2c1a"]
 [ext_resource type="Script" uid="uid://dwe227kopmint" path="res://Scripts/game_controls.gd" id="28_jin74"]
 [ext_resource type="Texture2D" uid="uid://2u8e26tyff7y" path="res://Assets/confirmationBax.png" id="29_cm25k"]
-[ext_resource type="Script" uid="uid://cl17ifxna1du3" path="res://GameObj/GameWindow/message.gd" id="29_p1duu"]
+[ext_resource type="Script" uid="uid://cl17ifxna1du3" path="res://Scripts/message.gd" id="29_p1duu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2top2"]
 size = Vector2(62.5, 63)

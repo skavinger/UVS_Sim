@@ -1,5 +1,6 @@
 extends Node2D
 
+#const serverIP = "138.2.232.82"
 const serverIP = "localhost"
 const PORT  = 25555
 
@@ -46,14 +47,17 @@ func updateRooms(rooms):
 			room.setFormat("Missing Cards")
 		else:
 			var found = false
-			for j in range($"../../".currentDeckList.Formats.size()):
-				if $"../../".currentDeckList.Formats[j] == selectedFormat:
-					found = true
-					break
-			if found:
+			if rooms[i].format == "Any":
 				room.setFormat(rooms[i].format)
 			else:
-				room.setFormat("Decklist Invalid")
+				for j in range($"../../".currentDeckList.Formats.size()):
+					if $"../../".currentDeckList.Formats[j] == selectedFormat:
+						found = true
+						break
+				if found:
+					room.setFormat(rooms[i].format)
+				else:
+					room.setFormat("Decklist Invalid")
 		$OpenGames/ScrollContainer/VBoxContainer.add_child(room)
 		
 

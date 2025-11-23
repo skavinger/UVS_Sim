@@ -30,6 +30,8 @@ func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 	#if card obj hasn't been spawned yet spawn it
 	var card
 	match sourceZone:
+		"token":
+			card = card_oldRef
 		"character":
 			card = card_oldRef
 		"deck":
