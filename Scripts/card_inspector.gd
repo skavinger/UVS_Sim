@@ -44,7 +44,7 @@ func genCardText(textbox, card):
 	if(card.cardProperties.HandSize != null):
 		textbox.append_text("Hand Size: " + str(int(card.cardProperties.HandSize)) + " | " + "Health: " + str(int(card.cardProperties.Health)) + "\n")
 	
-	if(card.cardProperties.BlockZone != null):
+	if(card.cardProperties.BlockMod != null):
 		textbox.append_text("Block Zone: " + card.cardProperties.BlockZone + " | " + "Block Modifier: " + str(int(card.cardProperties.BlockMod)) + "\n")
 	
 	if(card.cardProperties.AttackZone != null):

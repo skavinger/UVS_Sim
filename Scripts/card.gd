@@ -65,6 +65,20 @@ func set_buttons(card, buttons):
 		$SideButtons.add_child(new_button)
 		new_button.position.x = (BUTTON_HEIGHT * i)
 		new_button.z_index = self.z_index - i
+	if cardMeta.cardProperties.transfromation != null:
+		var new_button = preload(BUTTON_PATH).instantiate()
+		new_button.button_type = "Transform"
+		new_button.get_node("Control/Text").text = "Transform"
+		$Buttons.add_child(new_button)
+		new_button.position.y = BUTTON_OFFSET + (BUTTON_HEIGHT * (buttons.size()))
+		new_button.z_index = self.z_index - (buttons.size())
+		
+		new_button = preload(SIDE_BUTTON_PATH).instantiate()
+		new_button.button_type = "Transform"
+		new_button.get_node("Control/Text").text = "Transform"
+		$SideButtons.add_child(new_button)
+		new_button.position.x = (BUTTON_HEIGHT * (buttons.size()))
+		new_button.z_index = self.z_index - (buttons.size())
 
 func playCard():
 	cardMeta.cardState.playedThisTurn = true
@@ -185,6 +199,14 @@ func call_fun(buttonType):
 		"Set In Tracker":
 			if cardMeta.cardProperties.Speed != null:
 				$"../../../Field/Tracker".setTracker(cardMeta.cardProperties.Speed, cardMeta.cardProperties.AttackZone, cardMeta.cardProperties.Damage)
+		"Transform":
+			transformCard()
+
+func transformCard():
+	$CardFront.texture = CardDatabase.get_card_art(cardMeta.cardProperties.transfromation)
+	cardMeta.cardID = cardMeta.cardProperties.transfromation
+	cardMeta.cardProperties = CardDatabase.getCard(cardMeta.cardProperties.transfromation)
+	$"../../../Rival/RivalCardManager".rpc_id(1, "transformCard", cardMeta.indexID)
 
 func cardFlash():
 	$"../../../Rival/RivalCardManager".rpc_id(1, "flashRivalCard", cardMeta.indexID)

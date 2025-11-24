@@ -142,6 +142,11 @@ func call_fun(buttonType):
 		"Remove Counter":
 			counterDownOne()
 
+func transformCard():
+	$CardFront.texture = CardDatabase.get_card_art(cardMeta.cardProperties.transfromation)
+	cardMeta.cardID = cardMeta.cardProperties.transfromation
+	cardMeta.cardProperties = CardDatabase.getCard(cardMeta.cardProperties.transfromation)
+
 func cardFlashRemote():
 	$SelectAnimation.visible = true
 	$AnimationPlayer.play("CardSelected")

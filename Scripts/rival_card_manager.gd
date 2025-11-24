@@ -135,6 +135,13 @@ func readyCard(cardMeta):
 	card.cardObj.ready()
 
 @rpc("any_peer")
+func transformCard(indexID):
+	var children = get_children()
+	for i in range(children.size()):
+		if children[i].cardMeta.indexID == indexID:
+			children[i].transformCard()
+
+@rpc("any_peer")
 func flashRivalCard(indexID):
 	var children = get_children()
 	for i in range(children.size()):

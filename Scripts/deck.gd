@@ -20,7 +20,8 @@ var defaultCardState = {
 	"maxHealth": null,
 	"frozen": false,
 	"playedThisTurn": false,
-	"counter": 0
+	"counter": 0,
+	"deleteOnMove": false
 }
 
 const buttons = [

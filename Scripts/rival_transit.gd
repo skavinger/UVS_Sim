@@ -90,6 +90,13 @@ func move_to(sourceZone, destinationZone, card_oldRef, faceup):
 	card.cardState.currentZone == "hand"):
 		cardMan.card_unselected()
 	
+	#handle tokens deleting on zone change
+	if card.cardState.deleteOnMove == true:
+		cardMan.despwan_card(card.cardObj)
+		return
+	if card.cardProperties.Cardtype == "Token":
+		card.cardState.deleteOnMove = true
+	
 	card.cardState.currentZone = destinationZone
 	
 	match destinationZone:
