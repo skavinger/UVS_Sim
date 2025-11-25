@@ -15,7 +15,8 @@ func _ready() -> void:
 		setData = JSON.parse_string(setData)
 		var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
 		self.add_child(newEntry)
-		newEntry.cards = setData
+		newEntry.cards = setData.Cards
+		newEntry.setinfo = setData.SetInfo
 		newEntry.setName = setName
 		newEntry.name = setName
 		setList.push_back(setName)
@@ -37,13 +38,15 @@ func AddSets(sets):
 		for j in range(currentDatabase.size()):
 			if sets[i] == currentDatabase[j].setName:
 				found = true
-				currentDatabase[j].cards = setData
+				currentDatabase[j].setinfo = setData.SetInfo
+				currentDatabase[j].cards = setData.Cards
 				break
 		#if the set doesn't exist add it to the database
 		if !found:
 			var newEntry = preload(DATABASE_ENTRY_PATH).instantiate()
 			self.add_child(newEntry)
-			newEntry.cards = setData
+			newEntry.cards = setData.Cards
+			newEntry.setinfo = setData.SetInfo
 			newEntry.setName = sets[i]
 			newEntry.name = sets[i]
 			setList.push_back(sets[i])
@@ -81,8 +84,14 @@ func getCard(cardID):
 func getSet(setName):
 	var dataBaseEntries = self.get_children()
 	for i in range(dataBaseEntries.size()):
-		if(dataBaseEntries[i].setName == setName):
+		if(dataBaseEntries[i].setinfo.DisplayName == setName):
 			return dataBaseEntries[i]
+
+func getSetInfo(setName):
+	var dataBaseEntries = self.get_children()
+	for i in range(dataBaseEntries.size()):
+		if(dataBaseEntries[i].setName == setName):
+			return dataBaseEntries[i].setinfo
 
 func getSets():
 	return setList

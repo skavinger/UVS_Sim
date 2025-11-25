@@ -49,7 +49,7 @@ func _ready() -> void:
 	
 	var sets = CardDatabase.getSets()
 	for i in range(sets.size()):
-		$Menus/Sets.get_popup().add_check_item(sets[i])
+		$Menus/Sets.get_popup().add_check_item(CardDatabase.getSetInfo(sets[i]).DisplayName)
 	$Menus/Sets.get_popup().hide_on_checkable_item_selection = false
 	$Menus/Sets.get_popup().id_pressed.connect(_sets_selected)
 	
