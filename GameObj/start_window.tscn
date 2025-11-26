@@ -33,6 +33,16 @@ offset_right = 340.0
 offset_bottom = 880.0
 text = "Settings"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 412.0
+offset_right = 1622.0
+offset_bottom = 860.0
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/normal_font_size = 150
+text = "Unoffical UniVersus Simulator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="DeckBuilder" to="." method="_on_deck_builder_pressed"]
 [connection signal="pressed" from="DownloadData" to="." method="_on_download_data_pressed"]

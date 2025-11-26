@@ -1,0 +1,170 @@
+{
+	"traits":[
+		"Ally",
+		"Charge",
+		"Diplomacy",
+		"Fury",
+		"Kick",
+		"Pizza",
+		"Punch",
+		"Ranged",
+		"Scheme",
+		"Slam",
+		"Spell",
+		"Taunt",
+		"Tech",
+		"Titan",
+		"Vestige",
+		"Weapon",
+		"XP"
+	],
+	"abilities":[
+		{
+			"Name": "Breaker",
+			"color": "green",
+			"hasRating": true,
+			"text": "[color=green]Response[/color]: After you block with this card, your rival’s next check to play a card gets -<rating>.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Combo",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "Combo-restricted abilities on this card are only playable if the printed properties of the directly preceding card(s) in the card pool match the requirement(s) of a Combo keyword on this card, in order",
+			"effectPath": ""
+		},
+		{
+			"Name": "Deflect",
+			"color": "green",
+			"hasRating": true,
+			"text": "[color=green]Response[/color] [Hand] Add this card to the card pool: Before the damage step of a rival attack, that attack gets -<rating> damage. Only 1 Deflect ability can be played per attack",
+			"effectPath": ""
+		},
+		{
+			"Name": "Desperation",
+			"color": "lightblue",
+			"hasRating": true,
+			"text": "While you are at desperation, this card's difficulty is <rating>.",
+			"effectPath": ""
+		},
+		{
+			"Name": "EX",
+			"color": "orange",
+			"hasRating": true,
+			"text": "[color=orange]Enhance[/color] Discard 1 or more momentum: This attack gets +<rating> speed for each card used to pay the cost of this ability.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Echo",
+			"color": "green",
+			"hasRating": false,
+			"text": "[color=green]Response[/color] Discard 1 momentum: After this attack resolves, you may play it as your next form. If you do, after it resolves, flip it.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Elusive",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "This backup cannot be attacked by a rival’s first attack each turn.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Flash",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "Skip this attack’s Enhance Step.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Frenzy",
+			"color": "pink",
+			"hasRating": false,
+			"text": "[color=pink]Blitz[/color]: This attack gets +1 speed and +1 damage for each attack that has been blocked this turn.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Gauge",
+			"color": "orange",
+			"hasRating": true,
+			"text": "[color=orange]Enhance[/color]: If this attack deals <rating> or more damage, you may search your deck and discard pile for a character card that shares a name with your starting character and add it to your staging area.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Multiple",
+			"color": "orange",
+			"hasRating": true,
+			"text": "[color=orange]Enhance[/color] Discard up to X momentum (minimum 1, maximum the Multiple rating): Add X cards from the top of your deck to your card pool face down as multiple copies of this attack. Add those attacks to the attack stack. Multiple copies are face down attacks that copy all the printed values of the original attack except the text box( which includes its keywords), they cannot be added to your momentum for any reason, anytime something attempts to add them they will be sent to discard instead.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Only",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "This card cannot be played unless your identity is [Character Name].",
+			"effectPath": ""
+		},
+		{
+			"Name": "Powerful",
+			"color": "orange",
+			"hasRating": true,
+			"text": "[color=orange]Enhance[/color] Discard 1 or more momentum: This attack gets +<rating> damage for each card used to pay the cost of this ability.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Reversal",
+			"color": "green",
+			"hasRating": false,
+			"text": "[color=green]Response[/color] [Hand] Play this card as a reversal: After your opponent’s blocked attack resolves, add this attack to the attack stack. You can only play 1 reversal per block.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Safe",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "Attacks cannot be played as a reversal to this attack.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Shift",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "As this card clears from your card pool during your End Phase, if you played it, you may build it transformed (opposite side up).",
+			"effectPath": ""
+		},
+		{
+			"Name": "Stun",
+			"color": "orange",
+			"hasRating": true,
+			"text": "[color=orange]Enhance[/color]: Your rival commits <rating> foundations.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Tension",
+			"color": "pink",
+			"hasRating": false,
+			"text": "[color=pink]Blitz[/color]: Add 1 Roman Cancel token to your momentum.",
+			"effectPath": "user://GameData/KeywordAbilityScripts/Tension.gd"
+		},
+		{
+			"Name": "Terrain",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "After this card is added to your stage, destroy all other terrain cards.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Throw",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "If this attack is completely blocked, it deals half damage (rounded up) during the Damage Step.",
+			"effectPath": ""
+		},
+		{
+			"Name": "Unique",
+			"color": "lightblue",
+			"hasRating": false,
+			"text": "While this card is in your stage, if there are 2 or more copies of it in your stage, sacrifice the copy that was most recently added.",
+			"effectPath": ""
+		}
+	]
+}
