@@ -22,8 +22,11 @@ func _ready() -> void:
 		setList.push_back(setName)
 	
 	formatList = buildFormatList()
+	loadKeywords()
+
+func loadKeywords():
 	var keywordList = FileAccess.get_file_as_string("user://GameData/keywords.json")
-	if keywordList != "":
+	if keywordList != null and keywordList != "":
 		keywordTraitList = JSON.parse_string(keywordList).traits
 		keywordAbilityList = JSON.parse_string(keywordList).abilities
 

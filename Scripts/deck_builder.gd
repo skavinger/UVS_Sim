@@ -375,6 +375,8 @@ func _on_load_pressed() -> void:
 func _on_save_pressed() -> void:
 	if $"../..".currentDeckList != null:
 		var fileName = $DeckDetails/DeckName.text + ".uvs_sav"
+		if !DirAccess.dir_exists_absolute("user://Saves/"):
+			DirAccess.make_dir_absolute("user://Saves/")
 		var saveFile = FileAccess.open("user://Saves/" + fileName,FileAccess.WRITE)
 		saveFile.store_string(JSON.stringify($"../..".currentDeckList))
 		$Save_Load/Saves.get_popup().add_item(fileName)
