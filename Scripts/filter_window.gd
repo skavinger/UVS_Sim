@@ -111,7 +111,7 @@ func _format_selected(id):
 			$Menus/Sets.get_popup().add_check_item(formatList[i])
 	
 func _sets_selected(id):
-	var setName = $Menus/Sets.get_popup().get_item_text(id)
+	var setName = CardDatabase.getSetFromDisplayName($Menus/Sets.get_popup().get_item_text(id)).setName
 	if $Menus/Sets.get_popup().is_item_checked(id):
 		$Menus/Sets.get_popup().set_item_checked(id, false)
 		for i in range(filter.sets.size()):

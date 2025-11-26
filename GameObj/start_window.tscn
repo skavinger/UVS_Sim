@@ -43,6 +43,16 @@ text = "Unoffical UniVersus Simulator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WarningMessage" type="RichTextLabel" parent="."]
+offset_left = 478.0
+offset_top = 898.0
+offset_right = 1884.0
+offset_bottom = 1095.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+horizontal_alignment = 2
+
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="DeckBuilder" to="." method="_on_deck_builder_pressed"]
 [connection signal="pressed" from="DownloadData" to="." method="_on_download_data_pressed"]

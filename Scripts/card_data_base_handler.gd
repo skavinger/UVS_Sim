@@ -9,7 +9,8 @@ var setList = []
 
 func _ready() -> void:
 	#populateCardDatabase
-	
+	if !DirAccess.dir_exists_absolute("user://SetData/"):
+		DirAccess.make_dir_absolute("user://SetData/")
 	for setName in DirAccess.open("user://SetData/").get_directories():
 		var setData = FileAccess.get_file_as_string("user://SetData/" + setName + "/setData.json")
 		setData = JSON.parse_string(setData)
@@ -87,7 +88,13 @@ func getCard(cardID):
 func getSet(setName):
 	var dataBaseEntries = self.get_children()
 	for i in range(dataBaseEntries.size()):
-		if(dataBaseEntries[i].setinfo.DisplayName == setName):
+		if(dataBaseEntries[i].setName == setName):
+			return dataBaseEntries[i]
+
+func getSetFromDisplayName(displayName):
+	var dataBaseEntries = self.get_children()
+	for i in range(dataBaseEntries.size()):
+		if(dataBaseEntries[i].setinfo.DisplayName == displayName):
 			return dataBaseEntries[i]
 
 func getSetInfo(setName):

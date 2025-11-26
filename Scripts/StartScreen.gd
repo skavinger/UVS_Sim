@@ -23,7 +23,6 @@ var keywordEffectsRequest
 var pendingRequests = []
 
 func _ready() -> void:
-	
 	playerData.PlayerName = "Player " + str(randi_range(1, 99999))
 	var saveFile = FileAccess.get_file_as_string("user://Saves/current_list.auto_sav")
 	if saveFile != "":

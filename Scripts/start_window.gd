@@ -1,5 +1,10 @@
 extends Node2D
 
+func _ready() -> void:
+	if CardDatabase.getSets().size() == 0:
+		disableButtonsDueToLackOfCardData()
+		$WarningMessage.text = "No Set Data found!\nPlease Download Sets in Download Set Modules!"
+
 func _on_connect_pressed() -> void:
 	$"../../ConnectWindowHolder".spawnWindow()
 	$"..".closeWindow()

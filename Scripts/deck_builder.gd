@@ -352,6 +352,8 @@ func checkKeywordColor(keyword):
 	return ""
 
 func populateSaves():
+	if !DirAccess.dir_exists_absolute("user://Saves/"):
+			DirAccess.make_dir_absolute("user://Saves/")
 	var saves = DirAccess.open("user://Saves/").get_files()
 	for i in range(saves.size()):
 		if saves[i].contains(".uvs_sav"):
