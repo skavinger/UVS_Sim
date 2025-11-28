@@ -174,7 +174,7 @@ func applyFilter(filter, cards):
 		
 		#filter by card name
 		if filter.cardName != null:
-			if cards[i].Name.contains(filter.cardName):
+			if cards[i].Name.containsn(filter.cardName):
 				nameMatched = true
 		else:
 			nameMatched = true
@@ -183,7 +183,7 @@ func applyFilter(filter, cards):
 		if filter.cardText != null:
 			for j in range(cards[i].Abilities.size()):
 				var abilityStr = cards[i].Abilities[j].Type + " " + cards[i].Abilities[j].Cost + ": " + cards[i].Abilities[j].Effect
-				if abilityStr.contains(filter.cardText):
+				if abilityStr.containsn(filter.cardText):
 					textMached = true
 					break
 		else:
