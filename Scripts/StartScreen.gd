@@ -19,6 +19,7 @@ var rivalPlayerData
 
 var keywordRequest
 var keywordEffectsRequest
+var ipConfigRequest
 
 var pendingRequests = []
 
@@ -62,7 +63,9 @@ func _http_request_completed(_result, _response_code, _headers, body):
 	if currentGameDataVersion == null or gameDataVersion.keywords != currentGameDataVersion.keywords:
 		updateKeywords()
 		updateRequired = true
-		
+	if currentGameDataVersion == null or gameDataVersion.IPConfig != currentGameDataVersion.IPConfig:
+		updateIPConfig()
+		updateRequired = true
 	if !updateRequired:
 		loadStartScreen()
 
@@ -87,6 +90,17 @@ func updateKeywords():
 	if error != OK:
 		push_error("Unable to get keywords list from repo")
 
+func updateIPConfig():
+	DirAccess.remove_absolute("user://GameData/IPConfig.json")
+	ipConfigRequest = HTTPRequest.new()
+	add_child(ipConfigRequest)
+	ipConfigRequest.request_completed.connect(self._download_completed.bind(["ipConfig"]))
+	ipConfigRequest.download_file = "user://GameData/IPConfig.json"
+	pendingRequests.push_back("ipConfig")
+	var error = ipConfigRequest.request("https://github.com/skavinger/UVS_Sim/raw/refs/heads/main/GameData/IPConfig.json")
+	if error != OK:
+		push_error("Unable to get keywords list from repo")
+
 func _download_completed(result, _response_code, _headers, _body, extra):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		push_error("Download Failed")
@@ -96,6 +110,8 @@ func _download_completed(result, _response_code, _headers, _body, extra):
 	elif extra[0] == "keywordEffects":
 		remove_child(keywordEffectsRequest)
 		extractZip("user://GameData/KeywordAbilityScripts.zip","user://GameData/")
+	elif extra[0] == "ipConfig":
+		remove_child(ipConfigRequest)
 		
 	if pendingRequests.size() == 0:
 		loadStartScreen()

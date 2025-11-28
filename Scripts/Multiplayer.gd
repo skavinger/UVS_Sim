@@ -1,8 +1,8 @@
 extends Node2D
 
 #const serverIP = "138.2.232.82"
-const serverIP = "localhost"
-const PORT  = 25555
+var serverIP = "localhost"
+var PORT  = 25555
 
 const PLAYER_ROOM_PATH = "res://GameObj/Multiplayer/playerRoom.tscn"
 
@@ -10,6 +10,10 @@ var peer = ENetMultiplayerPeer.new()
 var selectedFormat = "Any"
 
 func _ready() -> void:
+	var ipConfig = FileAccess.get_file_as_string("user://GameData/IPConfig.json")
+	ipConfig = JSON.parse_string(ipConfig)
+	serverIP = ipConfig.IP
+	PORT = ipConfig.port
 	peer.create_client(serverIP,PORT)
 	multiplayer.multiplayer_peer = peer
 	for i in range($"../../".currentDeckList.Formats.size()):

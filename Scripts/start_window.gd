@@ -27,3 +27,7 @@ func _on_start_button_pressed() -> void:
 func disableButtonsDueToLackOfCardData():
 	$Connect.disabled = true
 	$DeckBuilder.disabled = true
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
