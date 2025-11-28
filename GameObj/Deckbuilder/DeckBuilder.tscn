@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c8bvy6da0211j"]
+[gd_scene load_steps=38 format=3 uid="uid://c8bvy6da0211j"]
 
 [ext_resource type="Script" uid="uid://drsvr4jsox2rh" path="res://Scripts/deck_builder.gd" id="1_bjh7i"]
 [ext_resource type="Texture2D" uid="uid://17pbwe1fsdhb" path="res://Assets/DeakBuilderBackground.png" id="2_km7lk"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cpt8mggke3a2n" path="res://Assets/Symbols/Void.png" id="15_mqu4s"]
 [ext_resource type="Texture2D" uid="uid://bk5rn44ab80lg" path="res://Assets/Symbols/Water.png" id="16_3uwsd"]
 [ext_resource type="Texture2D" uid="uid://6th50wvnbopb" path="res://Assets/Attuned/Air-Attune.png" id="17_8u8j1"]
+[ext_resource type="Texture2D" uid="uid://b3qf78wkifujw" path="res://Assets/Symbols/Infinity.png" id="17_s568y"]
 [ext_resource type="Texture2D" uid="uid://bhjkiddtu768u" path="res://Assets/Attuned/All-Attune.png" id="18_xatwb"]
 [ext_resource type="Texture2D" uid="uid://d23fy3vlj653y" path="res://Assets/Attuned/Chaos-Attune.png" id="19_a8xy4"]
 [ext_resource type="Texture2D" uid="uid://dntqd1vj672df" path="res://Assets/Attuned/Death-Attune.png" id="20_mmmww"]
@@ -176,7 +177,7 @@ offset_right = 660.0
 offset_bottom = 270.0
 theme_override_font_sizes/font_size = 30
 text = "Symbols"
-item_count = 12
+item_count = 13
 popup/item_0/text = "Air"
 popup/item_0/icon = ExtResource("5_djmsr")
 popup/item_0/checkable = 1
@@ -225,6 +226,10 @@ popup/item_11/text = "Water"
 popup/item_11/icon = ExtResource("16_3uwsd")
 popup/item_11/checkable = 1
 popup/item_11/id = 11
+popup/item_12/text = "Infinity"
+popup/item_12/icon = ExtResource("17_s568y")
+popup/item_12/checkable = 1
+popup/item_12/id = 12
 
 [node name="SymbolsAttuned" type="MenuButton" parent="FilterWindow/Menus"]
 layout_mode = 0
