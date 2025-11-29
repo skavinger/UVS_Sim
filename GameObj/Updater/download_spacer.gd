@@ -4,7 +4,7 @@ const GreenCheck = "res://Assets/GreenCheck.png"
 const YellowBang = "res://Assets/YellowBang.png"
 const RedX = "res://Assets/Red_X.png.png"
 
-const type = "spacer"
+const listItemType = "spacer"
 var formatSets = []
 
 func setName(formatName):

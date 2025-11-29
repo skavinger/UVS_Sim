@@ -148,6 +148,7 @@ func downloadSubSet(sets):
 func _on_update_all_pressed() -> void:
 	$UpdateAll.text = "Processing..."
 	$UpdateAll.disabled = true
+	$Back.disabled = true
 	var sets = $SetModuleList/ScrollContainer/VBoxContainer.get_children()
 	for i in range(sets.size()):
 		if sets[i].listItemType == "entry":
@@ -167,4 +168,5 @@ func downloadNext():
 	else:
 		$UpdateAll.text = "Complete!"
 		$UpdateAll.disabled = true
+		$Back.disabled = false
 		CardDatabase.AddSets(databaseUpdate)

@@ -38,6 +38,7 @@ func setStatus(icon):
 		$Update_Download.text = "Download"
 
 func _on_update_download_pressed() -> void:
+	$"../../../../Back".disabled = true
 	#Download path
 	if !dataMissmatch and !imageMissmatch:
 		downloadSet()
@@ -137,6 +138,7 @@ func checkMassDownload():
 		massDownload = false
 	else:
 		CardDatabase.AddSets([setID])
+		$"../../../../Back".disabled = false
 
 func queForDownload():
 	$Update_Download.text = "Queued..."
