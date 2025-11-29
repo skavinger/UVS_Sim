@@ -5,6 +5,8 @@ const GreenCheck = "res://Assets/GreenCheck.png"
 const YellowBang = "res://Assets/YellowBang.png"
 const RedX = "res://Assets/Red_X.png.png"
 
+const listItemType = "entry"
+
 var setID
 var dataMissmatch = false
 var imageMissmatch = false

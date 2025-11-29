@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://djjjvymyvvmin"]
+
+[ext_resource type="Script" uid="uid://4uwxhqi2hrmf" path="res://GameObj/Updater/download_spacer.gd" id="1_vsose"]
+
+[node name="DownloadEntry" type="Control"]
+custom_minimum_size = Vector2(1600, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vsose")
+
+[node name="FormatName" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(1250, 100)
+layout_mode = 0
+offset_left = 100.0
+offset_right = 1350.0
+offset_bottom = 100.0
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+text = "Godzilla King of the Monsters Challenger Deck"
+vertical_alignment = 1
+
+[node name="Update_Download" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1350.0
+offset_top = 12.5
+offset_right = 1550.0
+offset_bottom = 87.5
+theme_override_font_sizes/font_size = 30
+text = "Download"
+
+[connection signal="pressed" from="Update_Download" to="." method="_on_update_download_pressed"]
