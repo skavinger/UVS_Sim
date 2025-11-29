@@ -1,0 +1,102 @@
+List of response windows and timings:
+
+Turn sequence:
+Before Game Effects(May, Red Eye Cap, ect)
+Start of Game Effects(EH1, Mai Hustumi1, ect)
+During Mullegens(Nothing triggers her as far as I'm aware)
+
+Start Phase
+-Start of Ready Step
+--Cards ready in ready step
+-End of Ready Step
+-Start of Review Step
+--Player may review a card
+-End of Review Step
+-Start of Draw Step
+--Draw to Hand Size
+-End of Draw Step
+
+Combat Phase
+-Start of Combat Phase
+--Forms
+-End of Combat Phase
+
+End Phase
+-Start of End Phase
+--Turn player clears card pool
+--Rival player clears card pool
+-End of End Phase
+
+
+(I plan on grouping al "On Play" responses as 1 response handler and then let the cards filter if they can trigger in that specific window)
+Playing a card(Successful)
+-Reveal card you are attempting to play
+-Calculate difficulty
+-Make check
+--Before making a check
+--Card checked
+--Check modified
+--Commit cards to pass
+--Check Passes
+-Card is played
+
+Playing a card(Failure)
+-Reveal card you are attempting to play
+-Calculate difficulty
+-Make check
+--Before making a check
+--Card checked
+--Check modified
+--Fail the check
+-Card is discarded
+-If Form end turn
+
+Attack Sequence
+-Attack is played
+--Enter attack sequence
+--Enter Enhance Step
+---Play Blitzs
+---Play Enhances
+--End of Enhance Step
+--Start of Block Step
+---Play block(see playing a card sequence)
+---Determine Block Status
+--End Block Step
+--Enter Damage Step
+---Deal damage based on block status
+--End Damage Step
+-Attack Resolves
+
+Plays an ability that ___
+-Grants a speed bonus
+-Grants a damage bonus
+-Grants a speed penalty
+-Grants a damage penalty
+-Increases speed
+-Increases damage
+-Decreases speed
+-Decreases damage
+-Grants a check bonus
+-Grants a check penalty
+-Modifes a block mod
+-Modifies difficulty
+-Grants a keyword
+-Flips a card
+-Seals a card
+-Freezes a card
+-Transforms a card
+-Changes an attcaks zone
+-Adds a card to hand
+-Draws a card
+-Builds a card
+-Causes a card to leave stage
+-Adds a card to card pool
+-Causes a card to leave Card pool
+-Causes a card to enter discard
+-Causes a card to leave discard
+-Removes a card
+-Causes a card to leave removed
+-Adds a card to momentum
+-Causes a card to leave momentum
+-Adds card to deck
+-Causes card to leave deck

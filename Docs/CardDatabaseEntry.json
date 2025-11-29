@@ -1,29 +1,30 @@
-		{
-			"Name": "",
-			"Cardtype": "",
-			"Difficulty": 0,
-			"Check": 0,
-			"Symbols": [],
-			"Keywords": [
-				{
-					"Name": "",
-					"Rating": null,
-					"effectPath": ""
-				}
-			],
-			"Abilities": [
-				{
-					"Type": "",
-					"Cost": "",
-					"Effect": "",
-					"effectPath": ""
-				}
-			],
-			"BlockZone": "",
-			"BlockMod": 0,
-			"HandSize": null,
-			"Health": null,
-			"AttackZone": null,
-			"Speed": null,
-			"Damage": null
-		}
+ "000": {
+    "Name": "",
+    "Cardtype": "",
+    "Legality": [""],
+    "Difficulty": null,
+    "Check": null,
+    "Symbols": [],
+    "Keywords": [{
+        "Name": "",
+        "Rating": null,
+        "effectPath": ""
+    }],
+    "Abilities": [{
+        "Type": "",
+        "Cost": "",
+        "Effect": "",
+        "effectPath": ""
+    }],
+    "BlockZone": null,
+    "BlockMod": null,
+    "HandSize": null,
+    "Health": null,
+    "Stamina": null,
+    "Speed": null,
+    "Damage": null,
+    "setName": "",
+    "cardNumber": "000",
+    "AttackZone": null,
+    "transfromation": null
+}
