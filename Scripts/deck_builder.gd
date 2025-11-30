@@ -192,9 +192,9 @@ func card_left_clicked(source, cardMeta):
 		"database":
 			addToDeck(cardMeta)
 		"deck":
-			pass
+			addToDeck(cardMeta)
 		"side":
-			pass
+			addToDeck(cardMeta)
 
 func card_right_clicked(source, cardMeta):
 	match source:
