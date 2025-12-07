@@ -101,14 +101,14 @@ func _format_selected(id):
 		var formatList = CardDatabase.getFormat(formatName)
 		$Menus/Sets.get_popup().clear()
 		for i in range(formatList.size()):
-			$Menus/Sets.get_popup().add_check_item(formatList[i])
+			$Menus/Sets.get_popup().add_check_item(CardDatabase.getSetInfo(formatList[i]).DisplayName)
 	else:
 		filter.format = ""
 		$Menus/Formats.text = "Format"
 		var formatList = CardDatabase.getFormat("Legacy")
 		$Menus/Sets.get_popup().clear()
 		for i in range(formatList.size()):
-			$Menus/Sets.get_popup().add_check_item(formatList[i])
+			$Menus/Sets.get_popup().add_check_item(CardDatabase.getSetInfo(formatList[i]).DisplayName)
 	
 func _sets_selected(id):
 	var setName = CardDatabase.getSetFromDisplayName($Menus/Sets.get_popup().get_item_text(id)).setName
